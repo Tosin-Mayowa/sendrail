@@ -19,9 +19,15 @@ import { Outlet } from "react-router-dom";
 
 const Dashbord = () => {
       const theme = useTheme();
+     
   return (
-    <Grid templateColumns="20% 80%" gap={0.5}>
-      <GridItem w="100%" h="100%" bg={theme.colors.primary.main}>
+    <Grid templateColumns="15% 85%" gap={0.5}>
+      <GridItem
+      
+        w="100%"
+        h="100%"
+        bg={theme.colors.primary.main}
+      >
         <SideBar />
       </GridItem>
       <GridItem
@@ -97,7 +103,7 @@ const Dashbord = () => {
             </Flex>
           </Flex>
         </Flex>
-        <Flex flexDir="column" width='100%'>
+        <Flex flexDir="column" width="100%">
           <Outlet />
         </Flex>
       </GridItem>
