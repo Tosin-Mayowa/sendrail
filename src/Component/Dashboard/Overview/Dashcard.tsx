@@ -2,20 +2,31 @@
 import React from "react";
 import {
   Flex,
- 
   GridItem,
   Image,
-useTheme,
+  useTheme,
   Text,
   Box,
- 
+
 } from "@chakra-ui/react";
 
-
-const Dashcard=({card})=>{
-     const theme = useTheme();
-    return (
-    <GridItem w="100%" height="112px" bg={theme.colors.primary.main}>
+interface Props {
+  card: {
+    title: string,
+    count: number,
+    url: string
+  }
+}
+const Dashcard: React.FC<Props> = ({ card }: Props) => {
+  const theme = useTheme();
+  return (
+    <GridItem
+      w="100%"
+      height="112px"
+      bg={theme.colors.primary.main}
+      borderRadius="5px"
+      cursor="pointer"
+    >
       <Flex justifyContent="space-around">
         <Box mt="17px">
           <Text fontSize="21px" lineHeight="26px" fontWeight="500" color="#fff">
@@ -43,7 +54,7 @@ const Dashcard=({card})=>{
         </Box>
       </Flex>
     </GridItem>
-    );
+  );
 }
 
 export default Dashcard;

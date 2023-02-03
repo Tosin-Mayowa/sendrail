@@ -7,7 +7,7 @@ import ResetPass from "./pages/ResetPass";
 import ForgotPassword from "./pages/ForgotPassword";
 import Home from './pages/Home';
 import Dashboard from "./pages/Dashboard";
-import Overview from "./Component/Overview/Overview";
+import Overview from "./Component/Dashboard/Overview/Overview";
 const App = () => {
   return (
     <>
@@ -19,13 +19,13 @@ const App = () => {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-Password" element={<ResetPass />} />
         <Route path="/dashboard" element={<Dashboard />}>
-          <Route index element={<Overview/>} />
-        
+          <Route index element={<Overview />} />
+
         </Route>
       </Routes>
     </>
   );
-  
+
 };
 
 export default App;
