@@ -7,7 +7,7 @@ import { MdArrowDropDown } from "react-icons/md";
 const BarChartOverview = (): JSX.Element => {
     return (
         <Box
-            maxWidth="100%"
+            width="50%"
             border="1px solid #ABA7A7"
             borderRadius="9px"
 
@@ -15,7 +15,7 @@ const BarChartOverview = (): JSX.Element => {
                 aspectRatio: "5/4",
             }}
         >
-            <Flex justifyContent="space-between" p="15px">
+            <Flex justifyContent="space-between" p="15px" alignItems="center">
                 <Stack spacing={3}>
                     <Select variant='filled' placeholder='Select an Option' icon={<MdArrowDropDown />}>
                         <option value='Daily Overview'>Daily Overview</option>

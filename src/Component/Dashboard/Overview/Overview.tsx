@@ -59,19 +59,51 @@ const Overview = (): JSX.Element => {
           flexDirection="column"
         >
           <ShareLink />
-          <Grid
-            maxW="100%"
-            gridTemplateColumns="1fr 1fr"
+          <Flex
+            w="100%"
+            height="auto"
+            flexWrap="nowrap"
             justifyContent="space-between"
             alignItems="stretch"
             mt="20px"
             gap="15px"
+            position="relative"
+            overflow="hidden"
+          >
+            <MyWallet />
+            <Revenue />
+          </Flex>
+          <Flex
+            w="100%"
+            height="auto"
+            flexWrap="nowrap"
+            justifyContent="space-between"
+            alignItems="stretch"
+            mt="20px"
+            gap="15px"
+            position="relative"
+            overflow="hidden"
+          >
+            <MostVisited />
+            <BarChartOverview />
+          </Flex>
+          {/* <Grid
+            w="100%"
+            height="auto"
+            gridTemplateColumns="50% 50%"
+            justifyContent="center"
+            alignItems="stretch"
+            mt="20px"
+            gap="15px"
+            border="1px solid green"
+            position="relative"
+            overflow="hidden"
           >
             <MyWallet />
             <Revenue />
             <MostVisited />
             <BarChartOverview />
-          </Grid>
+          </Grid> */}
         </Flex>
         <InTransit />
       </Grid>

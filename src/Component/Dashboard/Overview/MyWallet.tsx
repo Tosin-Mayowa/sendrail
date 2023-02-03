@@ -5,7 +5,7 @@ import React from 'react'
 const MyWallet = (): JSX.Element => {
     return (
         <Box
-            width="100%"
+            width="50%"
             border="1px solid #ABA7A7"
             borderRadius="9px"
             backgroundImage={`url(${Wallet})`}
@@ -17,47 +17,40 @@ const MyWallet = (): JSX.Element => {
             }}
         >
             <Center>
-                <Flex flexDir="column">
+                <Flex flexDir="column" alignItems="center" justifyContent="center" w="100%">
                     <Text
-                        mt="36px"
-                        color="#000"
+                        my="18px"
                         fontWeight="600"
                         fontSize="20px"
-                        lineHeight="25px"
-                        textAlign="center"
                     >
                         My Wallet
                     </Text>
                     <Text
-                        mt="24px"
-                        color="#000"
+                        my="12px"
                         fontWeight="500"
                         fontSize="16px"
-                        lineHeight="19px"
-                        textAlign="center"
                     >
                         Available Balance
                     </Text>
                     <Text
-                        mt="32px"
+                        my="16px"
                         fontWeight="500"
                         fontSize="28px"
-                        lineHeight="34px"
-                        textAlign="center"
                     >
                         N250.000
                     </Text>
-                    <Flex mt="50px" justifyContent="space-between">
+                    <Flex
+                        w="100%"
+                        justifyContent="space-around"
+                        fontSize="14px"
+                        fontWeight="500"
+                        mt="10px"
+                    >
                         <Button
                             padding="8px 24px"
-                            width="98px"
-                            height="38px"
                             background="rgba(7, 5, 41, 0.9)"
                             borderRadius="8px"
                             color="#fff"
-                            fontWeight="500"
-                            fontSize="14px"
-                            lineHeight="22px"
 
                             _hover={{
                                 boxShadow: "0px 2px 2px 0px #070529a0"
@@ -66,13 +59,7 @@ const MyWallet = (): JSX.Element => {
                             Deposit
                         </Button>
                         <Button
-                            fontWeight="500"
-                            fontSize="14px"
-                            lineHeight="22px"
-                            ml="40px"
                             padding="8px 24px"
-                            width="112px"
-                            height="38px"
                             background="rgba(7, 5, 41, 0.9)"
                             borderRadius="8px"
                             color="#fff"

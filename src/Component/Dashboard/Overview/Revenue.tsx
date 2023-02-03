@@ -6,7 +6,7 @@ import Chart from "react-apexcharts";
 const Revenue = (): JSX.Element => {
     return (
         <Box
-            maxWidth="100%"
+            width="50%"
             border="1px solid #ABA7A7"
             borderRadius="9px"
 

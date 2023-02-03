@@ -17,8 +17,9 @@ const ShareLink = (): JSX.Element => {
     };
     return (
         <Box
+            w="100%"
             border=" 1px solid #ABA7A7"
-            height="206px"
+            height="auto"
             padding="22px"
             borderRadius="9px"
         >
@@ -29,18 +30,17 @@ const ShareLink = (): JSX.Element => {
                 Share your logistic imbedded link for customers to be able to
                 onboard directly from you.
             </Text>
-            <Box
+            <Text
                 width="100%"
                 fontWeight="700"
                 fontSize="20px"
-                height="41px"
                 color="#F9C567"
                 bg="rgba(7, 5, 41, 0.07)"
-                padding="8px 130px"
+                padding="8px"
                 mt="15px"
             >
                 {url}
-            </Box>
+            </Text>
             <Button
                 width="74px"
                 height="34px"
