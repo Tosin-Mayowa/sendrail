@@ -24,7 +24,6 @@ const Overview = (): JSX.Element => {
     { title: "In transit", count: 1, url: Bus },
     { title: "Delivered", count: 1, url: Group },
   ];
-  console.log(cardDetails[0].url)
   return (
     <Box
       w="100%"

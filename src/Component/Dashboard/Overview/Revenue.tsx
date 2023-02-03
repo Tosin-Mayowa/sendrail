@@ -1,26 +1,9 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React from 'react'
 import { GoKebabVertical } from 'react-icons/go'
 import Chart from "react-apexcharts";
 
 const Revenue = (): JSX.Element => {
-    const [state] = useState<any>({
-        options: {
-            colors: ["#F9C567"],
-            chart: {
-                id: "basic-bar",
-            },
-            xaxis: {
-                categories: ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"],
-            },
-        },
-        series: [
-            {
-                name: "series-1",
-                data: [30, 40, 45, 50, 49, 60, 80],
-            },
-        ],
-    });
     return (
         <Box
             maxWidth="100%"
@@ -36,8 +19,29 @@ const Revenue = (): JSX.Element => {
                 <GoKebabVertical size={20} cursor="pointer" />
             </Flex>
             <Chart
-                options={state.options}
-                series={state.series}
+                options={{
+                    colors: ["#F9C567"],
+                    chart: {
+                        id: "basic-bar",
+                    },
+                    xaxis: {
+                        categories: [
+                            "Mon",
+                            "Tue",
+                            "Wed",
+                            "Thur",
+                            "Fri",
+                            "Sat",
+                            "Sun",
+                        ],
+                    },
+                }}
+                series={[
+                    {
+                        name: "series-1",
+                        data: [30, 40, 45, 50, 49, 60, 80],
+                    },
+                ]}
                 type="line"
                 width="100%"
                 height="270"

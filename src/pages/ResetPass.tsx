@@ -1,10 +1,10 @@
-import React,{useReducer} from "react";
+import React, { useReducer } from "react";
 import {
   Flex,
   Box,
   Image,
   Center,
-  
+
   Text,
   FormControl,
   Input,
@@ -16,18 +16,17 @@ import {
 import Logo from "../Asset/Logos/Onboarding/SENDRAILS.png";
 import Mark from "../Asset/Logos/Onboarding/Vector.png";
 import Ellipse from "../Asset/Logos/Onboarding/Ellipse.png";
-import {resetReducer} from '../reducers/resetReducer';
-const initialState={
-newPassword:'',confirmPass:''
+import { resetReducer } from '../reducers/resetReducer';
+const initialState = {
+  newPassword: '', confirmPass: ''
 }
 const ResetPassword = () => {
   const theme = useTheme();
   const [state, dispatch] = useReducer(resetReducer, initialState);
-  const passReg = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
   const lowerCase = /[a-z]/;
   const upper = /[A-Z]/;
   const numb = /[0-9]/;
-  const {confirmPass,newPassword}=state;
+  const { confirmPass, newPassword } = state;
   return (
     <Flex
       flexDir="column"
@@ -167,7 +166,7 @@ const ResetPassword = () => {
               <Flex flexDir="column">
                 <Flex ml="15px" mt="12px">
                   <Image
-                    src={newPassword.length===8? Mark : Ellipse}
+                    src={newPassword.length === 8 ? Mark : Ellipse}
                     width="10px"
                     height="10px"
                     mt="8px"
@@ -254,7 +253,7 @@ const ResetPassword = () => {
                   lineHeight="22px"
                   color="#fff"
                   textAlign="center"
-                   isDisabled={confirmPass&&newPassword?false:true }
+                  isDisabled={confirmPass && newPassword ? false : true}
                 >
                   Next
                 </Button>
