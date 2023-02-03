@@ -23,7 +23,7 @@ newPassword:'',confirmPass:''
 const ResetPassword = () => {
   const theme = useTheme();
   const [state, dispatch] = useReducer(resetReducer, initialState);
-  const passReg = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+ 
   const lowerCase = /[a-z]/;
   const upper = /[A-Z]/;
   const numb = /[0-9]/;

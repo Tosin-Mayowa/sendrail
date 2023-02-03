@@ -25,24 +25,6 @@ import Pend from "../../Asset/Logos/Onboarding/pend.png";
 import { copyTextToClipboard } from "../../lib/utilities";
 import Dashcard from "../DashCard/Dashcard";
 const Overview = () => {
-  const theme = useTheme();
-  const [state, setState] = useState({
-    options: {
-      colors: ["#F9C567"],
-      chart: {
-        id: "basic-bar",
-      },
-      xaxis: {
-        categories: ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"],
-      },
-    },
-    series: [
-      {
-        name: "series-1",
-        data: [30, 40, 45, 50, 49, 60, 80],
-      },
-    ],
-  });
   const [isCopied, setIsCopied] = useState(false);
   const url = " https://onboard. sendrail.com/dummyco";
   const cardDetails = [
@@ -51,6 +33,7 @@ const Overview = () => {
     { title: "In transit", count: 1, url: Bus },
     { title: "Delivered", count: 1, url: Group },
   ];
+
   const handleCopy = () => {
     copyTextToClipboard(url)
       .then(() => {
@@ -207,8 +190,29 @@ const Overview = () => {
               ml="20px"
             >
               <Chart
-                options={state.options}
-                series={state.series}
+                options={{
+                  colors: ["#F9C567"],
+                  chart: {
+                    id: "basic-bar",
+                  },
+                  xaxis: {
+                    categories: [
+                      "Mon",
+                      "Tue",
+                      "Wed",
+                      "Thur",
+                      "Fri",
+                      "Sat",
+                      "Sun",
+                    ],
+                  },
+                }}
+                series={[
+                  {
+                    name: "series-1",
+                    data: [30, 40, 45, 50, 49, 60, 80],
+                  },
+                ]}
                 type="line"
                 width="300"
                 height="270"
@@ -313,8 +317,29 @@ const Overview = () => {
               ml="20px"
             >
               <Chart
-                options={state.options}
-                series={state.series}
+                options={{
+                  colors: ["#F9C567"],
+                  chart: {
+                    id: "basic-bar",
+                  },
+                  xaxis: {
+                    categories: [
+                      "Mon",
+                      "Tue",
+                      "Wed",
+                      "Thur",
+                      "Fri",
+                      "Sat",
+                      "Sun",
+                    ],
+                  },
+                }}
+                series={[
+                  {
+                    name: "series-1",
+                    data: [30, 40, 45, 50, 49, 60, 80],
+                  },
+                ]}
                 type="bar"
                 width="300"
                 height="270"
