@@ -1,4 +1,4 @@
-import { Box, Checkbox, CheckboxGroup, Flex, Image, Stack, Text } from '@chakra-ui/react'
+import { Box, Checkbox, CheckboxGroup, Flex, Grid, Image, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import Circle from "../../../Asset/Logos/Onboarding/circle.png";
 import Flag from "../../../Asset/Logos/Onboarding/flag.png";
@@ -25,24 +25,26 @@ const InTransit = (): JSX.Element => {
             </Text>
             <Flex flexDir="column">
                 {
-                    Array(5).fill(Math.random).map((item) => (
+                    Array(5).fill(0).map((_, i) => i + 1).map((item) => (
                         <Box
                             width="100%"
-                            height="184px"
+                            height="auto"
                             px="20px"
                             my="5px"
                             border="1px solid #ABA7A7"
                             borderRadius="12px"
                             key={item}
                         >
-                            <Flex justifyContent="space-between">
+                            <Flex
+                                justifyContent="space-between"
+                                alignItems="center"
+                                flexWrap="wrap"
+                                my="20px"
+                            >
                                 <Text
-                                    mt="20px"
                                     fontWeight="600"
                                     color=" #000"
                                     fontSize="20px"
-                                    lineHeight="30px"
-                                    textAlign="center"
                                 >
                                     Jon Toe
                                 </Text>
@@ -50,67 +52,74 @@ const InTransit = (): JSX.Element => {
                                     <Stack
                                         spacing={["5px", "10px"]}
                                         direction={["column", "row"]}
-                                        mt="26px"
+                                        fontSize="10px"
                                     >
-                                        <Checkbox size="md" fontSize="10px" value="Pick up">
+                                        <Checkbox size="md" value="Pick up">
                                             Pick up
                                         </Checkbox>
-                                        <Checkbox size="md" fontSize="10px" value="Delivered">
+                                        <Checkbox size="md" value="Delivered">
                                             Delivered
                                         </Checkbox>
                                     </Stack>
                                 </CheckboxGroup>
                             </Flex>
-                            <Flex mt="15px">
+                            <Grid
+                                w="100%"
+                                gridTemplateColumns="6% 54% 6% 28% 6%"
+                                my="30px"
+                            >
                                 <Image
                                     src={Circle}
-                                    mt="32px"
                                     alt="elipse"
-                                    width="16px"
-                                    height="16px"
+                                    style={{
+                                        aspectRatio: "1/1"
+                                    }}
+                                    mt="-5px"
                                 />
                                 <Image
                                     src={LineL}
-                                    mt="37px"
-                                    width="170px"
+                                    width="100%"
                                     height="6px"
                                     alt="line"
                                 />
                                 <Image
                                     src={Bike}
-                                    mt="32px"
                                     alt="bike"
-                                    width="16px"
-                                    height="16px"
+                                    style={{
+                                        aspectRatio: "1/1"
+                                    }}
+                                    mt="-5px"
                                 />
                                 <Image
                                     src={LineR}
-                                    mt="37px"
                                     alt="line"
-                                    width="100px"
+                                    width="100%"
                                     height="6px"
                                 />
                                 <Image
                                     src={Flag}
-                                    mt="34px"
                                     alt="flag"
-                                    width="10px"
-                                    height="10px"
+                                    style={{
+                                        aspectRatio: "1/1"
+                                    }}
+                                    mt="-5px"
                                 />
-                            </Flex>
-                            <Flex mt="20px" justifyContent="space-between">
-                                <Text fontSize="11px" lineHeight="12px" color="#595956">
+                            </Grid>
+                            <Flex
+                                justifyContent="space-between"
+                                color="#595956"
+                                fontSize="11px"
+                                lineHeight="12px"
+                                my="10px"
+                            >
+                                <Text>
                                     10:15am, jan 10
-                                </Text>
-                                <Text fontSize="11px" lineHeight="12px" color="#595956">
-                                    10:15am, jan 10
-                                </Text>
-                            </Flex>
-                            <Flex mt="5px" justifyContent="space-between">
-                                <Text fontSize="11px" lineHeight="12px" color="#595956">
+                                    <br />
                                     Oshodi Brown Street
                                 </Text>
-                                <Text fontSize="11px" lineHeight="12px" color="#595956">
+                                <Text>
+                                    10:15am, jan 10
+                                    <br />
                                     Oshodi Brown Street
                                 </Text>
                             </Flex>

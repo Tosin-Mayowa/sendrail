@@ -18,7 +18,7 @@ const MostVisited = (): JSX.Element => {
     ])
     return (
         <Box
-            maxWidth="100%"
+            width="50%"
             border="1px solid #ABA7A7"
             borderRadius="9px"
             p="20px"
@@ -37,7 +37,7 @@ const MostVisited = (): JSX.Element => {
             </Text>
             {
                 locations?.map((item) => (
-                    <>
+                    <Box key={item.location}>
                         <Box
                             mt="40px"
                             display="flex"
@@ -62,7 +62,7 @@ const MostVisited = (): JSX.Element => {
                             </Text>
                         </Box>
                         <Progress value={item.freq} size='xs' colorScheme="green" />
-                    </>
+                    </Box>
                 ))
             }
         </Box>

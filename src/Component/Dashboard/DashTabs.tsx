@@ -12,15 +12,42 @@ const Empty = (): JSX.Element => {
 
 const DashTabs = (): JSX.Element => {
     const [panels] = useState<any>([
-        <Overview />,
-        <Empty />,
-        <Empty />,
-        <Empty />,
-        <Empty />,
-        <Empty />,
-        <Empty />,
-        <Empty />,
-        <Empty />
+        {
+            key: 1,
+            component: <Overview />
+        },
+        {
+            key: 2,
+            component: <Empty />
+        },
+        {
+            key: 3,
+            component: <Empty />
+        },
+        {
+            key: 4,
+            component: <Empty />
+        },
+        {
+            key: 5,
+            component: <Empty />
+        },
+        {
+            key: 6,
+            component: <Empty />
+        },
+        {
+            key: 7,
+            component: <Empty />
+        },
+        {
+            key: 8,
+            component: <Empty />
+        },
+        {
+            key: 9,
+            component: <Empty />
+        }
     ])
     return (
         <TabPanels
@@ -28,8 +55,8 @@ const DashTabs = (): JSX.Element => {
         >
             {
                 panels?.map((item: any) => (
-                    <TabPanel key={Math.random()}>
-                        {item}
+                    <TabPanel key={item.key}>
+                        {item.component}
                     </TabPanel>
                 ))
             }

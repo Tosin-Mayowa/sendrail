@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Flex, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
 import React from 'react'
 import { GoKebabVertical } from 'react-icons/go'
 import Chart from "react-apexcharts";
@@ -6,7 +6,7 @@ import Chart from "react-apexcharts";
 const Revenue = (): JSX.Element => {
     return (
         <Box
-            maxWidth="100%"
+            width="50%"
             border="1px solid #ABA7A7"
             borderRadius="9px"
 
@@ -16,7 +16,14 @@ const Revenue = (): JSX.Element => {
         >
             <Flex justifyContent="space-between" p="15px">
                 <Text fontSize="16px" fontWeight="600">Revenue</Text>
-                <GoKebabVertical size={20} cursor="pointer" />
+                <Menu>
+                    <MenuButton>
+                        <GoKebabVertical size={20} cursor="pointer" />
+                    </MenuButton>
+                    <MenuList zIndex="20">
+                        <MenuItem>History</MenuItem>
+                    </MenuList>
+                </Menu>
             </Flex>
             <Chart
                 options={{
