@@ -25,7 +25,7 @@ const InTransit = (): JSX.Element => {
             </Text>
             <Flex flexDir="column">
                 {
-                    Array(5).fill(Math.random).map((item) => (
+                    Array(5).fill(0).map((_, i) => i + 1).map((item) => (
                         <Box
                             width="100%"
                             height="auto"

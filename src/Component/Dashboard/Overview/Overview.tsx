@@ -87,23 +87,6 @@ const Overview = (): JSX.Element => {
             <MostVisited />
             <BarChartOverview />
           </Flex>
-          {/* <Grid
-            w="100%"
-            height="auto"
-            gridTemplateColumns="50% 50%"
-            justifyContent="center"
-            alignItems="stretch"
-            mt="20px"
-            gap="15px"
-            border="1px solid green"
-            position="relative"
-            overflow="hidden"
-          >
-            <MyWallet />
-            <Revenue />
-            <MostVisited />
-            <BarChartOverview />
-          </Grid> */}
         </Flex>
         <InTransit />
       </Grid>

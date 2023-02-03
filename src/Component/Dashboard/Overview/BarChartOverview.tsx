@@ -1,6 +1,6 @@
 import Chart from "react-apexcharts";
 import React from 'react'
-import { Box, Flex, Select, Stack } from "@chakra-ui/react";
+import { Box, Flex, Menu, MenuButton, MenuItem, MenuList, Select, Stack } from "@chakra-ui/react";
 import { GoKebabVertical } from "react-icons/go";
 import { MdArrowDropDown } from "react-icons/md";
 
@@ -15,7 +15,7 @@ const BarChartOverview = (): JSX.Element => {
                 aspectRatio: "5/4",
             }}
         >
-            <Flex justifyContent="space-between" p="15px" alignItems="center">
+            <Flex justifyContent="space-between" p="15px" alignItems="center" >
                 <Stack spacing={3}>
                     <Select variant='filled' placeholder='Select an Option' icon={<MdArrowDropDown />}>
                         <option value='Daily Overview'>Daily Overview</option>
@@ -23,7 +23,14 @@ const BarChartOverview = (): JSX.Element => {
                         <option value='Monthly Overview'>Monthly Overview</option>
                     </Select>
                 </Stack>
-                <GoKebabVertical size={20} cursor="pointer" />
+                <Menu>
+                    <MenuButton>
+                        <GoKebabVertical size={20} cursor="pointer" />
+                    </MenuButton>
+                    <MenuList zIndex="20">
+                        <MenuItem>History</MenuItem>
+                    </MenuList>
+                </Menu>
             </Flex>
             <Chart
                 options={{
