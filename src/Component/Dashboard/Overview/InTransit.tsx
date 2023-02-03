@@ -6,7 +6,7 @@ import LineL from "../../../Asset/Logos/Onboarding/LineL.png";
 import LineR from "../../../Asset/Logos/Onboarding/lineR.png";
 import Bike from "../../../Asset/Logos/Onboarding/bike.png";
 
-const InTransit: React.FC = () => {
+const InTransit = (): JSX.Element => {
     return (
         <Flex
             flexDir="column"

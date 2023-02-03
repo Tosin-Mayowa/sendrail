@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { GoKebabVertical } from 'react-icons/go'
 import Chart from "react-apexcharts";
 
-const Revenue: React.FC = () => {
-    const [state, setState] = useState<any>({
+const Revenue = (): JSX.Element => {
+    const [state] = useState<any>({
         options: {
             colors: ["#F9C567"],
             chart: {

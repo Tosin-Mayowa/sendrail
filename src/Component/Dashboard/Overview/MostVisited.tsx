@@ -1,7 +1,7 @@
 import { Box, Progress, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 
-const MostVisited: React.FC = () => {
+const MostVisited = (): JSX.Element => {
     const [locations] = useState<any>([
         {
             location: "Ikorodu",
@@ -36,7 +36,7 @@ const MostVisited: React.FC = () => {
                 Most visited locations
             </Text>
             {
-                locations.map((item) => (
+                locations?.map((item) => (
                     <>
                         <Box
                             mt="40px"

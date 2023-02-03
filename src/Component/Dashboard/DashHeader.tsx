@@ -3,7 +3,7 @@ import { Avatar, Flex, Grid, Input, InputGroup, InputLeftElement, Text } from '@
 import React from 'react'
 import { FiBell } from 'react-icons/fi'
 
-const DashHeader: React.FC = () => {
+const DashHeader = (): JSX.Element => {
     return (
         <Flex
             position="fixed"

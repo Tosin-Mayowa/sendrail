@@ -4,8 +4,8 @@ import { Box, Flex, Select, Stack } from "@chakra-ui/react";
 import { GoKebabVertical } from "react-icons/go";
 import { MdArrowDropDown } from "react-icons/md";
 
-const BarChartOverview: React.FC = () => {
-    const [state, setState] = useState<any>({
+const BarChartOverview = (): JSX.Element => {
+    const [state] = useState<any>({
         options: {
             colors: ["#F9C567"],
             chart: {

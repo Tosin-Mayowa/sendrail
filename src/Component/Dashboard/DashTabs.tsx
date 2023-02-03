@@ -2,7 +2,7 @@ import { TabPanel, TabPanels, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import Overview from './Overview/Overview'
 
-const Empty: React.FC = () => {
+const Empty = (): JSX.Element => {
     return (
         <>
             <Text>Not Yet Implemented</Text>
@@ -10,7 +10,7 @@ const Empty: React.FC = () => {
     )
 }
 
-const DashTabs: React.FC = () => {
+const DashTabs = (): JSX.Element => {
     const [panels] = useState<any>([
         <Overview />,
         <Empty />,
@@ -27,7 +27,7 @@ const DashTabs: React.FC = () => {
             mt="90px"
         >
             {
-                panels.map((item: any) => (
+                panels?.map((item: any) => (
                     <TabPanel key={Math.random()}>
                         {item}
                     </TabPanel>

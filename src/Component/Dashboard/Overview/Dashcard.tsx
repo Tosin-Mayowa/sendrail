@@ -10,8 +10,14 @@ import {
 
 } from "@chakra-ui/react";
 
-
-const Dashcard = ({ card }) => {
+interface Props {
+  card: {
+    title: string,
+    count: number,
+    url: string
+  }
+}
+const Dashcard: React.FC<Props> = ({ card }: Props) => {
   const theme = useTheme();
   return (
     <GridItem

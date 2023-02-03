@@ -2,7 +2,7 @@ import { Box, Button, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { copyTextToClipboard } from '../../../lib/utilities';
 
-const ShareLink: React.FC = () => {
+const ShareLink = (): JSX.Element => {
     const [isCopied, setIsCopied] = useState<boolean>(false);
     const url = " https://onboard.sendrail.com/dummyco";
     const handleCopy = () => {

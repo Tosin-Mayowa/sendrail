@@ -17,13 +17,14 @@ import Revenue from "./Revenue";
 import MostVisited from "./MostVisited";
 import BarChartOverview from "./BarChartOverview";
 
-const Overview = () => {
+const Overview = (): JSX.Element => {
   const cardDetails = [
     { title: "Order", count: 1, url: Boxp },
     { title: "Pending", count: 1, url: Pend },
     { title: "In transit", count: 1, url: Bus },
     { title: "Delivered", count: 1, url: Group },
   ];
+  console.log(cardDetails[0].url)
   return (
     <Box
       w="100%"

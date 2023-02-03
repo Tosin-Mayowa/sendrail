@@ -2,7 +2,7 @@ import { Box, Button, Center, Flex, Text } from '@chakra-ui/react'
 import Wallet from "../../../Asset/Logos/Onboarding/wallet.png";
 import React from 'react'
 
-const MyWallet: React.FC = () => {
+const MyWallet = (): JSX.Element => {
     return (
         <Box
             width="100%"
