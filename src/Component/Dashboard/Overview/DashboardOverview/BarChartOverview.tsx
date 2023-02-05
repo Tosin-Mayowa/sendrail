@@ -1,13 +1,14 @@
 import Chart from "react-apexcharts";
 import React from 'react'
-import { Box, Flex, Menu, MenuButton, MenuItem, MenuList, Select, Stack } from "@chakra-ui/react";
+import { Box, Flex, Menu, MenuButton, MenuItem, MenuList, Select, Stack, useMediaQuery } from "@chakra-ui/react";
 import { GoKebabVertical } from "react-icons/go";
 import { MdArrowDropDown } from "react-icons/md";
 
 const BarChartOverview = (): JSX.Element => {
+    const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
     return (
         <Box
-            width="50%"
+            width={isSmallerThan480 ? "100%" : "50%"}
             border="1px solid #ABA7A7"
             borderRadius="9px"
 

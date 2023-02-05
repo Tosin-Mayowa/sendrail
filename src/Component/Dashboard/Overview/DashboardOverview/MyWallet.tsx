@@ -1,16 +1,16 @@
-import { Box, Button, Center, Flex, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
+import { Box, Button, Center, Flex, Menu, MenuButton, MenuItem, MenuList, Text, useMediaQuery } from '@chakra-ui/react'
 import Wallet from "../../../../Asset/Logos/Onboarding/wallet.png";
 import React, { useReducer } from 'react'
 import { setWithExpiry } from '../../../../lib/localStorage';
 import { viewReducer } from '../../../../reducers/dashboardViewReducer';
 import { OverviewStates } from '../../../../Contexts/OverviewContext';
-// import { GoKebabVertical } from 'react-icons/go';
 
 const MyWallet = (): JSX.Element => {
+    const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
     const { dispatchView } = OverviewStates();
     return (
         <Box
-            width="50%"
+            width={isSmallerThan480 ? "100%" : "50%"}
             border="1px solid #ABA7A7"
             borderRadius="9px"
             backgroundImage={`url(${Wallet})`}

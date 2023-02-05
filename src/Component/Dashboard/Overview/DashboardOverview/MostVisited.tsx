@@ -1,7 +1,8 @@
-import { Box, Progress, Text } from '@chakra-ui/react'
+import { Box, Progress, Text, useMediaQuery } from '@chakra-ui/react'
 import React, { useState } from 'react'
 
 const MostVisited = (): JSX.Element => {
+    const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
     const [locations] = useState<any>([
         {
             location: "Ikorodu",
@@ -18,7 +19,7 @@ const MostVisited = (): JSX.Element => {
     ])
     return (
         <Box
-            width="50%"
+            width={isSmallerThan480 ? "100%" : "50%"}
             border="1px solid #ABA7A7"
             borderRadius="9px"
             p="20px"

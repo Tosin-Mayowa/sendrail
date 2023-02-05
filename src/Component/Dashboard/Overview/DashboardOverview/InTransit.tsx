@@ -1,4 +1,4 @@
-import { Box, Checkbox, CheckboxGroup, Flex, Grid, Image, Stack, Text } from '@chakra-ui/react'
+import { Box, Checkbox, CheckboxGroup, Flex, Grid, Image, Stack, Text, useMediaQuery } from '@chakra-ui/react'
 import React from 'react'
 import Circle from "../../../../Asset/Logos/Onboarding/circle.png";
 import Flag from "../../../../Asset/Logos/Onboarding/flag.png";
@@ -8,11 +8,14 @@ import Bike from "../../../../Asset/Logos/Onboarding/bike.png";
 import "../styles/intransit.css"
 
 const InTransit = (): JSX.Element => {
+    const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
+    const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     return (
         <Flex
             flexDir="column"
             alignContent="flex-start"
-            m="0px 20px"
+            m={isSmallerThan480 ? "0px" : "0px 20px"}
+            width={isSmallerThan480 ? "100%" : ""}
         >
             <Text
                 fontWeight="700"
@@ -24,11 +27,16 @@ const InTransit = (): JSX.Element => {
             >
                 Delivery in Transit
             </Text>
-            <Flex flexDir="column">
+            <Flex
+                flexDir={isSmallerThan480 || !isSmallerScreen ? "column" : "row"}
+                flexWrap="wrap"
+                justifyContent="center"
+            >
                 {
                     Array(5).fill(0).map((_, i) => i + 1).map((item) => (
                         <Box
-                            width="100%"
+                            width={isSmallerThan480 || !isSmallerScreen ? "100%" : "48%"}
+                            mx={isSmallerThan480 || !isSmallerScreen ? "" : "5px"}
                             height="auto"
                             px="20px"
                             my="5px"

@@ -4,9 +4,9 @@ import green_tick from '../../Asset/green-tick.png'
 interface Props {
     onClose: () => void,
     isOpen: boolean,
-    continue?: boolean
+    text?: string
 }
-const SuccessModal: React.FC<Props> = ({ onClose, isOpen, continue: boolean }) => {
+const SuccessModal: React.FC<Props> = ({ onClose, isOpen, text = `Thank you for your request. We are working hard to find the best service.` }) => {
     return (
         <Modal
             blockScrollOnMount={true}
@@ -35,8 +35,7 @@ const SuccessModal: React.FC<Props> = ({ onClose, isOpen, continue: boolean }) =
                             fontSize="22px"
                             fontWeight="700"
                         >
-                            Thank you for your request.<br />
-                            We are working hard to find the best service.
+                            {text}
                         </Text>
                         <Button
                             backgroundColor="#27EA60"

@@ -1,18 +1,44 @@
 import { SmallAddIcon } from '@chakra-ui/icons'
-import { Button, FormControl, FormLabel, Grid, Input, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, FormControl, FormLabel, Grid, Image, Input, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { OverviewStates } from '../../../../Contexts/OverviewContext'
+import Access from '../../../../Asset/access-bank.png'
 
 
 interface AddProps {
-    onOpen: () => void
+    onOpen: () => void,
+    deposit_views: {
+        view: string,
+        setView: any
+    },
+    cards_details: {
+        cards: {
+            image: string,
+            name: string,
+            card: string,
+            bank: string
+        }[],
+        setCards: any
+    }
 }
-const AddCard: React.FC<AddProps> = ({ onOpen }) => {
-    const [view, setView] = useState<string | null>("")
-    console.log(view)
+const AddCard: React.FC<AddProps> = ({ onOpen, deposit_views, cards_details }) => {
+    const { view, setView } = deposit_views
+    // const { cards, setCards } = cards_details
+    // {
+    //     image: Access,
+    //     name: "Dray Savage rey",
+    //     card: "533******************03",
+    //     bank: "Access Bank"
+    // },
+    // {
+    //     image: Access,
+    //     name: "Dray Savage rey",
+    //     card: "533******************03",
+    //     bank: "Access Bank"
+    // }
     const fetchView = () => {
         if (view === "details") {
-            return <NewCard onOpen={onOpen} />
+            return <NewCard onOpen={onOpen} cards_details={cards_details} setView={setView} />
         }
         return <NoCard setView={setView} />
     }
@@ -21,7 +47,27 @@ const AddCard: React.FC<AddProps> = ({ onOpen }) => {
     )
 }
 
-const NewCard = ({ onOpen }): JSX.Element => {
+type newCard = {
+    onOpen: () => void,
+    cards_details: {
+        cards: {
+            image: string,
+            name: string,
+            card: string,
+            bank: string
+        }[],
+        setCards: any
+    },
+    setView: any
+}
+const NewCard = ({ onOpen, cards_details, setView }: newCard): JSX.Element => {
+    const { cards, setCards } = cards_details
+    let payload = {
+        image: Access,
+        name: "Dray Savage rey",
+        card: "533******************03",
+        bank: "Access Bank"
+    }
     return (
         <form>
             <Grid gridTemplateColumns="1fr 1fr" gap="15px" my="15px" placeItems="center">
@@ -66,7 +112,13 @@ const NewCard = ({ onOpen }): JSX.Element => {
                     w="max-content"
                     border="1px solid #ABA7A7"
                     borderRadius="4px"
-                    onClick={onOpen}
+                    onClick={() => {
+                        let data = cards
+                        data.push(payload)
+                        setCards(data)
+                        setView("")
+                        onOpen()
+                    }}
                 >
                     Next
                 </Button>
@@ -96,6 +148,45 @@ const NoCard = ({ setView }): JSX.Element => {
             >
                 <SmallAddIcon boxSize="25px" /><Text>Add A Debit Card For This Transaction</Text>
             </Grid>
+        </Grid>
+    )
+}
+
+type cardType = {
+    card: {
+        image: string,
+        name: string,
+        card: string,
+        bank: string
+    },
+    deposit_views: {
+        view: string,
+        setView: any
+    }
+}
+export const Card = ({ card, deposit_views }: cardType): JSX.Element => {
+    const { view, setView } = deposit_views
+    return (
+        <Grid placeItems="center">
+            <Flex
+                alignItems="center"
+                width="50%"
+                backgroundColor="#fff"
+                boxShadow="0px 8px 40px rgba(6, 0, 137, 0.1)"
+                borderRadius="9px"
+                padding="15px"
+                my="10px"
+                cursor="pointer"
+            >
+                <Box mx="5px" borderRadius="50%" style={{ aspectRatio: "1/1" }}>
+                    <Image src={card?.image} alt="" />
+                </Box>
+                <Grid color="#656566">
+                    <Text fontSize="18px" fontWeight="500" color="#040320">{card.name}</Text>
+                    <Text fontSize="12px" fontWeight="450">{card.card}</Text>
+                    <Text fontSize="12px" fontWeight="450">{card.bank}</Text>
+                </Grid>
+            </Flex>
         </Grid>
     )
 }

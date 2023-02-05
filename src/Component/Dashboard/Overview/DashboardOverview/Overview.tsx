@@ -3,6 +3,7 @@ import {
   Flex,
   Grid,
   Box,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import Boxp from "../../../../Asset/Logos/Onboarding/Boxplus.png";
 import Group from "../../../../Asset/Logos/Onboarding/Group.png";
@@ -19,6 +20,8 @@ import BarChartOverview from "./BarChartOverview";
 import { OverviewStates } from "../../../../Contexts/OverviewContext";
 
 const Overview = (): JSX.Element => {
+  const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
+  const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
   const cardDetails = [
     { title: "Order", count: 1, url: Boxp },
     { title: "Pending", count: 1, url: Pend },
@@ -44,7 +47,7 @@ const Overview = (): JSX.Element => {
       </Box>
 
       <Grid
-        templateColumns="repeat(4, 1fr)"
+        templateColumns={isSmallerScreen ? "1fr 1fr" : "repeat(4, 1fr)"}
         gap="10px"
       >
         {cardDetails?.map((card) => (
@@ -54,7 +57,7 @@ const Overview = (): JSX.Element => {
       <Grid
         w="100%"
         mt="25px"
-        gridTemplateColumns="65% 35%"
+        gridTemplateColumns={isSmallerScreen ? "100%" : "65% 35%"}
       >
         <Flex
           flexDirection="column"
@@ -64,6 +67,7 @@ const Overview = (): JSX.Element => {
             w="100%"
             height="auto"
             flexWrap="nowrap"
+            flexDirection={isSmallerThan480 ? "column" : "row"}
             justifyContent="space-between"
             alignItems="stretch"
             mt="20px"
@@ -79,6 +83,7 @@ const Overview = (): JSX.Element => {
             height="auto"
             flexWrap="nowrap"
             justifyContent="space-between"
+            flexDirection={isSmallerThan480 ? "column" : "row"}
             alignItems="stretch"
             mt="20px"
             gap="15px"

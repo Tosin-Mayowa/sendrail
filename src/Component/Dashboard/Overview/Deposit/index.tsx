@@ -4,19 +4,27 @@ import React, { useState } from 'react'
 import { OverviewStates } from '../../../../Contexts/OverviewContext'
 import RoundedBackButton from '../../../shared/RoundedBackButton'
 import SuccessModal from '../../../shared/SuccessModal'
-import AddCard from './AddCard'
+import AddCard, { Card } from './AddCard'
+import Access from '../../../../Asset/access-bank.png'
 
 const Index = (): JSX.Element => {
     const { views, dispatchView } = OverviewStates()
     const [tabs] = useState<string[]>(["Debit Card", "Bank Account"])
-    const [cards, setcards] = useState([])
+    const [view, setView] = useState<string | null>("")
+    type cardType = {
+        image: string,
+        name: string,
+        card: string,
+        bank: string
+    }[]
+    const [cards, setCards] = useState<cardType>([])
     const { isOpen, onOpen, onClose }: { isOpen: boolean, onOpen: () => void, onClose: () => void } = useDisclosure()
     return (
         <Grid
             placeItems="center"
             padding="0px 40px"
         >
-            <SuccessModal isOpen={isOpen} onClose={onClose} />
+            <SuccessModal isOpen={isOpen} onClose={onClose} text="Debit Card Added" />
             <Box w="100%">
                 <RoundedBackButton color='#070529' onclick={() => { dispatchView({ type: "change_overview_view", current_view: views.initial_view }) }} />
             </Box>
@@ -66,7 +74,28 @@ const Index = (): JSX.Element => {
                     <TabPanels>
                         <TabPanel>
                             {
-                                cards?.length === 0 && <AddCard onOpen={onOpen} />
+                                cards?.length !== 0 && view === "" ?
+                                    <>
+                                        {cards?.map((card) => (
+                                            <Card card={card} deposit_views={{ view, setView }} />)
+                                        )}
+                                        <Grid
+                                            placeItems="center"
+                                            w="100%"
+                                            color="#F9C567"
+                                            fontWeight="700"
+                                            fontSize="18px"
+                                            gridTemplateColumns="auto auto"
+                                            justifyContent="center"
+                                            cursor="pointer"
+
+                                            onClick={() => setView("details")}
+                                        >
+                                            <SmallAddIcon boxSize="25px" /><Text>Add A Debit Card For This Transaction</Text>
+                                        </Grid>
+                                    </>
+                                    :
+                                    <AddCard onOpen={onOpen} deposit_views={{ view, setView }} cards_details={{ cards, setCards }} />
                             }
                         </TabPanel>
                         <TabPanel>

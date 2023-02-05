@@ -2,6 +2,7 @@ import { TabPanel, TabPanels, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import Overview from './Overview'
 import OverviewContext from '../../Contexts/OverviewContext'
+import Payroll from './Payroll'
 
 const Empty = (): JSX.Element => {
     return (
@@ -31,7 +32,7 @@ const DashTabs = (): JSX.Element => {
         },
         {
             key: 5,
-            component: <Empty />
+            component: <Payroll />
         },
         {
             key: 6,
@@ -53,6 +54,7 @@ const DashTabs = (): JSX.Element => {
     return (
         <TabPanels
             mt="80px"
+            w="100%"
         >
             {
                 panels?.map((item: any) => (

@@ -4,6 +4,7 @@ import {
   GridItem,
   useTheme,
   Tabs,
+  useMediaQuery,
 } from "@chakra-ui/react";
 
 import SideBar from "../Component/Dashboard/SideBar";
@@ -12,17 +13,21 @@ import DashPanels from "../Component/Dashboard/DashTabs";
 
 const Dashbord = () => {
   const theme = useTheme();
+  const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
 
   return (
     <Tabs>
       <Grid
-        gridTemplateColumns="19% 81%"
+        gridTemplateColumns={isSmallerScreen ? "100%" : "19% 81%"}
       >
-        <GridItem
-          bg={theme.colors.primary.main}
-        >
-          <SideBar />
-        </GridItem>
+        {
+          !isSmallerScreen &&
+          <GridItem
+            bg={theme.colors.primary.main}
+          >
+            <SideBar />
+          </GridItem>
+        }
         <GridItem position="relative">
           <DashHeader />
           <DashPanels />

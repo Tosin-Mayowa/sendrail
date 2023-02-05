@@ -1,12 +1,13 @@
-import { Box, Flex, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
+import { Box, Flex, Menu, MenuButton, MenuItem, MenuList, Text, useMediaQuery } from '@chakra-ui/react'
 import React from 'react'
 import { GoKebabVertical } from 'react-icons/go'
 import Chart from "react-apexcharts";
 
 const Revenue = (): JSX.Element => {
+    const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
     return (
         <Box
-            width="50%"
+            width={isSmallerThan480 ? "100%" : "50%"}
             border="1px solid #ABA7A7"
             borderRadius="9px"
 

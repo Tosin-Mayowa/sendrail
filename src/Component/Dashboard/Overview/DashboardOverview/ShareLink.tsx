@@ -1,8 +1,9 @@
-import { Box, Button, Text } from '@chakra-ui/react'
+import { Box, Button, Text, useMediaQuery } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { copyTextToClipboard } from '../../../../lib/utilities';
 
 const ShareLink = (): JSX.Element => {
+    const [isSmallerScreen] = useMediaQuery("(max-width: 480px)");
     const [isCopied, setIsCopied] = useState<boolean>(false);
     const url = " https://onboard.sendrail.com/dummyco";
     const handleCopy = () => {
@@ -20,24 +21,24 @@ const ShareLink = (): JSX.Element => {
             w="100%"
             border=" 1px solid #ABA7A7"
             height="auto"
-            padding="22px"
+            padding={isSmallerScreen ? "14px" : "22px"}
             borderRadius="9px"
         >
             <Text fontSize="17px" fontWeight="600">
                 Share Link
             </Text>
-            <Text fontSize="16px" my="16px">
+            <Text fontSize={isSmallerScreen ? "14px" : "16px"} my={isSmallerScreen ? "6px" : "16px"}>
                 Share your logistic imbedded link for customers to be able to
                 onboard directly from you.
             </Text>
             <Text
                 width="100%"
                 fontWeight="700"
-                fontSize="20px"
+                fontSize={isSmallerScreen ? "13px" : "20px"}
                 color="#F9C567"
                 bg="rgba(7, 5, 41, 0.07)"
                 padding="8px"
-                mt="15px"
+                mt={isSmallerScreen ? "0px" : "15px"}
             >
                 {url}
             </Text>
