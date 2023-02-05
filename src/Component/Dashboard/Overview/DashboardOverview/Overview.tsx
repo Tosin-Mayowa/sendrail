@@ -4,18 +4,19 @@ import {
   Grid,
   Box,
 } from "@chakra-ui/react";
-import Boxp from "../../../Asset/Logos/Onboarding/Boxplus.png";
-import Group from "../../../Asset/Logos/Onboarding/Group.png";
-import Bus from "../../../Asset/Logos/Onboarding/Bus.png";
-import Pend from "../../../Asset/Logos/Onboarding/pend.png";
+import Boxp from "../../../../Asset/Logos/Onboarding/Boxplus.png";
+import Group from "../../../../Asset/Logos/Onboarding/Group.png";
+import Bus from "../../../../Asset/Logos/Onboarding/Bus.png";
+import Pend from "../../../../Asset/Logos/Onboarding/pend.png";
 import Dashcard from "./Dashcard";
-import './styles/overview.css'
+import '../styles/overview.css'
 import InTransit from "./InTransit";
 import ShareLink from "./ShareLink";
 import MyWallet from "./MyWallet";
 import Revenue from "./Revenue";
 import MostVisited from "./MostVisited";
 import BarChartOverview from "./BarChartOverview";
+import { OverviewStates } from "../../../../Contexts/OverviewContext";
 
 const Overview = (): JSX.Element => {
   const cardDetails = [

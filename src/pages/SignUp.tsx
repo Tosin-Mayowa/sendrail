@@ -1,4 +1,4 @@
-import React,{useReducer} from "react";
+import React, { useReducer } from "react";
 import '../Style/signUp.css'
 import {
   Flex,
@@ -18,7 +18,7 @@ import reducer from '../reducers/signupReducer';
 import Logo from "../Asset/Logos/Onboarding/SENDRAILS.png";
 import Mark from "../Asset/Logos/Onboarding/Vector.png";
 import Ellipse from "../Asset/Logos/Onboarding/Ellipse.png";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const initialState = {
   bussName: "",
   select: "",
@@ -34,25 +34,25 @@ const initialState = {
 };
 const SignUp = () => {
   const theme = useTheme();
-  const navigate=useNavigate();
-  const [state,dispatch]=useReducer(reducer,initialState);
-  // const passReg=/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const lowerCase = /[a-z]/;
-const upper=/[A-Z]/;
-const numb=/[0-9]/
- const {
-  bussName,
-  select,
-  bussAdd,
-  stateVal,
-  country,
-  firstName,
-  lastName,
-  stateInfo,
-  countryInfo,
-  email,
-  password,
-}=state;
+  const navigate = useNavigate();
+  const [state, dispatch] = useReducer(reducer, initialState);
+  // const passReg=/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; 
+  const lowerCase = /[a-z]/;
+  const upper = /[A-Z]/;
+  const numb = /[0-9]/
+  const {
+    bussName,
+    select,
+    bussAdd,
+    stateVal,
+    country,
+    firstName,
+    lastName,
+    stateInfo,
+    countryInfo,
+    email,
+    password,
+  } = state;
   return (
     <Flex className="BackG" width="100%" height="100%" justifyContent="center">
       <Box
@@ -446,20 +446,20 @@ const numb=/[0-9]/
                 textAlign="center"
                 isDisabled={
                   bussName &&
-                  select &&
-                  bussAdd &&
-                  stateVal &&
-                  country &&
-                  firstName &&
-                  lastName &&
-                  stateInfo &&
-                  countryInfo &&
-                  email &&
-                  password &&
-                  numb.test(password) &&
-                  upper.test(password) &&
-                 lowerCase.test(password) &&
-                  password.length >= 8
+                    select &&
+                    bussAdd &&
+                    stateVal &&
+                    country &&
+                    firstName &&
+                    lastName &&
+                    stateInfo &&
+                    countryInfo &&
+                    email &&
+                    password &&
+                    numb.test(password) &&
+                    upper.test(password) &&
+                    lowerCase.test(password) &&
+                    password.length >= 8
                     ? false
                     : true
                 }

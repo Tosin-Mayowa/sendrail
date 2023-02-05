@@ -1,8 +1,13 @@
-import { Box, Button, Center, Flex, Text } from '@chakra-ui/react'
-import Wallet from "../../../Asset/Logos/Onboarding/wallet.png";
-import React from 'react'
+import { Box, Button, Center, Flex, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
+import Wallet from "../../../../Asset/Logos/Onboarding/wallet.png";
+import React, { useReducer } from 'react'
+import { setWithExpiry } from '../../../../lib/localStorage';
+import { viewReducer } from '../../../../reducers/dashboardViewReducer';
+import { OverviewStates } from '../../../../Contexts/OverviewContext';
+// import { GoKebabVertical } from 'react-icons/go';
 
 const MyWallet = (): JSX.Element => {
+    const { dispatchView } = OverviewStates();
     return (
         <Box
             width="50%"
@@ -18,6 +23,22 @@ const MyWallet = (): JSX.Element => {
         >
             <Center>
                 <Flex flexDir="column" alignItems="center" justifyContent="center" w="100%">
+                    {/* <Flex w="100%" justifyContent="flex-end" p="15px">
+                        <Menu>
+                            <MenuButton>
+                                <GoKebabVertical size={20} cursor="pointer" />
+                            </MenuButton>
+                            <MenuList
+                                zIndex="20"
+                                borderRadius="0px"
+                                width="80px"
+                                fontSize="14px"
+                                fontWeight="500"
+                            >
+                                <MenuItem>History</MenuItem>
+                            </MenuList>
+                        </Menu>
+                    </Flex> */}
                     <Text
                         my="18px"
                         fontWeight="600"
@@ -55,6 +76,8 @@ const MyWallet = (): JSX.Element => {
                             _hover={{
                                 boxShadow: "0px 2px 2px 0px #070529a0"
                             }}
+
+                            onClick={() => dispatchView({ type: "change_overview_view", current_view: "deposit" })}
                         >
                             Deposit
                         </Button>
@@ -67,6 +90,8 @@ const MyWallet = (): JSX.Element => {
                             _hover={{
                                 boxShadow: "0px 2px 2px 0px #070529a0"
                             }}
+
+                            onClick={() => dispatchView({ type: "change_overview_view", current_view: "withdraw" })}
                         >
                             Withdraw
                         </Button>

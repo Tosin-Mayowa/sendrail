@@ -1,10 +1,11 @@
 import { Box, Checkbox, CheckboxGroup, Flex, Grid, Image, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
-import Circle from "../../../Asset/Logos/Onboarding/circle.png";
-import Flag from "../../../Asset/Logos/Onboarding/flag.png";
-import LineL from "../../../Asset/Logos/Onboarding/LineL.png";
-import LineR from "../../../Asset/Logos/Onboarding/lineR.png";
-import Bike from "../../../Asset/Logos/Onboarding/bike.png";
+import Circle from "../../../../Asset/Logos/Onboarding/circle.png";
+import Flag from "../../../../Asset/Logos/Onboarding/flag.png";
+import LineL from "../../../../Asset/Logos/Onboarding/LineL.png";
+import LineR from "../../../../Asset/Logos/Onboarding/lineR.png";
+import Bike from "../../../../Asset/Logos/Onboarding/bike.png";
+import "../styles/intransit.css"
 
 const InTransit = (): JSX.Element => {
     return (
@@ -34,6 +35,7 @@ const InTransit = (): JSX.Element => {
                             border="1px solid #ABA7A7"
                             borderRadius="12px"
                             key={item}
+                            className="card-wrapper"
                         >
                             <Flex
                                 justifyContent="space-between"
@@ -43,21 +45,21 @@ const InTransit = (): JSX.Element => {
                             >
                                 <Text
                                     fontWeight="600"
-                                    color=" #000"
                                     fontSize="20px"
+                                    className='card-title'
                                 >
                                     Jon Toe
                                 </Text>
-                                <CheckboxGroup colorScheme="#070529">
+                                <CheckboxGroup>
                                     <Stack
                                         spacing={["5px", "10px"]}
                                         direction={["column", "row"]}
                                         fontSize="10px"
                                     >
-                                        <Checkbox size="md" value="Pick up">
+                                        <Checkbox size="md">
                                             Pick up
                                         </Checkbox>
-                                        <Checkbox size="md" value="Delivered">
+                                        <Checkbox size="md">
                                             Delivered
                                         </Checkbox>
                                     </Stack>
@@ -68,6 +70,43 @@ const InTransit = (): JSX.Element => {
                                 gridTemplateColumns="6% 54% 6% 28% 6%"
                                 my="30px"
                             >
+                                <Box
+                                    bgImage={`url(${Circle})`}
+                                    className='circle'
+                                    style={{
+                                        aspectRatio: "1/1"
+                                    }}
+                                    mt="-5px"
+                                />
+                                <Box
+                                    bgImage={`url(${LineL})`}
+                                    className='line-l'
+                                    width="100%"
+                                    height="6px"
+                                />
+                                <Box
+                                    bgImage={`url(${Bike})`}
+                                    className='bike'
+                                    style={{
+                                        aspectRatio: "1/1"
+                                    }}
+                                    mt="-5px"
+                                />
+                                <Box
+                                    bgImage={`url(${LineR})`}
+                                    className='line-r'
+                                    width="100%"
+                                    height="6px"
+                                />
+                                <Box
+                                    bgImage={`url(${Flag})`}
+                                    className='flag'
+                                    style={{
+                                        aspectRatio: "1/1"
+                                    }}
+                                    mt="-5px"
+                                />
+                                {/* 
                                 <Image
                                     src={Circle}
                                     alt="elipse"
@@ -95,33 +134,31 @@ const InTransit = (): JSX.Element => {
                                     alt="line"
                                     width="100%"
                                     height="6px"
-                                />
-                                <Image
+                                /><Image
                                     src={Flag}
                                     alt="flag"
                                     style={{
                                         aspectRatio: "1/1"
                                     }}
                                     mt="-5px"
-                                />
+                                /> */}
                             </Grid>
                             <Flex
                                 justifyContent="space-between"
-                                color="#595956"
-                                fontSize="11px"
+                                color="#070529"
+                                fontSize="12px"
                                 lineHeight="12px"
                                 my="10px"
+                                className='card-details'
                             >
-                                <Text>
-                                    10:15am, jan 10
-                                    <br />
-                                    Oshodi Brown Street
-                                </Text>
-                                <Text>
-                                    10:15am, jan 10
-                                    <br />
-                                    Oshodi Brown Street
-                                </Text>
+                                <Flex flexDirection="column">
+                                    <Text as="span" color="#ABA7A7" my="5px">10:15am, jan 10</Text>
+                                    <Text>Oshodi Brown Street</Text>
+                                </Flex>
+                                <Flex flexDirection="column">
+                                    <Text as="span" color="#ABA7A7" my="5px">10:15am, jan 10</Text>
+                                    <Text>Oshodi Brown Street</Text>
+                                </Flex>
                             </Flex>
                         </Box>
                     ))

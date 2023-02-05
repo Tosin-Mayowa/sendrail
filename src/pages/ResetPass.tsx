@@ -23,7 +23,6 @@ const initialState = {
 const ResetPassword = () => {
   const theme = useTheme();
   const [state, dispatch] = useReducer(resetReducer, initialState);
- 
   const lowerCase = /[a-z]/;
   const upper = /[A-Z]/;
   const numb = /[0-9]/;

@@ -100,7 +100,7 @@ const SideBar = () => {
               // borderRadius="4px"
               // _hover={{
               //   background: "#16134f"
-              // }}
+              // }} 
               >
                 {item.icon}
                 <Text whiteSpace="nowrap" ml="8px">

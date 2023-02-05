@@ -27,8 +27,14 @@ const BarChartOverview = (): JSX.Element => {
                     <MenuButton>
                         <GoKebabVertical size={20} cursor="pointer" />
                     </MenuButton>
-                    <MenuList zIndex="20">
-                        <MenuItem>History</MenuItem>
+                    <MenuList
+                        zIndex="20"
+                        borderRadius="0px"
+                        width="80px"
+                        fontSize="14px"
+                        fontWeight="500"
+                    >
+                        <MenuItem>Custom date</MenuItem>
                     </MenuList>
                 </Menu>
             </Flex>

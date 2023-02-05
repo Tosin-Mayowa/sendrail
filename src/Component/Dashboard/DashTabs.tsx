@@ -1,6 +1,7 @@
 import { TabPanel, TabPanels, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import Overview from './Overview/Overview'
+import Overview from './Overview'
+import OverviewContext from '../../Contexts/OverviewContext'
 
 const Empty = (): JSX.Element => {
     return (
@@ -14,7 +15,7 @@ const DashTabs = (): JSX.Element => {
     const [panels] = useState<any>([
         {
             key: 1,
-            component: <Overview />
+            component: (<OverviewContext><Overview /></OverviewContext>)
         },
         {
             key: 2,
@@ -51,7 +52,7 @@ const DashTabs = (): JSX.Element => {
     ])
     return (
         <TabPanels
-            mt="90px"
+            mt="80px"
         >
             {
                 panels?.map((item: any) => (
