@@ -5,7 +5,6 @@ import { OverviewStates } from '../../../../Contexts/OverviewContext'
 import RoundedBackButton from '../../../shared/RoundedBackButton'
 import SuccessModal from '../../../shared/SuccessModal'
 import AddCard, { Card } from './AddCard'
-import Access from '../../../../Asset/access-bank.png'
 
 const Index = (): JSX.Element => {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
