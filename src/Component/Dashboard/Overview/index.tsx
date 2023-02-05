@@ -13,12 +13,6 @@ const Index = (): JSX.Element => {
             return <Withdraw />;
         case "deposit":
             return <Deposit />;
-        case "deposit0":
-            return <Deposit />;
-        case "deposit1":
-            return <Deposit />;
-        case "deposit2":
-            return <Deposit />;
 
         default:
             return <DashboardOverview />;

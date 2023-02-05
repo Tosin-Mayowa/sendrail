@@ -1,5 +1,5 @@
 import { SmallAddIcon } from '@chakra-ui/icons'
-import { Box, Button, Flex, FormControl, FormLabel, Grid, Image, Input, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, FormControl, FormLabel, Grid, Image, Input, Text, useMediaQuery } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { OverviewStates } from '../../../../Contexts/OverviewContext'
 import Access from '../../../../Asset/access-bank.png'
@@ -8,7 +8,7 @@ import Access from '../../../../Asset/access-bank.png'
 interface AddProps {
     onOpen: () => void,
     deposit_views: {
-        view: string,
+        view: number,
         setView: any
     },
     cards_details: {
@@ -23,22 +23,11 @@ interface AddProps {
 }
 const AddCard: React.FC<AddProps> = ({ onOpen, deposit_views, cards_details }) => {
     const { view, setView } = deposit_views
-    // const { cards, setCards } = cards_details
-    // {
-    //     image: Access,
-    //     name: "Dray Savage rey",
-    //     card: "533******************03",
-    //     bank: "Access Bank"
-    // },
-    // {
-    //     image: Access,
-    //     name: "Dray Savage rey",
-    //     card: "533******************03",
-    //     bank: "Access Bank"
-    // }
     const fetchView = () => {
-        if (view === "details") {
+        if (view === 2) {
             return <NewCard onOpen={onOpen} cards_details={cards_details} setView={setView} />
+        } else if (view === 3) {
+            return <Text>Next section</Text>
         }
         return <NoCard setView={setView} />
     }
@@ -61,6 +50,7 @@ type newCard = {
     setView: any
 }
 const NewCard = ({ onOpen, cards_details, setView }: newCard): JSX.Element => {
+    const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const { cards, setCards } = cards_details
     let payload = {
         image: Access,
@@ -70,7 +60,7 @@ const NewCard = ({ onOpen, cards_details, setView }: newCard): JSX.Element => {
     }
     return (
         <form>
-            <Grid gridTemplateColumns="1fr 1fr" gap="15px" my="15px" placeItems="center">
+            <Grid gridTemplateColumns={isSmallerScreen ? "1fr" : "1fr 1fr"} gap="15px" my="15px" placeItems="center">
                 <FormControl>
                     <FormLabel color="#ABA7A7">Email</FormLabel>
                     <Input
@@ -108,7 +98,7 @@ const NewCard = ({ onOpen, cards_details, setView }: newCard): JSX.Element => {
                     />
                 </FormControl>
                 <Button
-                    gridColumn="1/3"
+                    gridColumn={!isSmallerScreen ? "1/3" : ""}
                     w="max-content"
                     border="1px solid #ABA7A7"
                     borderRadius="4px"
@@ -116,7 +106,7 @@ const NewCard = ({ onOpen, cards_details, setView }: newCard): JSX.Element => {
                         let data = cards
                         data.push(payload)
                         setCards(data)
-                        setView("")
+                        setView(1)
                         onOpen()
                     }}
                 >
@@ -127,24 +117,24 @@ const NewCard = ({ onOpen, cards_details, setView }: newCard): JSX.Element => {
     )
 }
 
-const NoCard = ({ setView }): JSX.Element => {
-
+const NoCard = ({ setView }: { setView: any }): JSX.Element => {
+    const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     return (
         <Grid placeItems="center">
             <Grid
                 placeItems="center"
                 backgroundColor="#FFFFFF"
-                w="70%"
+                w={isSmallerScreen ? "90%" : "70%"}
                 color="#F9C567"
                 fontWeight="700"
-                fontSize="18px"
-                padding="45px"
+                fontSize={isSmallerScreen ? "12px" : "18px"}
+                padding={isSmallerScreen ? "15px" : "45px"}
                 borderRadius="10px"
                 gridTemplateColumns="auto auto"
                 justifyContent="center"
                 cursor="pointer"
 
-                onClick={() => setView("details")}
+                onClick={() => setView(2)}
             >
                 <SmallAddIcon boxSize="25px" /><Text>Add A Debit Card For This Transaction</Text>
             </Grid>
@@ -160,21 +150,22 @@ type cardType = {
         bank: string
     },
     deposit_views: {
-        view: string,
+        view: number,
         setView: any
     }
 }
 export const Card = ({ card, deposit_views }: cardType): JSX.Element => {
     const { view, setView } = deposit_views
+    const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     return (
         <Grid placeItems="center">
             <Flex
                 alignItems="center"
-                width="50%"
+                width={isSmallerScreen ? "100%" : "50%"}
                 backgroundColor="#fff"
                 boxShadow="0px 8px 40px rgba(6, 0, 137, 0.1)"
                 borderRadius="9px"
-                padding="15px"
+                padding={isSmallerScreen ? "10px" : "15px"}
                 my="10px"
                 cursor="pointer"
             >
@@ -182,7 +173,7 @@ export const Card = ({ card, deposit_views }: cardType): JSX.Element => {
                     <Image src={card?.image} alt="" />
                 </Box>
                 <Grid color="#656566">
-                    <Text fontSize="18px" fontWeight="500" color="#040320">{card.name}</Text>
+                    <Text fontSize={isSmallerScreen ? "14px" : "18px"} fontWeight="500" color="#040320">{card.name}</Text>
                     <Text fontSize="12px" fontWeight="450">{card.card}</Text>
                     <Text fontSize="12px" fontWeight="450">{card.bank}</Text>
                 </Grid>

@@ -39,7 +39,7 @@ const MobileSideBar = ({ onClose, isOpen }: Props): JSX.Element => {
             text: "Transactions"
         },
         {
-            icon: <HiLink size="18px" transform="rotateY('180deg')" />,
+            icon: <HiLink size="18px" />,
             text: "Manage Link"
         },
         {

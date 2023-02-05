@@ -1,12 +1,18 @@
 import { Button, Flex, Grid, Image, Modal, ModalBody, ModalContent, ModalOverlay, Text } from '@chakra-ui/react'
 import React from 'react'
 import green_tick from '../../Asset/green-tick.png'
+
 interface Props {
     onClose: () => void,
     isOpen: boolean,
     text?: string
 }
-const SuccessModal: React.FC<Props> = ({ onClose, isOpen, text = `Thank you for your request. We are working hard to find the best service.` }) => {
+const SuccessModal: React.FC<Props> = ({ onClose, isOpen, text }) => {
+    const display_text = text ? text : (
+        <Text>
+            Thank you for your request.<br /> We are working hard to find the best service.
+        </Text>
+    )
     return (
         <Modal
             blockScrollOnMount={true}
@@ -35,7 +41,7 @@ const SuccessModal: React.FC<Props> = ({ onClose, isOpen, text = `Thank you for 
                             fontSize="22px"
                             fontWeight="700"
                         >
-                            {text}
+                            {display_text}
                         </Text>
                         <Button
                             backgroundColor="#27EA60"
