@@ -18,7 +18,7 @@ const Index = (): JSX.Element => {
   return (
     <Grid
       placeItems="center"
-      padding="0px 40px"
+      padding={isSmallerScreen ? "0px 5px" : "0px 40px"}
     >
       <PaymentConfirmModal isPaymentModalOpen={isPaymentModalOpen} onPaymentModalClose={onPaymentModalClose} callback={withdrawCallback} />
       <Box w="100%">
