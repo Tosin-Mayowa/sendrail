@@ -1,4 +1,4 @@
-import { Box, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Flex, Tab, TabList, Text } from '@chakra-ui/react'
+import { Box, Drawer, DrawerContent, DrawerOverlay, Flex, Tab, TabList, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { AiOutlineSwitcher, AiTwotoneSetting } from 'react-icons/ai'
 import { FaRegEnvelopeOpen } from 'react-icons/fa'

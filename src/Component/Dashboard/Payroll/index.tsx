@@ -1,8 +1,6 @@
 import { Box, Grid, Text } from '@chakra-ui/react'
 import React from 'react'
-import { OverviewStates } from '../../../Contexts/OverviewContext'
 import RoundedBackButton from '../../shared/RoundedBackButton'
-import SuccessModal from '../../shared/SuccessModal'
 
 const Index = (): JSX.Element => {
 

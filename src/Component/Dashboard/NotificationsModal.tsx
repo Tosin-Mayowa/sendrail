@@ -1,5 +1,4 @@
-import { ArrowBackIcon } from '@chakra-ui/icons'
-import { Box, Button, Flex, Grid, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text } from '@chakra-ui/react'
+import { Flex, Grid, Image, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import Empty from "../../Asset/empty-notifications.png"
 import RoundedBackButton from '../shared/RoundedBackButton'

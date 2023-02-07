@@ -1,3 +1,4 @@
+// depreciated
 export const getWithExpiry = (key: string) => {
     const itemStr = localStorage.getItem(key);
     if (!itemStr) {

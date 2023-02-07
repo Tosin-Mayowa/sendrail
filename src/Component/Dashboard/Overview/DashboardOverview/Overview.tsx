@@ -17,7 +17,6 @@ import MyWallet from "./MyWallet";
 import Revenue from "./Revenue";
 import MostVisited from "./MostVisited";
 import BarChartOverview from "./BarChartOverview";
-import { OverviewStates } from "../../../../Contexts/OverviewContext";
 
 const Overview = (): JSX.Element => {
   const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");

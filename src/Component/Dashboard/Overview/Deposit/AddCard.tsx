@@ -1,35 +1,34 @@
 import { SmallAddIcon } from '@chakra-ui/icons'
 import { Box, Button, Flex, FormControl, FormLabel, Grid, Image, Input, Text, useMediaQuery } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import { OverviewStates } from '../../../../Contexts/OverviewContext'
+import React from 'react'
 import Access from '../../../../Asset/access-bank.png'
+import { OverviewStates } from '../../../../Contexts/OverviewContext'
 
 
 interface AddProps {
     onOpen: () => void,
-    deposit_views: {
-        view: number,
-        setView: any
-    },
     cards_details: {
         cards: {
             image: string,
             name: string,
             card: string,
-            bank: string
+            bank: string,
+            key: number
         }[],
         setCards: any
-    }
+    },
+    onPaymentModalOpen: () => void
 }
-const AddCard: React.FC<AddProps> = ({ onOpen, deposit_views, cards_details }) => {
-    const { view, setView } = deposit_views
+const AddCard: React.FC<AddProps> = ({ onOpen, cards_details, onPaymentModalOpen }) => {
+    const { views } = OverviewStates();
+
     const fetchView = () => {
-        if (view === 2) {
-            return <NewCard onOpen={onOpen} cards_details={cards_details} setView={setView} />
-        } else if (view === 3) {
-            return <Text>Next section</Text>
+        if (views.current_view === "deposit-2") {
+            return <NewCard onOpen={onOpen} cards_details={cards_details} />
+        } else if (views.current_view === "deposit-3") {
+            return <AmountDetails onPaymentModalOpen={onPaymentModalOpen} />
         }
-        return <NoCard setView={setView} />
+        return <NoCard />
     }
     return (
         fetchView()
@@ -43,20 +42,22 @@ type newCard = {
             image: string,
             name: string,
             card: string,
-            bank: string
+            bank: string,
+            key: number
         }[],
         setCards: any
     },
-    setView: any
 }
-const NewCard = ({ onOpen, cards_details, setView }: newCard): JSX.Element => {
+const NewCard = ({ onOpen, cards_details }: newCard): JSX.Element => {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const { cards, setCards } = cards_details
+    const { dispatchView } = OverviewStates();
     let payload = {
         image: Access,
         name: "Dray Savage rey",
-        card: "533******************03",
-        bank: "Access Bank"
+        card: "09********65",
+        bank: "Access Bank",
+        key: cards[cards.length - 1] ? cards[cards.length - 1]?.key + 1 : 1
     }
     return (
         <form>
@@ -106,7 +107,7 @@ const NewCard = ({ onOpen, cards_details, setView }: newCard): JSX.Element => {
                         let data = cards
                         data.push(payload)
                         setCards(data)
-                        setView(1)
+                        dispatchView({ type: "change_overview_view", current_view: "deposit-1" })
                         onOpen()
                     }}
                 >
@@ -117,8 +118,51 @@ const NewCard = ({ onOpen, cards_details, setView }: newCard): JSX.Element => {
     )
 }
 
-const NoCard = ({ setView }: { setView: any }): JSX.Element => {
+type AmountDetails = {
+    onPaymentModalOpen: () => void
+}
+const AmountDetails = ({ onPaymentModalOpen }: AmountDetails): JSX.Element => {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
+
+    return (
+        <form>
+            <Grid gridTemplateColumns={isSmallerScreen ? "1fr" : "1fr 1fr"} gap="15px" my="15px" placeItems="center">
+                <FormControl>
+                    <FormLabel color="#ABA7A7">Amount[Naira]</FormLabel>
+                    <Input
+                        type='number'
+                        placeholder="Enter Deposit amount"
+                        border="1px solid #ABA7A7"
+                        background="#fff"
+                    />
+                </FormControl>
+                <FormControl>
+                    <FormLabel color="#ABA7A7">Card PIN</FormLabel>
+                    <Input
+                        type='number'
+                        placeholder='****'
+                        border="1px solid #ABA7A7"
+                        background="#fff"
+                    />
+                </FormControl>
+                <Button
+                    gridColumn={!isSmallerScreen ? "1/3" : ""}
+                    w="max-content"
+                    border="1px solid #ABA7A7"
+                    borderRadius="4px"
+                    onClick={onPaymentModalOpen}
+                >
+                    Next
+                </Button>
+            </Grid>
+        </form>
+    )
+}
+
+const NoCard = (): JSX.Element => {
+    const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
+    const { dispatchView } = OverviewStates();
+
     return (
         <Grid placeItems="center">
             <Grid
@@ -134,7 +178,7 @@ const NoCard = ({ setView }: { setView: any }): JSX.Element => {
                 justifyContent="center"
                 cursor="pointer"
 
-                onClick={() => setView(2)}
+                onClick={() => dispatchView({ type: "change_overview_view", current_view: "deposit-2" })}
             >
                 <SmallAddIcon boxSize="25px" /><Text>Add A Debit Card For This Transaction</Text>
             </Grid>
@@ -147,16 +191,14 @@ type cardType = {
         image: string,
         name: string,
         card: string,
-        bank: string
-    },
-    deposit_views: {
-        view: number,
-        setView: any
+        bank: string,
+        key: number
     }
 }
-export const Card = ({ card, deposit_views }: cardType): JSX.Element => {
-    const { view, setView } = deposit_views
+export const Card = ({ card }: cardType): JSX.Element => {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
+    const { dispatchView } = OverviewStates();
+
     return (
         <Grid placeItems="center">
             <Flex
@@ -168,6 +210,8 @@ export const Card = ({ card, deposit_views }: cardType): JSX.Element => {
                 padding={isSmallerScreen ? "10px" : "15px"}
                 my="10px"
                 cursor="pointer"
+
+                onClick={() => { dispatchView({ type: "change_overview_view", current_view: "deposit-3" }) }}
             >
                 <Box mx="5px" borderRadius="50%" style={{ aspectRatio: "1/1" }}>
                     <Image src={card?.image} alt="" />

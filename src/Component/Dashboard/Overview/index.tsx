@@ -9,9 +9,13 @@ const Index = (): JSX.Element => {
     switch (views?.current_view) {
         case "overview":
             return <DashboardOverview />;
-        case "withdraw":
+        case "withdraw-1":
             return <Withdraw />;
-        case "deposit":
+        case "deposit-1":
+            return <Deposit />;
+        case "deposit-2":
+            return <Deposit />;
+        case "deposit-3":
             return <Deposit />;
 
         default:

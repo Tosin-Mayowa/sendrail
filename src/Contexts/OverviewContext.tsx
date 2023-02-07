@@ -9,7 +9,9 @@ type Action = {
 
 type Context = {
     views: Action,
-    dispatchView: Dispatch<Action>
+    dispatchView: Dispatch<Action>,
+    balance: number,
+    setBalance: any
 }
 
 const Provider = createContext<Context>(null);
@@ -20,11 +22,12 @@ interface Props {
 
 const OverviewContext: React.FC<Props> = ({ children }) => {
     const [views, dispatchView] = useReducer(viewReducer, { current_view: "overview", initial_view: null })
+    const [balance, setBalance] = useState<number>(1250)
     return (
         <Provider.Provider
             value={{
-                views,
-                dispatchView
+                views, dispatchView,
+                balance, setBalance
             }}
         >
             {children}

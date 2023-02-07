@@ -1,4 +1,4 @@
-import { Button, Flex, Grid, Image, Modal, ModalBody, ModalContent, ModalOverlay, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Grid, Image, Modal, ModalBody, ModalContent, ModalOverlay, Text } from '@chakra-ui/react'
 import React from 'react'
 import green_tick from '../../Asset/green-tick.png'
 
@@ -6,12 +6,18 @@ interface Props {
     onClose: () => void,
     isOpen: boolean,
     text?: string
+    callback?: () => void
 }
-const SuccessModal: React.FC<Props> = ({ onClose, isOpen, text }) => {
-    const display_text = text ? text : (
-        <Text>
-            Thank you for your request.<br /> We are working hard to find the best service.
-        </Text>
+const SuccessModal: React.FC<Props> = ({ onClose, isOpen, text, callback }) => {
+    const display_text = text ? <Text>{text}</Text> : (
+        <>
+            <Text>
+                Thank you for your request.
+            </Text>
+            <Text>
+                We are working hard to find the best service.
+            </Text>
+        </>
     )
     return (
         <Modal
@@ -36,13 +42,13 @@ const SuccessModal: React.FC<Props> = ({ onClose, isOpen, text }) => {
                 <ModalBody>
                     <Flex flexDirection="column" justifyContent="center" h="100%" placeItems="center" textAlign="center" gap="20px">
                         <Image src={green_tick} alt="Success" w="20%" />
-                        <Text
+                        <Box
                             color="#27AE60"
                             fontSize="22px"
                             fontWeight="700"
                         >
                             {display_text}
-                        </Text>
+                        </Box>
                         <Button
                             backgroundColor="#27EA60"
                             color="#fff"
@@ -52,7 +58,7 @@ const SuccessModal: React.FC<Props> = ({ onClose, isOpen, text }) => {
 
                             }}
 
-                            onClick={onClose}
+                            onClick={callback ? () => { onClose(); callback(); } : onClose}
                         >
                             Continue
                         </Button>

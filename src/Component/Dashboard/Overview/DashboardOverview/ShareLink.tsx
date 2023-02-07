@@ -39,6 +39,7 @@ const ShareLink = (): JSX.Element => {
                 bg="rgba(7, 5, 41, 0.07)"
                 padding="8px"
                 mt={isSmallerScreen ? "0px" : "15px"}
+                textAlign="center"
             >
                 {url}
             </Text>

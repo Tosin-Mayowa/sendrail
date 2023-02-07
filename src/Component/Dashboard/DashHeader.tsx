@@ -1,7 +1,8 @@
-import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
-import { Avatar, Box, Button, Flex, Grid, Input, InputGroup, InputLeftElement, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverHeader, PopoverTrigger, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react'
+import { HamburgerIcon } from '@chakra-ui/icons'
+import { Avatar, Box, Flex, Grid, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react'
 import React from 'react'
 import { FiBell } from 'react-icons/fi'
+import SearchBar from '../shared/SearchBar'
 import MobileSideBar from './MobileSideBar'
 import NotificationsModal from './NotificationsModal'
 
@@ -32,22 +33,7 @@ const DashHeader = (): JSX.Element => {
                     <MobileSideBar isOpen={isOpenDrawer} onClose={onCloseDrawer} />
                 </>
             }
-            <InputGroup>
-                <InputLeftElement
-                    pointerEvents="none"
-                    children={<SearchIcon color="gray.300" />}
-                />
-                <Input
-                    boxShadow="0px 4px 20px rgba(6, 0, 137, 0.1)"
-                    width={isSmallerScreen ? "90%" : "40%"}
-                    fontWeight="500"
-                    fontSize="12px"
-                    lineHeight="14px"
-                    outline="none"
-                    border="none"
-                    placeholder="Search by tracking number or location ..."
-                />
-            </InputGroup>
+            <SearchBar placeholder='Search by tracking number or location ...' width={isSmallerScreen ? "90%" : "40%"} />
             <Flex alignItems="center" gap="20px">
                 <Grid
                     placeItems="center"
