@@ -1,4 +1,6 @@
-import { Box, Button, Flex, Grid, Image, Modal, ModalBody, ModalContent, ModalOverlay, Text } from '@chakra-ui/react'
+import {
+    Box, Button, Flex, Image, Modal, ModalBody, ModalContent, ModalOverlay, Text
+} from '@chakra-ui/react'
 import React from 'react'
 import green_tick from '../../Asset/green-tick.png'
 
@@ -8,20 +10,12 @@ interface Props {
     text?: string
     callback?: () => void
 }
-const SuccessModal: React.FC<Props> = ({ onClose, isOpen, text, callback }) => {
-    const display_text = text ? <Text>{text}</Text> : (
-        <>
-            <Text>
-                Thank you for your request.
-            </Text>
-            <Text>
-                We are working hard to find the best service.
-            </Text>
-        </>
-    )
+function SuccessModal({
+    onClose, isOpen, text, callback
+}: Props) {
     return (
         <Modal
-            blockScrollOnMount={true}
+            blockScrollOnMount
             isOpen={isOpen}
             onClose={onClose}
             isCentered
@@ -47,7 +41,7 @@ const SuccessModal: React.FC<Props> = ({ onClose, isOpen, text, callback }) => {
                             fontSize="22px"
                             fontWeight="700"
                         >
-                            {display_text}
+                            {text}
                         </Box>
                         <Button
                             backgroundColor="#27EA60"
@@ -68,5 +62,17 @@ const SuccessModal: React.FC<Props> = ({ onClose, isOpen, text, callback }) => {
         </Modal>
     )
 }
-
+SuccessModal.defaultProps = {
+    text: (
+        <>
+            <Text>
+                Thank you for your request.
+            </Text>
+            <Text>
+                We are working hard to find the best service.
+            </Text>
+        </>
+    ),
+    callback: () => { }
+}
 export default SuccessModal

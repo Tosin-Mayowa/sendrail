@@ -13,7 +13,7 @@ export const getWithExpiry = (key: string) => {
     return item.value;
 };
 
-export const setWithExpiry = (key: string, value: any, ttl: number = 6) => {
+export const setWithExpiry = (key: string, value: any, ttl = 6) => {
     const now = new Date();
     const expiry = ttl * 3600000;
 

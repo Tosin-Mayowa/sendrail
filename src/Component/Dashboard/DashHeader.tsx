@@ -1,12 +1,14 @@
 import { HamburgerIcon } from '@chakra-ui/icons'
-import { Avatar, Box, Flex, Grid, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react'
+import {
+ Avatar, Box, Flex, Grid, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Text, useDisclosure, useMediaQuery 
+} from '@chakra-ui/react'
 import React from 'react'
 import { FiBell } from 'react-icons/fi'
 import SearchBar from '../shared/SearchBar'
 import MobileSideBar from './MobileSideBar'
 import NotificationsModal from './NotificationsModal'
 
-const DashHeader = (): JSX.Element => {
+function DashHeader(): JSX.Element {
     const { isOpen, onOpen, onClose }: { isOpen: boolean, onOpen: () => void, onClose: () => void } = useDisclosure()
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const Drawer = useDisclosure()
@@ -88,8 +90,7 @@ const DashHeader = (): JSX.Element => {
                                 </Flex>
                             </>
                             :
-                            <>
-                                <Popover>
+                            <Popover>
                                     <PopoverTrigger>
                                         <Avatar
                                             size="md"
@@ -123,7 +124,6 @@ const DashHeader = (): JSX.Element => {
                                         </PopoverBody>
                                     </PopoverContent>
                                 </Popover>
-                            </>
                     }
                 </Flex>
             </Flex>
@@ -131,4 +131,4 @@ const DashHeader = (): JSX.Element => {
     )
 }
 
-export default DashHeader
+export default DashHeader;

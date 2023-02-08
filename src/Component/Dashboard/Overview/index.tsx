@@ -4,7 +4,7 @@ import { OverviewStates } from '../../../Contexts/OverviewContext'
 import Withdraw from './Withdraw'
 import Deposit from './Deposit'
 
-const Index = (): JSX.Element => {
+function Index(): JSX.Element {
     const { views } = OverviewStates();
     switch (views?.current_view) {
         case "overview":

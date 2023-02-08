@@ -1,0 +1,86 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest":true
+    },
+    "extends": [
+        "react-app",
+        "react-app/jest",
+        "airbnb",
+        "airbnb-typescript",
+      
+         "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+        
+        // "eslint:recommended",
+        // "plugin:react/recommended",
+        // "plugin:@typescript-eslint/recommended","airbnb"
+    ],
+    "overrides": [
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures":{
+            "jsx":true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project":"./tsconfig.json"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "prettier"
+    ],
+    "root":true,
+    "rules": {
+        "no-unused-vars": [
+            "error",
+            {
+                "vars": "all"
+            }
+        ],
+        "no-console": "off",
+        "indent": [
+            "off",
+            "tab"
+        ],
+        "linebreak-style": [
+            "off",
+            "windows"
+        ],
+        "quotes": [
+            "off",
+            "double"
+        ],
+        "semi": [
+            "off",
+            "always"
+        ],
+        "react/jsx-uses-react":["off"],
+        "react/react-in-jsx-scope":["off"],
+        "react/jsx-props-no-spreading":["warn"],
+        "no-shadow":"off",
+        "@typescript-eslint/quotes": [
+            "off",
+            "single",
+            {
+                "avoidEscape": true,
+                "allowTemplateLiterals": true
+            }
+            
+        ],
+        "import/prefer-default-export": "off",
+        "operator-linebreak":"off",
+        "react/jsx-closing-bracket-location": "off",
+        "object-curly-newline":1,
+        "react/jsx-curly-newline":0,
+        "object-shorthand": 0,
+        "@typescript-eslint/return-await":0,
+        "spaced-comment":["off"],
+        "arrow-body-style":["off"],
+        "import/newline-after-import":"off"
+    }
+}

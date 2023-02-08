@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Flex,
   Box,
@@ -8,20 +8,14 @@ import {
   FormControl,
   Input,
   useTheme,
-  Button
-} from "@chakra-ui/react";
-import Logo from "../Asset/Logos/Onboarding/SENDRAILS.png";
+  Button,
+} from '@chakra-ui/react';
+import Logo from '../Asset/Logos/Onboarding/SENDRAILS.png';
 
-const Verification = () => {
+function Verification() {
   const theme = useTheme();
   return (
-    <Flex
-      flexDir='column'
-      width="100%"
-      height="100vh"
-      
-      background={theme.colors.primary["100"]}
-    >
+    <Flex flexDir="column" width="100%" height="100vh" background={theme.colors.primary['100']}>
       <Flex mt="60px" ml="60px">
         <Image src={Logo} alt="Logo" />
         <Text
@@ -32,8 +26,7 @@ const Verification = () => {
           display="flex"
           alignItems="center"
           textAlign="right"
-          color={theme.colors.primary.main}
-        >
+          color={theme.colors.primary.main}>
           Sendrail
         </Text>
       </Flex>
@@ -46,21 +39,20 @@ const Verification = () => {
           width="500px"
           height="400px"
           bg="#FFFFFF"
-          borderRadius="12px"
-        >
+          borderRadius="12px">
           <Box>
             <Box width="400px">
               <Center>
-              <Box width="100%"  mb="30px">
-                <Center>
-                  <Image src={Logo} alt="Onboarding Logo" pr="10px" />
-                </Center>
-                <Box mt="13px" width="100%" textAlign="center">
-                  <Text fontWeight="600" fontSize="24px" lineHeight="22px">
-                    Verification
-                  </Text>
+                <Box width="100%" mb="30px">
+                  <Center>
+                    <Image src={Logo} alt="Onboarding Logo" pr="10px" />
+                  </Center>
+                  <Box mt="13px" width="100%" textAlign="center">
+                    <Text fontWeight="600" fontSize="24px" lineHeight="22px">
+                      Verification
+                    </Text>
+                  </Box>
                 </Box>
-              </Box>
               </Center>
               <Box
                 width="100%"
@@ -69,8 +61,7 @@ const Verification = () => {
                 lineHeight="22px"
                 mt="24px"
                 textAlign="center"
-                color="#ABA7A7"
-              >
+                color="#ABA7A7">
                 <Text>Enter The Verification Code Sent To Your Email</Text>
               </Box>
             </Box>
@@ -104,8 +95,7 @@ const Verification = () => {
                 fontSize="18px"
                 lineHeight="22px"
                 color="#fff"
-                textAlign="center"
-              >
+                textAlign="center">
                 Next
               </Button>
             </FormControl>
@@ -114,6 +104,6 @@ const Verification = () => {
       </Center>
     </Flex>
   );
-};
+}
 
 export default Verification;

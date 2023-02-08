@@ -11,7 +11,7 @@ import SideBar from "../Component/Dashboard/SideBar";
 import DashHeader from "../Component/Dashboard/DashHeader";
 import DashPanels from "../Component/Dashboard/DashTabs";
 
-const Dashbord = () => {
+function Dashbord() {
   const theme = useTheme();
   const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
 
@@ -35,6 +35,6 @@ const Dashbord = () => {
       </Grid>
     </Tabs>
   );
-};
+}
 
 export default Dashbord;

@@ -1,4 +1,6 @@
-import React, { createContext, Dispatch, useContext, useReducer, useState } from 'react'
+import React, {
+    createContext, Dispatch, useContext, useMemo, useReducer, useState
+} from 'react'
 import { viewReducer } from '../reducers/dashboardViewReducer';
 
 type Action = {
@@ -20,15 +22,22 @@ interface Props {
     children: JSX.Element
 }
 
-const OverviewContext: React.FC<Props> = ({ children }) => {
+function OverviewContext({ children }: Props) {
     const [views, dispatchView] = useReducer(viewReducer, { current_view: "overview", initial_view: null })
     const [balance, setBalance] = useState<number>(1250)
+
+    const changes = {
+        views, dispatchView,
+        balance, setBalance
+    }
+    const changesToWatch = {
+        views, balance
+    }
+    const values = useMemo(() => (changes)
+        , [changesToWatch])
     return (
         <Provider.Provider
-            value={{
-                views, dispatchView,
-                balance, setBalance
-            }}
+            value={values}
         >
             {children}
         </Provider.Provider>

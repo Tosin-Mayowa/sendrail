@@ -18,7 +18,7 @@ import Revenue from "./Revenue";
 import MostVisited from "./MostVisited";
 import BarChartOverview from "./BarChartOverview";
 
-const Overview = (): JSX.Element => {
+function Overview(): JSX.Element {
   const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
   const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
   const cardDetails = [
@@ -97,6 +97,6 @@ const Overview = (): JSX.Element => {
       </Grid>
     </Box>
   );
-};
+}
 
 export default Overview;

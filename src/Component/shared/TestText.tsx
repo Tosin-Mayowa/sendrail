@@ -7,10 +7,14 @@ interface Props {
     color?: string
 }
 
-const TestText: React.FC<Props> = ({ text, onclick, color }) => {
+function TestText({ text, onclick, color }: Props): JSX.Element {
     return (
-        <Text onClick={onclick} cursor="pointer" textDecoration="underline" color={color ? color : "#fff"}>{text}[Test]</Text>
+        <Text onClick={onclick} cursor="pointer" textDecoration="underline" color={color}>{text}[Test]</Text>
     )
+}
+
+TestText.defaultProps = {
+    color: "#fff"
 }
 
 export default TestText

@@ -7,14 +7,14 @@ type Props = {
     width: string,
     // then probably a callback for onchange, There will be a component for displaying search results or it can be here too.. Something like chakra's search
 }
-const SearchBar = ({ placeholder, width }: Props): JSX.Element => {
+function SearchBar({ placeholder, width }: Props): JSX.Element {
 
     return (
         <InputGroup>
             <InputLeftElement
-                pointerEvents="none"
-                children={<SearchIcon color="gray.300" />}
-            />
+                pointerEvents="none">
+                <SearchIcon color="gray.300" />
+            </InputLeftElement>
             <Input
                 boxShadow="0px 4px 20px rgba(6, 0, 137, 0.1)"
                 backgroundColor="#fff"

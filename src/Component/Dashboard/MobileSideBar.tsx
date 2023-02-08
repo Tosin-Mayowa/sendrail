@@ -1,4 +1,6 @@
-import { Box, Drawer, DrawerContent, DrawerOverlay, Flex, Tab, TabList, Text } from '@chakra-ui/react'
+import {
+ Box, Drawer, DrawerContent, DrawerOverlay, Flex, Tab, TabList, Text 
+} from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { AiOutlineSwitcher, AiTwotoneSetting } from 'react-icons/ai'
 import { FaRegEnvelopeOpen } from 'react-icons/fa'
@@ -12,7 +14,7 @@ interface Props {
     onClose: () => void,
     isOpen: boolean
 }
-const MobileSideBar = ({ onClose, isOpen }: Props): JSX.Element => {
+function MobileSideBar({ onClose, isOpen }: Props): JSX.Element {
     const [tab] = useState<any>([
         {
             icon: <FaRegEnvelopeOpen size="18px" />,
@@ -68,8 +70,7 @@ const MobileSideBar = ({ onClose, isOpen }: Props): JSX.Element => {
                 // style={{
                 //     aspectRatio: "2/1"
                 // }}
-                >
-                </Box>
+                 />
                 <Box
                     background="#070529"
                     height="75vh"

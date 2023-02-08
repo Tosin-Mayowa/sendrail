@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { Flex, Grid, Image, Link, Tab, TabList, Text } from "@chakra-ui/react";
-import { AiOutlineSwitcher } from "react-icons/ai";
-import Logo from "../../Asset/Logos/Onboarding/LOGO.png";
-import { AiTwotoneSetting } from "react-icons/ai";
+import {
+ Flex, Grid, Image, Link, Tab, TabList, Text 
+} from "@chakra-ui/react";
+import { AiOutlineSwitcher , AiTwotoneSetting } from "react-icons/ai";
+
 import { MdLogin } from "react-icons/md";
 import { RiEBike2Fill } from "react-icons/ri";
 import { FaRegEnvelopeOpen } from "react-icons/fa";
 import { HiUserGroup, HiLink } from "react-icons/hi";
 import { TbLayoutNavbar, TbLayersSubtract } from "react-icons/tb";
-const SideBar = () => {
+import Logo from "../../Asset/Logos/Onboarding/LOGO.png";
+function SideBar() {
   const [tab] = useState<any>([
     {
       icon: <FaRegEnvelopeOpen size="18px" />,
@@ -113,5 +115,5 @@ const SideBar = () => {
       </TabList >
     </Flex >
   );
-};
+}
 export default SideBar;

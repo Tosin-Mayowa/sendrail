@@ -1,5 +1,7 @@
 import { SmallAddIcon } from '@chakra-ui/icons'
-import { Box, Flex, Grid, Tab, TabList, TabPanel, TabPanels, Tabs, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react'
+import {
+    Box, Flex, Grid, Tab, TabList, TabPanel, TabPanels, Tabs, Text, useDisclosure, useMediaQuery
+} from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { OverviewStates } from '../../../../Contexts/OverviewContext'
 import PaymentConfirmModal from '../../../shared/PaymentConfirmModal'
@@ -7,22 +9,23 @@ import RoundedBackButton from '../../../shared/RoundedBackButton'
 import SuccessModal from '../../../shared/SuccessModal'
 import AddCard, { Card } from './AddCard'
 
-const Index = (): JSX.Element => {
+function Index(): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
-    const { views, dispatchView, balance, setBalance } = OverviewStates()
+    const {
+        views, dispatchView, balance, setBalance
+    } = OverviewStates()
     const [tabs] = useState<string[]>(["Debit Card", "Bank Account"])
-    const [view, setView] = useState<number>(1)
     // 1 -- Default screen
     // 2 -- card-details
     // 3 -- deposit details
-    type cardType = {
+    type CardType = {
         image: string,
         name: string,
         card: string,
         bank: string,
         key: number
     }[]
-    const [cards, setCards] = useState<cardType>([])
+    const [cards, setCards] = useState<CardType>([])
     const { isOpen, onOpen, onClose }: { isOpen: boolean, onOpen: () => void, onClose: () => void } = useDisclosure()
     const paymentConfirmModal = useDisclosure()
     const [isPaymentModalOpen, onPaymentModalOpen, onPaymentModalClose]: [isPaymentModalOpen: boolean, onPaymentModalOpen: () => void, onPaymentModalClose: () => void] = [paymentConfirmModal.isOpen, paymentConfirmModal.onOpen, paymentConfirmModal.onClose]

@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import {
   Flex,
   Box,
@@ -8,14 +8,15 @@ import {
   FormControl,
   Input,
   useTheme,
-  Button
+  Button,
 } from "@chakra-ui/react";
 
 import Logo from "../Asset/Logos/Onboarding/SENDRAILS.png";
 
-const ForgotPassword = () => {
-  const [email,setEmail]=useState('')
+function ForgotPassword() {
+  const [email, setEmail] = useState("");
   const theme = useTheme();
+
   return (
     <Box
       position="absolute"
@@ -23,8 +24,7 @@ const ForgotPassword = () => {
       height="100vh"
       top="0px"
       left="0px"
-      background={theme.colors.primary["100"]}
-    >
+      background={theme.colors.primary["100"]}>
       <Flex mt="60px" ml="60px">
         <Image src={Logo} alt="Logo" />
         <Text
@@ -35,8 +35,7 @@ const ForgotPassword = () => {
           display="flex"
           alignItems="center"
           textAlign="right"
-          color={theme.colors.primary.main}
-        >
+          color={theme.colors.primary.main}>
           Sendrail
         </Text>
       </Flex>
@@ -49,8 +48,7 @@ const ForgotPassword = () => {
           width="500px"
           height="400px"
           bg="#FFFFFF"
-          borderRadius="12px"
-        >
+          borderRadius="12px">
           <Box>
             <Box width="400px">
               <Box width="100%" mr="285px" mb="30px">
@@ -70,17 +68,14 @@ const ForgotPassword = () => {
                 lineHeight="22px"
                 mt="24px"
                 textAlign="center"
-                color="#ABA7A7"
-              >
-                <Text>
-                  Enter Your Email A Verification Code Will Be Sent To You
-                </Text>
+                color="#ABA7A7">
+                <Text>Enter Your Email A Verification Code Will Be Sent To You</Text>
               </Box>
             </Box>
             <FormControl>
               <Input
-              value={email}
-              onChange={(e)=>setEmail(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
                 type="email"
                 mt="30px"
@@ -111,8 +106,7 @@ const ForgotPassword = () => {
                 lineHeight="22px"
                 color="#fff"
                 textAlign="center"
-                 isDisabled={email?false:true }
-              >
+                isDisabled={!email}>
                 Next
               </Button>
             </FormControl>
@@ -121,6 +115,6 @@ const ForgotPassword = () => {
       </Center>
     </Box>
   );
-};
+}
 
 export default ForgotPassword;

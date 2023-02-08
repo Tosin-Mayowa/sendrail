@@ -1,12 +1,12 @@
-import { Box, Button, Center, Flex, Menu, MenuButton, MenuItem, MenuList, Text, useMediaQuery } from '@chakra-ui/react'
+import {
+    Box, Button, Flex, Text, useMediaQuery
+} from '@chakra-ui/react'
+import React from 'react'
 import Wallet from "../../../../Asset/Logos/Onboarding/wallet.png";
-import React, { useReducer } from 'react'
-import { setWithExpiry } from '../../../../lib/localStorage';
-import { viewReducer } from '../../../../reducers/dashboardViewReducer';
 import { OverviewStates } from '../../../../Contexts/OverviewContext';
 import useNumbers from '../../../../hooks/useNumbers'
 
-const MyWallet = (): JSX.Element => {
+function MyWallet(): JSX.Element {
     const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
     const { dispatchView, balance } = OverviewStates();
     const { formatNormalNumbers } = useNumbers()

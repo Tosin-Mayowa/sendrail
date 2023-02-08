@@ -1,41 +1,12 @@
 import { SmallAddIcon } from '@chakra-ui/icons'
-import { Box, Button, Flex, FormControl, FormLabel, Grid, Image, Input, Text, useMediaQuery } from '@chakra-ui/react'
+import {
+    Box, Button, Flex, FormControl, FormLabel, Grid, Image, Input, Text, useMediaQuery
+} from '@chakra-ui/react'
 import React from 'react'
 import Access from '../../../../Asset/access-bank.png'
 import { OverviewStates } from '../../../../Contexts/OverviewContext'
 
-
-interface AddProps {
-    onOpen: () => void,
-    cards_details: {
-        cards: {
-            image: string,
-            name: string,
-            card: string,
-            bank: string,
-            key: number
-        }[],
-        setCards: any
-    },
-    onPaymentModalOpen: () => void
-}
-const AddCard: React.FC<AddProps> = ({ onOpen, cards_details, onPaymentModalOpen }) => {
-    const { views } = OverviewStates();
-
-    const fetchView = () => {
-        if (views.current_view === "deposit-2") {
-            return <NewCard onOpen={onOpen} cards_details={cards_details} />
-        } else if (views.current_view === "deposit-3") {
-            return <AmountDetails onPaymentModalOpen={onPaymentModalOpen} />
-        }
-        return <NoCard />
-    }
-    return (
-        fetchView()
-    )
-}
-
-type newCard = {
+type NewCardProps = {
     onOpen: () => void,
     cards_details: {
         cards: {
@@ -48,16 +19,16 @@ type newCard = {
         setCards: any
     },
 }
-const NewCard = ({ onOpen, cards_details }: newCard): JSX.Element => {
+function NewCard({ onOpen, cards_details }: NewCardProps): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const { cards, setCards } = cards_details
     const { dispatchView } = OverviewStates();
-    let payload = {
+    const payload = {
         image: Access,
         name: "Dray Savage rey",
         card: "09********65",
         bank: "Access Bank",
-        key: cards[cards.length - 1] ? cards[cards.length - 1]?.key + 1 : 1
+        key: cards[cards.length - 1] ? cards[cards.length - 1].key + 1 : 1
     }
     return (
         <form>
@@ -104,7 +75,7 @@ const NewCard = ({ onOpen, cards_details }: newCard): JSX.Element => {
                     border="1px solid #ABA7A7"
                     borderRadius="4px"
                     onClick={() => {
-                        let data = cards
+                        const data = cards
                         data.push(payload)
                         setCards(data)
                         dispatchView({ type: "change_overview_view", current_view: "deposit-1" })
@@ -118,10 +89,10 @@ const NewCard = ({ onOpen, cards_details }: newCard): JSX.Element => {
     )
 }
 
-type AmountDetails = {
+type AmountDetailsProps = {
     onPaymentModalOpen: () => void
 }
-const AmountDetails = ({ onPaymentModalOpen }: AmountDetails): JSX.Element => {
+function AmountDetails({ onPaymentModalOpen }: AmountDetailsProps): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
 
     return (
@@ -159,7 +130,7 @@ const AmountDetails = ({ onPaymentModalOpen }: AmountDetails): JSX.Element => {
     )
 }
 
-const NoCard = (): JSX.Element => {
+function NoCard(): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const { dispatchView } = OverviewStates();
 
@@ -186,7 +157,7 @@ const NoCard = (): JSX.Element => {
     )
 }
 
-type cardType = {
+type CardType = {
     card: {
         image: string,
         name: string,
@@ -195,7 +166,7 @@ type cardType = {
         key: number
     }
 }
-export const Card = ({ card }: cardType): JSX.Element => {
+export function Card({ card }: CardType): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const { dispatchView } = OverviewStates();
 
@@ -223,6 +194,36 @@ export const Card = ({ card }: cardType): JSX.Element => {
                 </Grid>
             </Flex>
         </Grid>
+    )
+}
+
+interface AddProps {
+    onOpen: () => void,
+    cards_details: {
+        cards: {
+            image: string,
+            name: string,
+            card: string,
+            bank: string,
+            key: number
+        }[],
+        setCards: any
+    },
+    onPaymentModalOpen: () => void
+}
+const AddCard: React.FC<AddProps> = ({ onOpen, cards_details, onPaymentModalOpen }) => {
+    const { views } = OverviewStates();
+
+    const fetchView = () => {
+        if (views.current_view === "deposit-2") {
+            return <NewCard onOpen={onOpen} cards_details={cards_details} />
+        } if (views.current_view === "deposit-3") {
+            return <AmountDetails onPaymentModalOpen={onPaymentModalOpen} />
+        }
+        return <NoCard />
+    }
+    return (
+        fetchView()
     )
 }
 

@@ -2,7 +2,7 @@ import { Box, Grid, Text } from '@chakra-ui/react'
 import React from 'react'
 import RoundedBackButton from '../../shared/RoundedBackButton'
 
-const Index = (): JSX.Element => {
+function Index(): JSX.Element {
 
     return (
         <Grid

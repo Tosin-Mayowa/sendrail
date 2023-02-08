@@ -1,4 +1,6 @@
-import { Box, Button, Flex, Grid, Modal, ModalBody, ModalContent, ModalOverlay, Text, useDisclosure } from '@chakra-ui/react'
+import {
+    Box, Button, Flex, Grid, Modal, ModalBody, ModalContent, ModalOverlay, Text, useDisclosure
+} from '@chakra-ui/react'
 import React from 'react'
 import { RiCloseCircleLine } from 'react-icons/ri'
 import SuccessModal from './SuccessModal'
@@ -9,15 +11,15 @@ interface Props {
     callback?: () => void
     //data?: {}[]  will consist of payment information gotten from user inputs and it will replace the data being rendered
 }
-const PaymentConfirmModal: React.FC<Props> = ({ onPaymentModalClose, isPaymentModalOpen, callback }) => {
+function PaymentConfirmModal({ onPaymentModalClose, isPaymentModalOpen, callback }: Props) {
     const { isOpen, onOpen, onClose }: { isOpen: boolean, onOpen: () => void, onClose: () => void } = useDisclosure()
     const closeModal = () => {
         onPaymentModalClose();
-        callback && callback()
+        if (callback) callback()
     }
     return (
         <Modal
-            blockScrollOnMount={true}
+            blockScrollOnMount
             isOpen={isPaymentModalOpen}
             onClose={onPaymentModalClose}
             isCentered
@@ -93,6 +95,10 @@ const PaymentConfirmModal: React.FC<Props> = ({ onPaymentModalClose, isPaymentMo
             </ModalContent>
         </Modal>
     )
+}
+
+PaymentConfirmModal.defaultProps = {
+    callback: () => { }
 }
 
 export default PaymentConfirmModal

@@ -7,7 +7,7 @@ interface Props {
     onclick: () => void
 }
 
-const RoundedBackButton: React.FC<Props> = ({ color, onclick }) => {
+function RoundedBackButton({ color, onclick }: Props) {
     return (
         <Grid placeItems="center" border={`2px solid ${color}`} w="max-content" borderRadius="50%" cursor="pointer" onClick={onclick}>
             <ArrowBackIcon color={color} />

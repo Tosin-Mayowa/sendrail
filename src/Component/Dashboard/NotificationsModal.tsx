@@ -1,4 +1,6 @@
-import { Flex, Grid, Image, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Text } from '@chakra-ui/react'
+import {
+    Flex, Grid, Image, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Text
+} from '@chakra-ui/react'
 import React, { useState } from 'react'
 import Empty from "../../Asset/empty-notifications.png"
 import RoundedBackButton from '../shared/RoundedBackButton'
@@ -9,8 +11,8 @@ interface Props {
     onClose: () => void
 }
 
-const NotificationsModal: React.FC<Props> = ({ isOpen, onClose }) => {
-    type notification = {
+function NotificationsModal({ isOpen, onClose }: Props): JSX.Element {
+    type Notification = {
         title: string,
         message: string,
         time: string
@@ -25,10 +27,10 @@ const NotificationsModal: React.FC<Props> = ({ isOpen, onClose }) => {
         message: "Order Available for pickup",
         time: "7 hours ago"
     }]
-    const [notifications, setNotifications] = useState<notification[] | null>(sampleData)
+    const [notifications, setNotifications] = useState<Notification[] | null>(sampleData)
     return (
         <Modal
-            blockScrollOnMount={true}
+            blockScrollOnMount
             isOpen={isOpen}
             onClose={onClose}
             isCentered

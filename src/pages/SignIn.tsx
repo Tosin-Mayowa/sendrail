@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useCallback } from "react";
 import {
   Flex,
   Box,
@@ -10,22 +10,28 @@ import {
   Input,
   useTheme,
 } from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
+import { signInApi} from "../api/login"
 import Logo from "../Asset/Logos/Onboarding/SENDRAILS.png";
 
-import { Link, useNavigate } from "react-router-dom";
-
-const SignIn = () => {
+function SignIn() {
   const theme = useTheme();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+ const login = useCallback(async () => {
+   const resp = await signInApi({
+     email,
+     password
+   })
+   console.log(resp)
+ }, [email,password])
+
+
+
   return (
-    <Flex
-      width="100%"
-      height="100vh"
-      flexDir="column"
-      background={theme.colors.primary["100"]}
-    >
+    <Flex width="100%" height="100vh" flexDir="column" background={theme.colors.primary["100"]}>
       <Box mt="60px" ml="60px" display="flex">
         <Image src={Logo} alt="Logo" />
         <Text
@@ -36,8 +42,7 @@ const SignIn = () => {
           display="flex"
           alignItems="center"
           textAlign="right"
-          color={theme.colors.primary.main}
-        >
+          color={theme.colors.primary.main}>
           Sendrail
         </Text>
       </Box>
@@ -50,8 +55,7 @@ const SignIn = () => {
           width="500px"
           height="400px"
           bg="#FFFFFF"
-          borderRadius="12px"
-        >
+          borderRadius="12px">
           <Box>
             <Center>
               <Box width="84px" mb="30px">
@@ -113,26 +117,19 @@ const SignIn = () => {
                 background={theme.colors.primary.main}
                 borderRadius="4px"
                 fontWeight="500"
-                onClick={() => navigate("/")}
+                onClick={() =>{
+                  login();
+                  navigate("/")
+                }}
                 fontSize="18px"
                 lineHeight="22px"
                 color="#fff"
                 textAlign="center"
-                isDisabled={email && password ? false : true}
-              >
+                isDisabled={!(email && password && email.includes('@'))}>
                 Sign in
               </Button>
-              <Flex
-                width="400px"
-                ml="14px"
-                mt="12px"
-                justifyContent="space-between"
-              >
-                <Text
-                  cursor="pointer"
-                  fontSize="12px"
-                  color={theme.colors.primary["100"]}
-                >
+              <Flex width="400px" ml="14px" mt="12px" justifyContent="space-between">
+                <Text cursor="pointer" fontSize="12px" color={theme.colors.primary["100"]}>
                   <Link to="/forgot-password">Forgot Password ?</Link>
                 </Text>
                 <Flex>
@@ -142,8 +139,7 @@ const SignIn = () => {
                     cursor="pointer"
                     fontSize="12px"
                     ml="3px"
-                    color={theme.colors.primary["100"]}
-                  >
+                    color={theme.colors.primary["100"]}>
                     {" "}
                     <Link to="/sign-up">Sign up</Link>
                   </Text>
@@ -155,6 +151,6 @@ const SignIn = () => {
       </Center>
     </Flex>
   );
-};
+}
 
 export default SignIn;

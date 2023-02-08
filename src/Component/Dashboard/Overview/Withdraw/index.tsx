@@ -1,18 +1,22 @@
-import { Box, Button, FormControl, FormLabel, Grid, Input, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react'
+import {
+  Box, Button, FormControl, FormLabel, Grid, Input, Text, useDisclosure, useMediaQuery
+} from '@chakra-ui/react'
 import React from 'react'
 import { OverviewStates } from '../../../../Contexts/OverviewContext'
 import PaymentConfirmModal from '../../../shared/PaymentConfirmModal'
 import RoundedBackButton from '../../../shared/RoundedBackButton'
 import SearchBar from '../../../shared/SearchBar'
 
-const Index = (): JSX.Element => {
-  const { views, dispatchView, balance, setBalance } = OverviewStates()
+function Index(): JSX.Element {
+  const {
+    views, dispatchView, balance, setBalance
+  } = OverviewStates()
   const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
   const paymentConfirmModal = useDisclosure()
   const [isPaymentModalOpen, onPaymentModalOpen, onPaymentModalClose]: [isPaymentModalOpen: boolean, onPaymentModalOpen: () => void, onPaymentModalClose: () => void] = [paymentConfirmModal.isOpen, paymentConfirmModal.onOpen, paymentConfirmModal.onClose]
 
   const withdrawCallback = () => {
-    balance - 60000 > 0 ? setBalance(balance - 60000) : setBalance(0) // Will be the amount in production
+    if (balance - 60000 > 0) { setBalance(balance - 60000) } else { setBalance(0) } // Will be the amount in production
     dispatchView({ type: "change_overview_view", current_view: "overview" })
   }
   return (

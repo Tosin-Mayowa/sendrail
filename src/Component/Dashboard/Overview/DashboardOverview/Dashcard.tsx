@@ -13,12 +13,12 @@ import {
 
 interface Props {
   card: {
-    title: string,
-    count: number,
-    url: string
-  }
+    title: string;
+    count: number;
+    url: string;
+  };
 }
-const Dashcard: React.FC<Props> = ({ card }: Props) => {
+function Dashcard({ card }: Props): JSX.Element {
   const [isSmallerScreen] = useMediaQuery("(max-width: 480px)");
   const theme = useTheme();
   return (
@@ -61,6 +61,6 @@ const Dashcard: React.FC<Props> = ({ card }: Props) => {
       </Flex>
     </GridItem>
   );
-}
+};
 
 export default Dashcard;
