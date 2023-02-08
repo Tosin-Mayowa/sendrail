@@ -1,40 +1,36 @@
-import React, { useReducer } from "react";
+import React, { useReducer } from 'react';
 import {
   Flex,
   Box,
   Image,
   Center,
-
   Text,
   FormControl,
   Input,
   useTheme,
   FormLabel,
   Heading,
-  Button
-} from "@chakra-ui/react";
-import Logo from "../Asset/Logos/Onboarding/SENDRAILS.png";
-import Mark from "../Asset/Logos/Onboarding/Vector.png";
-import Ellipse from "../Asset/Logos/Onboarding/Ellipse.png";
+  Button,
+} from '@chakra-ui/react';
+import Logo from '../Asset/Logos/Onboarding/SENDRAILS.png';
+import Mark from '../Asset/Logos/Onboarding/Vector.png';
+import Ellipse from '../Asset/Logos/Onboarding/Ellipse.png';
 import { resetReducer } from '../reducers/resetReducer';
+
 const initialState = {
-  newPassword: '', confirmPass: ''
-}
-const ResetPassword = () => {
+  newPassword: '',
+  confirmPass: '',
+};
+function ResetPassword() {
   const theme = useTheme();
   const [state, dispatch] = useReducer(resetReducer, initialState);
- 
+
   const lowerCase = /[a-z]/;
   const upper = /[A-Z]/;
   const numb = /[0-9]/;
   const { confirmPass, newPassword } = state;
   return (
-    <Flex
-      flexDir="column"
-      width="100%"
-      height="1393px"
-      background={theme.colors.primary["100"]}
-    >
+    <Flex flexDir="column" width="100%" height="1393px" background={theme.colors.primary['100']}>
       <Flex mt="60px" ml="60px">
         <Image src={Logo} alt="Logo" />
         <Text
@@ -45,8 +41,7 @@ const ResetPassword = () => {
           display="flex"
           alignItems="center"
           textAlign="right"
-          color={theme.colors.primary.main}
-        >
+          color={theme.colors.primary.main}>
           Sendrail
         </Text>
       </Flex>
@@ -59,8 +54,7 @@ const ResetPassword = () => {
           width="500px"
           height="700px"
           bg="#FFFFFF"
-          borderRadius="12px"
-        >
+          borderRadius="12px">
           <Box>
             <Box width="400px">
               <Center>
@@ -82,19 +76,12 @@ const ResetPassword = () => {
                 lineHeight="22px"
                 mt="15px"
                 textAlign="center"
-                color="#ABA7A7"
-              >
+                color="#ABA7A7">
                 <Text>Create New Password</Text>
               </Box>
             </Box>
             <FormControl>
-              <FormLabel
-                mt="20px"
-                fontWeight="500"
-                fontSize="16px"
-                lineHeight="22px"
-                ml="15px"
-              >
+              <FormLabel mt="20px" fontWeight="500" fontSize="16px" lineHeight="22px" ml="15px">
                 Enter New Password
               </FormLabel>
               <Input
@@ -102,9 +89,7 @@ const ResetPassword = () => {
                 placeholder="password"
                 type="password"
                 ml="15px"
-                onChange={(e) =>
-                  dispatch({ type: "new password", payload: e.target.value })
-                }
+                onChange={(e) => dispatch({ type: 'new password', payload: e.target.value })}
                 padding="10px 12px 10px 10px"
                 width="400px"
                 height="44px"
@@ -119,13 +104,7 @@ const ResetPassword = () => {
               />
             </FormControl>
             <FormControl>
-              <FormLabel
-                mt="20px"
-                fontWeight="500"
-                fontSize="16px"
-                lineHeight="22px"
-                ml="15px"
-              >
+              <FormLabel mt="20px" fontWeight="500" fontSize="16px" lineHeight="22px" ml="15px">
                 Confirm Password
               </FormLabel>
               <Input
@@ -133,9 +112,10 @@ const ResetPassword = () => {
                 type="password"
                 value={confirmPass}
                 ml="15px"
-                onChange={(e) =>
+                onChange={
+                  (e) =>
                   dispatch({
-                    type: "confirm password",
+                    type: 'confirm password',
                     payload: e.target.value,
                   })
                 }
@@ -160,8 +140,7 @@ const ResetPassword = () => {
                 fontWeight="500"
                 fontSize="14px"
                 lineHeight="22px"
-                color="#1F1F1F"
-              >
+                color="#1F1F1F">
                 Password must
               </Heading>
               <Flex flexDir="column">
@@ -174,13 +153,7 @@ const ResetPassword = () => {
                     objectFit="cover"
                     alt="Ellipse"
                   />
-                  <Text
-                    fontWeight="400"
-                    fontSize="12px"
-                    lineHeight="22px"
-                    color="#1F1F1F"
-                    ml="9px"
-                  >
+                  <Text fontWeight="400" fontSize="12px" lineHeight="22px" color="#1F1F1F" ml="9px">
                     be at least 8 character long
                   </Text>
                 </Flex>
@@ -193,13 +166,7 @@ const ResetPassword = () => {
                     objectFit="cover"
                     alt="Ellipse"
                   />
-                  <Text
-                    fontWeight="400"
-                    fontSize="12px"
-                    lineHeight="22px"
-                    color="#1F1F1F"
-                    ml="9px"
-                  >
+                  <Text fontWeight="400" fontSize="12px" lineHeight="22px" color="#1F1F1F" ml="9px">
                     contain a lowercase letter (a-z)
                   </Text>
                 </Flex>
@@ -212,13 +179,7 @@ const ResetPassword = () => {
                     objectFit="cover"
                     alt="Ellipse"
                   />
-                  <Text
-                    fontWeight="400"
-                    fontSize="12px"
-                    lineHeight="22px"
-                    color="#1F1F1F"
-                    ml="9px"
-                  >
+                  <Text fontWeight="400" fontSize="12px" lineHeight="22px" color="#1F1F1F" ml="9px">
                     contain a uppercase letter (A-Z)
                   </Text>
                 </Flex>
@@ -231,13 +192,7 @@ const ResetPassword = () => {
                     objectFit="cover"
                     alt="Ellipse"
                   />
-                  <Text
-                    fontWeight="400"
-                    fontSize="12px"
-                    lineHeight="22px"
-                    color="#1F1F1F"
-                    ml="9px"
-                  >
+                  <Text fontWeight="400" fontSize="12px" lineHeight="22px" color="#1F1F1F" ml="9px">
                     contain a Number (0-9)
                   </Text>
                 </Flex>
@@ -254,8 +209,7 @@ const ResetPassword = () => {
                   lineHeight="22px"
                   color="#fff"
                   textAlign="center"
-                  isDisabled={confirmPass && newPassword ? false : true}
-                >
+                  isDisabled={!(confirmPass && newPassword)}>
                   Next
                 </Button>
               </Flex>
@@ -265,6 +219,6 @@ const ResetPassword = () => {
       </Center>
     </Flex>
   );
-};
+}
 
 export default ResetPassword;

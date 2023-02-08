@@ -1,52 +1,53 @@
 import React, { useState } from "react";
 import { Flex, Grid, Image, Link, Tab, TabList, Text } from "@chakra-ui/react";
-import { AiOutlineSwitcher } from "react-icons/ai";
-import Logo from "../../Asset/Logos/Onboarding/LOGO.png";
-import { AiTwotoneSetting } from "react-icons/ai";
+import { AiOutlineSwitcher, AiTwotoneSetting } from "react-icons/ai";
+
 import { MdLogin } from "react-icons/md";
 import { RiEBike2Fill } from "react-icons/ri";
 import { FaRegEnvelopeOpen } from "react-icons/fa";
 import { HiUserGroup, HiLink } from "react-icons/hi";
 import { TbLayoutNavbar, TbLayersSubtract } from "react-icons/tb";
-const SideBar = () => {
+import Logo from "../../Asset/Logos/Onboarding/LOGO.png";
+
+function SideBar() {
   const [tab] = useState<any>([
     {
       icon: <FaRegEnvelopeOpen size="18px" />,
-      text: "Dashboard"
+      text: "Dashboard",
     },
     {
       icon: <AiOutlineSwitcher size="18px" />,
-      text: "Shipment"
+      text: "Shipment",
     },
     {
       icon: <HiUserGroup size="18px" />,
-      text: "Customer"
+      text: "Customer",
     },
     {
       icon: <RiEBike2Fill size="18px" />,
-      text: "Rider"
+      text: "Rider",
     },
     {
       icon: <TbLayoutNavbar size="18px" />,
-      text: "Payroll"
+      text: "Payroll",
     },
     {
       icon: <TbLayersSubtract size="18px" />,
-      text: "Transactions"
+      text: "Transactions",
     },
     {
       icon: <HiLink size="18px" transform="rotateY('180deg')" />,
-      text: "Manage Link"
+      text: "Manage Link",
     },
     {
       icon: <AiTwotoneSetting size="18px" />,
-      text: "Settings"
+      text: "Settings",
     },
     {
       icon: <MdLogin size="18px" />,
-      text: "Logout"
-    }
-  ])
+      text: "Logout",
+    },
+  ]);
 
   return (
     <Flex
@@ -57,13 +58,8 @@ const SideBar = () => {
       left="0px"
       zIndex="3"
       width="100%"
-      height="100%"
-    >
-      <Grid
-        pl="35px"
-        w="100%"
-        my="40px"
-      >
+      height="100%">
+      <Grid pl="35px" w="100%" my="40px">
         <Link href="/">
           <Image src={Logo} alt="Sendrail" />
         </Link>
@@ -76,8 +72,7 @@ const SideBar = () => {
           fontWeight="500"
           color="#fff"
           fontSize="20px"
-          alignItems="flex-start"
-        >
+          alignItems="flex-start">
           {tab.map((item) => (
             <Tab
               p="10px 35px"
@@ -91,16 +86,15 @@ const SideBar = () => {
               // borderRight={item.text === "Dashboard" ? "5px solid #F9C567" : "none"}
               _selected={{
                 borderRight: "5px solid #F9C567",
-                color: "#F9C567"
-              }}
-            >
+                color: "#F9C567",
+              }}>
               <Flex
                 placeItems="center"
                 w="100%"
-              // borderRadius="4px"
-              // _hover={{
-              //   background: "#16134f"
-              // }}
+                // borderRadius="4px"
+                // _hover={{
+                //   background: "#16134f"
+                // }}
               >
                 {item.icon}
                 <Text whiteSpace="nowrap" ml="8px">
@@ -110,8 +104,8 @@ const SideBar = () => {
             </Tab>
           ))}
         </Flex>
-      </TabList >
-    </Flex >
+      </TabList>
+    </Flex>
   );
-};
+}
 export default SideBar;
