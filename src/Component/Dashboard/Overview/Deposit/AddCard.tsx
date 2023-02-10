@@ -4,7 +4,7 @@ import {
 } from '@chakra-ui/react'
 import React from 'react'
 import Access from '../../../../Asset/access-bank.png'
-import { OverviewStates } from '../../../../Contexts/OverviewContext'
+import { DashboardStates } from '../../../../Contexts/DashboardContext'
 
 type NewCardProps = {
     onOpen: () => void,
@@ -22,7 +22,7 @@ type NewCardProps = {
 function NewCard({ onOpen, cards_details }: NewCardProps): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const { cards, setCards } = cards_details
-    const { dispatchView } = OverviewStates();
+    const { dispatchView } = DashboardStates();
     const payload = {
         image: Access,
         name: "Dray Savage rey",
@@ -78,7 +78,7 @@ function NewCard({ onOpen, cards_details }: NewCardProps): JSX.Element {
                         const data = cards
                         data.push(payload)
                         setCards(data)
-                        dispatchView({ type: "change_overview_view", current_view: "deposit-1" })
+                        dispatchView({ type: "change_view", current_view: "deposit-1" })
                         onOpen()
                     }}
                 >
@@ -132,7 +132,7 @@ function AmountDetails({ onPaymentModalOpen }: AmountDetailsProps): JSX.Element 
 
 function NoCard(): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
-    const { dispatchView } = OverviewStates();
+    const { dispatchView } = DashboardStates();
 
     return (
         <Grid placeItems="center">
@@ -149,7 +149,7 @@ function NoCard(): JSX.Element {
                 justifyContent="center"
                 cursor="pointer"
 
-                onClick={() => dispatchView({ type: "change_overview_view", current_view: "deposit-2" })}
+                onClick={() => dispatchView({ type: "change_view", current_view: "deposit-2" })}
             >
                 <SmallAddIcon boxSize="25px" /><Text>Add A Debit Card For This Transaction</Text>
             </Grid>
@@ -168,7 +168,7 @@ type CardType = {
 }
 export function Card({ card }: CardType): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
-    const { dispatchView } = OverviewStates();
+    const { dispatchView } = DashboardStates();
 
     return (
         <Grid placeItems="center">
@@ -182,7 +182,7 @@ export function Card({ card }: CardType): JSX.Element {
                 my="10px"
                 cursor="pointer"
 
-                onClick={() => { dispatchView({ type: "change_overview_view", current_view: "deposit-3" }) }}
+                onClick={() => { dispatchView({ type: "change_view", current_view: "deposit-3" }) }}
             >
                 <Box mx="5px" borderRadius="50%" style={{ aspectRatio: "1/1" }}>
                     <Image src={card?.image} alt="" />
@@ -212,7 +212,7 @@ interface AddProps {
     onPaymentModalOpen: () => void
 }
 const AddCard: React.FC<AddProps> = ({ onOpen, cards_details, onPaymentModalOpen }) => {
-    const { views } = OverviewStates();
+    const { views } = DashboardStates();
 
     const fetchView = () => {
         if (views.current_view === "deposit-2") {

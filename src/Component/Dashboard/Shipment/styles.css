@@ -1,0 +1,16 @@
+.shipment-status-section::-webkit-scrollbar {
+    height: 7px;
+}
+
+.shipment-status-section::-webkit-scrollbar-track {
+    border-radius: 10px;
+    height: 0;
+    background-color: #ABA7A7;
+    border-top: 4px solid white;
+    border-bottom: 4px solid white;
+}
+
+.shipment-status-section::-webkit-scrollbar-thumb {
+    background: #D9D9D9;
+    border-radius: 10px;
+}

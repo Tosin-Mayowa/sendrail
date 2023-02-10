@@ -12,7 +12,7 @@ interface Props {
 }
 function SuccessModal({
     onClose, isOpen, text, callback
-}: Props) {
+}: Props): JSX.Element {
     return (
         <Modal
             blockScrollOnMount

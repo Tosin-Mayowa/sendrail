@@ -1,10 +1,11 @@
 import { HamburgerIcon } from '@chakra-ui/icons'
 import {
- Avatar, Box, Flex, Grid, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Text, useDisclosure, useMediaQuery 
+    Avatar, Box, Flex, Grid, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Text, useDisclosure, useMediaQuery
 } from '@chakra-ui/react'
 import React from 'react'
 import { FiBell } from 'react-icons/fi'
 import SearchBar from '../shared/SearchBar'
+import Logout from './LogoutModal'
 import MobileSideBar from './MobileSideBar'
 import NotificationsModal from './NotificationsModal'
 
@@ -59,6 +60,7 @@ function DashHeader(): JSX.Element {
                     </Text>
                 </Grid>
                 <NotificationsModal isOpen={isOpen} onClose={onClose} />
+                <Logout />
                 <Flex gap="10px">
                     {
                         !isSmallerScreen ?
@@ -91,39 +93,39 @@ function DashHeader(): JSX.Element {
                             </>
                             :
                             <Popover>
-                                    <PopoverTrigger>
-                                        <Avatar
-                                            size="md"
-                                            name="Ryan Florence"
-                                            src="https://bit.ly/ryan-florence"
-                                        />
-                                    </PopoverTrigger>
-                                    <PopoverContent w="100%">
-                                        <PopoverArrow />
-                                        <PopoverBody>
-                                            <Flex flexDir="column">
-                                                <Text
-                                                    fontSize="16px"
-                                                    lineHeight="26px"
-                                                    fontWeight="500"
-                                                    color="#7C7C88"
-                                                    flexWrap="nowrap"
-                                                    whiteSpace="nowrap"
-                                                >
-                                                    John Toe
-                                                </Text>
-                                                <Text
-                                                    fontSize="12px"
-                                                    lineHeight="14px"
-                                                    fontWeight="450"
-                                                    color="#7C7C88"
-                                                >
-                                                    Admin
-                                                </Text>
-                                            </Flex>
-                                        </PopoverBody>
-                                    </PopoverContent>
-                                </Popover>
+                                <PopoverTrigger>
+                                    <Avatar
+                                        size="md"
+                                        name="Ryan Florence"
+                                        src="https://bit.ly/ryan-florence"
+                                    />
+                                </PopoverTrigger>
+                                <PopoverContent w="100%">
+                                    <PopoverArrow />
+                                    <PopoverBody>
+                                        <Flex flexDir="column">
+                                            <Text
+                                                fontSize="16px"
+                                                lineHeight="26px"
+                                                fontWeight="500"
+                                                color="#7C7C88"
+                                                flexWrap="nowrap"
+                                                whiteSpace="nowrap"
+                                            >
+                                                John Toe
+                                            </Text>
+                                            <Text
+                                                fontSize="12px"
+                                                lineHeight="14px"
+                                                fontWeight="450"
+                                                color="#7C7C88"
+                                            >
+                                                Admin
+                                            </Text>
+                                        </Flex>
+                                    </PopoverBody>
+                                </PopoverContent>
+                            </Popover>
                     }
                 </Flex>
             </Flex>

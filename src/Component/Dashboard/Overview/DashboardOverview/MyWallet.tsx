@@ -1,14 +1,17 @@
 import {
-    Box, Button, Flex, Text, useMediaQuery
+    Box, Flex, Text, useMediaQuery
 } from '@chakra-ui/react'
 import React from 'react'
 import Wallet from "../../../../Asset/Logos/Onboarding/wallet.png";
+import { DashboardStates } from '../../../../Contexts/DashboardContext';
 import { OverviewStates } from '../../../../Contexts/OverviewContext';
 import useNumbers from '../../../../hooks/useNumbers'
+import CustomButton from '../../../shared/CustomButton';
 
 function MyWallet(): JSX.Element {
     const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
-    const { dispatchView, balance } = OverviewStates();
+    const { balance } = OverviewStates();
+    const { dispatchView } = DashboardStates()
     const { formatNormalNumbers } = useNumbers()
     return (
         <Box
@@ -64,34 +67,8 @@ function MyWallet(): JSX.Element {
                     fontSize="14px"
                     fontWeight="500"
                 >
-                    <Button
-                        padding="8px 24px"
-                        background="rgba(7, 5, 41, 0.9)"
-                        borderRadius="8px"
-                        color="#fff"
-
-                        _hover={{
-                            boxShadow: "0px 2px 2px 0px #070529a0"
-                        }}
-
-                        onClick={() => dispatchView({ type: "change_overview_view", current_view: "deposit-1" })}
-                    >
-                        Deposit
-                    </Button>
-                    <Button
-                        padding="8px 24px"
-                        background="rgba(7, 5, 41, 0.9)"
-                        borderRadius="8px"
-                        color="#fff"
-
-                        _hover={{
-                            boxShadow: "0px 2px 2px 0px #070529a0"
-                        }}
-
-                        onClick={() => dispatchView({ type: "change_overview_view", current_view: "withdraw-1" })}
-                    >
-                        Withdraw
-                    </Button>
+                    <CustomButton text='Deposit' onclick={() => dispatchView({ type: "change_view", current_view: "deposit-1" })} />
+                    <CustomButton text='Withdraw' onclick={() => dispatchView({ type: "change_view", current_view: "withdraw-1" })} />
                 </Flex>
             </Flex>
         </Box>

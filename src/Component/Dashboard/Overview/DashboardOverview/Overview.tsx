@@ -5,11 +5,6 @@ import {
   Box,
   useMediaQuery,
 } from "@chakra-ui/react";
-import Boxp from "../../../../Asset/Logos/Onboarding/Boxplus.png";
-import Group from "../../../../Asset/Logos/Onboarding/Group.png";
-import Bus from "../../../../Asset/Logos/Onboarding/Bus.png";
-import Pend from "../../../../Asset/Logos/Onboarding/pend.png";
-import Dashcard from "./Dashcard";
 import '../styles/overview.css'
 import InTransit from "./InTransit";
 import ShareLink from "./ShareLink";
@@ -17,16 +12,14 @@ import MyWallet from "./MyWallet";
 import Revenue from "./Revenue";
 import MostVisited from "./MostVisited";
 import BarChartOverview from "./BarChartOverview";
+import StatusCard from "../../../shared/StatusCard";
+import { DashboardStates } from "../../../../Contexts/DashboardContext";
+import { cardDetails } from '../../../../data/cardDetails'
 
 function Overview(): JSX.Element {
   const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
   const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
-  const cardDetails = [
-    { title: "Order", count: 1, url: Boxp },
-    { title: "Pending", count: 1, url: Pend },
-    { title: "In transit", count: 1, url: Bus },
-    { title: "Delivered", count: 1, url: Group },
-  ];
+  const { setTabIndex, setShipmentStatus } = DashboardStates()
   return (
     <Box
       w="100%"
@@ -49,8 +42,12 @@ function Overview(): JSX.Element {
         templateColumns={isSmallerScreen ? "1fr 1fr" : "repeat(4, 1fr)"}
         gap="10px"
       >
-        {cardDetails?.map((card) => (
-          <Dashcard key={card.title} card={card} />
+        {cardDetails.slice(0, 4)?.map((card) => (
+          <StatusCard key={card.title} card={card} onclick={() => {
+            setShipmentStatus(card.title)
+            setTabIndex(1)
+          }
+          } />
         ))}
       </Grid>
       <Grid

@@ -11,7 +11,7 @@ type Action = {
 }
 
 export const viewReducer = (state: State, action: Action) => {
-    if (action.type === "change_overview_view") {
+    if (action.type === "change_view") {
         if (action.current_view !== state.current_view) {
             return {
                 initial_view: state.current_view,

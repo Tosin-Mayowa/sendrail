@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Overview from './Overview'
 import OverviewContext from '../../Contexts/OverviewContext'
 import Payroll from './Payroll'
+import Shipment from './Shipment'
 
 function Empty(): JSX.Element {
   return <Text>Not Yet Implemented</Text>;
@@ -16,7 +17,7 @@ function DashTabs(): JSX.Element {
     },
     {
       key: 2,
-      component: <Empty />
+      component: <Shipment />
     },
     {
       key: 3,

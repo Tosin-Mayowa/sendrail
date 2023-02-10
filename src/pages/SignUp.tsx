@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from 'react'
+import React, { useCallback, useReducer, useState } from 'react'
 import '../Style/signUp.css'
 import {
   Flex,
@@ -14,12 +14,14 @@ import {
   useTheme,
   Highlight
 } from '@chakra-ui/react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import reducer from '../reducers/signupReducer'
 import Logo from '../Asset/Logos/Onboarding/SENDRAILS.png'
 import Mark from '../Asset/Logos/Onboarding/Vector.png'
 import Ellipse from '../Asset/Logos/Onboarding/Ellipse.png'
-import { signUpApi, IBusiness } from '../api/sign_up'
+import { IData } from '../api/sign_up'
+import requestClient from '../config/axios'
+import { handleError } from '../lib/utilities'
 
 const initialState = {
   bussName: '',
@@ -36,8 +38,9 @@ const initialState = {
 }
 function SignUp() {
   const theme = useTheme()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [loading, setLoading] = useState(false)
   // const passReg=/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
   const lowerCase = /[a-z]/
   const upper = /[A-Z]/
@@ -56,28 +59,31 @@ function SignUp() {
     password
   } = state
   const sendSignUp = useCallback(async () => {
-    const business: IBusiness = {
-      name: bussName,
-      type: select,
+    const payload: IData = {
+      business: {
+        name: bussName,
+        type: select,
+        address: bussAdd,
+        state: stateVal,
+        country: country
+      },
+      first_name: firstName,
+      last_name: lastName,
       address: bussAdd,
-      state: stateVal,
-      country: country
+      state: stateInfo,
+      country: countryInfo,
+      email: email,
+      password: password
     }
     try {
-      const resp = await signUpApi({
-        business,
-        first_name: firstName,
-        last_name: lastName,
-        address: bussAdd,
-        state: stateInfo,
-        country: countryInfo,
-        email: email,
-        password: password
-      })
-      console.log(resp)
-
+      console.log("Payload-", payload)
+      setLoading(true)
+      const resp = await requestClient.post("/auth/signup", JSON.stringify(payload))
+      setLoading(false)
+      return console.log("Response-", resp)
     } catch (error) {
-      console.log(error)
+      setLoading(false)
+      return console.log(handleError(error))
     }
 
   }, [])
@@ -443,7 +449,7 @@ function SignUp() {
                 fontSize="18px"
                 onClick={() => {
                   sendSignUp()
-                  navigate('/login')
+                  // navigate('/login')
                 }}
                 lineHeight={{ base: '10px', md: '15px', lg: '22px' }}
                 color="#F9C567"
@@ -451,6 +457,8 @@ function SignUp() {
                 _hover={{
                   background: '#16134f'
                 }}
+
+                isLoading={loading}
                 isDisabled={
                   !(
                     bussName &&

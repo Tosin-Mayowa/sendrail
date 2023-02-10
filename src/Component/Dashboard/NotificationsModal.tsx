@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import Empty from "../../Asset/empty-notifications.png"
 import RoundedBackButton from '../shared/RoundedBackButton'
 import TestText from '../shared/TestText'
+import { sampleData } from '../../data/notfications'
 
 interface Props {
     isOpen: boolean,
@@ -17,16 +18,6 @@ function NotificationsModal({ isOpen, onClose }: Props): JSX.Element {
         message: string,
         time: string
     }
-    const sampleData = [{
-        title: "John Toe",
-        message: "Order Successfully delivered",
-        time: "5 mins ago"
-    },
-    {
-        title: "SendRails",
-        message: "Order Available for pickup",
-        time: "7 hours ago"
-    }]
     const [notifications, setNotifications] = useState<Notification[] | null>(sampleData)
     return (
         <Modal

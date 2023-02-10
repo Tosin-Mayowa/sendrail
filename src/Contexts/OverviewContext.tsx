@@ -1,17 +1,8 @@
 import React, {
-    createContext, Dispatch, useContext, useMemo, useReducer, useState
+    createContext, useContext, useMemo, useState
 } from 'react'
-import { viewReducer } from '../reducers/dashboardViewReducer';
-
-type Action = {
-    type?: string,
-    current_view: string;
-    initial_view?: string;
-}
 
 type Context = {
-    views: Action,
-    dispatchView: Dispatch<Action>,
     balance: number,
     setBalance: any
 }
@@ -23,15 +14,13 @@ interface Props {
 }
 
 function OverviewContext({ children }: Props) {
-    const [views, dispatchView] = useReducer(viewReducer, { current_view: "overview", initial_view: null })
     const [balance, setBalance] = useState<number>(1250)
 
     const changes = {
-        views, dispatchView,
         balance, setBalance
     }
     const changesToWatch = {
-        views, balance
+        balance
     }
     const values = useMemo(() => (changes)
         , [changesToWatch])

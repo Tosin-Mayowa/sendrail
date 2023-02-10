@@ -1,11 +1,11 @@
 import React from 'react'
 import DashboardOverview from './DashboardOverview/Overview'
-import { OverviewStates } from '../../../Contexts/OverviewContext'
 import Withdraw from './Withdraw'
 import Deposit from './Deposit'
+import { DashboardStates } from '../../../Contexts/DashboardContext'
 
 function Index(): JSX.Element {
-    const { views } = OverviewStates();
+    const { views } = DashboardStates();
     switch (views?.current_view) {
         case "overview":
             return <DashboardOverview />;

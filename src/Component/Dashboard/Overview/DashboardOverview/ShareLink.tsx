@@ -1,5 +1,5 @@
 import {
- Box, Button, Text, useMediaQuery 
+  Box, Button, Text, useMediaQuery
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { copyTextToClipboard } from '../../../../lib/utilities';
