@@ -1,27 +1,59 @@
-
-interface State {
-    current_view: string;
-    initial_view: string;
+type Views = {
+    current_view?: string;
+    initial_view?: string;
+}
+export interface State {
+    overview?: Views,
+    shipment?: Views,
+    customer?: Views,
+    logout?: boolean
 }
 
-type Action = {
+export const emptyView = {
+    overview: { current_view: "-" },
+    shipment: { current_view: "-" },
+    customer: { current_view: "-" },
+    logout: false
+}
+
+export type Action = {
     type?: string,
-    current_view: string;
-    initial_view: string;
+    current_view?: string | boolean;
+    initial_view?: string;
+}
+
+const getReturns = (state: State, action: Action, view: string) => {
+    if (action.current_view === state[view].current_view) {
+        return {
+            [view]: {
+                initial_view: state[view].initial_view,
+                current_view: state[view].current_view,
+            }
+        }
+    }
+    return {
+        [view]: {
+            initial_view: state[view].current_view,
+            current_view: action.current_view,
+        }
+    }
 }
 
 export const viewReducer = (state: State, action: Action) => {
-    if (action.type === "change_view") {
-        if (action.current_view !== state.current_view) {
+    switch (action.type) {
+        case "change_overview_view":
+            return getReturns(state, action, "overview")
+        case "change_shipment_view":
+            return getReturns(state, action, "shipment")
+        case "logout":
             return {
-                initial_view: state.current_view,
-                current_view: action.current_view,
+                logout: Boolean(action.current_view)
             }
-        }
-        return {
-            initial_view: state.initial_view,
-            current_view: state.current_view,
-        }
+        case "clear_views":
+            return emptyView
+
+        default:
+            return state
     }
     return state
 }

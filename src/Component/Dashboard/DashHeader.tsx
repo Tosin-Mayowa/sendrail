@@ -5,7 +5,6 @@ import {
 import React from 'react'
 import { FiBell } from 'react-icons/fi'
 import SearchBar from '../shared/SearchBar'
-import Logout from './LogoutModal'
 import MobileSideBar from './MobileSideBar'
 import NotificationsModal from './NotificationsModal'
 
@@ -60,7 +59,6 @@ function DashHeader(): JSX.Element {
                     </Text>
                 </Grid>
                 <NotificationsModal isOpen={isOpen} onClose={onClose} />
-                <Logout />
                 <Flex gap="10px">
                     {
                         !isSmallerScreen ?

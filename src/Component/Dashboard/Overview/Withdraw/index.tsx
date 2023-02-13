@@ -21,7 +21,7 @@ function Index(): JSX.Element {
 
   const withdrawCallback = () => {
     if (balance - 60000 > 0) { setBalance(balance - 60000) } else { setBalance(0) } // Will be the amount in production
-    dispatchView({ type: "change_view", current_view: "overview" })
+    dispatchView({ type: "change_overview_view", current_view: "overview" })
   }
   return (
     <Grid
@@ -30,7 +30,7 @@ function Index(): JSX.Element {
     >
       <PaymentConfirmModal isPaymentModalOpen={isPaymentModalOpen} onPaymentModalClose={onPaymentModalClose} callback={withdrawCallback} />
       <Box w="100%">
-        <RoundedBackButton color='#070529' onclick={() => { dispatchView({ type: "change_view", current_view: views.initial_view }) }} />
+        <RoundedBackButton color='#070529' onclick={() => { dispatchView({ type: "change_overview_view", current_view: views?.overview?.initial_view }) }} />
       </Box>
       <Text as="h1" w="100%" my="20px" fontSize="24px" fontWeight="600">
         Withdraw

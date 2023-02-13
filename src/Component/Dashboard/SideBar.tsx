@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import {
- Flex, Grid, Image, Link, Tab, TabList, Text 
+  Flex, Grid, Image, Link, Tab, TabList, Text
 } from "@chakra-ui/react";
-import { AiOutlineSwitcher , AiTwotoneSetting } from "react-icons/ai";
+import { AiOutlineSwitcher, AiTwotoneSetting } from "react-icons/ai";
 
 import { MdLogin } from "react-icons/md";
 import { RiEBike2Fill } from "react-icons/ri";
@@ -10,6 +10,7 @@ import { FaRegEnvelopeOpen } from "react-icons/fa";
 import { HiUserGroup, HiLink } from "react-icons/hi";
 import { TbLayoutNavbar, TbLayersSubtract } from "react-icons/tb";
 import Logo from "../../Asset/Logos/Onboarding/LOGO.png";
+import { DashboardStates } from "../../Contexts/DashboardContext";
 function SideBar() {
   const [tab] = useState<any>([
     {
@@ -49,6 +50,7 @@ function SideBar() {
       text: "Logout"
     }
   ])
+  const { dispatchView } = DashboardStates()
 
   return (
     <Flex
@@ -65,6 +67,7 @@ function SideBar() {
         pl="35px"
         w="100%"
         my="40px"
+        cursor="pointer"
       >
         <Link href="/">
           <Image src={Logo} alt="Sendrail" />
@@ -79,6 +82,7 @@ function SideBar() {
           color="#fff"
           fontSize="20px"
           alignItems="flex-start"
+          onClick={() => dispatchView({ type: "clear_views" })}
         >
           {tab.map((item) => (
             <Tab
@@ -90,7 +94,6 @@ function SideBar() {
               textAlign="left"
               my="15px"
               key={item.text}
-              // borderRight={item.text === "Dashboard" ? "5px solid #F9C567" : "none"}
               _selected={{
                 borderRight: "5px solid #F9C567",
                 color: "#F9C567"
@@ -99,10 +102,6 @@ function SideBar() {
               <Flex
                 placeItems="center"
                 w="100%"
-              // borderRadius="4px"
-              // _hover={{
-              //   background: "#16134f"
-              // }} 
               >
                 {item.icon}
                 <Text whiteSpace="nowrap" ml="8px">

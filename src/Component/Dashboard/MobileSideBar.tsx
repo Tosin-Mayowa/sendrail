@@ -1,5 +1,5 @@
 import {
- Box, Drawer, DrawerContent, DrawerOverlay, Flex, Tab, TabList, Text 
+    Box, Drawer, DrawerContent, DrawerOverlay, Flex, Tab, TabList, Text
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { AiOutlineSwitcher, AiTwotoneSetting } from 'react-icons/ai'
@@ -9,6 +9,7 @@ import { MdLogin } from 'react-icons/md'
 import { RiEBike2Fill } from 'react-icons/ri'
 import { TbLayersSubtract, TbLayoutNavbar } from 'react-icons/tb'
 import logo from '../../Asset/Logos/Onboarding/signup.png'
+import { DashboardStates } from '../../Contexts/DashboardContext'
 
 interface Props {
     onClose: () => void,
@@ -53,6 +54,8 @@ function MobileSideBar({ onClose, isOpen }: Props): JSX.Element {
             text: "Logout"
         }
     ])
+    const { dispatchView } = DashboardStates()
+
     return (
         <Drawer placement='left' onClose={onClose} isOpen={isOpen} size="xs">
             <DrawerOverlay />
@@ -66,11 +69,7 @@ function MobileSideBar({ onClose, isOpen }: Props): JSX.Element {
                     backgroundRepeat="no-repeat"
                     backgroundSize="cover"
                     backgroundBlendMode="darken"
-
-                // style={{
-                //     aspectRatio: "2/1"
-                // }}
-                 />
+                />
                 <Box
                     background="#070529"
                     height="75vh"
@@ -97,7 +96,7 @@ function MobileSideBar({ onClose, isOpen }: Props): JSX.Element {
                                         color: "#F9C567"
                                     }}
 
-                                    onClick={onClose}
+                                    onClick={() => { dispatchView({ type: "clear_views" }); onClose() }}
                                 >
                                     <Flex
                                         placeItems="center"

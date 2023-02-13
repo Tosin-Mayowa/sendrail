@@ -8,7 +8,9 @@ import { OverviewStates } from '../../../../Contexts/OverviewContext'
 import PaymentConfirmModal from '../../../shared/PaymentConfirmModal'
 import RoundedBackButton from '../../../shared/RoundedBackButton'
 import SuccessModal from '../../../shared/SuccessModal'
-import AddCard, { Card } from './AddCard'
+import AddCard from './AddCard'
+import { BankAccount } from './BankAccount'
+import { Card } from './Card'
 
 function Index(): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
@@ -35,7 +37,7 @@ function Index(): JSX.Element {
     const [isPaymentModalOpen, onPaymentModalOpen, onPaymentModalClose]: [isPaymentModalOpen: boolean, onPaymentModalOpen: () => void, onPaymentModalClose: () => void] = [paymentConfirmModal.isOpen, paymentConfirmModal.onOpen, paymentConfirmModal.onClose]
     const depositCallback = () => {
         setBalance(balance + 60000) // Will be the amount in production
-        dispatchView({ type: "change_view", current_view: "overview" })
+        dispatchView({ type: "change_overview_view", current_view: "overview" })
     }
     return (
         <Grid
@@ -45,7 +47,7 @@ function Index(): JSX.Element {
             <SuccessModal isOpen={isOpen} onClose={onClose} text="Debit Card Added" />
             <PaymentConfirmModal isPaymentModalOpen={isPaymentModalOpen} onPaymentModalClose={onPaymentModalClose} callback={depositCallback} />
             <Box w="100%">
-                <RoundedBackButton color='#070529' onclick={() => { dispatchView({ type: "change_view", current_view: String(views?.initial_view) }) }} />
+                <RoundedBackButton color='#070529' onclick={() => { dispatchView({ type: "change_overview_view", current_view: String(views?.overview?.initial_view) }) }} />
             </Box>
             <Text as="h1" w="100%" my="20px" fontSize="24px" fontWeight="600">
                 Deposit with Card/Account
@@ -94,7 +96,7 @@ function Index(): JSX.Element {
                     <TabPanels>
                         <TabPanel>
                             {
-                                cards?.length !== 0 && views.current_view === "deposit-1" ?
+                                cards?.length !== 0 && views.overview.current_view === "deposit-1" ?
                                     <>
                                         {cards?.map((card) => (
                                             <Card card={card} key={card?.key} />)
@@ -110,7 +112,7 @@ function Index(): JSX.Element {
                                             cursor="pointer"
                                             key={Math.random()}
 
-                                            onClick={() => dispatchView({ type: "change_view", current_view: "deposit-2" })}
+                                            onClick={() => dispatchView({ type: "change_overview_view", current_view: "deposit-2" })}
                                         >
                                             <SmallAddIcon boxSize="25px" /><Text>Add A Debit Card For This Transaction</Text>
                                         </Grid>
@@ -123,7 +125,7 @@ function Index(): JSX.Element {
                             }
                         </TabPanel>
                         <TabPanel>
-                            Bank Account
+                            <BankAccount onPaymentModalOpen={onPaymentModalOpen} />
                         </TabPanel>
                     </TabPanels>
                 </Tabs>

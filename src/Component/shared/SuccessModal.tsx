@@ -3,21 +3,23 @@ import {
 } from '@chakra-ui/react'
 import React from 'react'
 import green_tick from '../../Asset/green-tick.png'
+import red_sad from '../../Asset/red_sad.png'
 
 interface Props {
     onClose: () => void,
     isOpen: boolean,
-    text?: string
+    text?: string,
+    type?: "success" | "error"
     callback?: () => void
 }
 function SuccessModal({
-    onClose, isOpen, text, callback
+    onClose, isOpen, text, callback, type
 }: Props): JSX.Element {
     return (
         <Modal
             blockScrollOnMount
             isOpen={isOpen}
-            onClose={onClose}
+            onClose={() => { onClose(); callback(); }}
             isCentered
         >
             <ModalOverlay />
@@ -35,16 +37,22 @@ function SuccessModal({
             >
                 <ModalBody>
                     <Flex flexDirection="column" justifyContent="center" h="100%" placeItems="center" textAlign="center" gap="20px">
-                        <Image src={green_tick} alt="Success" w="20%" />
+                        <Image src={type === "success" ? green_tick : red_sad} alt="" w="20%" />
+                        <Text
+                            textTransform="uppercase"
+                            color={type === "success" ? "#27EA60" : "#F32E2E"}
+                        >
+                            {type}
+                        </Text>
                         <Box
-                            color="#27AE60"
+                            color="#4A4A4A"
                             fontSize="22px"
                             fontWeight="700"
                         >
-                            {text}
+                            {type === "success" && text}
                         </Box>
                         <Button
-                            backgroundColor="#27EA60"
+                            backgroundColor={type === "success" ? "#27EA60" : "#F32E2E"}
                             color="#fff"
                             w="30%"
 
@@ -52,9 +60,9 @@ function SuccessModal({
 
                             }}
 
-                            onClick={callback ? () => { onClose(); callback(); } : onClose}
+                            onClick={() => { onClose(); callback(); }}
                         >
-                            Continue
+                            {type === "success" ? "Continue" : "Close"}
                         </Button>
                     </Flex>
                 </ModalBody>
@@ -73,6 +81,7 @@ SuccessModal.defaultProps = {
             </Text>
         </>
     ),
-    callback: () => { }
+    callback: () => { },
+    type: "success"
 }
 export default SuccessModal

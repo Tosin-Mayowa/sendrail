@@ -9,7 +9,7 @@ interface Props {
 
 function TestText({ text, onclick, color }: Props): JSX.Element {
     return (
-        <Text onClick={onclick} cursor="pointer" textDecoration="underline" color={color}>{text}[Test]</Text>
+        <Text onClick={onclick} cursor="pointer" textDecoration="underline" color={color} textAlign="center">{text}[Test]</Text>
     )
 }
 

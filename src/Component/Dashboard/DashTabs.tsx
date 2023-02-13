@@ -4,6 +4,7 @@ import Overview from './Overview'
 import OverviewContext from '../../Contexts/OverviewContext'
 import Payroll from './Payroll'
 import Shipment from './Shipment'
+import Customer from './Customer'
 
 function Empty(): JSX.Element {
   return <Text>Not Yet Implemented</Text>;
@@ -21,7 +22,7 @@ function DashTabs(): JSX.Element {
     },
     {
       key: 3,
-      component: <Empty />
+      component: <Customer />
     },
     {
       key: 4,

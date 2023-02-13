@@ -1,25 +1,27 @@
-import { Button, Grid, Modal, ModalContent, ModalOverlay, Text, useDisclosure } from '@chakra-ui/react'
-import React, { useEffect } from 'react'
-import { DashboardStates } from '../../Contexts/DashboardContext'
+import { Button, Grid, Modal, ModalContent, ModalOverlay, Text } from '@chakra-ui/react'
+import React from 'react'
 
 interface Props {
+  isOpen: boolean,
+  onClose: () => void,
   logout?: () => void // will be the actual logout function
 }
+
 function Logout({
+  isOpen,
+  onClose,
   logout
 }: Props): JSX.Element {
-  const { views } = DashboardStates()
-  const { isOpen, onOpen, onClose }: { isOpen: boolean, onOpen: () => void, onClose: () => void } = useDisclosure()
 
-  useEffect(() => {
-    if (views.current_view === "logout") onOpen()
-  }, [views.current_view])
+  const Cancel = () => {
+    onClose()
+  }
 
   return (
     <Modal
       blockScrollOnMount
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={Cancel}
       isCentered
     >
       <ModalOverlay />
@@ -38,7 +40,7 @@ function Logout({
             variant="outline"
             w="50%"
 
-            onClick={onClose}
+            onClick={Cancel}
           >Cancel</Button>
           <Button
             variant="solid"

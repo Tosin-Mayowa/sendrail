@@ -116,42 +116,6 @@ function InTransit(): JSX.Element {
                   }}
                   mt="-5px"
                 />
-                {/* 
-                                <Image
-                                    src={Circle}
-                                    alt="elipse"
-                                    style={{
-                                        aspectRatio: "1/1"
-                                    }}
-                                    mt="-5px"
-                                />
-                                <Image
-                                    src={LineL}
-                                    width="100%"
-                                    height="6px"
-                                    alt="line"
-                                />
-                                <Image
-                                    src={Bike}
-                                    alt="bike"
-                                    style={{
-                                        aspectRatio: "1/1"
-                                    }}
-                                    mt="-5px"
-                                />
-                                <Image
-                                    src={LineR}
-                                    alt="line"
-                                    width="100%"
-                                    height="6px"
-                                /><Image
-                                    src={Flag}
-                                    alt="flag"
-                                    style={{
-                                        aspectRatio: "1/1"
-                                    }}
-                                    mt="-5px"
-                                /> */}
               </Grid>
               <Flex
                 justifyContent="space-between"

@@ -6,7 +6,7 @@ import { DashboardStates } from '../../../Contexts/DashboardContext'
 
 function Index(): JSX.Element {
     const { views } = DashboardStates();
-    switch (views?.current_view) {
+    switch (views?.overview?.current_view) {
         case "overview":
             return <DashboardOverview />;
         case "withdraw-1":

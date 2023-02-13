@@ -55,7 +55,7 @@ function StatusCard({ card, dark, onclick }: Props) {
                     bg="#fff"
                     boxShadow={!dark ? "0px 0px 3px 0px #070529" : ""}
                 >
-                    <Image src={card?.url} alt="Order" />
+                    <Image src={card?.url} alt="Order" w="100%" />
                 </Box>
             </Flex>
         </GridItem>

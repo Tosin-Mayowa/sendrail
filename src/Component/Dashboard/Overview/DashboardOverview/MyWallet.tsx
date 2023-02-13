@@ -67,8 +67,8 @@ function MyWallet(): JSX.Element {
                     fontSize="14px"
                     fontWeight="500"
                 >
-                    <CustomButton text='Deposit' onclick={() => dispatchView({ type: "change_view", current_view: "deposit-1" })} />
-                    <CustomButton text='Withdraw' onclick={() => dispatchView({ type: "change_view", current_view: "withdraw-1" })} />
+                    <CustomButton text='Deposit' onclick={() => dispatchView({ type: "change_overview_view", current_view: "deposit-1" })} />
+                    <CustomButton text='Withdraw' onclick={() => dispatchView({ type: "change_overview_view", current_view: "withdraw-1" })} />
                 </Flex>
             </Flex>
         </Box>
