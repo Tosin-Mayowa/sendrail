@@ -9,7 +9,7 @@ interface Props {
     disabled?: boolean
 }
 function CustomButton({
- text, variant, onclick, size, disabled 
+    text, variant, onclick, size, disabled
 }: Props): JSX.Element {
     let background: string
     let color: string
@@ -25,6 +25,7 @@ function CustomButton({
     }
     return (
         <Button
+            variant={variant}
             padding="8px 24px"
             borderRadius="8px"
             background={background}
