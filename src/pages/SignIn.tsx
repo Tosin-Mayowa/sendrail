@@ -1,4 +1,5 @@
-import React, { useState,useCallback } from "react";
+import React, { useState, useCallback } from 'react'
+import { useAuth } from '../lib/hooks/useAuth'
 import {
   Flex,
   Box,
@@ -8,31 +9,36 @@ import {
   Text,
   FormControl,
   Input,
-  useTheme,
-} from "@chakra-ui/react";
-import { signInApi} from "../api/login"
-import { Link, useNavigate } from "react-router-dom";
-import Logo from "../Asset/Logos/Onboarding/SENDRAILS.png";
+  useTheme
+} from '@chakra-ui/react'
+import { Link, useNavigate } from 'react-router-dom'
+import { signInApi } from '../api/login'
+import Logo from '../Asset/Logos/Onboarding/SENDRAILS.png'
 
 function SignIn() {
-  const theme = useTheme();
-  const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { setAuth } = useAuth()
+  const theme = useTheme()
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
- const login = useCallback(async () => {
-   const resp = await signInApi({
-     email,
-     password
-   })
-   console.log(resp)
- }, [email,password])
-
-
+  const login = useCallback(async () => {
+    console.log({ email, password })
+    const resp = await signInApi({
+      email,
+      password
+    })
+    if (resp?.data?.success) {
+      const accessToken = resp?.data?.data?.token
+      const user = resp?.data?.data?.user
+      setAuth({ password, user, accessToken })
+      navigate('/dashboard')
+    }
+  }, [email, password])
 
   return (
-    <Flex width="100%" height="100vh" flexDir="column" background={theme.colors.primary["100"]}>
-      <Box mt="60px" ml="60px" display="flex">
+    <Flex width="100%" height="100vh" flexDir="column" background={theme.colors.primary['100']}>
+      <Box mt="60px" ml={{ base: '25px', md: '40px', lg: '60px' }} display="flex">
         <Image src={Logo} alt="Logo" />
         <Text
           ml="4px"
@@ -58,7 +64,7 @@ function SignIn() {
           borderRadius="12px">
           <Box>
             <Center>
-              <Box width="84px" mb="30px">
+              <Box width={{ base: '50px', md: '64px', lg: '84px' }} mb="30px">
                 <Center>
                   <Image src={Logo} alt="Onboarding Logo" pr="10px" />
                 </Center>
@@ -91,6 +97,7 @@ function SignIn() {
               />
               <Input
                 placeholder="Set password"
+                autoComplete=""
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -117,19 +124,19 @@ function SignIn() {
                 background={theme.colors.primary.main}
                 borderRadius="4px"
                 fontWeight="500"
-                onClick={() =>{
-                  login();
-                  navigate("/")
-                }}
+                onClick={login}
                 fontSize="18px"
                 lineHeight="22px"
                 color="#fff"
                 textAlign="center"
-                isDisabled={!(email && password && email.includes('@'))}>
+                isDisabled={!(email && password && email.includes('@'))}
+                _hover={{
+                  background: '#16134f'
+                }}>
                 Sign in
               </Button>
               <Flex width="400px" ml="14px" mt="12px" justifyContent="space-between">
-                <Text cursor="pointer" fontSize="12px" color={theme.colors.primary["100"]}>
+                <Text cursor="pointer" fontSize="12px" color={theme.colors.primary['100']}>
                   <Link to="/forgot-password">Forgot Password ?</Link>
                 </Text>
                 <Flex>
@@ -139,8 +146,8 @@ function SignIn() {
                     cursor="pointer"
                     fontSize="12px"
                     ml="3px"
-                    color={theme.colors.primary["100"]}>
-                    {" "}
+                    color={theme.colors.primary['100']}>
+                    {' '}
                     <Link to="/sign-up">Sign up</Link>
                   </Text>
                 </Flex>
@@ -150,7 +157,7 @@ function SignIn() {
         </Box>
       </Center>
     </Flex>
-  );
+  )
 }
 
-export default SignIn;
+export default SignIn

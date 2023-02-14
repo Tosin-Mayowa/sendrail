@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useCallback } from "react";
 import {
   Flex,
   Box,
@@ -12,11 +12,19 @@ import {
 } from "@chakra-ui/react";
 
 import Logo from "../Asset/Logos/Onboarding/SENDRAILS.png";
-
+import {forgotPass} from "../api/forgot_password";
 function ForgotPassword() {
   const [email, setEmail] = useState("");
   const theme = useTheme();
 
+ const newPassword = useCallback(async () => {
+   try {
+     const resp = await forgotPass(email)
+     console.log(resp)
+   } catch (e) {
+     console.log(e)
+   }
+ },[email])
   return (
     <Box
       position="absolute"
@@ -24,7 +32,7 @@ function ForgotPassword() {
       height="100vh"
       top="0px"
       left="0px"
-      background={theme.colors.primary["100"]}>
+      background={theme.colors.primary['100']}>
       <Flex mt="60px" ml="60px">
         <Image src={Logo} alt="Logo" />
         <Text
@@ -106,7 +114,11 @@ function ForgotPassword() {
                 lineHeight="22px"
                 color="#fff"
                 textAlign="center"
-                isDisabled={!email}>
+                isDisabled={!email}
+                onClick={() => newPassword()}
+                _hover={{
+                  background: '#16134f'
+                }}>
                 Next
               </Button>
             </FormControl>
@@ -114,7 +126,7 @@ function ForgotPassword() {
         </Box>
       </Center>
     </Box>
-  );
+  )
 }
 
 export default ForgotPassword;

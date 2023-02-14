@@ -1,4 +1,5 @@
 import React from "react";
+import {useAuth} from "../lib/hooks/useAuth";
 import { Grid, GridItem, useTheme, Tabs } from "@chakra-ui/react";
 
 import SideBar from "../Component/Dashboard/SideBar";
@@ -6,7 +7,9 @@ import DashHeader from "../Component/Dashboard/DashHeader";
 import DashPanels from "../Component/Dashboard/DashTabs";
 
 function Dashbord() {
+  const { auth } = useAuth();
   const theme = useTheme();
+console.log({auth});
 
   return (
     <Tabs>
@@ -15,7 +18,7 @@ function Dashbord() {
           <SideBar />
         </GridItem>
         <GridItem position="relative">
-          <DashHeader />
+          <DashHeader auth={auth} />
           <DashPanels />
         </GridItem>
       </Grid>

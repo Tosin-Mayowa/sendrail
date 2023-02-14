@@ -3,7 +3,8 @@ import { Avatar, Flex, Grid, Input, InputGroup, InputLeftElement, Text } from "@
 import React from "react";
 import { FiBell } from "react-icons/fi";
 
-function DashHeader(): JSX.Element {
+function DashHeader({auth}): JSX.Element {
+  
   return (
     <Flex
       position="fixed"
@@ -54,7 +55,7 @@ function DashHeader(): JSX.Element {
               color="#7C7C88"
               flexWrap="nowrap"
               whiteSpace="nowrap">
-              John Toe
+              {`${auth?.user?.first_name} ${auth?.user?.last_name}`}
             </Text>
             <Text fontSize="12px" lineHeight="14px" fontWeight="450" color="#7C7C88">
               Admin
@@ -63,7 +64,7 @@ function DashHeader(): JSX.Element {
         </Flex>
       </Flex>
     </Flex>
-  );
+  )
 }
 
 export default DashHeader;
