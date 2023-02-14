@@ -6,14 +6,12 @@ export interface State {
     overview?: Views,
     shipment?: Views,
     customer?: Views,
-    logout?: boolean
 }
 
 export const emptyView = {
     overview: { current_view: "-" },
     shipment: { current_view: "-" },
     customer: { current_view: "-" },
-    logout: false
 }
 
 export type Action = {
@@ -45,10 +43,8 @@ export const viewReducer = (state: State, action: Action) => {
             return getReturns(state, action, "overview")
         case "change_shipment_view":
             return getReturns(state, action, "shipment")
-        case "logout":
-            return {
-                logout: Boolean(action.current_view)
-            }
+        case "change_customer_view":
+            return getReturns(state, action, "customer")
         case "clear_views":
             return emptyView
 

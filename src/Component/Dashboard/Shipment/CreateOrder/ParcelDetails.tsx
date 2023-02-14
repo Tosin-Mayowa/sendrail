@@ -110,7 +110,7 @@ function ParcelDetails(): JSX.Element {
                                     <Select variant='filled' w="max-content" icon={<MdArrowDropDown />} background="#fff">
                                         {
                                             Array(10).fill(0).map((_, i) => i + 1).map((item) => (
-                                                <option value={item} label={String(item)} />
+                                                <option key={item} value={item} label={String(item)} />
                                             ))
                                         }
                                     </Select>
@@ -121,7 +121,7 @@ function ParcelDetails(): JSX.Element {
                                     <Select variant='filled' w="100%" icon={<MdArrowDropDown />} placeholder='Category' background="#fff">
                                         {
                                             categories?.map((item) => (
-                                                <option value={item} label={String(item)} />
+                                                <option key={item} value={item} label={String(item)} />
                                             ))
                                         }
                                     </Select>
