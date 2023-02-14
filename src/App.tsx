@@ -8,20 +8,23 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Overview from "./Component/Dashboard/Overview";
+import ProtectAuth from "./Component/ProtectAuth";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/login" element={<SignIn />} />
       <Route path="/verify" element={<Verification />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-Password" element={<ResetPass />} />
-      <Route path="/dashboard" element={<Dashboard />}>
-        <Route index element={<Overview />} />
+      <Route element={<ProtectAuth />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route index element={<Overview />} />
+        </Route>
       </Route>
     </Routes>
-  );
+  )
 }
 
 export default App;

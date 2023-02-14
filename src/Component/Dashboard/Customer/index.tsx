@@ -1,4 +1,6 @@
-import { Avatar, Box, Flex, Grid, Input, InputGroup, InputRightElement, Menu, MenuButton, MenuItem, MenuList, Select, Text, useMediaQuery } from '@chakra-ui/react'
+import {
+ Avatar, Box, Flex, Grid, Input, InputGroup, InputRightElement, Menu, MenuButton, MenuItem, MenuList, Select, Text, useMediaQuery 
+} from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { ChatIcon, PhoneIcon, SearchIcon } from '@chakra-ui/icons';
 import { GoKebabVertical } from 'react-icons/go';

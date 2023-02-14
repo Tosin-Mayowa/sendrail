@@ -1,4 +1,6 @@
-import { Button, FormControl, FormLabel, Grid, Input, useMediaQuery } from "@chakra-ui/react";
+import {
+ Button, FormControl, FormLabel, Grid, Input, useMediaQuery 
+} from "@chakra-ui/react";
 import React from "react";
 import Access from '../../../../Asset/access-bank.png'
 import { DashboardStates } from "../../../../Contexts/DashboardContext";

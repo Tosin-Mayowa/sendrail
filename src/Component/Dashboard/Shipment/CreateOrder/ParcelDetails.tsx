@@ -1,5 +1,7 @@
 import { SmallAddIcon } from '@chakra-ui/icons';
-import { Box, Button, Checkbox, CheckboxGroup, Flex, FormControl, FormLabel, Grid, Image, Input, Select, Stack, Text, useMediaQuery } from '@chakra-ui/react'
+import {
+ Box, Button, Checkbox, CheckboxGroup, Flex, FormControl, FormLabel, Grid, Image, Input, Select, Stack, Text, useMediaQuery 
+} from '@chakra-ui/react'
 import React, { useEffect, useRef, useState } from 'react'
 import { MdArrowDropDown } from 'react-icons/md';
 import { DashboardStates } from '../../../../Contexts/DashboardContext';

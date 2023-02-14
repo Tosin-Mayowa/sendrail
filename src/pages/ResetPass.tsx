@@ -112,12 +112,11 @@ function ResetPassword() {
                 type="password"
                 value={confirmPass}
                 ml="15px"
-                onChange={
-                  (e) =>
-                    dispatch({
-                      type: 'confirm password',
-                      payload: e.target.value,
-                    })
+                onChange={(e) =>
+                  dispatch({
+                    type: 'confirm password',
+                    payload: e.target.value
+                  })
                 }
                 padding="10px 12px 10px 10px"
                 width="400px"
@@ -209,7 +208,10 @@ function ResetPassword() {
                   lineHeight="22px"
                   color="#fff"
                   textAlign="center"
-                  isDisabled={!(confirmPass && newPassword)}>
+                  isDisabled={!(confirmPass && newPassword)}
+                  _hover={{
+                    background: '#16134f'
+                  }}>
                   Next
                 </Button>
               </Flex>
@@ -218,7 +220,7 @@ function ResetPassword() {
         </Box>
       </Center>
     </Flex>
-  );
+  )
 }
 
 export default ResetPassword;

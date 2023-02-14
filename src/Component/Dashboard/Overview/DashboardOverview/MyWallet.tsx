@@ -5,7 +5,7 @@ import React from 'react'
 import Wallet from "../../../../Asset/Logos/Onboarding/wallet.png";
 import { DashboardStates } from '../../../../Contexts/DashboardContext';
 import { OverviewStates } from '../../../../Contexts/OverviewContext';
-import useNumbers from '../../../../hooks/useNumbers'
+import useNumbers from '../../../../lib/hooks/useNumbers'
 import CustomButton from '../../../shared/CustomButton';
 
 function MyWallet(): JSX.Element {

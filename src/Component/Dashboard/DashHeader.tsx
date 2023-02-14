@@ -8,7 +8,7 @@ import SearchBar from '../shared/SearchBar'
 import MobileSideBar from './MobileSideBar'
 import NotificationsModal from './NotificationsModal'
 
-function DashHeader(): JSX.Element {
+function DashHeader({ auth }: { auth: any }): JSX.Element {
     const { isOpen, onOpen, onClose }: { isOpen: boolean, onOpen: () => void, onClose: () => void } = useDisclosure()
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const Drawer = useDisclosure()
@@ -77,7 +77,7 @@ function DashHeader(): JSX.Element {
                                         flexWrap="nowrap"
                                         whiteSpace="nowrap"
                                     >
-                                        John Toe
+                                        {`${auth?.user?.first_name} ${auth?.user?.last_name}`}
                                     </Text>
                                     <Text
                                         fontSize="12px"

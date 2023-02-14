@@ -1,4 +1,6 @@
-import { Box, Grid, Text, useMediaQuery } from '@chakra-ui/react'
+import {
+ Box, Grid, Text, useMediaQuery 
+} from '@chakra-ui/react'
 import React from 'react'
 import { DashboardStates } from '../../../../Contexts/DashboardContext';
 import { tableData } from '../../../../data/shipment';

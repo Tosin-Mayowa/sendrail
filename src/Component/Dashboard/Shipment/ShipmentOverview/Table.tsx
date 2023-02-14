@@ -1,5 +1,7 @@
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import { Checkbox, Flex, Grid, Text, useMediaQuery } from '@chakra-ui/react'
+import {
+ Checkbox, Flex, Grid, Text, useMediaQuery 
+} from '@chakra-ui/react'
 import React from 'react'
 import { GoKebabVertical } from 'react-icons/go';
 import { tableHeadings, TData } from '../../../../data/shipment';

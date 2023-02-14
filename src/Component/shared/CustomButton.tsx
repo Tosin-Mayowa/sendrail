@@ -8,7 +8,9 @@ interface Props {
     onclick: () => void,
     disabled?: boolean
 }
-function CustomButton({ text, variant, onclick, size, disabled }: Props): JSX.Element {
+function CustomButton({
+ text, variant, onclick, size, disabled 
+}: Props): JSX.Element {
     let background: string
     let color: string
     let border: string;

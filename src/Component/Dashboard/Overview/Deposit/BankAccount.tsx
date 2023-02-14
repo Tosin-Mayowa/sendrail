@@ -1,4 +1,6 @@
-import { Box, Button, FormControl, FormLabel, Grid, Input, useMediaQuery } from "@chakra-ui/react";
+import {
+ Box, Button, FormControl, FormLabel, Grid, Input, useMediaQuery 
+} from "@chakra-ui/react";
 import React from "react";
 import SearchBar from "../../../shared/SearchBar";
 

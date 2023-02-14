@@ -1,4 +1,6 @@
-import { Button, FormControl, FormLabel, Grid, Input, Text, useMediaQuery } from '@chakra-ui/react'
+import {
+ Button, FormControl, FormLabel, Grid, Input, Text, useMediaQuery 
+} from '@chakra-ui/react'
 import React from 'react'
 import { DashboardStates } from '../../../../Contexts/DashboardContext';
 

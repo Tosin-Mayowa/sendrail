@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
+
+import { useLocation, useNavigate } from 'react-router-dom'
 import {
+  FormHelperText,
   Flex,
   Box,
   Image,
@@ -11,9 +14,36 @@ import {
   Button,
 } from '@chakra-ui/react';
 import Logo from '../Asset/Logos/Onboarding/SENDRAILS.png';
+import { verify } from '../api/verify'
 
 function Verification() {
   const theme = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [code, setCode] = useState<string>('');
+  const [errState, setErrState] = useState<boolean>(true)
+
+  console.log(location, "ety");
+
+  console.log('code', errState)
+
+  const sendVerification = useCallback(async () => {
+    const { email } = location.state
+
+    console.log({ email, code });
+    console.log("hello");
+
+    const resp = await verify({
+      email,
+      code
+    })
+    console.log(resp)
+    if (resp.data.success) {
+      navigate('/login');
+
+    }
+    setErrState(resp.success)
+  }, [code, location])
   return (
     <Flex flexDir="column" width="100%" height="100vh" background={theme.colors.primary['100']}>
       <Flex mt="60px" ml="60px">
@@ -70,6 +100,8 @@ function Verification() {
                 placeholder="Enter verification code"
                 mt="30px"
                 ml="15px"
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
                 padding="10px 12px 10px 10px"
                 width="400px"
                 height="44px"
@@ -82,6 +114,14 @@ function Verification() {
                 color="#1F1F1F"
                 focusBorderColor={theme.colors.primary.main}
               />
+              <FormHelperText
+                fontWeight="500"
+                fontSize="14px"
+                lineHeight="22px"
+                ml="15px"
+                color="#FF0000">
+                {!errState ? 'invalid or expired code' : ''}
+              </FormHelperText>
 
               <Button
                 mt="70px"
@@ -95,7 +135,12 @@ function Verification() {
                 fontSize="18px"
                 lineHeight="22px"
                 color="#fff"
-                textAlign="center">
+                textAlign="center"
+                onClick={sendVerification}
+                _hover={{
+                  background: '#16134f'
+                }}
+                isDisabled={!code}>
                 Next
               </Button>
             </FormControl>
@@ -103,7 +148,7 @@ function Verification() {
         </Box>
       </Center>
     </Flex>
-  );
+  )
 }
 
 export default Verification;

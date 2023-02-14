@@ -1,5 +1,7 @@
 import React from 'react'
-import { Box, Flex, Grid, Image, Text, useMediaQuery } from "@chakra-ui/react";
+import {
+ Box, Flex, Grid, Image, Text, useMediaQuery 
+} from "@chakra-ui/react";
 import { DashboardStates } from "../../../../Contexts/DashboardContext";
 
 type CardType = {

@@ -1,4 +1,6 @@
-import { Box, Flex, GridItem, Image, Text, useMediaQuery } from '@chakra-ui/react'
+import {
+ Box, Flex, GridItem, Image, Text, useMediaQuery 
+} from '@chakra-ui/react'
 import React from 'react'
 
 interface Props {

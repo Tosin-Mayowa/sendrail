@@ -1,7 +1,9 @@
 import React, {
     createContext, Dispatch, SetStateAction, useContext, useMemo, useReducer, useState
 } from 'react'
-import { viewReducer, State, Action, emptyView } from '../reducers/dashboardViewReducer';
+import {
+ viewReducer, State, Action, emptyView 
+} from '../reducers/dashboardViewReducer';
 
 type Context = {
     views: State,

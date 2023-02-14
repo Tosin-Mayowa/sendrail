@@ -1,4 +1,6 @@
-import { Box, Checkbox, CheckboxGroup, Flex, Grid, Stack, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react'
+import {
+ Box, Checkbox, CheckboxGroup, Flex, Grid, Stack, Text, useDisclosure, useMediaQuery 
+} from '@chakra-ui/react'
 import React from 'react'
 import preview from '../../../../Asset/pc.png'
 import { DashboardStates } from '../../../../Contexts/DashboardContext';
