@@ -1,0 +1,55 @@
+.card-wrapper:hover {
+    background-color: #070529;
+    color: #fff;
+    cursor: pointer;
+}
+
+.card-wrapper:hover.card-title,
+.card-wrapper:hover .card-details {
+    color: #fff !important;
+}
+
+.circle,
+.flag,
+.line-r,
+.line-l,
+.bike {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.card-wrapper:hover .circle {
+    background: url("../../../../Asset/Logos/Onboarding/hover_circle.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.card-wrapper:hover .line-l {
+    background: url("../../../../Asset/Logos/Onboarding/hover_lineL.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.card-wrapper:hover .bike {
+    background: url("../../../../Asset/Logos/Onboarding/hover_bike.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.card-wrapper:hover .line-r {
+    background: url("../../../../Asset/Logos/Onboarding/hover_lineR.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.card-wrapper:hover .flag {
+    background: url("../../../../Asset/Logos/Onboarding/hover_flag.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}

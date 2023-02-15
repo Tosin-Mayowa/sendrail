@@ -34,12 +34,12 @@ const initialState = {
   email: '',
   password: ''
 }
-const SignUp = () => {
+function SignUp() {
   const theme = useTheme()
   const navigate = useNavigate()
   const [state, dispatch] = useReducer(reducer, initialState)
   // const passReg=/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
- 
+
   const lowerCase = /[a-z]/
   const upper = /[A-Z]/
   const numb = /[0-9]/
@@ -77,23 +77,23 @@ const SignUp = () => {
     console.log('busname', config)
     const resp = await signUpApi(config)
     console.log(resp);
-    if(resp){
-      
-       navigate('/verify', { state: { email} })
+    if (resp) {
+
+      navigate('/verify', { state: { email } })
     }
   }, [
-     bussName,
-        select,
-        bussAdd,
-        stateVal,
-        country,
-      firstName,
-      lastName,
-      bussAdd,
-      stateInfo,
-      countryInfo,
+    bussName,
+    select,
+    bussAdd,
+    stateVal,
+    country,
+    firstName,
+    lastName,
+    bussAdd,
+    stateInfo,
+    countryInfo,
     email,
-      password
+    password
   ])
 
   return (
@@ -372,7 +372,7 @@ const SignUp = () => {
               color="#1F1F1F">
               Password must
             </Heading>
-            
+
             <Flex flexDir="column">
               <Flex ml={{ base: '25px', md: '40px', lg: '60px' }} mt="12px">
                 <Image

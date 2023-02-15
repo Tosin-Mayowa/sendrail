@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { useAuth } from '../lib/hooks/useAuth'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   Flex,
   Box,
@@ -11,7 +11,7 @@ import {
   Input,
   useTheme
 } from '@chakra-ui/react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../lib/hooks/useAuth'
 import { signInApi } from '../api/login'
 import Logo from '../Asset/Logos/Onboarding/SENDRAILS.png'
 
@@ -96,7 +96,7 @@ function SignIn() {
                 focusBorderColor={theme.colors.primary.main}
               />
               <Input
-                placeholder="Set password"
+                placeholder="Password"
                 autoComplete=""
                 type="password"
                 value={password}

@@ -1,6 +1,10 @@
-import { TabPanel, TabPanels, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
-import Overview from "./Overview/Overview";
+import { TabPanel, TabPanels, Text } from '@chakra-ui/react'
+import React, { useState } from 'react'
+import Overview from './Overview'
+import OverviewContext from '../../Contexts/OverviewContext'
+import Payroll from './Payroll'
+import Shipment from './Shipment'
+import Customer from './Customer'
 
 function Empty(): JSX.Element {
   return <Text>Not Yet Implemented</Text>;
@@ -10,48 +14,55 @@ function DashTabs(): JSX.Element {
   const [panels] = useState<any>([
     {
       key: 1,
-      component: <Overview />,
+      component: (<OverviewContext><Overview /></OverviewContext>)
     },
     {
       key: 2,
-      component: <Empty />,
+      component: <Shipment />
     },
     {
       key: 3,
-      component: <Empty />,
+      component: <Customer />
     },
     {
       key: 4,
-      component: <Empty />,
+      component: <Empty />
     },
     {
       key: 5,
-      component: <Empty />,
+      component: <Payroll />
     },
     {
       key: 6,
-      component: <Empty />,
+      component: <Empty />
     },
     {
       key: 7,
-      component: <Empty />,
+      component: <Empty />
     },
     {
       key: 8,
-      component: <Empty />,
+      component: <Empty />
     },
     {
       key: 9,
-      component: <Empty />,
-    },
-  ]);
+      component: <Empty />
+    }
+  ])
   return (
-    <TabPanels mt="90px">
-      {panels?.map((item: any) => (
-        <TabPanel key={item.key}>{item.component}</TabPanel>
-      ))}
+    <TabPanels
+      mt="80px"
+      w="100%"
+    >
+      {
+        panels?.map((item: any) => (
+          <TabPanel key={item.key}>
+            {item.component}
+          </TabPanel>
+        ))
+      }
     </TabPanels>
-  );
+  )
 }
 
-export default DashTabs;
+export default DashTabs

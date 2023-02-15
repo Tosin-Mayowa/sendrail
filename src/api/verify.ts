@@ -1,5 +1,5 @@
 import requestClient from '../config/axios'
-import { handleError } from './../lib/utilities'
+import { handleError } from "../lib/utilities"
 type IVerify = {
   email: string
   confirm_email_token: string

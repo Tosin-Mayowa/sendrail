@@ -7,7 +7,7 @@ import ResetPass from "./pages/ResetPass";
 import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
-import Overview from "./Component/Dashboard/Overview/Overview";
+import Overview from "./Component/Dashboard/Overview";
 import ProtectAuth from "./Component/ProtectAuth";
 function App() {
   return (

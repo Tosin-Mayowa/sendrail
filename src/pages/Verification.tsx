@@ -1,4 +1,4 @@
-import React,{useCallback,useState} from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { useLocation, useNavigate } from 'react-router-dom'
 import {
@@ -20,8 +20,8 @@ function Verification() {
   const theme = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
-const [code,setCode]=useState<string>('');
-const [errState,setErrState]=useState<boolean>(true)
+  const [code, setCode] = useState<string>('');
+  const [errState, setErrState] = useState<boolean>(true)
 
 
 
@@ -40,7 +40,7 @@ const [errState,setErrState]=useState<boolean>(true)
 
     }
     setErrState(resp.success)
-  }, [code,location])
+  }, [code, location])
   return (
     <Flex flexDir="column" width="100%" height="100vh" background={theme.colors.primary['100']}>
       <Flex mt="60px" ml="60px">
@@ -137,7 +137,7 @@ const [errState,setErrState]=useState<boolean>(true)
                 _hover={{
                   background: '#16134f'
                 }}
-                isDisabled={code?false:true}>
+                isDisabled={!code}>
                 Next
               </Button>
             </FormControl>

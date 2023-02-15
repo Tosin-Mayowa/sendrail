@@ -1,5 +1,5 @@
 import requestClient from '../config/axios';
-import { handleError } from './../lib/utilities';
+import { handleError } from "../lib/utilities";
 
 
 export const forgotPass = async (email:string) => {
