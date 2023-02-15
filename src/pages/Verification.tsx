@@ -23,22 +23,19 @@ function Verification() {
 const [code,setCode]=useState<string>('');
 const [errState,setErrState]=useState<boolean>(true)
 
-console.log(location,"ety");
 
-console.log('code',errState)
 
   const sendVerification= useCallback(async () => {
     const  email=location.state.email
     
-    console.log({email,code});
-    console.log("hello");
+ 
     
     const resp = await verify({
-     email,
-      code
+      email,
+      confirm_email_token:code
     })
-    console.log(resp)
-    if (resp.success) {
+    
+    if (resp?.success) {
       navigate('/login');
 
     }
