@@ -32,19 +32,26 @@ function DashboardContext({ children }: Props): JSX.Element {
         "Pending"
     >("Order");
 
-    const changes = {
-        views, dispatchView,
-        tabIndex, setTabIndex,
-        shipmentStatus, setShipmentStatus
-    }
-    const changesToWatch = {
-        views, tabIndex, shipmentStatus
-    }
-    const values = useMemo(() => (changes)
-        , [changes])
+   
+    const changes = useMemo(
+      () => ({
+        views,
+        dispatchView,
+        tabIndex,
+        setTabIndex,
+        shipmentStatus,
+        setShipmentStatus
+      }),
+      [views, dispatchView, tabIndex, setTabIndex, shipmentStatus, setShipmentStatus]
+    )
+    // const changesToWatch = {
+    //     views, tabIndex, shipmentStatus
+    // }
+    // const values = useMemo(() => (changes)
+
     return (
         <Provider.Provider
-            value={values}
+            value={changes}
         >
             {children}
         </Provider.Provider>

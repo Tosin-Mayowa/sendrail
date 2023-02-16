@@ -16,17 +16,21 @@ interface Props {
 function OverviewContext({ children }: Props) {
     const [balance, setBalance] = useState<number>(1250)
 
-    const changes = {
-        balance, setBalance
-    }
-    const changesToWatch = {
-        balance
-    }
-    const values = useMemo(() => (changes)
-        , [changes])
+    const changes = useMemo(
+      () => ({
+        balance,
+        setBalance
+      }),
+      [balance, setBalance]
+    )
+    // const changesToWatch = {
+    //     balance
+    // }
+    // const values = useMemo(() => (changes)
+    //     , [changes])
     return (
         <Provider.Provider
-            value={values}
+            value={changes}
         >
             {children}
         </Provider.Provider>
