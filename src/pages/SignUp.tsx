@@ -93,7 +93,7 @@ function SignUp() {
     stateInfo,
     countryInfo,
     email,
-    password
+    password,navigate
   ])
 
   return (

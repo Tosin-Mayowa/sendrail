@@ -23,7 +23,7 @@ function OverviewContext({ children }: Props) {
         balance
     }
     const values = useMemo(() => (changes)
-        , [changesToWatch])
+        , [changesToWatch,changes])
     return (
         <Provider.Provider
             value={values}

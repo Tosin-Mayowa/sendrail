@@ -41,7 +41,7 @@ function DashboardContext({ children }: Props): JSX.Element {
         views, tabIndex, shipmentStatus
     }
     const values = useMemo(() => (changes)
-        , [changesToWatch])
+        , [changesToWatch,changes])
     return (
         <Provider.Provider
             value={values}

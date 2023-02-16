@@ -51,5 +51,5 @@ export const viewReducer = (state: State, action: Action) => {
         default:
             return state
     }
-    return state
+
 }

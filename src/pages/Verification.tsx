@@ -40,7 +40,7 @@ function Verification() {
 
     }
     setErrState(resp.success)
-  }, [code, location])
+  }, [code, location,navigate])
   return (
     <Flex flexDir="column" width="100%" height="100vh" background={theme.colors.primary['100']}>
       <Flex mt="60px" ml="60px">
