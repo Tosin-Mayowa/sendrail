@@ -46,7 +46,7 @@ function Index(): JSX.Element {
         }
         const filtered = tableData.filter((e) => e.delivery_status === shipmentStatus)
         return setData(filtered)
-    }, [tableData, shipmentStatus])
+    }, [ shipmentStatus])
 
     const assignOptions = () => {
         if (disabled) {

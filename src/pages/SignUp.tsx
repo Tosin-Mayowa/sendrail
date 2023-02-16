@@ -89,7 +89,7 @@ function SignUp() {
     country,
     firstName,
     lastName,
-    bussAdd,
+ 
     stateInfo,
     countryInfo,
     email,

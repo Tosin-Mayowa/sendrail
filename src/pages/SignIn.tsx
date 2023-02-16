@@ -34,7 +34,7 @@ function SignIn() {
       setAuth({ password, user, accessToken })
       navigate('/dashboard')
     }
-  }, [email, password,navigate])
+  }, [email, password,navigate,setAuth])
 
   return (
     <Flex width="100%" height="100vh" flexDir="column" background={theme.colors.primary['100']}>
