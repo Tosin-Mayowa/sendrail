@@ -1,6 +1,9 @@
 import axios from "axios";
 
-
+export const axiosPrivate = axios.create({
+  baseURL: 'https://send-rail-api-production.up.railway.app/v1',
+  withCredentials:true
+})
 const requestClient = axios.create({
   baseURL: 'https://send-rail-api-production.up.railway.app/v1',
   timeout: 30000,

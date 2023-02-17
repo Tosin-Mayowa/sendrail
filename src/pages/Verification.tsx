@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react'
 
 import { useLocation, useNavigate } from 'react-router-dom'
 import {
@@ -11,36 +11,31 @@ import {
   FormControl,
   Input,
   useTheme,
-  Button,
-} from '@chakra-ui/react';
-import Logo from '../Asset/Logos/Onboarding/SENDRAILS.png';
+  Button
+} from '@chakra-ui/react'
+import Logo from '../Asset/Logos/Onboarding/SENDRAILS.png'
 import { verify } from '../api/verify'
 
 function Verification() {
-  const theme = useTheme();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [code, setCode] = useState<string>('');
+  const theme = useTheme()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const [code, setCode] = useState<string>('')
   const [errState, setErrState] = useState<boolean>(true)
 
+  const sendVerification = useCallback(async () => {
+    const email = location.state.email
 
-
-  const sendVerification= useCallback(async () => {
-    const  email=location.state.email
-    
- 
-    
     const resp = await verify({
       email,
-      confirm_email_token:code
+      confirm_email_token: code
     })
-    
-    if (resp?.success) {
-      navigate('/login');
 
+    if (resp?.data?.success) {
+      navigate('/login')
     }
-    setErrState(resp.success)
-  }, [code, location,navigate])
+    setErrState(resp?.data?.success)
+  }, [code, location, navigate])
   return (
     <Flex flexDir="column" width="100%" height="100vh" background={theme.colors.primary['100']}>
       <Flex mt="60px" ml="60px">
@@ -116,7 +111,7 @@ function Verification() {
                 fontSize="14px"
                 lineHeight="22px"
                 ml="15px"
-                color="#FF0000">
+                color= '#FF0000'>
                 {!errState ? 'invalid or expired code' : ''}
               </FormHelperText>
 
@@ -148,4 +143,4 @@ function Verification() {
   )
 }
 
-export default Verification;
+export default Verification
