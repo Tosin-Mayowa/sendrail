@@ -1,38 +1,45 @@
-import React, {
-    createContext, useContext, useMemo, useState
-} from 'react'
+// Depreciated
+export { }
 
-type Context = {
-    balance: number,
-    setBalance: any
-}
+// import React, {
+//     createContext, Dispatch, SetStateAction, useContext, useMemo, useState
+// } from 'react'
 
-const Provider = createContext<Context>(null);
+// type Context = {
+//     balance?: number,
+//     setBalance?: Dispatch<SetStateAction<number>>
+// }
 
-interface Props {
-    children: JSX.Element
-}
+// const Provider = createContext<Context>({});
 
-function OverviewContext({ children }: Props) {
-    const [balance, setBalance] = useState<number>(1250)
+// interface Props {
+//     children: JSX.Element
+// }
 
-    const changes = {
-        balance, setBalance
-    }
-    const changesToWatch = {
-        balance
-    }
-    const values = useMemo(() => (changes)
-        , [changesToWatch])
-    return (
-        <Provider.Provider
-            value={values}
-        >
-            {children}
-        </Provider.Provider>
-    )
-}
+// function OverviewContext({ children }: Props) {
+//     const [balance, setBalance] = useState<number>(1250)
+//     console.log(balance)
+//     const changes = useMemo(
+//         () => ({
+//             balance,
+//             setBalance
+//         }),
+//         [balance]
+//     )
+//     // const changesToWatch = {
+//     //     balance
+//     // }
+//     // const values = useMemo(() => (changes)
+//     //     , [changes])
+//     return (
+//         <Provider.Provider
+//             value={changes}
+//         >
+//             {children}
+//         </Provider.Provider>
+//     )
+// }
 
-export default OverviewContext
+// export default OverviewContext
 
-export const OverviewStates = () => useContext(Provider)
+// export const OverviewStates = () => useContext(Provider)

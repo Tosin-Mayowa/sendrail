@@ -1,17 +1,13 @@
 import { SmallAddIcon } from '@chakra-ui/icons';
 import {
- Box, Button, Checkbox, CheckboxGroup, Flex, FormControl, FormLabel, Grid, Image, Input, Select, Stack, Text, useMediaQuery 
+    Box, Button, Checkbox, CheckboxGroup, Flex, FormControl, FormLabel, Grid, Image, Input, Select, Stack, Text, useMediaQuery
 } from '@chakra-ui/react'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 import { MdArrowDropDown } from 'react-icons/md';
-import { DashboardStates } from '../../../../Contexts/DashboardContext';
 
-function ParcelDetails(): JSX.Element {
+function ParcelDetails({ setSection }: { setSection: Dispatch<SetStateAction<string>> }): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const file = useRef<HTMLInputElement>(null)
-    const {
-        dispatchView
-    } = DashboardStates()
     const [categories] = useState<string[]>([
         "Computer Accessories",
         "Skin Care",
@@ -153,7 +149,7 @@ function ParcelDetails(): JSX.Element {
                         border="1px solid #ABA7A7"
                         borderRadius="4px"
                         my="20px"
-                        onClick={() => { dispatchView({ type: "change_shipment_view", current_view: "confirm-parcel-details" }) }}
+                        onClick={() => { setSection("confirm-parcel-details") }}
                     >
                         Next
                     </Button>

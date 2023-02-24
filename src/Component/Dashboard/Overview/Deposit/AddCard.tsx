@@ -1,33 +1,27 @@
-import React from 'react'
-import { DashboardStates } from '../../../../Contexts/DashboardContext'
+import React, { Dispatch, SetStateAction } from 'react'
 import { AmountDetails } from './AmountDetails'
 import { NewCard } from './NewCard'
 import { NoCard } from './NoCard'
 
 interface AddProps {
-    onOpen: () => void,
-    cards_details: {
-        cards: {
-            image: string,
-            name: string,
-            card: string,
-            bank: string,
-            key: number
-        }[],
+    details: {
+        section: number,
+        setSection: Dispatch<SetStateAction<number>>,
+        cards: any,
         setCards: any
-    },
+    }
     onPaymentModalOpen: () => void
 }
-const AddCard: React.FC<AddProps> = ({ onOpen, cards_details, onPaymentModalOpen }) => {
-    const { views } = DashboardStates();
+const AddCard: React.FC<AddProps> = ({ details, onPaymentModalOpen }) => {
+    const { section, setSection, cards, setCards } = details;
 
     const fetchView = () => {
-        if (views?.overview?.current_view === "deposit-2") {
-            return <NewCard onOpen={onOpen} cards_details={cards_details} />
-        } if (views?.overview?.current_view === "deposit-3") {
+        if (section === 2) {
+            return <NewCard cards={cards} setCards={setCards} setSection={setSection} />
+        } if (section === 3) {
             return <AmountDetails onPaymentModalOpen={onPaymentModalOpen} />
         }
-        return <NoCard />
+        return <NoCard setSection={setSection} />
     }
     return (
         fetchView()

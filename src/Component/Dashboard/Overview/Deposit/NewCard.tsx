@@ -1,36 +1,33 @@
 import {
- Button, FormControl, FormLabel, Grid, Input, useMediaQuery 
+    Button, FormControl, FormLabel, Grid, Input, useDisclosure, useMediaQuery
 } from "@chakra-ui/react";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import Access from '../../../../Asset/access-bank.png'
-import { DashboardStates } from "../../../../Contexts/DashboardContext";
+import { setWithExpiry } from "../../../../lib/localStorage";
+import SuccessModal from "../../../shared/SuccessModal";
 
 type NewCardProps = {
-    onOpen: () => void,
-    cards_details: {
-        cards: {
-            image: string,
-            name: string,
-            card: string,
-            bank: string,
-            key: number
-        }[],
-        setCards: any
-    },
+    cards: any,
+    setCards: any,
+    setSection: Dispatch<SetStateAction<number>>
 }
-export function NewCard({ onOpen, cards_details }: NewCardProps): JSX.Element {
+export function NewCard({ cards, setCards, setSection }: NewCardProps): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
-    const { cards, setCards } = cards_details
-    const { dispatchView } = DashboardStates();
+    const { isOpen, onOpen, onClose }: { isOpen: boolean, onOpen: () => void, onClose: () => void } = useDisclosure()
     const payload = {
         image: Access,
         name: "Dray Savage rey",
         card: "09********65",
         bank: "Access Bank",
-        key: cards[cards.length - 1] ? cards[cards.length - 1].key + 1 : 1
+        key: cards?.length > 0 ? cards[cards?.length - 1].key + 1 : 1 // Just for testing, will be an actual ID after connecting to BE
+    }
+    const close = () => {
+        onClose()
+        setSection(1)
     }
     return (
         <form>
+            <SuccessModal isOpen={isOpen} onClose={close} text="Debit Card Added" />
             <Grid gridTemplateColumns={isSmallerScreen ? "1fr" : "1fr 1fr"} gap="15px" my="15px" placeItems="center">
                 <FormControl>
                     <FormLabel color="#ABA7A7">Email</FormLabel>
@@ -74,10 +71,10 @@ export function NewCard({ onOpen, cards_details }: NewCardProps): JSX.Element {
                     border="1px solid #ABA7A7"
                     borderRadius="4px"
                     onClick={() => {
-                        const data = cards
+                        const data = cards ? cards : [] // :P
                         data.push(payload)
+                        setWithExpiry("cards", data)
                         setCards(data)
-                        dispatchView({ type: "change_overview_view", current_view: "deposit-1" })
                         onOpen()
                     }}
                 >

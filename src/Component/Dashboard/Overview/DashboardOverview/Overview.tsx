@@ -6,6 +6,7 @@ import {
   useMediaQuery,
 } from "@chakra-ui/react";
 import '../styles/overview.css'
+import { useNavigate } from "react-router-dom";
 import InTransit from "./InTransit";
 import ShareLink from "./ShareLink";
 import MyWallet from "./MyWallet";
@@ -13,20 +14,19 @@ import Revenue from "./Revenue";
 import MostVisited from "./MostVisited";
 import BarChartOverview from "./BarChartOverview";
 import StatusCard from "../../../shared/StatusCard";
-import { DashboardStates } from "../../../../Contexts/DashboardContext";
 import { cardDetails } from '../../../../data/cardDetails'
 
 function Overview(): JSX.Element {
+  const navigate = useNavigate()
   const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
   const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
-  const { setTabIndex, setShipmentStatus } = DashboardStates()
+  // const { setShipmentStatus } = DashboardStates()
   return (
     <Box
       w="100%"
       maxH="100vh"
       overflowY="scroll"
       className="overview"
-      p="10px"
     >
       <Box
         fontWeight="600"
@@ -44,8 +44,11 @@ function Overview(): JSX.Element {
       >
         {cardDetails.slice(0, 4)?.map((card) => (
           <StatusCard key={card.title} card={card} onclick={() => {
-            setShipmentStatus(card.title)
-            setTabIndex(1)
+            navigate("/shipment", {
+              state: {
+                status: card.title
+              }
+            })
           }
           } />
         ))}

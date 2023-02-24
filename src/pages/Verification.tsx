@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react'
 
 import { useLocation, useNavigate } from 'react-router-dom'
 import {
@@ -11,39 +11,31 @@ import {
   FormControl,
   Input,
   useTheme,
-  Button,
-} from '@chakra-ui/react';
-import Logo from '../Asset/Logos/Onboarding/SENDRAILS.png';
+  Button
+} from '@chakra-ui/react'
+import Logo from '../Asset/Logos/Onboarding/SENDRAILS.png'
 import { verify } from '../api/verify'
 
 function Verification() {
-  const theme = useTheme();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [code, setCode] = useState<string>('');
+  const theme = useTheme()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const [code, setCode] = useState<string>('')
   const [errState, setErrState] = useState<boolean>(true)
 
-  console.log(location, "ety");
-
-  console.log('code', errState)
-
   const sendVerification = useCallback(async () => {
-    const { email } = location.state
-
-    console.log({ email, code });
-    console.log("hello");
+    const email = location.state.email
 
     const resp = await verify({
       email,
-      code
+      confirm_email_token: code
     })
-    console.log(resp)
-    if (resp.data.success) {
-      navigate('/login');
 
+    if (resp?.data?.success) {
+      navigate('/login')
     }
-    setErrState(resp.success)
-  }, [code, location])
+    setErrState(resp?.data?.success)
+  }, [code, location, navigate])
   return (
     <Flex flexDir="column" width="100%" height="100vh" background={theme.colors.primary['100']}>
       <Flex mt="60px" ml="60px">
@@ -119,7 +111,7 @@ function Verification() {
                 fontSize="14px"
                 lineHeight="22px"
                 ml="15px"
-                color="#FF0000">
+                color='#FF0000'>
                 {!errState ? 'invalid or expired code' : ''}
               </FormHelperText>
 
@@ -151,4 +143,4 @@ function Verification() {
   )
 }
 
-export default Verification;
+export default Verification

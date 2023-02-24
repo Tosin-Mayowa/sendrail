@@ -1,14 +1,10 @@
 import {
- Button, FormControl, FormLabel, Grid, Input, Text, useMediaQuery 
+    Button, FormControl, FormLabel, Grid, Input, Text, useMediaQuery
 } from '@chakra-ui/react'
-import React from 'react'
-import { DashboardStates } from '../../../../Contexts/DashboardContext';
+import React, { Dispatch, SetStateAction } from 'react'
 
-function PickupDetails(): JSX.Element {
+function PickupDetails({ setSection }: { setSection: Dispatch<SetStateAction<string>> }): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
-    const {
-        dispatchView
-    } = DashboardStates()
 
     return (
         <Grid
@@ -117,7 +113,7 @@ function PickupDetails(): JSX.Element {
                         w="max-content"
                         border="1px solid #ABA7A7"
                         borderRadius="4px"
-                        onClick={() => { dispatchView({ type: "change_shipment_view", current_view: "add-parcel-details" }) }}
+                        onClick={() => { setSection("add-parcel-details") }}
                     >
                         Next
                     </Button>

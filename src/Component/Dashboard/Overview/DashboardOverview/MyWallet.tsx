@@ -2,16 +2,16 @@ import {
     Box, Flex, Text, useMediaQuery
 } from '@chakra-ui/react'
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import Wallet from "../../../../Asset/Logos/Onboarding/wallet.png";
-import { DashboardStates } from '../../../../Contexts/DashboardContext';
-import { OverviewStates } from '../../../../Contexts/OverviewContext';
 import useNumbers from '../../../../lib/hooks/useNumbers'
+import { getWithExpiry } from '../../../../lib/localStorage';
 import CustomButton from '../../../shared/CustomButton';
 
 function MyWallet(): JSX.Element {
     const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
-    const { balance } = OverviewStates();
-    const { dispatchView } = DashboardStates()
+    const balance = getWithExpiry("balance") || 1250
+    const navigate = useNavigate()
     const { formatNormalNumbers } = useNumbers()
     return (
         <Box
@@ -67,8 +67,8 @@ function MyWallet(): JSX.Element {
                     fontSize="14px"
                     fontWeight="500"
                 >
-                    <CustomButton text='Deposit' onclick={() => dispatchView({ type: "change_overview_view", current_view: "deposit-1" })} />
-                    <CustomButton text='Withdraw' onclick={() => dispatchView({ type: "change_overview_view", current_view: "withdraw-1" })} />
+                    <CustomButton text='Deposit' onclick={() => { navigate("/deposit") }} />
+                    <CustomButton text='Withdraw' onclick={() => { navigate("/withdraw") }} />
                 </Flex>
             </Flex>
         </Box>

@@ -10,7 +10,6 @@ import { FaRegEnvelopeOpen } from "react-icons/fa";
 import { HiUserGroup, HiLink } from "react-icons/hi";
 import { TbLayoutNavbar, TbLayersSubtract } from "react-icons/tb";
 import Logo from "../../Asset/Logos/Onboarding/LOGO.png";
-import { DashboardStates } from "../../Contexts/DashboardContext";
 function SideBar() {
   const [tab] = useState<any>([
     {
@@ -50,7 +49,6 @@ function SideBar() {
       text: "Logout"
     }
   ])
-  const { dispatchView } = DashboardStates()
 
   return (
     <Flex
@@ -82,7 +80,6 @@ function SideBar() {
           color="#fff"
           fontSize="20px"
           alignItems="flex-start"
-          onClick={() => dispatchView({ type: "clear_views" })}
         >
           {tab.map((item) => (
             <Tab
