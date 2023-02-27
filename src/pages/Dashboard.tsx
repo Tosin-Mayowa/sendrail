@@ -21,7 +21,7 @@ function Dashboard() {
   const { tabIndex, setTabIndex } = DashboardStates()
   const [opened, setOpened] = useState<boolean>(false)
   const { isOpen, onOpen, onClose }: { isOpen: boolean, onOpen: () => void, onClose: () => void } = useDisclosure()
-  console.log({ auth });
+ 
 
 
   const handleTabChange = (index) => {

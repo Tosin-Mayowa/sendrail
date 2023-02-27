@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
+import '../Style/signUp.css';
 import {
   Flex,
   Box,
@@ -30,13 +31,13 @@ function SignIn() {
     if (resp?.data?.success) {
       const accessToken = resp?.data?.data?.token
       const user = resp?.data?.data?.user
-      setAuth({ password, user, accessToken })
-      navigate('/dashboard')
+      setAuth({password, user, accessToken});
+      navigate('/dashboard');
     }
   }, [email, password, navigate, setAuth])
 
   return (
-    <Flex width="100%" height="100vh" flexDir="column" background={theme.colors.primary['100']}>
+    <Flex width="100%" height="100%" flexDir="column" className="BackG">
       <Box mt="60px" ml={{ base: '25px', md: '40px', lg: '60px' }} display="flex">
         <Image src={Logo} alt="Logo" />
         <Text

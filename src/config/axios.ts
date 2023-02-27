@@ -2,6 +2,9 @@ import axios from "axios";
 
 export const axiosPrivate = axios.create({
   baseURL: 'https://send-rail-api-production.up.railway.app/v1',
+   headers: {
+    Accept: 'application/json'
+  },
   withCredentials:true
 })
 const requestClient = axios.create({
