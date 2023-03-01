@@ -17,6 +17,8 @@ import Withdraw from '../Component/Dashboard/Overview/Withdraw'
 
 import ShipmentHistory from '../Component/Dashboard/Shipment/ShipmentHistory'
 import CreateOrder from '../Component/Dashboard/Shipment/CreateOrder'
+import Home from '../pages/Home'
+import ProtectAuth from '../Component/ProtectAuth'
 
 function Empty(): JSX.Element {
     return <DashboardLayout><Text mt="80px">Not Yet Implemented</Text></DashboardLayout>;
@@ -40,6 +42,7 @@ function Index() {
     const AuthRoutes: Route[] =
         [
             // main path routes
+            { path: "/", component: <Home /> },
             { path: "/dashboard", component: <Overview /> },
             { path: "/shipment", component: <Shipment /> },
             { path: "/customer", component: <Customer /> },
@@ -48,6 +51,7 @@ function Index() {
             { path: "/transactions", component: <Empty /> },
             { path: "/manage-link", component: <Empty /> },
             { path: "/settings", component: <Empty /> },
+            { path: "*", component: <Home /> },
 
             // Sub paths******************************************************
 
@@ -66,12 +70,14 @@ function Index() {
                     <Route key={e.path} path={e.path} element={e.component} />
                 ))
             }
+            {/* <Route element={<ProtectAuth />}> */}
             {
-                // will be wrapped with a an auth component after design implementation for shipment!! Lets wait
+                // Just remove the comments to add your auth if i forget to remove it before i push
                 AuthRoutes.map((e) => (
                     <Route key={e.path} path={e.path} element={e.component} />
                 ))
             }
+            {/* </Route> */}
         </Routes>
     )
 }

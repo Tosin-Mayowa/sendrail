@@ -10,17 +10,20 @@ import {
   useTheme,
   Button,
 } from "@chakra-ui/react";
-
+import { useNavigate } from 'react-router-dom'
 import Logo from "../Asset/Logos/Onboarding/SENDRAILS.png";
 import {forgotPass} from "../api/forgot_password";
 function ForgotPassword() {
   const [email, setEmail] = useState("");
   const theme = useTheme();
-
+const navigate = useNavigate()
  const newPassword = useCallback(async () => {
    try {
      const resp = await forgotPass(email)
-     console.log(resp)
+     console.log(resp);
+     if(resp?.data?.success){
+       navigate('/reset-Password', { state: { email: resp.data.data?.email } })
+     }
    } catch (e) {
      console.log(e)
    }
@@ -115,7 +118,7 @@ function ForgotPassword() {
                 color="#fff"
                 textAlign="center"
                 isDisabled={!email}
-                onClick={() => newPassword()}
+                onClick={newPassword}
                 _hover={{
                   background: '#16134f'
                 }}>

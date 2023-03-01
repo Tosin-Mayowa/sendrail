@@ -25,7 +25,6 @@ export { }
 //   const { isOpen, onOpen, onClose }: { isOpen: boolean, onOpen: () => void, onClose: () => void } = useDisclosure()
 //   console.log({ auth });
 
-
 //   const handleTabChange = (index) => {
 //     if (index === tabIndex) return;
 //     if (index === 8 && !opened) {
