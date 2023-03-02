@@ -77,7 +77,7 @@ function DashHeader({ auth }: { auth: any }): JSX.Element {
                                         flexWrap="nowrap"
                                         whiteSpace="nowrap"
                                     >
-                                        {`${auth?.user?.first_name} ${auth?.user?.last_name}`}
+                                        {auth?.user?.first_name ? `${auth?.user?.first_name} ${auth?.user?.last_name}` : "John Toe"}
                                     </Text>
                                     <Text
                                         fontSize="12px"

@@ -111,7 +111,7 @@ function Verification() {
                 fontSize="14px"
                 lineHeight="22px"
                 ml="15px"
-                color= '#FF0000'>
+                color='#FF0000'>
                 {!errState ? 'invalid or expired code' : ''}
               </FormHelperText>
 

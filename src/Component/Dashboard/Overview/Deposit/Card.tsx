@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import {
- Box, Flex, Grid, Image, Text, useMediaQuery 
+    Box, Flex, Grid, Image, Text, useMediaQuery
 } from "@chakra-ui/react";
-import { DashboardStates } from "../../../../Contexts/DashboardContext";
 
 type CardType = {
     card: {
@@ -11,11 +10,11 @@ type CardType = {
         card: string,
         bank: string,
         key: number
-    }
+    },
+    setSection: Dispatch<SetStateAction<number>>
 }
-export function Card({ card }: CardType): JSX.Element {
+export function Card({ card, setSection }: CardType): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
-    const { dispatchView } = DashboardStates();
 
     return (
         <Grid placeItems="center">
@@ -29,7 +28,7 @@ export function Card({ card }: CardType): JSX.Element {
                 my="10px"
                 cursor="pointer"
 
-                onClick={() => { dispatchView({ type: "change_overview_view", current_view: "deposit-3" }) }}
+                onClick={() => { setSection(3) }}
             >
                 <Box mx="5px" borderRadius="50%" style={{ aspectRatio: "1/1" }}>
                     <Image src={card?.image} alt="" />

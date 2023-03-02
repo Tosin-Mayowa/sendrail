@@ -1,20 +1,16 @@
 import {
- Box, Checkbox, CheckboxGroup, Flex, Grid, Stack, Text, useDisclosure, useMediaQuery 
+    Box, Checkbox, CheckboxGroup, Flex, Grid, Stack, Text, useDisclosure, useMediaQuery
 } from '@chakra-ui/react'
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import preview from '../../../../Asset/pc.png'
-import { DashboardStates } from '../../../../Contexts/DashboardContext';
 import CustomButton from '../../../shared/CustomButton';
 import SuccessModal from '../../../shared/SuccessModal';
 
 function ConfirmDetails(): JSX.Element {
+    const navigate = useNavigate()
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const { isOpen, onOpen, onClose }: { isOpen: boolean, onOpen: () => void, onClose: () => void } = useDisclosure()
-
-    const {
-        dispatchView,
-        setShipmentStatus
-    } = DashboardStates()
 
     return (
         <Grid
@@ -33,8 +29,7 @@ function ConfirmDetails(): JSX.Element {
                 Confirmation
             </Text>
             <SuccessModal type='success' text="Order Created" isOpen={isOpen} onClose={onClose} callback={() => {
-                dispatchView({ type: "change_shipment_view", current_view: "shipment" })
-                setShipmentStatus("Order")
+                navigate("/shipment")
             }} />
             <form style={{ width: "100%" }}>
                 <Grid

@@ -76,7 +76,7 @@ function SignUp() {
 
     console.log('busname', config)
     const resp = await signUpApi(config)
-    console.log({resp,password});
+    console.log({ resp, password });
     if (resp) {
 
       navigate('/verify', { state: { email } })
@@ -89,11 +89,11 @@ function SignUp() {
     country,
     firstName,
     lastName,
- 
+
     stateInfo,
     countryInfo,
     email,
-    password,navigate
+    password
   ])
 
   return (

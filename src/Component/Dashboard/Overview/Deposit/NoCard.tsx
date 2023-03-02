@@ -1,11 +1,9 @@
 import { SmallAddIcon } from "@chakra-ui/icons";
 import { Grid, Text, useMediaQuery } from "@chakra-ui/react";
-import React from "react";
-import { DashboardStates } from "../../../../Contexts/DashboardContext";
+import React, { Dispatch, SetStateAction } from "react";
 
-export function NoCard(): JSX.Element {
+export function NoCard({ setSection }: { setSection: Dispatch<SetStateAction<number>> }): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
-    const { dispatchView } = DashboardStates();
 
     return (
         <Grid placeItems="center">
@@ -22,7 +20,7 @@ export function NoCard(): JSX.Element {
                 justifyContent="center"
                 cursor="pointer"
 
-                onClick={() => dispatchView({ type: "change_overview_view", current_view: "deposit-2" })}
+                onClick={() => setSection(2)}
             >
                 <SmallAddIcon boxSize="25px" /><Text>Add A Debit Card For This Transaction</Text>
             </Grid>
