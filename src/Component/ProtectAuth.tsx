@@ -5,7 +5,7 @@ import {useAuth} from "../lib/hooks/useAuth";
 function ProtectAuth(){
     const {auth}=useAuth();
     const location=useLocation();
-   if(auth?.user){
+   if(!auth?.user){
        return <Outlet />
    }
    return <Navigate to="/login" state={{from:location}} replace />
