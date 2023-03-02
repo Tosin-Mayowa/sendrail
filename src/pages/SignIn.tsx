@@ -38,20 +38,8 @@ function SignIn() {
 
   return (
     <Flex width="100%" height="100%" flexDir="column" className="BackG">
-      <Box mt="60px" ml={{ base: '25px', md: '40px', lg: '60px' }} display="flex">
-        <Image src={Logo} alt="Logo" />
-        <Text
-          ml="4px"
-          fontWeight="500"
-          fontSize="24px"
-          lineHeight="29px"
-          display="flex"
-          alignItems="center"
-          textAlign="right"
-          color={theme.colors.primary.main}>
-          Sendrail
-        </Text>
-      </Box>
+      
+       
       <Center>
         <Box
           mt="40px"
