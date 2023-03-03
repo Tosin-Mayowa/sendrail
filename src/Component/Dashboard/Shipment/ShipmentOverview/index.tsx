@@ -107,7 +107,7 @@ function Index(): JSX.Element {
                 }
                 )}
             </Grid>
-            <Flex w="100%" columnGap="5px" justifyContent={isSmallerThan480 ? "center" : "space-between"} alignItems="center" mt="20px">
+            <Flex w="100%" columnGap="5px" justifyContent={isSmallerThan480 ? "center" : "space-between"} alignItems="center" my="20px">
                 {assignOptions()}
                 <Flex alignItems="center" flexDirection={isSmallerThan480 ? "row-reverse" : "row"}>
                     <Link to="/shipment-history">

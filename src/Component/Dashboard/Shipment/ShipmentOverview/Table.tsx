@@ -63,9 +63,10 @@ function Table({ details, selectable, history }: Props): JSX.Element {
                         <>
                             {
                                 sortedData.map((data) => (
-                                    <Menu>
+                                    <Menu
+                                        key={data?.delivery_status}  // will be changed after connecting to BE
+                                    >
                                         <Grid
-                                            key={data?.delivery_status}  // will be changed after connecting to BE
                                             p={isSmallerScreen ? "10px" : "15px 10px"}
                                             minW="100%"
                                             w={isSmallerThan480 ? "auto" : "100%"}
@@ -78,6 +79,12 @@ function Table({ details, selectable, history }: Props): JSX.Element {
                                             fontWeight="500"
                                             textAlign="center"
                                             overflowX={isSmallerThan480 ? "scroll" : "hidden"}
+                                            onClick={() => {
+                                                if (isSmallerScreen) {
+                                                    setData(data)
+                                                    onOpen()
+                                                }
+                                            }}
                                             className='table-row'
                                         >
                                             <Flex w="100%" justifyContent="center" alignItems="center" position="relative">

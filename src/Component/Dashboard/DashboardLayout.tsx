@@ -35,7 +35,7 @@ function DashboardLayout({ children }: { children: JSX.Element }): JSX.Element {
     return (
         <Tabs index={tabIndex} onChange={handleTabChange}>
             <Grid
-                gridTemplateColumns={isSmallerScreen ? "100%" : "19% 81%"}
+                gridTemplateColumns={isSmallerScreen ? "100%" : "18% 82%"}
             >
                 {
                     !isSmallerScreen &&

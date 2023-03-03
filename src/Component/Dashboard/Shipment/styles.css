@@ -31,3 +31,18 @@
     background: #D9D9D9;
     border-radius: 10px;
 }
+
+.drawer-content::-webkit-scrollbar {
+    width: 7px;
+    max-height: 40px;
+}
+
+.drawer-content::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.drawer-content::-webkit-scrollbar-thumb {
+    background: #ABA7A7;
+    border-radius: 10px;
+}
