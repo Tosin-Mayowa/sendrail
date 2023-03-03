@@ -27,7 +27,7 @@ const navigate = useNavigate()
    } catch (e) {
      console.log(e)
    }
- },[email])
+ },[email,navigate])
   return (
     <Box
       position="absolute"
