@@ -18,3 +18,24 @@ export const handleError = (error) => {
 
   return message
 }
+
+export const enum MoneyReceived {
+  STATUS = 'Status',
+  SENDER = 'Sender',
+  BANKName = 'Bank Name',
+  BANKACCOUNT = 'Bank Account',
+  MESSAGETYPE = 'Message Type',
+  SESSIONID = 'Session ID',
+  TRANSACTIONID = 'Transaction number'
+}
+
+export const enum MoneySent {
+  STATUS = 'Status',
+  SENDER = 'Sender',
+  SENDERACCOUNT = 'Sender Account',
+  RECIPIENTBANK = 'Recipient Bank',
+  RECIPIENTACCOUNT='Recipient Account',
+  MESSAGETYPE = 'Message Type',
+  SESSIONID = 'Session ID',
+  TRANSACTIONID = 'Transaction number'
+}

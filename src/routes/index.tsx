@@ -14,7 +14,7 @@ import Shipment from '../Component/Dashboard/Shipment'
 
 import Deposit from '../Component/Dashboard/Overview/Deposit'
 import Withdraw from '../Component/Dashboard/Overview/Withdraw'
-
+import Transactions from '../Component/Dashboard/Transactions/Transactions'
 import ShipmentHistory from '../Component/Dashboard/Shipment/ShipmentHistory'
 import CreateOrder from '../Component/Dashboard/Shipment/CreateOrder'
 import Home from '../pages/Home'
@@ -48,7 +48,7 @@ function Index() {
             { path: "/customer", component: <Customer /> },
             { path: "/rider", component: <Empty /> },
             { path: "/payroll", component: <Payroll /> },
-            { path: "/transactions", component: <Empty /> },
+            { path: "/transactions", component: <Transactions/> },
             { path: "/manage-link", component: <Empty /> },
             { path: "/settings", component: <Empty /> },
             { path: "*", component: <Home /> },
