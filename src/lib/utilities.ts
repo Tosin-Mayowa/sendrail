@@ -10,8 +10,8 @@ export const copyTextToClipboard = async (text:string) => {
 export const handleError = (error) => {
   const message = error?.message ?? ''
 
-  if (error.response) {
-    if (error.response.data) {
+  if (error?.response) {
+    if (error.response?.data) {
       return error.response.data
     }
   }

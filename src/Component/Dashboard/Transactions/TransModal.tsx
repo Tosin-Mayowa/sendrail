@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Modal,
+  Modal,Center,
   ModalOverlay,
   ModalContent,
   ModalHeader,
@@ -33,19 +33,19 @@ export default function TransModal({transaction}) {
         View
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose} size='3xl'>
+      <Modal isOpen={isOpen} onClose={onClose} size="2xl"  >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader mt='40px'>
-            <Heading as="h2" size="md" noOfLines={1} color='#1F1F1F'>
+          <ModalHeader mt="70px">
+            <Heading as="h2" ml='60px' size="md" noOfLines={1} color="#1F1F1F">
               Transaction Details
             </Heading>
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Box>
-
-            </Box>
+            <Center>
+            <Box mt='40px' width="80%" height='653px' background=" rgba(7, 5, 41, 0.07)"></Box>
+          </Center>
           </ModalBody>
 
           <ModalFooter>
