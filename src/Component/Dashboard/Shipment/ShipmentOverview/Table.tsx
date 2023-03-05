@@ -72,8 +72,9 @@ function Table({ details, selectable, history }: Props): JSX.Element {
                                             w={isSmallerThan480 ? "auto" : "100%"}
                                             gridTemplateColumns={isSmallerThan480 ? "repeat(8,30%)" : "repeat(8,1fr)"}
                                             placeItems="center"
-                                            background="#07052912"
-                                            borderRadius="10px"
+                                            // background="#07052912"
+                                            borderBottom="1px solid #07052912"
+                                            // borderRadius="10px"
                                             color="#000000"
                                             fontSize={isSmallerScreen ? "10px" : "14px"}
                                             fontWeight="500"

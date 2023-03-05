@@ -24,7 +24,7 @@ const CustomCheckbox = ({ checked, border_color, onChange, size }: Props) => {
 CustomCheckbox.defaultProps = {
     checked: false,
     border_color: "#ABA7A7",
-    onChange: () => { console.log("Checkbox clicked") },
+    onChange: console.log("This checkbox is not assigned to a function"),
     size: "lg"
 }
 

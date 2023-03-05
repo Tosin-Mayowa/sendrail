@@ -1,5 +1,5 @@
 import {
-    Avatar, Box, Flex, Grid, Input, InputGroup, InputRightElement, Menu, MenuButton, MenuItem, MenuList, Select, Text, useMediaQuery
+    Avatar, Box, Flex, Grid, Input, InputGroup, InputRightElement, Menu, MenuButton, MenuItem, MenuList, Select, Tab, TabList, TabPanel, TabPanels, Tabs, Text, useMediaQuery
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { ChatIcon, PhoneIcon, SearchIcon } from '@chakra-ui/icons';
@@ -17,24 +17,60 @@ function Index() {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
     const [customer] = useState(customers)
+    const [tabs] = useState([
+        "Add Customer", "Manage Customer"
+    ])
     // setCustomer
     return (
         <DashboardLayout>
             <Grid
                 placeItems="center"
             >
-                <Box w="100%">
+                {/* <Box w="100%">
                     <RoundedBackButton color='#070529' onclick={() => { navigate(-1) }} />
-                </Box>
-                <Text as="h1" w="100%" my={isSmallerScreen ? "10px" : "20px"} fontSize="24px" fontWeight="600">
+                </Box> */}
+                <Text as="h1" w="100%" my={isSmallerScreen ? "10px" : "25px"} fontSize="24px" fontWeight="600">
                     Customers
                 </Text>
+                <Tabs variant="unstyled" w="100%">
+                    <TabList>
+                        {
+                            tabs.map(e => (
+                                <Tab
+                                    p={0}
+                                    key={e}
+                                    fontSize={{ md: "16px", base: "14px" }}
+                                    color="#595956"
+                                    fontWeight="500"
+                                    mr="15px"
+
+                                    _selected={{
+                                        py: "3px",
+                                        color: "#1F1F1F",
+                                        fontSize: { md: "18px", base: "16px" },
+                                        fontWeight: "700",
+                                        borderBottom: "4px solid #F9C567"
+                                    }}
+                                >
+                                    {e}
+                                </Tab>
+                            ))
+                        }
+                    </TabList>
+                    <TabPanels>
+                        <TabPanel>
+                            Add customer
+                        </TabPanel>
+                        <TabPanel>
+                            Manage customer
+                        </TabPanel>
+                    </TabPanels>
+                </Tabs>
                 {
                     customer?.length === 0 ?
                         <EmptyData button button_details={{ text: "Add Customers", onclick: () => { } }} />
                         :
                         <Box w="100%">
-                            {/* my={isSmallerScreen ? "10px" : "20px"} */}
                             <Text as="h1" w="100%" fontSize={isSmallerScreen ? "18px" : "24px"} fontWeight="400" mb="15px" color="#656566">
                                 Manage Customers
                             </Text>
@@ -95,7 +131,7 @@ function Index() {
                                 w="100%"
                                 my="15px"
                                 p={isSmallerScreen ? "10px" : "15px"}
-                                gridTemplateColumns={isSmallerScreen ? "repeat(5, 1fr)" : "4fr 2fr 2fr 2fr 2fr 1fr"}
+                                gridTemplateColumns={isSmallerScreen ? "repeat(4, 1fr)" : "8fr 4fr 4fr 4fr 1fr"}
                                 placeItems="center"
                                 background="#07052912"
                                 borderRadius="10px"
@@ -112,14 +148,16 @@ function Index() {
                             {
                                 customer.map((item) => (
                                     <Grid
+                                        key={item.type}
                                         my="10px"
                                         p={isSmallerScreen ? "10px" : "15px"}
                                         minW="100%"
                                         w={isSmallerThan480 ? "auto" : "100%"}
-                                        gridTemplateColumns={isSmallerThan480 ? "repeat(5,30%) 15%" : "4fr 2fr 2fr 2fr 2fr 1fr"}
+                                        gridTemplateColumns={isSmallerThan480 ? "repeat(4,30%) 15%" : "8fr 4fr 4fr 4fr 1fr"}
                                         placeItems="center"
-                                        background="#07052912"
-                                        borderRadius="10px"
+                                        borderBottom="1px solid #07052912"
+                                        // background="#07052912"
+                                        // borderRadius="10px"
                                         color="#000000"
                                         fontSize={isSmallerScreen ? "12px" : "16px"}
                                         fontWeight="500"
@@ -136,10 +174,10 @@ function Index() {
                                         </Flex>
                                         <Text>{item.location}</Text>
                                         <Text>{item.type}</Text>
-                                        <Flex columnGap="15px">
+                                        {/* <Flex columnGap="15px">
                                             <PhoneIcon boxSize={5} cursor="pointer" transition="0.1s" _hover={{ transform: "translateY(-4px)" }} />
                                             <ChatIcon boxSize={5} cursor="pointer" transition="0.1s" _hover={{ transform: "translateY(-4px)" }} />
-                                        </Flex>
+                                        </Flex> */}
                                         <CustomButton text='Create order' size="sm" onclick={() => { }} />
                                         <Menu>
                                             <MenuButton justifySelf="flex-end">

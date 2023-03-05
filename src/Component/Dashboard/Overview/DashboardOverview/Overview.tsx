@@ -27,6 +27,7 @@ function Overview(): JSX.Element {
       maxH="100vh"
       overflowY="scroll"
       className="overview"
+      pr="10px"
     >
       <Box
         fontWeight="600"

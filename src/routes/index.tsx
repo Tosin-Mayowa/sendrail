@@ -2,6 +2,7 @@ import { Text } from '@chakra-ui/react'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import DashboardLayout from '../Component/Dashboard/DashboardLayout'
+import Home from '../pages/Home'
 import ForgotPassword from '../pages/ForgotPassword'
 import ResetPassword from '../pages/ResetPass'
 import SignIn from '../pages/SignIn'
@@ -17,7 +18,9 @@ import Withdraw from '../Component/Dashboard/Overview/Withdraw'
 
 import ShipmentHistory from '../Component/Dashboard/Shipment/ShipmentHistory'
 import CreateOrder from '../Component/Dashboard/Shipment/CreateOrder'
-import Home from '../pages/Home'
+
+import CreatePayroll from '../Component/Dashboard/Payroll/CreatePayroll'
+
 import ProtectAuth from '../Component/ProtectAuth'
 
 function Empty(): JSX.Element {
@@ -51,7 +54,7 @@ function Index() {
             { path: "/transactions", component: <Empty /> },
             { path: "/manage-link", component: <Empty /> },
             { path: "/settings", component: <Empty /> },
-            { path: "*", component: <Home /> },
+            { path: "*", component: <Home /> },// Usually a 404 error page but since we have none....
 
             // Sub paths******************************************************
 
@@ -61,7 +64,8 @@ function Index() {
             // Shipment sub paths----------------------------------------
             { path: "/shipment-history", component: <ShipmentHistory /> },
             { path: "/create-order", component: <CreateOrder /> },
-
+            // payroll sub paths------------------------------------------
+            { path: "/create-payroll", component: <CreatePayroll /> }
         ]
     return (
         <Routes>

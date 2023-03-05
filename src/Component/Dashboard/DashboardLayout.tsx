@@ -50,7 +50,7 @@ function DashboardLayout({ children }: { children: JSX.Element }): JSX.Element {
                     <DashHeader auth={auth} />
                     <Box
                         mt={isSmallerScreen ? "90px" : "80px"}
-                        padding={isSmallerScreen ? "0px 10px" : "10px 40px"}
+                        padding={isSmallerScreen ? "0px 10px" : "10px 20px 10px 40px"}
                     >
                         {children}
                     </Box>

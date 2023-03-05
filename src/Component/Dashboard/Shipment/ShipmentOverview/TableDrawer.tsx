@@ -233,6 +233,7 @@ const TableDrawer = ({ onClose, isOpen, details }: Props): JSX.Element => {
                                             fontWeight="500"
                                             borderRadius="4px"
                                             padding="4px 8px"
+                                            key={e}
                                             _selected={{
                                                 color: "#000000",
                                                 background: "#F1F1F0"

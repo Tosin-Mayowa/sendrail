@@ -26,7 +26,6 @@ export const tableHeadings: string[] = [
     "Name",
     "Location",
     "Type",
-    "Contact",
     "Create order",
     " "
 ]

@@ -1,0 +1,20 @@
+.table-row::-webkit-scrollbar {
+    height: 3px;
+}
+
+.table-row::-webkit-scrollbar-track {
+    border-radius: 10px;
+    height: 0;
+    background-color: #ABA7A7;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+.table-row::-webkit-scrollbar-thumb {
+    background: #D9D9D9;
+    border-radius: 10px;
+}
+
+.slip-scrollbar::-webkit-scrollbar {
+    width: 0px;
+}
