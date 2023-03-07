@@ -20,7 +20,7 @@ function Index(): JSX.Element {
         return <PickupDetails setSection={setSection} />
     }
     return (
-        <DashboardLayout>
+        <DashboardLayout section='/shipment'>
             <Grid
                 placeItems="center"
             >

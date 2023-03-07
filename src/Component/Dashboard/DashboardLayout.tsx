@@ -1,12 +1,12 @@
 import { Box, Grid, GridItem, Tabs, useDisclosure, useMediaQuery, useTheme } from '@chakra-ui/react';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../lib/hooks/useAuth';
 import DashHeader from './DashHeader';
 import Logout from './LogoutModal';
 import SideBar from './SideBar';
 
-function DashboardLayout({ children }: { children: JSX.Element }): JSX.Element {
+function DashboardLayout({ children, section }: { children: JSX.Element, section?: string }): JSX.Element {
     const { auth } = useAuth();
     const theme = useTheme();
     const location = useLocation();
@@ -22,6 +22,9 @@ function DashboardLayout({ children }: { children: JSX.Element }): JSX.Element {
 
 
     const handleTabChange = (index) => {
+        if (section && routes.findIndex(i => i === section) === index) {
+            return
+        }
         if (index === 8 && !opened) {
             onOpen();
             setOpened(true)// supposed to open logout modal
@@ -32,6 +35,12 @@ function DashboardLayout({ children }: { children: JSX.Element }): JSX.Element {
             navigate(routes[index])
         }
     }
+
+    useEffect(() => {
+        if (section) {
+            return setIndex(routes.findIndex(i => i === section))
+        }
+    }, [section])
     return (
         <Tabs index={tabIndex} onChange={handleTabChange}>
             <Grid
@@ -58,6 +67,10 @@ function DashboardLayout({ children }: { children: JSX.Element }): JSX.Element {
             </Grid>
         </Tabs>
     )
+}
+
+DashboardLayout.defaultProps = {
+    section: null
 }
 
 export default DashboardLayout

@@ -9,7 +9,7 @@ import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import Verification from '../pages/Verification'
 import Overview from '../Component/Dashboard/Overview'
-import Customer from '../Component/Dashboard/Customer'
+import ManageCustomer from '../Component/Dashboard/Customer/ManageCustomer'
 import Payroll from '../Component/Dashboard/Payroll'
 import Shipment from '../Component/Dashboard/Shipment'
 
@@ -20,6 +20,8 @@ import ShipmentHistory from '../Component/Dashboard/Shipment/ShipmentHistory'
 import CreateOrder from '../Component/Dashboard/Shipment/CreateOrder'
 
 import CreatePayroll from '../Component/Dashboard/Payroll/CreatePayroll'
+
+import AddCustomer from '../Component/Dashboard/Customer/AddCustomer'
 
 import ProtectAuth from '../Component/ProtectAuth'
 
@@ -48,7 +50,7 @@ function Index() {
             { path: "/", component: <Home /> },
             { path: "/dashboard", component: <Overview /> },
             { path: "/shipment", component: <Shipment /> },
-            { path: "/customer", component: <Customer /> },
+            { path: "/customer", component: <ManageCustomer /> },
             { path: "/rider", component: <Empty /> },
             { path: "/payroll", component: <Payroll /> },
             { path: "/transactions", component: <Empty /> },
@@ -64,6 +66,8 @@ function Index() {
             // Shipment sub paths----------------------------------------
             { path: "/shipment-history", component: <ShipmentHistory /> },
             { path: "/create-order", component: <CreateOrder /> },
+            // customer sub paths------------------------------------------
+            { path: "/add-customer", component: <AddCustomer /> },
             // payroll sub paths------------------------------------------
             { path: "/create-payroll", component: <CreatePayroll /> }
         ]
