@@ -94,7 +94,7 @@ const Transactions = () => {
           width="100%"
           height="32px"
           alignItems="baseline">
-          <InputGroup width="20%">
+          <InputGroup width="19%">
             <Input
               boxShadow="0px 4px 20px rgba(6, 0, 137, 0.1)"
               backgroundColor="#fff"
