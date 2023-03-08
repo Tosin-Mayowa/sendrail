@@ -11,7 +11,7 @@ import Overview from '../Component/Dashboard/Overview'
 import Customer from '../Component/Dashboard/Customer'
 import Payroll from '../Component/Dashboard/Payroll'
 import Shipment from '../Component/Dashboard/Shipment'
-
+import Settings from '../Component/Dashboard/Settings/Settings'
 import Deposit from '../Component/Dashboard/Overview/Deposit'
 import Withdraw from '../Component/Dashboard/Overview/Withdraw'
 import Transactions from '../Component/Dashboard/Transactions/Transactions'
@@ -50,7 +50,7 @@ function Index() {
             { path: "/payroll", component: <Payroll /> },
             { path: "/transactions", component: <Transactions/> },
             { path: "/manage-link", component: <Empty /> },
-            { path: "/settings", component: <Empty /> },
+            { path: "/settings", component: <Settings /> },
             { path: "*", component: <Home /> },
 
             // Sub paths******************************************************

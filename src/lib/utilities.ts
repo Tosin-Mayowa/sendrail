@@ -21,21 +21,27 @@ export const handleError = (error) => {
 
 export const enum MoneyReceived {
   STATUS = 'Status',
-  SENDER = 'Sender',
-  BANKName = 'Bank Name',
-  BANKACCOUNT = 'Bank Account',
+  SENDER = 'Name',
+  BANKNAME = 'Bank',
+  ACCOUNTNUM = 'Account number',
   MESSAGETYPE = 'Message Type',
-  SESSIONID = 'Session ID',
-  TRANSACTIONID = 'Transaction number'
+  AMOUNT = 'Amount',
+  TRANSACTIONID = 'Transaction ID'
 }
 
 export const enum MoneySent {
   STATUS = 'Status',
-  SENDER = 'Sender',
-  SENDERACCOUNT = 'Sender Account',
-  RECIPIENTBANK = 'Recipient Bank',
-  RECIPIENTACCOUNT='Recipient Account',
+  SENDER = 'recipient Name',
+  BANKNAME = 'Bank',
+  ACCOUNTNUM = 'Account number',
   MESSAGETYPE = 'Message Type',
-  SESSIONID = 'Session ID',
-  TRANSACTIONID = 'Transaction number'
+  AMOUNT = 'Amount',
+  TRANSACTIONID = 'Transaction ID',
+  CHARGES = 'Charges'
 }
+
+
+  export const currencyFormatter = (val: string) => {
+    const number = Number(val)
+    return new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(number)
+  }
