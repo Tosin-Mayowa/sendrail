@@ -18,3 +18,8 @@
 .slip-scrollbar::-webkit-scrollbar {
     width: 0px;
 }
+
+.outlined:focus {
+    outline: 1px solid #F9C567;
+    outline-offset: 0px;
+}

@@ -105,8 +105,8 @@ const Index = () => {
                     </Grid>
                     <Grid
                         gridTemplateColumns={{ base: "1fr", md: "1fr 1fr" }}
-                        columnGap="25px"
-                        rowGap="30px"
+                        columnGap="64px"
+                        rowGap="32px"
                     >
                         {
                             inputs.map((text) => (
@@ -129,7 +129,7 @@ const Index = () => {
                             ))
                         }
                     </Grid>
-                    <Grid my="30px" rowGap="30px" w={{ base: "100%", md: "max-content" }}>
+                    <Grid my="30px" rowGap="48px" w={{ base: "100%", md: "max-content" }}>
                         <CustomButton text='Save Customer' size='lg' />
                         <Button
                             leftIcon={<LinkIcon />}
