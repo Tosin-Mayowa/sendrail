@@ -1,11 +1,12 @@
 import {
-    Flex, Grid, Image, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Text
+    Avatar,
+    Flex, Grid, Icon, Image, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Text
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import Empty from "../../Asset/empty-notifications.png"
+import Empty from "../../Asset/empty-notepad.png"
 import RoundedBackButton from '../shared/RoundedBackButton'
-import TestText from '../shared/TestText'
 import { sampleData } from '../../data/notfications'
+import Bike from '../../Asset/Logos/Onboarding/bike.png'
 
 interface Props {
     isOpen: boolean,
@@ -32,26 +33,30 @@ function NotificationsModal({ isOpen, onClose }: Props): JSX.Element {
                 position="fixed"
                 h="auto"
                 borderRadius="0px"
-                p="15px"
+                p={{ base: "8px", md: "15px" }}
                 minW="35%"
-                background="#070529"
-                color="#fff"
+                // background="#070529"
+                background="#FFFFFF"
+                color="#070529"
             // overflowY="scroll"
             >
                 <ModalHeader>
-                    <RoundedBackButton color='#fff' onclick={onClose} />
+                    <RoundedBackButton color='#070529' onclick={onClose} />
                     <Text mt="20px" fontSize="20px" fontWeight="700">Notification</Text>
                 </ModalHeader>
                 <ModalBody>
                     <Grid placeItems="center">
                         {
-                            notifications?.length === 0 || !notifications ?
+                            !notifications || notifications?.length === 0 ?
                                 <>
                                     <Image
+                                        mt="40px"
                                         src={Empty}
                                         alt="Empty"
                                     />
-                                    <TestText onclick={() => setNotifications(sampleData)} text="Fill Notifications" />
+                                    <Text color="#ABA7A7" fontSize="20px">
+                                        You have no notification to view
+                                    </Text>
                                 </>
                                 :
                                 <>
@@ -61,22 +66,44 @@ function NotificationsModal({ isOpen, onClose }: Props): JSX.Element {
                                             justifyContent="space-between"
                                             alignItems="center"
                                             p="16px"
-                                            borderRadius="8px"
+                                            borderRadius="10px"
                                             background="#fff"
-                                            color="#070529"
-                                            fontSize="14px 16px"
-                                            fontWeight="500"
+                                            border="2px solid #0600891A"
+                                            boxShadow="0px 4px 20px #0600891A"
+                                            color="#ABA7A7"
+                                            fontSize="16px"
+                                            fontWeight="400"
                                             my="5px"
                                             key={e.time}
+                                            cursor="pointer"
+                                            transition="0.2s"
+
+                                            _hover={{
+                                                transform: "translateX(5px)"
+                                            }}
                                         >
-                                            <Flex flexDirection="column">
-                                                <Text fontWeight="700">{e?.title}</Text>
-                                                <Text>{e?.message}</Text>
+                                            <Flex columnGap="4px" alignItems="center">
+                                                <Avatar
+                                                    size="md"
+                                                    name="Daniel Jones"
+                                                    src={Bike}
+                                                />
+                                                <Flex flexDirection="column">
+                                                    <Text fontSize="18px" fontWeight="600" color="#000">{e?.title}</Text>
+                                                    <Text >{e?.message.length > 30 ? (e?.message).slice(0, 30) + "......" : e?.message}</Text>
+                                                </Flex>
                                             </Flex>
-                                            <Text>{e.time}</Text>
+                                            <Flex alignItems="center" columnGap="4px">
+                                                <Text>{e.time}</Text>
+                                                <Icon viewBox='0 0 200 200' color='#CD0B3A'>
+                                                    <path
+                                                        fill='currentColor'
+                                                        d='M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0'
+                                                    />
+                                                </Icon>
+                                            </Flex>
                                         </Flex>
                                     ))}
-                                    <TestText onclick={() => setNotifications(null)} text="Empty Notifications" />
                                 </>
                         }
                     </Grid>

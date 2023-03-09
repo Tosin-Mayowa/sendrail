@@ -5,6 +5,7 @@ import { useAuth } from '../../lib/hooks/useAuth';
 import DashHeader from './DashHeader';
 import Logout from './LogoutModal';
 import SideBar from './SideBar';
+import '../../Style/dashboard.css'
 
 function DashboardLayout({ children, section }: { children: JSX.Element, section?: string }): JSX.Element {
     const { auth } = useAuth();
@@ -44,7 +45,7 @@ function DashboardLayout({ children, section }: { children: JSX.Element, section
     return (
         <Tabs index={tabIndex} onChange={handleTabChange}>
             <Grid
-                gridTemplateColumns={isSmallerScreen ? "100%" : "18% 82%"}
+                gridTemplateColumns={{ base: "100%", md: "18% 82%" }}
             >
                 {
                     !isSmallerScreen &&
@@ -58,14 +59,23 @@ function DashboardLayout({ children, section }: { children: JSX.Element, section
                     <Logout isOpen={isOpen} onClose={onClose} />
                     <DashHeader auth={auth} />
                     <Box
-                        mt={isSmallerScreen ? "90px" : "80px"}
-                        padding={isSmallerScreen ? "0px 10px" : "10px 20px 10px 40px"}
+                        mt={{ base: "90px", md: "80px" }}
+                        padding={{ base: "0px 10px", md: "10px 10px 10px 40px" }}
                     >
-                        {children}
+                        <Box
+                            w="100%"
+                            maxH="calc(100vh - 80px)"
+                            overflowY="auto"
+                            className="main-section"
+                            pr="10px"
+                            pb="40px"
+                        >
+                            {children}
+                        </Box>
                     </Box>
                 </GridItem>
             </Grid>
-        </Tabs>
+        </Tabs >
     )
 }
 

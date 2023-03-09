@@ -12,8 +12,13 @@ import DashboardLayout from '../../DashboardLayout'
 const Index = () => {
     const navigate = useNavigate()
     const [customer] = useState(customers)
-    const [isbaseallerScreen] = useMediaQuery("(max-width: 580px)");
+    const [issmallerScreen] = useMediaQuery("(max-width: 580px)");
 
+    const alignTableHead = (text: string) => {
+        if (text === "Name") return "flex-start"
+        if (text === "Delete") return "flex-end"
+        return "center"
+    }
     return (
         <DashboardLayout section='/customer'>
             {
@@ -26,24 +31,31 @@ const Index = () => {
                     </Box>
                     :
                     <Box w="100%">
-                        <RoundedBackButton color="#000" />
-                        <Text as="h1" w="100%" fontSize={{ base: "18px", md: "24px" }} fontWeight="600" my="15px" color="#000">
+                        <Box my={{ base: "15px", md: "42px" }}>
+                            <RoundedBackButton color="#000" />
+                        </Box>
+                        <Text as="h1" w="100%" fontSize={{ base: "18px", md: "24px" }} fontWeight="600" mb={{ base: "15px", md: "48px" }} color="#000">
                             Manage Customers
                         </Text>
-                        <InputGroup w={{ base: "100%", md: "30%" }} my={{ base: "10px", md: "35px" }}>
+                        <InputGroup w={{ base: "100%", md: "30%" }} mb={{ base: "10px", md: "65px" }}>
                             <Input
                                 border="1px solid #ABA7A7"
                                 backgroundColor="#fff"
-                                height={{ base: "35px", md: "50px" }}
+                                height={{ base: "35px", md: "56px" }}
                                 fontWeight="500"
                                 fontSize={{ base: "12px", md: "14px" }}
                                 lineHeight="14px"
                                 outline="none"
                                 placeholder="Search by name"
+
+                                _focus={{
+                                    outline: "2px solid #F9C567",
+                                    outlineOffset: "-1px"
+                                }}
                             />
                             <InputRightElement
                                 pointerEvents="none"
-                                height={{ base: "35px", md: "50px" }}
+                                height={{ base: "35px", md: "56px" }}
                             >
                                 <SearchIcon color="#ABA7A7" boxSize={{ base: "20px", md: "25px" }} />
                             </InputRightElement>
@@ -53,11 +65,11 @@ const Index = () => {
                             rowGap="5px"
                             columnGap="5px"
                             justifyContent={{ base: "flex-start", md: "space-between" }}
-                            my="25px"
+                            mb="33px"
                             fontSize={{ base: "12px", md: "16px" }}
                             flexWrap="wrap"
                         >
-                            <CustomButton text='Add Customer' onclick={() => { navigate("/add-customer") }} size={isbaseallerScreen ? "sm" : "md"} />
+                            <CustomButton text='Add Customer' onclick={() => { navigate("/add-customer") }} size={issmallerScreen ? "sm" : "md"} />
                             <Flex
                                 columnGap="20px"
                                 fontSize="14px"
@@ -103,7 +115,7 @@ const Index = () => {
                             w="100%"
                             my="15px"
                             p={{ base: "10px", md: "15px" }}
-                            gridTemplateColumns={{ base: "repeat(5, 1fr)", md: "14fr 9fr 9fr 9fr 9fr" }}
+                            gridTemplateColumns={{ base: "repeat(5, 1fr)", md: "14fr 9fr 9fr 9fr 4fr" }}
                             placeItems="center"
                             background="#07052912"
                             borderRadius="10px"
@@ -113,7 +125,7 @@ const Index = () => {
                         >
                             {
                                 tableHeadings.map((e) => (
-                                    <Text key={e} justifySelf={e === "Name" ? "flex-start" : "center"}>{e}</Text>
+                                    <Text key={e} justifySelf={alignTableHead(e)}>{e}</Text>
                                 ))
                             }
                         </Grid>
@@ -125,11 +137,10 @@ const Index = () => {
                                     p={{ base: "10px", md: "15px" }}
                                     minW="100%"
                                     w={{ base: "auto", md: "100%" }}
-                                    gridTemplateColumns={{ base: "repeat(5,30%)", md: "14fr 9fr 9fr 9fr 9fr" }}
+                                    gridTemplateColumns={{ base: "repeat(5,30%)", md: "14fr 9fr 9fr 9fr 4fr" }}
                                     placeItems="center"
                                     borderBottom="1px solid #07052912"
-                                    // background="#07052912"
-                                    // borderRadius="10px"
+                                    whiteSpace="nowrap"
                                     color="#000000"
                                     fontSize={{ base: "12px", md: "16px" }}
                                     fontWeight="500"
@@ -150,13 +161,14 @@ const Index = () => {
                                             <PhoneIcon boxSize={5} cursor="pointer" transition="0.1s" _hover={{ transform: "translateY(-4px)" }} />
                                             <ChatIcon boxSize={5} cursor="pointer" transition="0.1s" _hover={{ transform: "translateY(-4px)" }} />
                                         </Flex> */}
-                                    <CustomButton text='Create order' size={isbaseallerScreen ? "sm" : "md"} onclick={() => { navigate("/create-order") }} />
+                                    <CustomButton text='Create order' size={issmallerScreen ? "sm" : "md"} onclick={() => { navigate("/create-order") }} />
                                     <Text
                                         color="#CD0B3A"
                                         borderBottom="1px solid #CD0B3A"
                                         fontSize={{ base: "12px", md: "14px" }}
                                         fontWeight="500"
                                         cursor="pointer"
+                                        justifySelf="flex-end"
                                     >Delete Customer</Text>
                                     {/* <Menu>
                                         <MenuButton justifySelf="flex-end">
