@@ -38,11 +38,10 @@ export default function TransModal({ transaction }) {
         }}>
         View
       </Button>
-
       <Modal isOpen={isOpen} onClose={onClose} size="2xl" isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader mt="70px">
+          <ModalHeader mt="50px">
             <Center>
               <Text fontSize="20px" lineHeight="24px" fontWeight="20px" color="#333344">
                 Transaction Details
@@ -52,7 +51,7 @@ export default function TransModal({ transaction }) {
           <ModalCloseButton />
           <ModalBody>
             <Center>
-              <Box mt="40px" width="88%">
+              <Box mt="30px" width="88%">
                 <Box
                   width="100%"
                   display="flex"
@@ -113,7 +112,7 @@ export default function TransModal({ transaction }) {
                     </Text>
                   </Box>
                 </Box>
-                <Flex justifyContent="center" alignItems="center" mt="50px">
+                <Flex justifyContent="center" alignItems="center" mt="40px">
                   <Image
                     src={transaction.title === 'Money Sent' ? SentImg : RecievedImg}
                     alt=""
@@ -132,7 +131,7 @@ export default function TransModal({ transaction }) {
                 </Flex>
                 <Center>
                   <Box
-                    mt="50px"
+                    mt="40px"
                     display="flex"
                     flexDirection="row"
                     justifyContent="center"

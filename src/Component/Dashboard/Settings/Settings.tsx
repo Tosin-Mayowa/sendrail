@@ -1,22 +1,71 @@
-import {
-  Flex,
-  Image,
-  Box,
-  Text,
-  InputGroup,
-  InputRightElement,
-  Input,
-  Select,
-} from '@chakra-ui/react'
+import { Flex, Tabs, TabList, TabPanels, Tab, TabPanel,Text } from '@chakra-ui/react'
 import React from 'react'
 import withLayout from '../../../wrapper/withLayout';
-
+import Profile from '../Profile/Profile'
 const Settings=()=>{
 
     return (
+      <>
         <Flex>
-            <Text>Hey settings</Text>
+          <Text>Hello</Text>
         </Flex>
+        <Tabs>
+          <TabList>
+            <Tab
+              fontWeight="500"
+              fontSize="16px"
+              lineHeight="22px"
+              color="#595956"
+              _selected={{ color: '#1F1F1F', borderBottom: ' 4px solid #F9C567' }}>
+              Profile
+            </Tab>
+            <Tab
+              fontWeight="500"
+              fontSize="16px"
+              lineHeight="22px"
+              color="#595956"
+              _selected={{ color: '#1F1F1F', borderBottom: ' 4px solid #F9C567' }}
+             >
+              Business information
+            </Tab>
+            <Tab
+              fontWeight="500"
+              fontSize="16px"
+              lineHeight="22px"
+              color="#595956"
+              _selected={{ color: '#1F1F1F', borderBottom: ' 4px solid #F9C567' }}
+              >
+              Bank information
+            </Tab>
+            <Tab
+              fontWeight="500"
+              fontSize="16px"
+              lineHeight="22px"
+              color="#595956"
+              _selected={{ color: '#1F1F1F', borderBottom: ' 4px solid #F9C567' }}
+              >
+              Security
+            </Tab>
+            <Tab
+              fontWeight="500"
+              fontSize="16px"
+              lineHeight="22px"
+              color="#595956"
+              _selected={{ color: '#1F1F1F', borderBottom: ' 4px solid #F9C567' }}>
+              Business preferences
+            </Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+                <Profile/>
+            </TabPanel>
+            <TabPanel>2</TabPanel>
+            <TabPanel>3</TabPanel>
+            <TabPanel>2</TabPanel>
+            <TabPanel>3</TabPanel>
+          </TabPanels>
+        </Tabs>
+      </>
     )
 }
 

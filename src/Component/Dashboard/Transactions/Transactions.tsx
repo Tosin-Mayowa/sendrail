@@ -77,7 +77,7 @@ const Transactions = () => {
   }
   return (
     <Flex flexDir="column" width="100%">
-      <Flex flexDir="column" ml="48px">
+      <Flex flexDir="column" ml="20px">
         <Text mt="32px" fontWeight="600" fontSize="24px" lineHeight="29px" color="#000000">
           Transaction History
         </Text>
@@ -89,14 +89,16 @@ const Transactions = () => {
       <Box display="flex" mt="70px" width="100%">
         <Box
           display="flex"
-          ml="140px"
+          ml="150px"
           justifyContent="flex-end"
           width="100%"
           height="32px"
           alignItems="baseline">
           <InputGroup width="19%">
             <Input
-              boxShadow="0px 4px 20px rgba(6, 0, 137, 0.1)"
+              border="1px solid #ABA7A7"
+              borderRadius="4px"
+              height="32px"
               backgroundColor="#fff"
               width="200px"
               fontWeight="500"
@@ -107,7 +109,7 @@ const Transactions = () => {
             <InputRightElement children={<SearchIcon color="gray.300" />} />
           </InputGroup>
           <Flex width="29%" height="32px" alignItems="baseline">
-            <Text ml="20px" color="#595956" fontWeight="500" fontSize="14px" lineHeight="22px">
+            <Text ml="33px" color="#595956" fontWeight="500" fontSize="14px" lineHeight="22px">
               Sort by:
             </Text>
             <Select
@@ -115,7 +117,7 @@ const Transactions = () => {
               fontWeight="500"
               fontSize="14px"
               lineHeight="22px"
-              ml="10px"
+              ml="25px"
               textTransform="capitalize"
               width="157px"
               height="32px"
@@ -137,9 +139,9 @@ const Transactions = () => {
             display="flex"
             justifyContent="space-between"
             mt={Number(transaction?.id) > 1 ? '8px' : ''}
-            ml="48px"
+            ml="20px"
             padding="16px 42px"
-            width="93%"
+            width="98%"
             height="94px"
             background="rgba(7, 5, 41, 0.07)"
             opacity="0.9"
@@ -166,14 +168,24 @@ const Transactions = () => {
               <Flex flexDir="column">
                 <Flex>
                   <Text fontSize="18px" fontWeight="700" lineHeight="29px">
-                    {transaction?.title === 'Money Sent' ? '-':'+'}
+                    {transaction?.title === 'Money Sent' ? '-' : '+'}
                   </Text>
-                  <Text mt="3px" ml="3px" color="#1F1F1F" 
-                  fontWeight="600" fontSize="18px" lineHeight="29px">
+                  <Text
+                    mt="3px"
+                    ml="3px"
+                    color="#1F1F1F"
+                    fontWeight="600"
+                    fontSize="18px"
+                    lineHeight="29px">
                     {currencyFormatter(transaction?.amount)}
                   </Text>
                 </Flex>
-                <Text color="#000" ml={transaction?.title === 'Money Sent'?"11px":"14px"} fontWeight="500" fontSize="16px" lineHeight="29px">
+                <Text
+                  color="#000"
+                  ml={transaction?.title === 'Money Sent' ? '11px' : '14px'}
+                  fontWeight="500"
+                  fontSize="16px"
+                  lineHeight="29px">
                   {transaction.status}
                 </Text>
               </Flex>
