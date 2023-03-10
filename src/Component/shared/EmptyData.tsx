@@ -4,6 +4,7 @@ import Empty from '../../Asset/empty-notepad.png'
 import CustomButton from './CustomButton'
 
 interface Props {
+    error_text?: string,
     button?: boolean,
     button_details?: {
         text: string,
@@ -12,7 +13,7 @@ interface Props {
     }
 }
 
-function EmptyData({ button, button_details }: Props): JSX.Element {
+function EmptyData({ button, button_details, error_text }: Props): JSX.Element {
     const { text, onclick, variant } = button_details
     return (
         <Flex
@@ -27,7 +28,7 @@ function EmptyData({ button, button_details }: Props): JSX.Element {
         >
             <Image src={Empty} alt="Empty" />
             <Text color="#656566" fontSize="20px" fontWeight="500">
-                No Data To Show
+                {error_text}
             </Text>
             {
                 button && <CustomButton text={text} onclick={onclick} variant={variant} />
@@ -40,7 +41,8 @@ EmptyData.defaultProps = {
     button: false,
     button_details: {
         variant: "filled"
-    }
+    },
+    error_text: "No Data To Show"
 }
 
 export default EmptyData

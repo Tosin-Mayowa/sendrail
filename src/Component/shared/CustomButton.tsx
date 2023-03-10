@@ -5,7 +5,7 @@ interface Props {
     text: string,
     variant?: "filled" | "outlined",
     size?: string,
-    onclick: () => void,
+    onclick?: () => void,
     disabled?: boolean
 }
 function CustomButton({
@@ -48,7 +48,8 @@ function CustomButton({
 CustomButton.defaultProps = {
     variant: "filled",
     size: "md",
-    disabled: false
+    disabled: false,
+    onclick: console.log("This button is not assigned to a function")
 }
 
 export default CustomButton

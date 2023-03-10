@@ -11,7 +11,7 @@ function DeliveryStatus({ status }: { status: string }): JSX.Element {
         color = "#079638"
         background = "#E6FDEEC3"
     } else {
-        color = "#595956"
+        color = "#000000"
         background = "#07052912"
     }
     return (
