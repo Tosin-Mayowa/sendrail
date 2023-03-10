@@ -11,10 +11,14 @@ import {
   Center
 } from '@chakra-ui/react'
 import React from 'react'
-import './Profile.css'
+import './BussInfo.css'
 import { FiEdit2 } from 'react-icons/fi'
 const BusinessInfo = () => {
   return (
+    <>
+    <Text mt='10px' color="#000000" fontWeight="500" fontSize="24px" lineHeight="29px">
+        Business Information
+      </Text>
     <Center>
       <Box
         mt="56px"
@@ -29,7 +33,7 @@ const BusinessInfo = () => {
         borderRadius="20px">
         <Flex flexDir="column">
           <Text color="#656566" fontWeight="500" fontSize="24px" lineHeight="29px">
-            Personal Information
+            Business Information
           </Text>
           <Box className="Wrapper">
             <Input type="file" className="my_upload" />
@@ -39,7 +43,7 @@ const BusinessInfo = () => {
           <Flex justifyContent="space-between" mt="70px">
             <FormControl>
               <FormLabel color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
-                First name
+                Business name
               </FormLabel>
               <InputGroup>
                 <Input
@@ -55,7 +59,7 @@ const BusinessInfo = () => {
 
             <FormControl ml="60px">
               <FormLabel color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
-                Last name
+                Business address
               </FormLabel>
               <InputGroup>
                 <Input
@@ -72,7 +76,7 @@ const BusinessInfo = () => {
           <Flex justifyContent="space-between" mt="70px">
             <FormControl>
               <FormLabel color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
-                Gender
+                Phone number
               </FormLabel>
               <InputGroup>
                 <Input
@@ -88,7 +92,7 @@ const BusinessInfo = () => {
 
             <FormControl ml="60px">
               <FormLabel color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
-                Phone number
+                Type
               </FormLabel>
               <InputGroup>
                 <Input
@@ -98,7 +102,7 @@ const BusinessInfo = () => {
                   background="#FFFFFF"
                   borderRadius="4px"
                 />
-                <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+               
               </InputGroup>
             </FormControl>
           </Flex>
@@ -184,6 +188,7 @@ const BusinessInfo = () => {
         </Flex>
       </Box>
     </Center>
+    </>
   )
 }
 

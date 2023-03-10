@@ -2,6 +2,8 @@ import { Flex, Tabs, TabList, TabPanels, Tab, TabPanel,Text } from '@chakra-ui/r
 import React from 'react'
 import withLayout from '../../../wrapper/withLayout';
 import Profile from '../Profile/Profile'
+import BusinessInfo from '../BusinessInfo/BusinessInfo'
+import BankInfo from '../BankInfo/BankInfo'
 const Settings=()=>{
 
     return (
@@ -24,8 +26,7 @@ const Settings=()=>{
               fontSize="16px"
               lineHeight="22px"
               color="#595956"
-              _selected={{ color: '#1F1F1F', borderBottom: ' 4px solid #F9C567' }}
-             >
+              _selected={{ color: '#1F1F1F', borderBottom: ' 4px solid #F9C567' }}>
               Business information
             </Tab>
             <Tab
@@ -33,8 +34,7 @@ const Settings=()=>{
               fontSize="16px"
               lineHeight="22px"
               color="#595956"
-              _selected={{ color: '#1F1F1F', borderBottom: ' 4px solid #F9C567' }}
-              >
+              _selected={{ color: '#1F1F1F', borderBottom: ' 4px solid #F9C567' }}>
               Bank information
             </Tab>
             <Tab
@@ -42,8 +42,7 @@ const Settings=()=>{
               fontSize="16px"
               lineHeight="22px"
               color="#595956"
-              _selected={{ color: '#1F1F1F', borderBottom: ' 4px solid #F9C567' }}
-              >
+              _selected={{ color: '#1F1F1F', borderBottom: ' 4px solid #F9C567' }}>
               Security
             </Tab>
             <Tab
@@ -57,10 +56,14 @@ const Settings=()=>{
           </TabList>
           <TabPanels>
             <TabPanel>
-                <Profile/>
+              <Profile />
             </TabPanel>
-            <TabPanel>2</TabPanel>
-            <TabPanel>3</TabPanel>
+            <TabPanel>
+              <BusinessInfo />
+            </TabPanel>
+            <TabPanel>
+              <BankInfo />
+            </TabPanel>
             <TabPanel>2</TabPanel>
             <TabPanel>3</TabPanel>
           </TabPanels>
