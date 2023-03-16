@@ -12,6 +12,7 @@ import Overview from '../Component/Dashboard/Overview'
 import ManageCustomer from '../Component/Dashboard/Customer/ManageCustomer'
 import Payroll from '../Component/Dashboard/Payroll'
 import Shipment from '../Component/Dashboard/Shipment'
+import ManageLink from '../Component/Dashboard/ManageLink'
 
 import Deposit from '../Component/Dashboard/Overview/Deposit'
 import Withdraw from '../Component/Dashboard/Overview/Withdraw'
@@ -22,6 +23,11 @@ import CreateOrder from '../Component/Dashboard/Shipment/CreateOrder'
 import CreatePayroll from '../Component/Dashboard/Payroll/CreatePayroll'
 
 import AddCustomer from '../Component/Dashboard/Customer/AddCustomer'
+
+import CreateFoodMenu from '../Component/Dashboard/ManageLink/CreateFoodMenu'
+import CreateGroceryMenu from '../Component/Dashboard/ManageLink/CreateGroceryMenu'
+import FoodMenu from '../Component/Dashboard/ManageLink/FoodMenu'
+import GroceryMenu from '../Component/Dashboard/ManageLink/GroceryMenu'
 
 import ProtectAuth from '../Component/ProtectAuth'
 
@@ -54,7 +60,7 @@ function Index() {
             { path: "/rider", component: <Empty /> },
             { path: "/payroll", component: <Payroll /> },
             { path: "/transactions", component: <Empty /> },
-            { path: "/manage-link", component: <Empty /> },
+            { path: "/manage-link", component: <ManageLink /> },
             { path: "/settings", component: <Empty /> },
             { path: "*", component: <Home /> },// Usually a 404 error page but since we have none....
 
@@ -69,7 +75,13 @@ function Index() {
             // customer sub paths------------------------------------------
             { path: "/add-customer", component: <AddCustomer /> },
             // payroll sub paths------------------------------------------
-            { path: "/create-payroll", component: <CreatePayroll /> }
+            { path: "/create-payroll", component: <CreatePayroll /> },
+            // manage link sub paths------------------------------------------
+            { path: "/create-food-link", component: <CreateFoodMenu /> },
+            { path: "/create-grocery-link", component: <CreateGroceryMenu /> },
+            { path: "/food-menu", component: <FoodMenu /> },
+            { path: "/grocery-menu", component: <GroceryMenu /> },
+
         ]
     return (
         <Routes>

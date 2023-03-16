@@ -111,7 +111,6 @@ const Index = (): JSX.Element => {
                                 icon={<MdArrowDropDown />}
                                 width="100%"
                                 color="#000"
-                                background="#fff"
                                 fontSize={{ base: "10px", md: "inherit" }}
                                 backgroundColor="#fff"
                                 height={{ base: "30px", md: "50px" }}
