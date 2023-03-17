@@ -4,19 +4,22 @@ import EmptyData from '../../../shared/EmptyData'
 import { sampleRiders, tableHeadings } from '../../../../data/payroll'
 import { ChatIcon, PhoneIcon, SearchIcon } from '@chakra-ui/icons'
 import PayslipModal from '../PayslipModal'
+import { useNavigate } from 'react-router-dom'
+import CustomButton from '../../../shared/CustomButton'
 
 const Index = (): JSX.Element => {
     const [riders, setRiders] = useState(sampleRiders)
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const navigate = useNavigate()
 
     return (
         <>
             {
                 riders?.length === 0 || !riders ?
-                    <EmptyData button button_details={{ text: "Create Payroll", onclick: () => { } }} />
+                    <EmptyData button button_details={{ text: "Create Payroll", onclick: () => { navigate("/create-payroll") } }} />
                     :
                     <Box w="100%">
-                        <InputGroup w={{ base: "100%", md: "30%" }} my="30px">
+                        <InputGroup w={{ base: "100%", md: "30%" }} my="48px">
                             <Input
                                 border="1px solid #ABA7A7"
                                 backgroundColor="#fff"
@@ -34,9 +37,11 @@ const Index = (): JSX.Element => {
                                 <SearchIcon color="#ABA7A7" boxSize={{ base: "20px", md: "25px" }} />
                             </InputRightElement>
                         </InputGroup>
+                        <Flex mb="16px">
+                            <CustomButton text='Create payroll' onclick={() => navigate("/create-payroll")} />
+                        </Flex>
                         <Grid
                             w="100%"
-                            my="15px"
                             p={{ base: "10px", md: "15px" }}
                             gridTemplateColumns="repeat(5,1fr)"
                             placeItems="center"
@@ -56,6 +61,7 @@ const Index = (): JSX.Element => {
                             riders?.map((rider) => (
                                 <Grid
                                     key={rider.id}
+                                    mt="16px"
                                     p={{ base: "10px", md: "15px 10px" }}
                                     minW="100%"
                                     w={{ base: "auto", md: "100%" }}

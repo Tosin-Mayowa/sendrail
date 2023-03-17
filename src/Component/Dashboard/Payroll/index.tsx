@@ -16,7 +16,7 @@ function Index(): JSX.Element {
             <Grid
                 placeItems="center"
             >
-                <Text as="h1" w="100%" my={{ base: "10px", md: "30px" }} fontSize="24px" fontWeight="600">
+                <Text as="h1" w="100%" my={{ base: "10px", md: "32px" }} fontSize="24px" fontWeight="600">
                     Payroll
                 </Text>
                 <Tabs variant="unstyled" w="100%">
@@ -29,7 +29,7 @@ function Index(): JSX.Element {
                                     fontSize={{ md: "16px", base: "14px" }}
                                     color="#595956"
                                     fontWeight="500"
-                                    mr="35px"
+                                    mr="48px"
 
                                     _selected={{
                                         py: "3px",

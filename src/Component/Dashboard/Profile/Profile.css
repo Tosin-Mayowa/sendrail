@@ -1,0 +1,32 @@
+.Wrapper {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border-radius: 50%;
+    border: 1px solid #ABA7A7;
+    background-image: url('../../../Asset/Settings/profile.png');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    margin-top: 32px;
+
+}
+
+.my_upload {
+    position: absolute;
+    top: 80%;
+    right: 10%;
+    outline: none;
+    border: none;
+    color: transparent;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+
+}
+
+.my_upload::-webkit-file-upload-button{
+    visibility: hidden;
+}
