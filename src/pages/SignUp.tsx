@@ -58,9 +58,9 @@ function SignUp() {
   } = state
   const sendSignUp = useCallback(async () => {
     const config = {
-      business: {
-        name: bussName,
-        type: select,
+      name: bussName,
+      type: select,
+      business_address: {
         address: bussAdd,
         state: stateVal,
         country: country
@@ -71,14 +71,14 @@ function SignUp() {
       state: stateInfo,
       country: countryInfo,
       email: email,
-      password: password
-    };
+      password: password,
+      role: 'business'
+    }
 
     console.log('busname', config)
     const resp = await signUpApi(config)
-    console.log({ resp, password });
-    if (resp) {
-
+    console.log({ resp, password })
+    if (resp?.success) {
       navigate('/verify', { state: { email } })
     }
   }, [
@@ -89,7 +89,8 @@ function SignUp() {
     country,
     firstName,
     lastName,
-
+    
+    navigate,
     stateInfo,
     countryInfo,
     email,

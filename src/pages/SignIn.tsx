@@ -30,31 +30,20 @@ function SignIn() {
     })
     if (resp?.data?.success) {
       const accessToken = resp?.data?.data?.token
-      const user = resp?.data?.data?.user
+      const user = resp?.data?.data?.user;
+     
       setAuth({password, user, accessToken});
       navigate('/dashboard');
     }
   }, [email, password, navigate, setAuth])
 
   return (
-    <Flex width="100%" height="100%" flexDir="column" className="BackG">
-      <Box mt="60px" ml={{ base: '25px', md: '40px', lg: '60px' }} display="flex">
-        <Image src={Logo} alt="Logo" />
-        <Text
-          ml="4px"
-          fontWeight="500"
-          fontSize="24px"
-          lineHeight="29px"
-          display="flex"
-          alignItems="center"
-          textAlign="right"
-          color={theme.colors.primary.main}>
-          Sendrail
-        </Text>
-      </Box>
+    <Flex width="100%" alignItems="center" justifyContent="center" height="100vh" flexDir="column" className="BackG">
+      
+       
       <Center>
         <Box
-          mt="40px"
+          
           display="flex"
           flexDirection="column"
           padding="38px 40px"

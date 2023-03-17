@@ -13,10 +13,10 @@ import ManageCustomer from '../Component/Dashboard/Customer/ManageCustomer'
 import Payroll from '../Component/Dashboard/Payroll'
 import Shipment from '../Component/Dashboard/Shipment'
 import ManageLink from '../Component/Dashboard/ManageLink'
-
+import Settings from '../Component/Dashboard/Settings/Settings'
 import Deposit from '../Component/Dashboard/Overview/Deposit'
 import Withdraw from '../Component/Dashboard/Overview/Withdraw'
-
+import Transactions from '../Component/Dashboard/Transactions/Transactions'
 import ShipmentHistory from '../Component/Dashboard/Shipment/ShipmentHistory'
 import CreateOrder from '../Component/Dashboard/Shipment/CreateOrder'
 
@@ -59,9 +59,9 @@ function Index() {
             { path: "/customer", component: <ManageCustomer /> },
             { path: "/rider", component: <Empty /> },
             { path: "/payroll", component: <Payroll /> },
-            { path: "/transactions", component: <Empty /> },
+            { path: "/transactions", component: <Transactions /> },
             { path: "/manage-link", component: <ManageLink /> },
-            { path: "/settings", component: <Empty /> },
+            { path: "/settings", component: <Settings /> },
             { path: "*", component: <Home /> },// Usually a 404 error page but since we have none....
 
             // Sub paths******************************************************
@@ -90,14 +90,14 @@ function Index() {
                     <Route key={e.path} path={e.path} element={e.component} />
                 ))
             }
-            {/* <Route element={<ProtectAuth />}> */}
-            {
-                // Just remove the comments to add your auth if i forget to remove it before i push
-                AuthRoutes.map((e) => (
-                    <Route key={e.path} path={e.path} element={e.component} />
-                ))
-            }
-            {/* </Route> */}
+            <Route element={<ProtectAuth />}>
+                {
+                    // Just remove the comments to add your auth if i forget to remove it before i push
+                    AuthRoutes.map((e) => (
+                        <Route key={e.path} path={e.path} element={e.component} />
+                    ))
+                }
+            </Route>
         </Routes>
     )
 }
