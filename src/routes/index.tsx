@@ -2,22 +2,33 @@ import { Text } from '@chakra-ui/react'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import DashboardLayout from '../Component/Dashboard/DashboardLayout'
+import Home from '../pages/Home'
 import ForgotPassword from '../pages/ForgotPassword'
 import ResetPassword from '../pages/ResetPass'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import Verification from '../pages/Verification'
 import Overview from '../Component/Dashboard/Overview'
-import Customer from '../Component/Dashboard/Customer'
+import ManageCustomer from '../Component/Dashboard/Customer/ManageCustomer'
 import Payroll from '../Component/Dashboard/Payroll'
 import Shipment from '../Component/Dashboard/Shipment'
+import ManageLink from '../Component/Dashboard/ManageLink'
 import Settings from '../Component/Dashboard/Settings/Settings'
 import Deposit from '../Component/Dashboard/Overview/Deposit'
 import Withdraw from '../Component/Dashboard/Overview/Withdraw'
 import Transactions from '../Component/Dashboard/Transactions/Transactions'
 import ShipmentHistory from '../Component/Dashboard/Shipment/ShipmentHistory'
 import CreateOrder from '../Component/Dashboard/Shipment/CreateOrder'
-import Home from '../pages/Home'
+
+import CreatePayroll from '../Component/Dashboard/Payroll/CreatePayroll'
+
+import AddCustomer from '../Component/Dashboard/Customer/AddCustomer'
+
+import CreateFoodMenu from '../Component/Dashboard/ManageLink/CreateFoodMenu'
+import CreateGroceryMenu from '../Component/Dashboard/ManageLink/CreateGroceryMenu'
+import FoodMenu from '../Component/Dashboard/ManageLink/FoodMenu'
+import GroceryMenu from '../Component/Dashboard/ManageLink/GroceryMenu'
+
 import ProtectAuth from '../Component/ProtectAuth'
 
 function Empty(): JSX.Element {
@@ -45,13 +56,13 @@ function Index() {
             { path: "/", component: <Home /> },
             { path: "/dashboard", component: <Overview /> },
             { path: "/shipment", component: <Shipment /> },
-            { path: "/customer", component: <Customer /> },
+            { path: "/customer", component: <ManageCustomer /> },
             { path: "/rider", component: <Empty /> },
             { path: "/payroll", component: <Payroll /> },
-            { path: "/transactions", component: <Transactions/> },
-            { path: "/manage-link", component: <Empty /> },
+            { path: "/transactions", component: <Transactions /> },
+            { path: "/manage-link", component: <ManageLink /> },
             { path: "/settings", component: <Settings /> },
-            { path: "*", component: <Home /> },
+            { path: "*", component: <Home /> },// Usually a 404 error page but since we have none....
 
             // Sub paths******************************************************
 
@@ -61,6 +72,15 @@ function Index() {
             // Shipment sub paths----------------------------------------
             { path: "/shipment-history", component: <ShipmentHistory /> },
             { path: "/create-order", component: <CreateOrder /> },
+            // customer sub paths------------------------------------------
+            { path: "/add-customer", component: <AddCustomer /> },
+            // payroll sub paths------------------------------------------
+            { path: "/create-payroll", component: <CreatePayroll /> },
+            // manage link sub paths------------------------------------------
+            { path: "/create-food-link", component: <CreateFoodMenu /> },
+            { path: "/create-grocery-link", component: <CreateGroceryMenu /> },
+            { path: "/food-menu", component: <FoodMenu /> },
+            { path: "/grocery-menu", component: <GroceryMenu /> },
 
         ]
     return (
@@ -71,13 +91,13 @@ function Index() {
                 ))
             }
             <Route element={<ProtectAuth />}>
-            {
-                // Just remove the comments to add your auth if i forget to remove it before i push
-                AuthRoutes.map((e) => (
-                    <Route key={e.path} path={e.path} element={e.component} />
-                ))
-            }
-            </Route> 
+                {
+                    // Just remove the comments to add your auth if i forget to remove it before i push
+                    AuthRoutes.map((e) => (
+                        <Route key={e.path} path={e.path} element={e.component} />
+                    ))
+                }
+            </Route>
         </Routes>
     )
 }

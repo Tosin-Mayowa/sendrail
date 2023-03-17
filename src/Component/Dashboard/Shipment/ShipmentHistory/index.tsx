@@ -12,14 +12,14 @@ function Index(): JSX.Element {
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const navigate = useNavigate()
     return (
-        <DashboardLayout>
+        <DashboardLayout section='/shipment'>
             <Grid
                 placeItems="center"
             >
-                <Box w="100%">
-                    <RoundedBackButton color='#070529' onclick={() => { navigate(-1) }} />
+                <Box w="100%" mt={{ base: "10px", md: "42px" }}>
+                    <RoundedBackButton color='#040320' onclick={() => { navigate(-1) }} />
                 </Box>
-                <Text as="h1" w="100%" my={isSmallerScreen ? "10px" : "20px"} fontSize="24px" fontWeight="600">
+                <Text as="h1" w="100%" m={{ base: "10px  0px", md: "42px 0px 48px" }} fontSize="24px" fontWeight="600" color="#000000">
                     Shipment History
                 </Text>
 

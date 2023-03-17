@@ -12,7 +12,7 @@ function MyWallet(): JSX.Element {
     const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
     const balance = getWithExpiry("balance") || 1250
     const navigate = useNavigate()
-    const { formatNormalNumbers } = useNumbers()
+    const { formatSmallNumbers } = useNumbers()
     return (
         <Box
             width={isSmallerThan480 ? "100%" : "50%"}
@@ -59,7 +59,7 @@ function MyWallet(): JSX.Element {
                     fontWeight="500"
                     fontSize="28px"
                 >
-                    N{formatNormalNumbers(balance)}
+                    N{formatSmallNumbers(balance)}
                 </Text>
                 <Flex
                     w="100%"

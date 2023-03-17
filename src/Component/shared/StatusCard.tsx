@@ -1,5 +1,5 @@
 import {
- Box, Flex, GridItem, Image, Text, useMediaQuery 
+    Box, Flex, Grid, GridItem, Image, Text
 } from '@chakra-ui/react'
 import React from 'react'
 
@@ -13,31 +13,31 @@ interface Props {
     onclick?: () => void
 }
 function StatusCard({ card, dark, onclick }: Props) {
-    const [isSmallerScreen] = useMediaQuery("(max-width: 480px)");
     return (
-        <GridItem
+        <Grid
+            alignItems="center"
             w="100%"
             bg={dark ? "#070529" : "#fff"}
             borderRadius="5px"
             cursor="pointer"
             onClick={onclick}
+            height="104px"
 
-            boxShadow="0px 0px 1px 0px #070529"
+            border="2px solid #E5E4EF"
 
             _hover={{
-                boxShadow: "0px 5px 5px 0px #0705293a"
+                border: "2px solid transparent",
+                boxShadow: "0px 4px 4px 0px #0705297f"
             }}
         >
             <Flex
                 justifyContent="space-between"
-                p="10px"
+                p="0px 24px"
                 alignItems="center"
-                px={!isSmallerScreen ? "20px" : ""}
                 color={dark ? "#fff" : "#070529"}
             >
                 <Box
-                    my="8px"
-                    fontSize={isSmallerScreen ? "18" : "21px"}
+                    fontSize={{ base: "18", md: "20px" }}
                 >
                     <Text lineHeight="26px" fontWeight="500">
                         {card?.title}
@@ -52,15 +52,15 @@ function StatusCard({ card, dark, onclick }: Props) {
                 <Box
                     borderRadius="50%"
                     padding="12px"
-                    width={isSmallerScreen ? "44px" : "56px"}
-                    height={isSmallerScreen ? "44px" : "56px"}
+                    width={{ base: "44px", md: "52px" }}
+                    height={{ base: "44px", md: "52px" }}
                     bg="#fff"
                     boxShadow={!dark ? "0px 0px 3px 0px #070529" : ""}
                 >
                     <Image src={card?.url} alt="Order" w="100%" />
                 </Box>
             </Flex>
-        </GridItem>
+        </Grid>
     )
 }
 

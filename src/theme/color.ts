@@ -6,7 +6,7 @@ export const theme = extendTheme({
     primary: {
       main: '#070529',
       100: '#F9C567',
-
+      500: '#070529'
     },
   },
 });

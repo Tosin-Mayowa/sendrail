@@ -1,5 +1,5 @@
 Main Color = #070529
-
+₦
 
 # Getting Started with Create React App
 

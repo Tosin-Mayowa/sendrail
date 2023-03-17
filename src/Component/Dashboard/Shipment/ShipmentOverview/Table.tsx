@@ -8,7 +8,7 @@ import { tableHeadings, TData } from '../../../../data/shipment';
 import EmptyData from '../../../shared/EmptyData';
 import DeliveryStatus from './DeliveryStatus';
 import OrderStatus from './OrderStatus';
-import TableDrawer from './TableDrawer';
+import OrderDrawer from './OrderDrawer';
 
 interface Props {
     details: {
@@ -55,7 +55,7 @@ function Table({ details, selectable, history }: Props): JSX.Element {
                 w="100%"
                 rowGap="10px"
             >
-                {history && <Text color="#070529" fontWeight="600" fontSize="20px">January, 2023</Text>}
+                {history && <Text color="#595956" fontWeight="600" fontSize="16px">January, 2023</Text>}
                 {
                     sortedData?.length === 0 ? (
                         <EmptyData />
@@ -63,21 +63,29 @@ function Table({ details, selectable, history }: Props): JSX.Element {
                         <>
                             {
                                 sortedData.map((data) => (
-                                    <Menu>
+                                    <Menu
+                                        key={data?.delivery_status}  // will be changed after connecting to BE
+                                    >
                                         <Grid
-                                            key={data?.delivery_status}  // will be changed after connecting to BE
                                             p={isSmallerScreen ? "10px" : "15px 10px"}
                                             minW="100%"
                                             w={isSmallerThan480 ? "auto" : "100%"}
                                             gridTemplateColumns={isSmallerThan480 ? "repeat(8,30%)" : "repeat(8,1fr)"}
                                             placeItems="center"
-                                            background="#07052912"
-                                            borderRadius="10px"
-                                            color="#000000"
+                                            // background="#07052912"
+                                            borderBottom="1px solid #07052912"
+                                            // borderRadius="10px"
+                                            color="#ABA7A7"
                                             fontSize={isSmallerScreen ? "10px" : "14px"}
                                             fontWeight="500"
                                             textAlign="center"
                                             overflowX={isSmallerThan480 ? "scroll" : "hidden"}
+                                            onClick={() => {
+                                                if (isSmallerScreen) {
+                                                    setData(data)
+                                                    onOpen()
+                                                }
+                                            }}
                                             className='table-row'
                                         >
                                             <Flex w="100%" justifyContent="center" alignItems="center" position="relative">
@@ -101,8 +109,8 @@ function Table({ details, selectable, history }: Props): JSX.Element {
                                                     {
                                                         history ?
                                                             <ChevronRightIcon
-                                                                boxSize={10}
-                                                                color="#F9C567"
+                                                                boxSize={7}
+                                                                color="#000"
                                                                 cursor="pointer"
                                                                 onClick={() => {
                                                                     setData(data)
@@ -110,7 +118,7 @@ function Table({ details, selectable, history }: Props): JSX.Element {
                                                                 }} />
                                                             :
                                                             <MenuButton>
-                                                                <GoKebabVertical size={20} cursor="pointer" />
+                                                                <GoKebabVertical size={20} cursor="pointer" color='#323232' />
                                                             </MenuButton>
                                                     }
                                                 </Flex>
@@ -139,7 +147,7 @@ function Table({ details, selectable, history }: Props): JSX.Element {
                         </>
                 }
             </Grid>
-            <TableDrawer isOpen={isOpen} onClose={onClose} details={drawer_data} />
+            <OrderDrawer isOpen={isOpen} onClose={onClose} details={drawer_data} history={history} />
         </>
     )
 }
