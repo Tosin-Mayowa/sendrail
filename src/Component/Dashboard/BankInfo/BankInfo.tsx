@@ -3,7 +3,7 @@ import {
   Box,
   Text,
   Input,
-  InputRightElement,
+Button,
   InputGroup,
   FormControl,
   FormLabel,
@@ -11,7 +11,7 @@ import {
   Center
 } from '@chakra-ui/react'
 import React,{useState} from 'react'
-
+import AccountModal from './AccountModal'
 import Nodata from '../../../Asset/Settings/nodata.png'
 const BankInfo = () => {
     const [bankData,setBankData]=useState('');
@@ -166,14 +166,22 @@ const BankInfo = () => {
           </Box>
         </Center>
       ) : (
-        <Flex justifyContent="center" alignItems="start" height="100vh">
+        <Flex flexDir="column" justifyContent="center" alignItems="center" width="100%">
           <Box mt="60px">
             <Image src={Nodata} alt="" width="80%" height="80%" />
-            <Text color="#656566"  fontWeight="500" fontSize="20px" mt="20px" lineHeight="55px" textAlign="center">No data to show</Text>
+            <Text
+              color="#656566"
+              fontWeight="500"
+              fontSize="20px"
+              mt="20px"
+              lineHeight="55px"
+              textAlign="center">
+              No data to show
+            </Text>
           </Box>
-          <Button>
-              
-          </Button>
+      
+         <AccountModal/>
+    
         </Flex>
       )}
     </>

@@ -4,14 +4,17 @@ import withLayout from '../../../wrapper/withLayout';
 import Profile from '../Profile/Profile'
 import BusinessInfo from '../BusinessInfo/BusinessInfo'
 import BankInfo from '../BankInfo/BankInfo'
+import Security from '../Security/Security'
 const Settings=()=>{
 
     return (
       <>
         <Flex>
-          <Text>Hello</Text>
+          <Text ml="5px" color="#000000" fontWeight="600" fontSize="24px" lineHeight="29px">
+            Settings
+          </Text>
         </Flex>
-        <Tabs>
+        <Tabs mt='30px'>
           <TabList>
             <Tab
               fontWeight="500"
@@ -64,7 +67,8 @@ const Settings=()=>{
             <TabPanel>
               <BankInfo />
             </TabPanel>
-            <TabPanel>2</TabPanel>
+            <TabPanel><Security/>
+            </TabPanel>
             <TabPanel>3</TabPanel>
           </TabPanels>
         </Tabs>

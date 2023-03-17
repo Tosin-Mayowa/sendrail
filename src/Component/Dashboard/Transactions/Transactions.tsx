@@ -109,7 +109,7 @@ const Transactions = () => {
             <InputRightElement children={<SearchIcon color="gray.300" />} />
           </InputGroup>
           <Flex width="29%" height="32px" alignItems="baseline">
-            <Text ml="33px" color="#595956" fontWeight="500" fontSize="14px" lineHeight="22px">
+            <Text flexShrink='0' ml="33px" color="#595956" fontWeight="500" fontSize="14px" lineHeight="22px">
               Sort by:
             </Text>
             <Select
@@ -117,7 +117,7 @@ const Transactions = () => {
               fontWeight="500"
               fontSize="14px"
               lineHeight="22px"
-              ml="25px"
+              ml="22px"
               textTransform="capitalize"
               width="157px"
               height="32px"

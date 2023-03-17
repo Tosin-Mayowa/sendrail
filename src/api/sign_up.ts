@@ -2,15 +2,16 @@ import { handleError } from "../lib/utilities";
 import requestClient from "../config/axios";
 
 export interface IBusiness {
-  name: string,
-  type?: string,
+ 
   address: string,
   state: string,
   country: string
 }
 
 export type IData = {
-  business: IBusiness;
+  name: string;
+  type: string;
+  business_address: IBusiness;
   first_name: string;
   last_name: string;
   address: string;
@@ -18,29 +19,35 @@ export type IData = {
   country: string;
   email: string;
   password: string;
+  role:string;
 }
 
 export const signUpApi = async ({
-  business, first_name,
+  name,
+  type,
+  business_address,
+  first_name,
   last_name,
   address,
   state,
   country,
   email,
-  password,
+  password,role
 }: IData) => {
   return await requestClient
     .post(`/auth/signup`, {
-      business,
+      name,
+      type,
+      business_address,
       first_name,
       last_name,
       address,
       state,
       country,
       email,
-      password
+      password,role
     })
     .catch((err) => {
-      return handleError(err);
-    });
+      return handleError(err)
+    })
 }

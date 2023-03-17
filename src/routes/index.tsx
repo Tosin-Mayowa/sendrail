@@ -70,14 +70,14 @@ function Index() {
                     <Route key={e.path} path={e.path} element={e.component} />
                 ))
             }
-            {/* <Route element={<ProtectAuth />}> */}
+            <Route element={<ProtectAuth />}>
             {
                 // Just remove the comments to add your auth if i forget to remove it before i push
                 AuthRoutes.map((e) => (
                     <Route key={e.path} path={e.path} element={e.component} />
                 ))
             }
-            {/* </Route> */}
+            </Route> 
         </Routes>
     )
 }
