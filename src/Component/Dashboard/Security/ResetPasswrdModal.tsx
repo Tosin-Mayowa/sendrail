@@ -7,82 +7,38 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
-  useDisclosure,Text
-} from '@chakra-ui/react';
+  useDisclosure,
+  Text,
+  Box,
+  useTheme,Flex
+} from '@chakra-ui/react'
 import React,{useState} from 'react';
 
-const ResetPasswordModal=()=>{
- const { isOpen, onOpen, onClose } = useDisclosure();
- const [emailSuccess,setEmailSuccess]=useState<boolean>(false);
- const [otpSuccess,setOtpSuccess]=useState<boolean>(false);
- return (
-   <>
-     <Button
-       variant="link"
-       alignSelf="center"
-       color="#F9AB21"
-       fontWeight="500"
-       fontSize="18px"
-       lineHeight="22px"
-       onClick={onOpen}
-       _hover={{
-         color :'#F9AB21',
-         textDecoration: 'none'
-       }}>
-       Reset Password
-     </Button>
-
-     {!emailSuccess?<Modal isOpen={isOpen} onClose={onClose} isCentered>
-       <ModalOverlay />
-       <ModalContent>
-         <ModalHeader>Modal Title</ModalHeader>
-         <ModalCloseButton />
-         <ModalBody>
-           <Text>Hello</Text>
-         </ModalBody>
-
-         <ModalFooter>
-           <Button colorScheme="blue" mr={3} onClick={onClose}>
-             Close
-           </Button>
-           <Button variant="ghost">Secondary Action</Button>
-         </ModalFooter>
-       </ModalContent>
-     </Modal>:!otpSuccess?<Modal isOpen={isOpen} onClose={onClose} isCentered>
-       <ModalOverlay />
-       <ModalContent>
-         <ModalHeader>Modal Title</ModalHeader>
-         <ModalCloseButton />
-         <ModalBody>
-           <Text>Hello</Text>
-         </ModalBody>
-
-         <ModalFooter>
-           <Button colorScheme="blue" mr={3} onClick={onClose}>
-             Close
-           </Button>
-           <Button variant="ghost">Secondary Action</Button>
-         </ModalFooter>
-       </ModalContent>
-     </Modal>:<Modal isOpen={isOpen} onClose={onClose} isCentered>
-       <ModalOverlay />
-       <ModalContent>
-         <ModalHeader>Modal Title</ModalHeader>
-         <ModalCloseButton />
-         <ModalBody>
-           <Text>new password</Text>
-         </ModalBody>
-
-         <ModalFooter>
-           <Button colorScheme="blue" mr={3} onClick={onClose}>
-             Close
-           </Button>
-           <Button variant="ghost">Secondary Action</Button>
-         </ModalFooter>
-       </ModalContent>
-     </Modal>}
-   </>
- )
+const ResetPasswordModal = ({ setSecurity }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const theme = useTheme()
+  const [emailSuccess, setEmailSuccess] = useState<boolean>(false)
+  const [otpSuccess, setOtpSuccess] = useState<boolean>(false)
+  return (
+    <Flex flexDir="column" justifyContent="center" alignItems="center">
+      <Box
+        width="565px"
+        height="325px"
+        background="rgba(7, 5, 41, 0.07)"
+        border-radius="20px"
+        display="flex"
+        flexDir="column"
+        >
+      <Text
+       color=""
+                    fontWeight="500"
+                    fontSize="16px"
+                    
+                    lineHeight="22px"
+      >Reset Password</Text>
+      </Box>
+    </Flex>
+  )
 }
 
 export default ResetPasswordModal;

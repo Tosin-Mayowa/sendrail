@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react'
 import { useAuth } from '../lib/hooks/useAuth'
 import { signInApi } from '../api/login'
-import Logo from '../Asset/Logos/Onboarding/SENDRAILS.png'
+import Logo from '../Asset/Onbarding/SENDRAILS.png'
 
 function SignIn() {
   const { setAuth } = useAuth()
@@ -38,113 +38,110 @@ function SignIn() {
   }, [email, password, navigate, setAuth])
 
   return (
-    <Flex width="100%" alignItems="center" justifyContent="center" height="100vh" flexDir="column" className="BackG">
-      
-       
-      <Center>
-        <Box
-          
-          display="flex"
-          flexDirection="column"
-          padding="38px 40px"
-          width="500px"
-          height="400px"
-          bg="#FFFFFF"
-          borderRadius="12px">
-          <Box>
-            <Center>
-              <Box width={{ base: '50px', md: '64px', lg: '84px' }} mb="30px">
-                <Center>
-                  <Image src={Logo} alt="Onboarding Logo" pr="10px" />
-                </Center>
-                <Box mt="13px" width="100%">
-                  <Text fontWeight="600" fontSize="24px" lineHeight="22px">
-                    Sign in
-                  </Text>
-                </Box>
-              </Box>
-            </Center>
-            <FormControl>
-              <Input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-                type="email"
-                mt="20px"
-                ml="15px"
-                padding="10px 12px 10px 10px"
-                width="400px"
-                height="44px"
-                background="#fff"
-                border="1px solid #ABA7A7"
-                borderRadius="4px"
-                fontWeight="500"
-                fontSize="16px"
-                lineHeight="22px"
-                color="#1F1F1F"
-                focusBorderColor={theme.colors.primary.main}
-              />
-              <Input
-                placeholder="Password"
-                autoComplete=""
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                mt="20px"
-                ml="15px"
-                padding="10px 12px 10px 10px"
-                width="400px"
-                height="44px"
-                background="#fff"
-                border="1px solid #ABA7A7"
-                borderRadius="4px"
-                fontWeight="500"
-                fontSize="16px"
-                lineHeight="22px"
-                color="#1F1F1F"
-                focusBorderColor={theme.colors.primary.main}
-              />
-              <Button
-                mt="40px"
-                ml="15px"
-                padding="16px 32px"
-                width="400px"
-                height="48px"
-                background={theme.colors.primary.main}
-                borderRadius="4px"
-                fontWeight="500"
-                onClick={login}
-                fontSize="18px"
-                lineHeight="22px"
-                color="#fff"
-                textAlign="center"
-                isDisabled={!(email && password && email.includes('@'))}
-                _hover={{
-                  background: '#16134f'
-                }}>
-                Sign in
-              </Button>
-              <Flex width="400px" ml="14px" mt="12px" justifyContent="space-between">
-                <Text cursor="pointer" fontSize="12px" color={theme.colors.primary['100']}>
-                  <Link to="/forgot-password">Forgot Password ?</Link>
-                </Text>
-                <Flex>
-                  <Text fontSize="12px">Don’t have an account?</Text>
-
-                  <Text
-                    cursor="pointer"
-                    fontSize="12px"
-                    ml="3px"
-                    color={theme.colors.primary['100']}>
-                    {' '}
-                    <Link to="/sign-up">Sign up</Link>
-                  </Text>
-                </Flex>
-              </Flex>
-            </FormControl>
+    <Flex
+      width="100%"
+      alignItems="center"
+      justifyContent="center"
+      height="100vh"
+      flexDir="column"
+      className="BackG">
+      <Box
+        display="flex"
+        justifyContent="center"
+        width="40rem"
+        height="32rem"
+        padding="64px"
+        bg="#fff">
+        <Flex
+          width="32rem"
+          height="24rem"
+          flexDir="column"
+          alignItems="center"
+          justifyContent="space-between">
+          <Flex
+            width="5.25rem"
+            height="3.5rem"
+            flexDir="column"
+            justifyContent="space-between"
+            alignItems="center">
+            <Image src={Logo} alt="Sendrail" width="30px" height="22px" objectFit="cover" />
+            <Text fontWeight="600" fontSize="24px" lineHeight="22px" color="#000000" flexShrink="0">
+              Sign in
+            </Text>
+          </Flex>
+          <Box display="flex" flexDirection="column">
+            <Input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              type="email"
+              mt="20px"
+              width="30rem"
+              height="2.6rem"
+              background="#fff"
+              border="1px solid #ABA7A7"
+              borderRadius="4px"
+              fontWeight="500"
+              fontSize="16px"
+              lineHeight="22px"
+              color="#1F1F1F"
+              focusBorderColor={theme.colors.primary.main}
+            />
+            <Input
+              placeholder="Password"
+              autoComplete=""
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              mt="20px"
+              width="30rem"
+              height="2.6rem"
+              background="#fff"
+              border="1px solid #ABA7A7"
+              borderRadius="4px"
+              fontWeight="500"
+              fontSize="16px"
+              lineHeight="22px"
+              color="#1F1F1F"
+              focusBorderColor={theme.colors.primary.main}
+            />
+            <Button
+              mt="60px"
+              padding="16px 32px"
+              width="30rem"
+              height="2.6rem"
+              background={theme.colors.primary.main}
+              borderRadius="4px"
+              fontWeight="500"
+              onClick={login}
+              fontSize="18px"
+              lineHeight="22px"
+              color="#fff"
+              textAlign="center"
+              isDisabled={!(email && password && email.includes('@'))}
+              _hover={{
+                background: '#16134f'
+              }}>
+              Sign in
+            </Button>
           </Box>
-        </Box>
-      </Center>
+          <Flex width="30rem" justifyContent="space-between">
+            <Text cursor="pointer" fontSize="12px" color={theme.colors.primary['100']}>
+              <Link to="/forgot-password">Forgot Password ?</Link>
+            </Text>
+            <Flex>
+              <Text fontSize="12px">Don’t have an account?</Text>
+
+              <Text cursor="pointer" fontSize="12px" ml="3px" color={theme.colors.primary['100']}>
+                {' '}
+                <Link to="/sign-up">Sign up</Link>
+              </Text>
+            </Flex>
+          </Flex>
+          
+        </Flex>
+        
+      </Box>
     </Flex>
   )
 }

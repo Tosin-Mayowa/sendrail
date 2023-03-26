@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
   Flex,
   Box,
@@ -14,9 +14,13 @@ import {
 } from '@chakra-ui/react'
 import eyeImg from '../../../Asset/Settings/eye.png';
 import ResetPasswordModal from './ResetPasswrdModal';
+import ResetPinModal from './ResetPinModal';
 const Security = () => {
-  return (
-    <>
+  const [isSecurity,setSecurity]=useState(true);
+  const [password, setPassword] = useState(true);
+
+    if(isSecurity)
+      return (<>
       <Text mt="10px" color="#000000" fontWeight="500" fontSize="24px" lineHeight="29px">
         Security
       </Text>
@@ -56,7 +60,21 @@ const Security = () => {
                     Can't remember your password? Tap to reset password
                   </Text>
                 </Flex>
-                <ResetPasswordModal/>
+                <Button
+       variant="link"
+       alignSelf="center"
+       color="#F9AB21"
+       fontWeight="500"
+       fontSize="18px"
+       lineHeight="22px"
+       onClick={()=>setSecurity(false)}
+       _hover={{
+         color: '#F9AB21',
+         textDecoration: 'none'
+       }}>
+       Reset Password
+     </Button>
+
                
               </Flex>
               <Flex mt="48px" width="51rem">
@@ -227,21 +245,34 @@ const Security = () => {
                     Can't remember your transaction pin? Tap to reset pin
                   </Text>
                 </Flex>
-                <Text
-                  alignSelf="center"
-                  color="#F9AB21"
-                  fontWeight="500"
-                  fontSize="18px"
-                  lineHeight="22px">
-                  Reset Pin
-                </Text>
+                <Button
+       variant="link"
+       alignSelf="center"
+       color="#F9AB21"
+       fontWeight="500"
+       fontSize="18px"
+       lineHeight="22px"
+       onClick={()=>setSecurity(false)}
+       _hover={{
+         color: '#F9AB21',
+         textDecoration: 'none'
+       }}>
+       Reset Pin
+     </Button>
               </Flex>
             </Flex>
           </Flex>
         </Box>
       </Center>
-    </>
-  )
+    </>)
+    if(password) return <ResetPasswordModal setSecurity={setSecurity}/>;
+      return <ResetPinModal/>;
+    
+    
+
+    
+    
+  
 }
 
 export default Security;
