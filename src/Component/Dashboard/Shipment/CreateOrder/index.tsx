@@ -1,38 +1,38 @@
 import {
- Box, Grid, Text, useMediaQuery 
+    Box, Grid, Text
 } from '@chakra-ui/react';
-import React from 'react'
-import { DashboardStates } from '../../../../Contexts/DashboardContext';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import RoundedBackButton from '../../../shared/RoundedBackButton';
 import PickupDetails from './PickupDetails';
 import ParcelDetails from './ParcelDetails';
 import ConfirmDetails from './ConfirmDetails';
+import DashboardLayout from '../../DashboardLayout';
 
 function Index(): JSX.Element {
-    const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
-    const {
-        views, dispatchView
-    } = DashboardStates()
+    const navigate = useNavigate()
+    const [section, setSection] = useState<string>("create-order");
 
     const fetchView = () => {
-        if (views.shipment.current_view === "create-order-1") return <PickupDetails />
-        if (views.shipment.current_view === "add-parcel-details") return <ParcelDetails />
-        if (views.shipment.current_view === "confirm-parcel-details") return <ConfirmDetails />
-        return <PickupDetails />
+        if (section === "create-order") return <PickupDetails setSection={setSection} />
+        if (section === "add-parcel-details") return <ParcelDetails setSection={setSection} />
+        if (section === "confirm-parcel-details") return <ConfirmDetails />
+        return <PickupDetails setSection={setSection} />
     }
     return (
-        <Grid
-            placeItems="center"
-            padding={isSmallerScreen ? "0px 5px" : "0px 40px"}
-        >
-            <Box w="100%">
-                <RoundedBackButton color='#070529' onclick={() => { dispatchView({ type: "change_shipment_view", current_view: String(views?.shipment?.initial_view) }) }} />
-            </Box>
-            <Text as="h1" w="100%" my="20px" fontSize="24px" fontWeight="600">
-                Create Order
-            </Text>
-            {fetchView()}
-        </Grid>
+        <DashboardLayout section='/shipment'>
+            <Grid
+                placeItems="center"
+            >
+                <Box w="100%">
+                    <RoundedBackButton color='#070529' onclick={() => { navigate(-1) }} />
+                </Box>
+                <Text as="h1" w="100%" my="20px" fontSize="24px" fontWeight="600">
+                    Create Order
+                </Text>
+                {fetchView()}
+            </Grid>
+        </DashboardLayout>
     )
 }
 

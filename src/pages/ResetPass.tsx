@@ -12,7 +12,7 @@ import {
   Heading,
   Button,
 } from '@chakra-ui/react';
-import Logo from '../Asset/Logos/Onboarding/SENDRAILS.png';
+import Logo from '../Asset/Onbarding/SENDRAILS.png';
 import Mark from '../Asset/Logos/Onboarding/Vector.png';
 import Ellipse from '../Asset/Logos/Onboarding/Ellipse.png';
 import { resetReducer } from '../reducers/resetReducer';
@@ -60,7 +60,14 @@ function ResetPassword() {
               <Center>
                 <Box width="100%" mb="30px">
                   <Center>
-                    <Image src={Logo} alt="Onboarding Logo" pr="10px" />
+                    <Image
+                      src={Logo}
+                      alt="Onboarding Logo"
+                      pr="10px"
+                      width="30px"
+                      height="22px"
+                      objectFit="cover"
+                    />
                   </Center>
                   <Box mt="13px" width="100%" textAlign="center">
                     <Text fontWeight="600" fontSize="24px" lineHeight="22px">

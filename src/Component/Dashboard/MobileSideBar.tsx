@@ -9,7 +9,6 @@ import { MdLogin } from 'react-icons/md'
 import { RiEBike2Fill } from 'react-icons/ri'
 import { TbLayersSubtract, TbLayoutNavbar } from 'react-icons/tb'
 import logo from '../../Asset/Logos/Onboarding/signup.png'
-import { DashboardStates } from '../../Contexts/DashboardContext'
 
 interface Props {
     onClose: () => void,
@@ -54,7 +53,6 @@ function MobileSideBar({ onClose, isOpen }: Props): JSX.Element {
             text: "Logout"
         }
     ])
-    const { dispatchView } = DashboardStates()
 
     return (
         <Drawer placement='left' onClose={onClose} isOpen={isOpen} size="xs">
@@ -96,7 +94,7 @@ function MobileSideBar({ onClose, isOpen }: Props): JSX.Element {
                                         color: "#F9C567"
                                     }}
 
-                                    onClick={() => { dispatchView({ type: "clear_views" }); onClose() }}
+                                    onClick={onClose}
                                 >
                                     <Flex
                                         placeItems="center"

@@ -3,7 +3,7 @@ import {
     Box, Button, Flex, Grid, Text, useDisclosure, useMediaQuery
 } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
-import { DashboardStates } from '../../../../Contexts/DashboardContext';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { cardDetails } from '../../../../data/cardDetails'
 import RoundedBackButton from '../../../shared/RoundedBackButton';
 import StatusCard from '../../../shared/StatusCard';
@@ -15,8 +15,11 @@ import SuccessModal from '../../../shared/SuccessModal';
 
 
 function Index(): JSX.Element {
+    const { state } = useLocation()
+    const navigate = useNavigate()
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
+    const [shipmentStatus, setShipmentStatus] = useState<string>(state?.status || "Order")
     const [sortedData, setData] = useState<TData | null | undefined>(tableData)
     const [disabled, setDisabled] = useState<boolean>(true)
     const [selectable, setSelectable] = useState<boolean>(false)
@@ -24,11 +27,6 @@ function Index(): JSX.Element {
     const { isOpen, onOpen, onClose }: { isOpen: boolean, onOpen: () => void, onClose: () => void } = useDisclosure()
     const Confirm = useDisclosure()
     const [isConfirmOpen, onConfirmOpen, onConfirmClose]: [ConfirmOpen: boolean, onConfirmOpen: () => void, onConfirmClose: () => void] = [Confirm.isOpen, Confirm.onOpen, Confirm.onClose]
-
-
-    const {
-        views, dispatchView, setTabIndex, setShipmentStatus, shipmentStatus
-    } = DashboardStates()
 
     useEffect(() => {
         const exist = sortedData.some((e) => e.order_status === "Unassigned")
@@ -46,7 +44,7 @@ function Index(): JSX.Element {
         }
         const filtered = tableData.filter((e) => e.delivery_status === shipmentStatus)
         return setData(filtered)
-    }, [ shipmentStatus])
+    }, [shipmentStatus])
 
     const assignOptions = () => {
         if (disabled) {
@@ -65,7 +63,6 @@ function Index(): JSX.Element {
     return (
         <Grid
             placeItems="center"
-            padding={isSmallerScreen ? "0px 5px" : "0px 40px"}
         >
             <ConfirmRequestModal
                 isOpen={isConfirmOpen} onClose={onConfirmClose}
@@ -74,18 +71,20 @@ function Index(): JSX.Element {
                 confirm_btn_func={() => { onOpen(); setSelectable(false); onConfirmClose(); setNotificationText("Order assigned to rider."); }}
             />
             <SuccessModal type='success' text={notificationText} isOpen={isOpen} onClose={onClose} callback={() => { }} />
-            <Box w="100%">
-                <RoundedBackButton color='#070529' onclick={() => { dispatchView({ type: "change_shipment_view", current_view: String(views?.shipment?.initial_view) }) }} />
+            <Box w="100%" mt={{ base: "10px", md: "42px" }}>
+                <RoundedBackButton color='#040320' onclick={() => { navigate(-1) }} />
             </Box>
-            <Text as="h1" w="100%" my={isSmallerScreen ? "10px" : "20px"} fontSize="24px" fontWeight="600">
+            <Text as="h1" w="100%" m={{ base: "10px  0px", md: "42px 0px 48px" }} fontSize="24px" fontWeight="600" color="#000000">
                 Shipment
             </Text>
             <Grid
                 w="100%"
-                templateColumns={isSmallerScreen ? "repeat(6, 45%)" : "repeat(6, 25%)"}
-                gap="10px"
+                templateColumns={{ base: "repeat(6, 45%)", md: "repeat(6, 247px)" }}
+                columnGap={{ base: "15px", md: "40px" }}
                 overflowX="scroll"
-                p="10px"
+                p="2px"
+                pt="10px"
+                pb="16px"
 
                 className='shipment-status-section'
             >
@@ -94,7 +93,6 @@ function Index(): JSX.Element {
                         return (
                             <StatusCard key={card.title} card={card} onclick={() => {
                                 setShipmentStatus(card.title)
-                                setTabIndex(1)
                             }
                             }
                                 dark={false}
@@ -104,22 +102,21 @@ function Index(): JSX.Element {
                     return (
                         <StatusCard key={card.title} card={card} onclick={() => {
                             setShipmentStatus(card.title)
-                            setTabIndex(1)
                         }} />
                     )
                 }
                 )}
             </Grid>
-            <Flex w="100%" columnGap="5px" justifyContent={isSmallerThan480 ? "center" : "space-between"} alignItems="center" mt="20px">
+            <Flex w="100%" columnGap="5px" justifyContent={{ base: "center", md: "space-between" }} alignItems="center" m="48px 0px 32px">
                 {assignOptions()}
-                <Flex alignItems="center" flexDirection={isSmallerThan480 ? "row-reverse" : "row"}>
-                    <Flex color="#F9C567" fontFamily="16px" justifyContent="flex-end" alignItems="center" fontWeight="500" cursor="pointer" mx="5px"
-                        onClick={() => { dispatchView({ type: "change_shipment_view", current_view: "shipment-history" }) }}
-                    >
-                        <Text fontSize={isSmallerThan480 ? "12px" : "16px"}>Shipment History</Text>
-                        <ChevronRightIcon />
-                    </Flex>
-                    <CustomButton text='Create Order' onclick={() => { dispatchView({ type: "change_shipment_view", current_view: "create-order-1" }) }} size={isSmallerThan480 ? "sm" : null} />
+                <Flex alignItems="center" flexDirection={{ base: "row-reverse", md: "row" }} columnGap="32px">
+                    <Link to="/shipment-history">
+                        <Flex color="#F9C567" fontSize="16px" alignItems="center" fontWeight="500" cursor="pointer" columnGap="9px">
+                            <Text fontSize={{ base: "12px", md: "16px" }}>Shipment History</Text>
+                            <ChevronRightIcon boxSize="20px" />
+                        </Flex>
+                    </Link>
+                    <CustomButton text='Create Order' onclick={() => { navigate("/create-order") }} size={isSmallerThan480 ? "sm" : null} />
                 </Flex>
             </Flex>
             <Table details={{ sortedData }} selectable={selectable} />

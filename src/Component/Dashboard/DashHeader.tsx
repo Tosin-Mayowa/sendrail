@@ -18,7 +18,7 @@ function DashHeader({ auth }: { auth: any }): JSX.Element {
         <Flex
             position="fixed"
             right="0"
-            width={isSmallerScreen ? "100%" : "81%"}
+            width={isSmallerScreen ? "100%" : "82%"}
             alignItems="center"
             zIndex="3"
             background="#fff"
@@ -77,7 +77,7 @@ function DashHeader({ auth }: { auth: any }): JSX.Element {
                                         flexWrap="nowrap"
                                         whiteSpace="nowrap"
                                     >
-                                        {`${auth?.user?.first_name} ${auth?.user?.last_name}`}
+                                        {auth?.user?.first_name ? `${auth?.user?.first_name} ${auth?.user?.last_name}` : "John Toe"}
                                     </Text>
                                     <Text
                                         fontSize="12px"

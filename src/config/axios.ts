@@ -1,14 +1,14 @@
 import axios from "axios";
 
 export const axiosPrivate = axios.create({
-  baseURL: 'https://send-rail-api-production.up.railway.app/v1',
-   headers: {
+  baseURL: 'https://send-rail-api-production-d181.up.railway.app/v1',
+  headers: {
     Accept: 'application/json'
   },
-  withCredentials:true
+  withCredentials: true
 })
 const requestClient = axios.create({
-  baseURL: 'https://send-rail-api-production.up.railway.app/v1',
+  baseURL: 'https://send-rail-api-production-d181.up.railway.app/v1',
   timeout: 30000,
   headers: {
     Accept: 'application/json'

@@ -10,7 +10,6 @@ import { FaRegEnvelopeOpen } from "react-icons/fa";
 import { HiUserGroup, HiLink } from "react-icons/hi";
 import { TbLayoutNavbar, TbLayersSubtract } from "react-icons/tb";
 import Logo from "../../Asset/Logos/Onboarding/LOGO.png";
-import { DashboardStates } from "../../Contexts/DashboardContext";
 function SideBar() {
   const [tab] = useState<any>([
     {
@@ -50,7 +49,6 @@ function SideBar() {
       text: "Logout"
     }
   ])
-  const { dispatchView } = DashboardStates()
 
   return (
     <Flex
@@ -61,39 +59,42 @@ function SideBar() {
       left="0px"
       zIndex="3"
       width="100%"
-      height="100%"
+      height="100vh"
     >
       <Grid
-        pl="35px"
         w="100%"
-        my="40px"
+        m="38px 0px 84px 28px"
         cursor="pointer"
+        h="22px"
       >
         <Link href="/">
           <Image src={Logo} alt="Sendrail" />
         </Link>
       </Grid>
-      <TabList>
+      <TabList border="none">
         <Flex
           w="100%"
           mr="2px"
+          ml="26px"
           flexDirection="column"
           fontWeight="500"
           color="#fff"
           fontSize="20px"
+          lineHeight="30px"
           alignItems="flex-start"
-          onClick={() => dispatchView({ type: "clear_views" })}
+          rowGap="20px"
         >
           {tab.map((item) => (
             <Tab
-              p="10px 35px"
+              p={0}
+              py="10px"
               width="100%"
               fontWeight="500"
               color="#fff"
               fontSize="20px"
               textAlign="left"
-              my="15px"
               key={item.text}
+
               _selected={{
                 borderRight: "5px solid #F9C567",
                 color: "#F9C567"
@@ -101,10 +102,11 @@ function SideBar() {
             >
               <Flex
                 placeItems="center"
+                columnGap="20px"
                 w="100%"
               >
                 {item.icon}
-                <Text whiteSpace="nowrap" ml="8px">
+                <Text whiteSpace="nowrap">
                   {item.text}
                 </Text>
               </Flex>

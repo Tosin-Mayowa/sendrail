@@ -1,63 +1,60 @@
-import React, {
-    createContext, Dispatch, SetStateAction, useContext, useMemo, useReducer, useState
-} from 'react'
-import {
- viewReducer, State, Action, emptyView 
-} from '../reducers/dashboardViewReducer';
+// Depreciated
+export { }
+// import React, {
+//     createContext, Dispatch, SetStateAction, useContext, useMemo, useReducer, useState
+// } from 'react'
+// import {
+//     viewReducer, State, Action, emptyView
+// } from '../reducers/dashboardViewReducer';
 
-type Context = {
-    views: State,
-    dispatchView: Dispatch<Action>,
-    tabIndex: number,
-    setTabIndex: Dispatch<SetStateAction<number>>,
-    shipmentStatus: string,
-    setShipmentStatus: Dispatch<SetStateAction<string>>
-}
+// type Context = {
+//     views?: State,
+//     dispatchView?: Dispatch<Action>,
+//     shipmentStatus: string,
+//     setShipmentStatus: Dispatch<SetStateAction<string>>
+// }
 
-const Provider = createContext<Context>(null);
+// const Provider = createContext<Context>({ shipmentStatus: "Order", setShipmentStatus: () => { } });
 
-interface Props {
-    children: JSX.Element
-}
+// interface Props {
+//     children: JSX.Element
+// }
 
-function DashboardContext({ children }: Props): JSX.Element {
-    const [views, dispatchView] = useReducer(viewReducer, emptyView)
-    const [tabIndex, setTabIndex] = useState<number>(0)
-    const [shipmentStatus, setShipmentStatus] = useState<
-        "Order" |
-        "In transit" |
-        "Canceled" |
-        "Delayed" |
-        "Delivered" |
-        "Pending"
-    >("Order");
+// function DashboardContext({ children }: Props): JSX.Element {
+//     const [views, dispatchView] = useReducer(viewReducer, emptyView)
+//     const [shipmentStatus, setShipmentStatus] = useState<
+//         "Order" |
+//         "In transit" |
+//         "Canceled" |
+//         "Delayed" |
+//         "Delivered" |
+//         "Pending"
+//     >("Order");
 
-   
-    const changes = useMemo(
-      () => ({
-        views,
-        dispatchView,
-        tabIndex,
-        setTabIndex,
-        shipmentStatus,
-        setShipmentStatus
-      }),
-      [views, dispatchView, tabIndex, setTabIndex, shipmentStatus, setShipmentStatus]
-    )
-    // const changesToWatch = {
-    //     views, tabIndex, shipmentStatus
-    // }
-    // const values = useMemo(() => (changes)
 
-    return (
-        <Provider.Provider
-            value={changes}
-        >
-            {children}
-        </Provider.Provider>
-    )
-}
+//     const changes = useMemo(
+//         () => ({
+//             views,
+//             dispatchView,
+//             shipmentStatus,
+//             setShipmentStatus
+//         }),
+//         [views, dispatchView, shipmentStatus, setShipmentStatus]
+//     )
+//     // const changesToWatch = {
+//     //     views, tabIndex, shipmentStatus
+//     // }
+//     // const values = useMemo(() => (changes)
 
-export default DashboardContext
+//     return (
+//         <Provider.Provider
+//             value={changes}
+//         >
+//             {children}
+//         </Provider.Provider>
+//     )
+// }
 
-export const DashboardStates = () => useContext(Provider)
+// export default DashboardContext
+
+// export const DashboardStates = () => useContext(Provider)

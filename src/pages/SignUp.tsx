@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import reducer from '../reducers/signupReducer'
-import Logo from '../Asset/Logos/Onboarding/SENDRAILS.png'
+import {FormHead} from '../Component/FormHead/FormHead'
 import Mark from '../Asset/Logos/Onboarding/Vector.png'
 import Ellipse from '../Asset/Logos/Onboarding/Ellipse.png'
 import { signUpApi } from '../api/sign_up'
@@ -58,9 +58,9 @@ function SignUp() {
   } = state
   const sendSignUp = useCallback(async () => {
     const config = {
-      business: {
-        name: bussName,
-        type: select,
+      name: bussName,
+      type: select,
+      business_address: {
         address: bussAdd,
         state: stateVal,
         country: country
@@ -71,14 +71,14 @@ function SignUp() {
       state: stateInfo,
       country: countryInfo,
       email: email,
-      password: password
-    };
+      password: password,
+      role: 'business'
+    }
 
     console.log('busname', config)
     const resp = await signUpApi(config)
-    console.log({resp,password});
-    if (resp) {
-
+    console.log({ resp, password })
+    if (resp?.success) {
       navigate('/verify', { state: { email } })
     }
   }, [
@@ -89,56 +89,36 @@ function SignUp() {
     country,
     firstName,
     lastName,
- 
+    
+    navigate,
     stateInfo,
     countryInfo,
     email,
-    password,navigate
+    password
   ])
 
   return (
-    <Flex className="BackG" width="100%" height="100%" justifyContent="center">
+    <Flex
+      className="BackG"
+      flexDir="column"
+      width="100%"
+      height="87rem"
+      justifyContent="center"
+      alignItems="center">
       <Box
-        width={{ base: '200px', md: '400px', lg: '600px' }}
-        bg="#fff"
-        height={{ base: '1360px', md: '1270px', lg: '1249px' }}
-        mt={{ base: '130px', md: '100px', lg: '70px' }}
-        border="1px solid #ABA7A7"
+      mt="106px"
+        display="flex"
+        flexDir="column"
+        alignItems="flex-start"
+        width="600px"
+        height="78rem"
+        padding="60px"
+        background="#FFFFFF"
         borderRadius="10px">
-        <Box width={{ base: '100px', md: '217px', lg: '317px' }}>
-          <Box
-            width={{ base: '50px', md: '64px', lg: '84px' }}
-            mx={{ base: '85px', md: '185px', lg: '285px' }}
-            mt={{ base: '100px', md: '80px', lg: '60px' }}>
-            <Center>
-              <Image src={Logo} alt="Onboarding Logo" pr={{ base: '2px', md: '5px', lg: '10px' }} />
-            </Center>
-            <Box mt="13px" width="100%">
-              <Text
-                fontWeight="600"
-                fontSize={{ base: '12px', md: '15px', lg: '24px' }}
-                lineHeight={{ base: '10px', md: '14px', lg: '22px' }}>
-                Sign up
-              </Text>
-            </Box>
-          </Box>
-          <Box
-            mx={{ base: '60px', md: '80px', lg: '149px' }}
-            width="100%"
-            fontWeight="400"
-            fontSize={{ base: '8px', md: '10px', lg: '12px' }}
-            lineHeight={{ base: '10px', md: '14px', lg: '22px' }}
-            mt={{ base: '10px', md: '14px', lg: '24px' }}
-            textAlign="center"
-            color="#000000">
-            <Text>Experience a faster, easier and more reliable way to move</Text>
-            <Text>items from one location to another on Sendrail .</Text>
-          </Box>
-        </Box>
+        <FormHead />
         <FormControl>
           <Heading
             mt={{ base: '30px', md: '42px', lg: '62px' }}
-            ml={{ base: '20px', md: '40px', lg: '60px' }}
             fontWeight="500"
             fontSize={{ base: '10px', md: '14px', lg: '20px' }}
             lineHeight={{ base: '10px', md: '14px', lg: '22px' }}
@@ -148,7 +128,6 @@ function SignUp() {
           <Input
             placeholder="Business name"
             mt="20px"
-            ml={{ base: '25px', md: '40px', lg: '60px' }}
             value={bussName}
             onChange={(e) => dispatch({ type: 'business name', payload: e.target.value })}
             padding="10px 12px 10px 10px"
@@ -167,7 +146,6 @@ function SignUp() {
           <Select
             placeholder="Select an option"
             mt="20px"
-            ml={{ base: '25px', md: '40px', lg: '60px' }}
             value={select}
             onChange={(e) => dispatch({ type: 'select inp', payload: e.target.value })}
             width={{ base: '140px', md: '300px', lg: '480px' }}
@@ -190,7 +168,6 @@ function SignUp() {
             value={bussAdd}
             onChange={(e) => dispatch({ type: 'Buss Address', payload: e.target.value })}
             mt="20px"
-            ml={{ base: '25px', md: '40px', lg: '60px' }}
             padding="10px 12px 10px 10px"
             width={{ base: '140px', md: '300px', lg: '480px' }}
             height="44px"
@@ -203,12 +180,14 @@ function SignUp() {
             color="#1F1F1F"
             focusBorderColor={theme.colors.primary.main}
           />
-          <Flex flexDir={{ base: 'column', md: 'row', lg: 'row' }}>
+          <Flex
+            flexDir={{ base: 'column', md: 'row', lg: 'row' }}
+            width="30rem"
+            justifyContent="space-between">
             <Input
               placeholder="State"
               value={stateVal}
               mt="29px"
-              ml={{ base: '25px', md: '40px', lg: '60px' }}
               onChange={(e) => dispatch({ type: 'state val', payload: e.target.value })}
               padding="9px 12px 9px 10px"
               width={{ base: '140px', md: '150px', lg: '210px' }}
@@ -225,7 +204,6 @@ function SignUp() {
             <Input
               placeholder="Country"
               mt="29px"
-              ml={{ base: '25px', md: '40px', lg: '60px' }}
               padding="9px 12px 9px 10px"
               width={{ base: '140px', md: '150px', lg: '210px' }}
               height="40px"
@@ -243,20 +221,21 @@ function SignUp() {
           </Flex>
           <Heading
             mt="20px"
-            ml={{ base: '25px', md: '40px', lg: '60px' }}
             fontWeight="500"
             fontSize={{ base: '10px', md: '15px', lg: '20px' }}
             lineHeight={{ base: '10px', md: '15px', lg: '22px' }}
             color="#595956">
             Personal Information
           </Heading>
-          <Flex flexWrap={{ base: 'wrap', md: 'wrap', lg: 'wrap' }}>
+          <Flex
+            flexWrap={{ base: 'wrap', md: 'wrap', lg: 'wrap' }}
+            width="30rem"
+            justifyContent="space-between">
             <Input
               placeholder="First name"
               value={firstName}
               onChange={(e) => dispatch({ type: 'First Name', payload: e.target.value })}
               mt="20px"
-              ml={{ base: '25px', md: '40px', lg: '60px' }}
               padding="9px 12px 9px 10px"
               width={{ base: '140px', md: '150px', lg: '210px' }}
               height="40px"
@@ -272,7 +251,6 @@ function SignUp() {
             <Input
               placeholder="Last name"
               mt="20px"
-              ml={{ base: '25px', md: '40px', lg: '60px' }}
               value={lastName}
               onChange={(e) => dispatch({ type: 'Last name', payload: e.target.value })}
               padding="9px 12px 9px 10px"
@@ -292,7 +270,6 @@ function SignUp() {
               value={stateInfo}
               onChange={(e) => dispatch({ type: 'state info', payload: e.target.value })}
               mt="20px"
-              ml={{ base: '25px', md: '40px', lg: '60px' }}
               padding="9px 12px 9px 10px"
               width={{ base: '140px', md: '150px', lg: '210px' }}
               height="40px"
@@ -310,7 +287,6 @@ function SignUp() {
               value={countryInfo}
               onChange={(e) => dispatch({ type: 'country info', payload: e.target.value })}
               mt="20px"
-              ml={{ base: '25px', md: '40px', lg: '60px' }}
               padding="9px 12px 9px 10px"
               width={{ base: '140px', md: '150px', lg: '210px' }}
               height="40px"
@@ -330,7 +306,6 @@ function SignUp() {
             onChange={(e) => dispatch({ type: 'email', payload: e.target.value })}
             type="email"
             mt="20px"
-            ml={{ base: '25px', md: '40px', lg: '60px' }}
             padding="10px 12px 10px 10px"
             width={{ base: '140px', md: '300px', lg: '480px' }}
             height="44px"
@@ -349,7 +324,6 @@ function SignUp() {
             onChange={(e) => dispatch({ type: 'password', payload: e.target.value })}
             type="password"
             mt="20px"
-            ml={{ base: '25px', md: '40px', lg: '60px' }}
             padding="10px 12px 10px 10px"
             width={{ base: '140px', md: '300px', lg: '480px' }}
             height="44px"
@@ -365,7 +339,6 @@ function SignUp() {
           <Box>
             <Heading
               mt="40px"
-              ml={{ base: '25px', md: '40px', lg: '60px' }}
               fontWeight="500"
               fontSize="14px"
               lineHeight={{ base: '10px', md: '15px', lg: '22px' }}
@@ -374,7 +347,7 @@ function SignUp() {
             </Heading>
 
             <Flex flexDir="column">
-              <Flex ml={{ base: '25px', md: '40px', lg: '60px' }} mt="12px">
+              <Flex mt="12px">
                 <Image
                   src={password.length >= 8 ? Mark : Ellipse}
                   width="10px"
@@ -393,7 +366,7 @@ function SignUp() {
                   be at least 8 character long
                 </Text>
               </Flex>
-              <Flex ml={{ base: '25px', md: '40px', lg: '60px' }} mt="12px">
+              <Flex mt="12px">
                 <Image
                   src={lowerCase.test(password) ? Mark : Ellipse}
                   width="10px"
@@ -412,7 +385,7 @@ function SignUp() {
                   contain a lowercase letter (a-z)
                 </Text>
               </Flex>
-              <Flex ml={{ base: '25px', md: '40px', lg: '60px' }} mt="12px">
+              <Flex mt="12px">
                 <Image
                   src={upper.test(password) ? Mark : Ellipse}
                   width="10px"
@@ -431,7 +404,7 @@ function SignUp() {
                   contain a uppercase letter (A-Z)
                 </Text>
               </Flex>
-              <Flex ml={{ base: '25px', md: '40px', lg: '60px' }} mt="12px">
+              <Flex mt="12px">
                 <Image
                   src={numb.test(password) ? Mark : Ellipse}
                   width="10px"
@@ -452,7 +425,6 @@ function SignUp() {
               </Flex>
               <Button
                 mt="40px"
-                ml={{ base: '25px', md: '40px', lg: '60px' }}
                 padding="16px 32px"
                 width={{ base: '120px', md: '300px', lg: '468px' }}
                 height="48px"
@@ -491,7 +463,6 @@ function SignUp() {
               <Box
                 width={{ base: '120px', md: '300px', lg: '410px' }}
                 height="44px"
-                ml={{ base: '25px', md: '40px', lg: '60px' }}
                 mt={['20px', '30px']}>
                 <Text
                   fontWeight="500"

@@ -1,5 +1,6 @@
 import {
- Button, Grid, Modal, ModalContent, ModalOverlay, Text 
+  Box,
+  Button, Flex, Grid, Modal, ModalContent, ModalOverlay, Text
 } from '@chakra-ui/react'
 import React from 'react'
 
@@ -29,32 +30,38 @@ function Logout({
       <ModalOverlay />
       <ModalContent
         textAlign="center"
-        minW="25%"
+        minW="433px"
+        h="284px"
         position="fixed"
-        borderRadius="20px"
-        p="15px"
+        borderRadius="10px"
+        border="1px solid #EFEFF0"
+        p="62px 78px"
         background="#fff"
         color="#070529"
       >
-        <Text my="20px" color="#656566" fontSize="24px" fontWeight="500">Are you sure you want to logout?</Text>
-        <Grid placeItems="center" gridTemplateColumns="1fr 1fr" fontSize="14px" color="#070529E5">
-          <Button
-            variant="outline"
-            w="50%"
+        <Box>
+          <Text mb="64px" color="#656566" fontSize="24px" fontWeight="500">Are you sure you want to logout?</Text>
+          <Flex w="100%" justifyContent="flex-end" fontSize="14px" color="#070529E5" columnGap="30px">
+            <Button
+              variant="outline"
+              w="max-content"
+              p="8px 24px"
 
-            onClick={Cancel}
-          >Cancel</Button>
-          <Button
-            variant="solid"
-            w="50%"
-            color="#fff"
-            background="#070529E5"
+              onClick={Cancel}
+            >Cancel</Button>
+            <Button
+              variant="solid"
+              w="max-content"
+              color="#fff"
+              background="#070529E5"
+              p="8px 24px"
 
-            _hover={{}}
+              _hover={{}}
 
-            onClick={logout}
-          >Yes</Button>
-        </Grid>
+              onClick={logout}
+            >Yes</Button>
+          </Flex>
+        </Box>
       </ModalContent>
     </Modal>
   )

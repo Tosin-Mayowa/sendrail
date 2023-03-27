@@ -8,6 +8,11 @@ export const sampleData: {
     time: "5 mins ago"
 },
 {
+    title: "John Tae",
+    message: "Order successfully assigned to Rider Daniel Jones",
+    time: "7 mins ago"
+},
+{
     title: "SendRails",
     message: "Order Available for pickup",
     time: "7 hours ago"
