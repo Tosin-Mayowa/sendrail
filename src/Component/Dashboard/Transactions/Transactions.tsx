@@ -77,7 +77,7 @@ const Transactions = () => {
   }
   return (
     <Flex flexDir="column" width="100%">
-      <Flex flexDir="column" ml="20px">
+      <Flex flexDir="column">
         <Text mt="32px" fontWeight="600" fontSize="24px" lineHeight="29px" color="#000000">
           Transaction History
         </Text>
@@ -86,38 +86,37 @@ const Transactions = () => {
           January,2023
         </Text>
       </Flex>
-      <Box display="flex" mt="70px" width="100%">
+      <Box display="flex" justifyContent="flex-end" mt="70px" width="98%" height="32px" alignItems="baseline">
         <Box
           display="flex"
-          ml="150px"
-          justifyContent="flex-end"
-          width="100%"
-          height="32px"
-          alignItems="baseline">
-          <InputGroup width="19%">
+          flexWrap="nowrap"
+          justifyContent="space-between"
+          width="26.8rem"
+          height="32px">
+          <InputGroup  width="10.7rem">
             <Input
               border="1px solid #ABA7A7"
               borderRadius="4px"
               height="32px"
               backgroundColor="#fff"
-              width="200px"
+              py="8px"
               fontWeight="500"
               fontSize="14px"
               lineHeight="22px"
               placeholder="Search by date"
             />
-            <InputRightElement children={<SearchIcon color="gray.300" />} />
+            <InputRightElement mt="-4px"  children={<SearchIcon color="gray.300" />} />
           </InputGroup>
-          <Flex width="29%" height="32px" alignItems="baseline">
-            <Text flexShrink='0' ml="33px" color="#595956" fontWeight="500" fontSize="14px" lineHeight="22px">
+          <Flex width="13.625rem" height="32px" alignItems="baseline">
+            <Text flexShrink="0" color="#595956" fontWeight="500" fontSize="14px" lineHeight="22px">
               Sort by:
             </Text>
             <Select
+              ml="8px"
               color="#000"
               fontWeight="500"
               fontSize="14px"
               lineHeight="22px"
-              ml="22px"
               textTransform="capitalize"
               width="157px"
               height="32px"
@@ -139,7 +138,6 @@ const Transactions = () => {
             display="flex"
             justifyContent="space-between"
             mt={Number(transaction?.id) > 1 ? '8px' : ''}
-            ml="20px"
             padding="16px 42px"
             width="98%"
             height="94px"
