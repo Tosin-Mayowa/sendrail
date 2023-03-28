@@ -23,6 +23,7 @@ function Verification() {
   const location = useLocation()
   const [code, setCode] = useState<string>('')
   const [errState, setErrState] = useState<boolean>(true)
+console.log({code});
 
   const sendVerification = useCallback(async () => {
     const email = location.state.email
@@ -76,7 +77,7 @@ function Verification() {
             </Text>
           </Flex>
           <HStack alignSelf="center">
-            <PinInput placeholder="">
+            <PinInput placeholder="" value={code}>
               <PinInputField />
               <PinInputField />
               <PinInputField />
