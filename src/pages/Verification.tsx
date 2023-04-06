@@ -3,14 +3,13 @@ import '../Style/signUp.css'
 import { useLocation, useNavigate } from 'react-router-dom'
 import {
   PinInputField,PinInput,HStack,
-  FormHelperText,
+  
   Flex,
   Box,
   Image,
-  Center,
+
   Text,
-  FormControl,
-  Input,
+  
   useTheme,
   Button
 } from '@chakra-ui/react'
@@ -40,7 +39,7 @@ console.log({code});
   }, [code, location, navigate])
   return (
     <Flex
-      maxWidth="100%"
+      width="100%"
       height="100vh"
       className="BackG"
       flexDir="column"
@@ -50,49 +49,66 @@ console.log({code});
         display="flex"
         flexDir="column"
         bg="#fff"
-        maxWidth="696px"
+        width="43.5rem"
         padding="64px"
         alignItems="flex-start">
         <Flex alignSelf="center">
           <Image src={Logo} alt="Sendrail" width="30px" height="22px" objectFit="cover" />
         </Flex>
-        <Flex
-          alignSelf="center"
-          flexDir="column"
-          maxWidth="374px"
-          height="8.5rem"
-          justifyContent="space-between"
-          alignItems="flex-start">
+        <Flex width="35.5rem">
           <Flex
+            alignSelf="center"
             flexDir="column"
-            maxWidth="374px"
-            height="3.75rem"
+            width="23.375rem"
+            height="8.5rem"
             justifyContent="space-between"
-            alignItems="center">
-            <Text flexShrink="0" fontWeight="600" color="#1F1F1F" fontSize="24px" lineHeight="22px">
-              Verification
-            </Text>
-            <Text flexShrink="0" fontWeight="600" color="#ABA7A7" fontSize="16px" lineHeight="14px">
-              enter the verification code sent to your email
-            </Text>
+            alignItems="flex-start">
+            <Flex
+              flexDir="column"
+              width="23.375rem"
+              height="3.75rem"
+              justifyContent="space-between"
+              alignItems="center">
+              <Text
+                flexShrink="0"
+                fontWeight="600"
+                color="#1F1F1F"
+                fontSize="24px"
+                lineHeight="22px">
+                Verification
+              </Text>
+              <Text
+                flexShrink="0"
+                fontWeight="600"
+                color="#ABA7A7"
+                fontSize="16px"
+                lineHeight="14px">
+                enter the verification code sent to your email
+              </Text>
+            </Flex>
+            <HStack alignSelf="center">
+              <PinInput
+                placeholder=""
+                value=""
+                focusBorderColor="primary.main"
+                onChange={(e) => {
+                  console.log({ evet: e })
+                }}>
+                <PinInputField />
+                <PinInputField />
+                <PinInputField />
+                <PinInputField />
+                <PinInputField />
+              </PinInput>
+            </HStack>
           </Flex>
-          <HStack alignSelf="center">
-            <PinInput placeholder="" value={code}>
-              <PinInputField />
-              <PinInputField />
-              <PinInputField />
-              <PinInputField />
-              <PinInputField />
-            </PinInput>
-          </HStack>
-        </Flex>
-        <Flex>
+
           <Button
             mt="45px"
             padding="16px 32px"
             width="31.5rem"
             height="3.5rem"
-            background={theme.colors.primary.main}
+            background="primary.main"
             borderRadius="4px"
             fontWeight="500"
             fontSize="18px"
@@ -101,29 +117,30 @@ console.log({code});
             textAlign="center"
             onClick={sendVerification}
             _hover={{
-              background: '#16134f'
+              background: 'primary.200'
             }}
             isDisabled={!code}>
             Next
           </Button>
-        </Flex>
-        <Flex alignSelf="center" mt="45px">
-          <Text flexShrink="0" fontWeight="500" color="#000000" fontSize="16px" lineHeight="22px">
-            Did not receive OTP?
-          </Text>
-          <Button
-            variant="link"
-            ml="10px"
-            fontWeight="600"
-            color="#F9C567"
-            fontSize="16px"
-            lineHeight="22px"
-            _hover={{
-              background: '#F9C567',
-              textDecration: 'none'
-            }}>
-            Resend
-          </Button>
+
+          <Flex alignSelf="center" mt="45px">
+            <Text flexShrink="0" fontWeight="500" color="#000000" fontSize="16px" lineHeight="22px">
+              Did not receive OTP?
+            </Text>
+            <Button
+              variant="link"
+              ml="10px"
+              fontWeight="600"
+              color="#F9C567"
+              fontSize="16px"
+              lineHeight="22px"
+              _hover={{
+                background: 'primary.300',
+                textDecration: 'none'
+              }}>
+              Resend
+            </Button>
+          </Flex>
         </Flex>
       </Box>
     </Flex>
