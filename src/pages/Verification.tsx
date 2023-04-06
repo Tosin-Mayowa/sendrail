@@ -55,7 +55,8 @@ console.log({code});
         <Flex alignSelf="center">
           <Image src={Logo} alt="Sendrail" width="30px" height="22px" objectFit="cover" />
         </Flex>
-        <Flex width="35.5rem">
+        <Flex flexDir="column" width="35.5rem" padding="
+13px 32px 32px 32px">
           <Flex
             alignSelf="center"
             flexDir="column"
