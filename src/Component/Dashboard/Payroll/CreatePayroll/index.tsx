@@ -7,7 +7,6 @@ import RoundedBackButton from '../../../shared/RoundedBackButton'
 import DashboardLayout from '../../DashboardLayout'
 
 const Index = (): JSX.Element => {
-    const navigate = useNavigate()
     const [selectOne, setSelectOne] = useState("Salary") //JUST FOR TESTING!!!!!, Will probably change logic after i understand the flow
     const [selectTwo, setSelectTwo] = useState("Weekly")
     const [text, setText] = useState("How much per week/month")
@@ -31,10 +30,10 @@ const Index = (): JSX.Element => {
             <Grid
                 placeItems="center"
             >
-                <Box w="100%">
-                    <RoundedBackButton color='#070529' onclick={() => { navigate(-1) }} />
+                <Box w="100%" mt={{ base: "10px", md: "42px" }}>
+                    <RoundedBackButton color='#040320' />
                 </Box>
-                <Text as="h1" w="100%" my="20px" fontSize="24px" fontWeight="600">
+                <Text as="h1" w="100%" fontSize={{ sm: "18px", md: "24px" }} fontWeight="600" m={{ base: "10px  0px", md: "42px 0px 48px" }} color="#000">
                     Create Payroll
                 </Text>
                 <Grid
@@ -50,6 +49,9 @@ const Index = (): JSX.Element => {
                 >
                     <Text
                         mb="20px"
+                        color="#595956"
+                        fontSize={{ base: "16px", md: "24px" }}
+                        fontWeight="600"
                     >
                         Create Method of Payment
                     </Text>
@@ -75,7 +77,7 @@ const Index = (): JSX.Element => {
                             rowGap="5px"
                             width="100%"
                         >
-                            <Text>
+                            <Text whiteSpace="nowrap">
                                 Select an Option
                             </Text>
                             <Select
@@ -103,7 +105,7 @@ const Index = (): JSX.Element => {
                             rowGap="5px"
                             width="100%"
                         >
-                            <Text>
+                            <Text whiteSpace="nowrap">
                                 Select an Option
                             </Text>
                             <Select
@@ -140,7 +142,7 @@ const Index = (): JSX.Element => {
                             rowGap="5px"
                             width="100%"
                         >
-                            <Text>
+                            <Text whiteSpace="nowrap">
                                 {text}
                             </Text>
                             <Input

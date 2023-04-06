@@ -8,102 +8,100 @@ function PickupDetails({ setSection }: { setSection: Dispatch<SetStateAction<str
 
     return (
         <Grid
-            placeItems="center"
+            // placeItems="center"
             w="100%"
-            my="15px"
-            padding="30px"
-            borderRadius="10px"
+            padding={{ base: "15px", md: "32px 48px" }}
+            borderRadius="20px"
             backgroundColor="#07052912"
         >
             <Text
-                color="#595956"
+                color="#000000"
                 fontWeight="500"
-                fontSize="18px"
+                fontSize="20px"
             >
                 Pick up details
             </Text>
             <form style={{ width: "100%" }}>
-                <Grid gridTemplateColumns={isSmallerScreen ? "1fr" : "1fr 1fr"} gap="15px" my="15px" placeItems="center">
+                <Grid
+                    gridTemplateColumns={isSmallerScreen ? "1fr" : "1fr 1fr"}
+                    gap="24px"
+                    my="32px"
+                    placeItems="center"
+                    fontWeight="500"
+                    fontSize="16px"
+                >
                     <FormControl>
-                        <FormLabel color="#ABA7A7">Customer&#39;s Name</FormLabel>
+                        <FormLabel color="#595956" mb="24px">Customer&#39;s Name</FormLabel>
                         <Input
                             type='text'
-                            placeholder="Name"
-                            border="1px solid #ABA7A7"
+                            placeholder="Enter a full name"
                             background="#fff"
                         />
                     </FormControl>
                     <FormControl>
-                        <FormLabel color="#ABA7A7">Customer&#39;s Phone Number</FormLabel>
+                        <FormLabel color="#595956" mb="24px">Customer&#39;s Phone Number</FormLabel>
                         <Input
                             type='phone'
-                            placeholder='Phone Number'
-                            border="1px solid #ABA7A7"
+                            placeholder='Enter phone number'
                             background="#fff"
                         />
                     </FormControl>
                     <FormControl>
-                        <FormLabel color="#ABA7A7">Pickup Address</FormLabel>
+                        <FormLabel color="#595956" mb="24px">Pickup Address</FormLabel>
                         <Input
                             type='text'
                             placeholder='Address'
-                            border="1px solid #ABA7A7"
                             background="#fff"
                         />
                     </FormControl>
                     <FormControl>
-                        <FormLabel color="#ABA7A7">Customer&#39;s Code</FormLabel>
+                        <FormLabel color="#595956" mb="24px">Customer&#39;s Code</FormLabel>
                         <Input
                             type='text'
                             placeholder='*****'
-                            border="1px solid #ABA7A7"
                             background="#fff"
                         />
                     </FormControl>
 
 
                     <Text
-                        color="#595956"
+                        color="#000000"
                         fontWeight="500"
-                        fontSize="18px"
-                        my="15px"
+                        fontSize="20px"
                         gridColumn={isSmallerScreen ? "" : "1/3"}
+                        justifySelf="flex-start"
                     >
                         Drop off details
                     </Text>
                     <FormControl>
-                        <FormLabel color="#ABA7A7">Recipent&#39;s Name</FormLabel>
+                        <FormLabel color="#595956" mb="24px">Recipent&#39;s Name</FormLabel>
                         <Input
                             type='text'
                             placeholder="Name"
-                            border="1px solid #ABA7A7"
                             background="#fff"
                         />
                     </FormControl>
                     <FormControl>
-                        <FormLabel color="#ABA7A7">Recipent&#39;s Phone Number</FormLabel>
+                        <FormLabel color="#595956" mb="24px">Recipent&#39;s Phone Number</FormLabel>
                         <Input
                             type='phone'
                             placeholder='Phone Number'
-                            border="1px solid #ABA7A7"
                             background="#fff"
                         />
                     </FormControl>
                     <FormControl>
-                        <FormLabel color="#ABA7A7">Drop Off Address</FormLabel>
+                        <FormLabel color="#595956" mb="24px">Drop Off Address</FormLabel>
                         <Input
                             type='text'
                             placeholder='Address'
-                            border="1px solid #ABA7A7"
                             background="#fff"
                         />
                     </FormControl>
                     <FormControl>
-                        <FormLabel color="#ABA7A7">Recipent&#39;s Code</FormLabel>
+                        <FormLabel color="#595956" mb="24px">Recipent&#39;s Code</FormLabel>
                         <Input
                             type='text'
                             placeholder='*****'
-                            border="1px solid #ABA7A7"
                             background="#fff"
                         />
                     </FormControl>
@@ -111,7 +109,6 @@ function PickupDetails({ setSection }: { setSection: Dispatch<SetStateAction<str
                     <Button
                         gridColumn={!isSmallerScreen ? "1/3" : ""}
                         w="max-content"
-                        border="1px solid #ABA7A7"
                         borderRadius="4px"
                         onClick={() => { setSection("add-parcel-details") }}
                     >

@@ -1,6 +1,6 @@
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import {
-    Checkbox, Flex, Grid, Menu, MenuButton, MenuItem, MenuList, Text, useDisclosure, useMediaQuery
+    Flex, Grid, Menu, MenuButton, MenuItem, MenuList, Text, useDisclosure, useMediaQuery
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { GoKebabVertical } from 'react-icons/go';
@@ -9,6 +9,7 @@ import EmptyData from '../../../shared/EmptyData';
 import DeliveryStatus from './DeliveryStatus';
 import OrderStatus from './OrderStatus';
 import OrderDrawer from './OrderDrawer';
+import CustomCheckbox from '../../../shared/CustomCheckbox';
 
 interface Props {
     details: {
@@ -92,7 +93,7 @@ function Table({ details, selectable, history }: Props): JSX.Element {
                                                 {
                                                     selectable && data?.order_status === "Unassigned" && data?.delivery_status === "Pending" &&
                                                     <Flex position="absolute" left="0">
-                                                        <Checkbox border="1px solid #000000aa" size="md" borderRadius="3px" />
+                                                        <CustomCheckbox size="lg" />
                                                     </Flex>
                                                 }
                                                 <Text>{data?.destination}</Text>

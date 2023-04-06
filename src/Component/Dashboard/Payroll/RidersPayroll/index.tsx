@@ -84,7 +84,7 @@ const Index = (): JSX.Element => {
                                         <Text>{rider.name}</Text>
                                     </Flex>
                                     <Text>{rider.email}</Text>
-                                    <Flex columnGap="20px">
+                                    <Flex columnGap="47px">
                                         <PhoneIcon boxSize={5} cursor="pointer" transition="0.1s" _hover={{ transform: "translateY(-4px)" }} />
                                         <ChatIcon boxSize={5} cursor="pointer" transition="0.1s" _hover={{ transform: "translateY(-4px)" }} />
                                     </Flex>

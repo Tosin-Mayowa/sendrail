@@ -41,10 +41,10 @@ function Index(): JSX.Element {
                 placeItems="center"
             >
                 <PaymentConfirmModal isPaymentModalOpen={isPaymentModalOpen} onPaymentModalClose={onPaymentModalClose} callback={depositCallback} />
-                <Box w="100%">
-                    <RoundedBackButton color='#070529' onclick={() => { navigate(-1) }} />
+                <Box w="100%" mt={{ base: "10px", md: "42px" }}>
+                    <RoundedBackButton color='#040320' />
                 </Box>
-                <Text as="h1" w="100%" my="20px" fontSize="24px" fontWeight="600">
+                <Text as="h1" w="100%" fontSize={{ sm: "18px", md: "24px" }} fontWeight="600" m={{ base: "10px  0px", md: "42px 0px 48px" }} color="#000">
                     Deposit with Card/Account
                 </Text>
                 <Grid

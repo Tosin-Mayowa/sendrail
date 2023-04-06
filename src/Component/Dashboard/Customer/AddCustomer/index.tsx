@@ -25,15 +25,12 @@ const Index = () => {
         <DashboardLayout section='/customer'>
             <Grid
                 placeItems="center"
-                w="100%"
-                maxH="calc(100vh - 80px)"
-                overflowY="scroll"
-                className="add-customers-scroll"
-                pr="10px"
             >
                 <Box w="100%">
-                    <RoundedBackButton color="#000" />
-                    <Text as="h1" w="100%" fontSize={{ sm: "18px", md: "24px" }} fontWeight="600" my="25px" color="#000">
+                    <Box w="100%" mt={{ base: "10px", md: "42px" }}>
+                        <RoundedBackButton color='#040320' />
+                    </Box>
+                    <Text as="h1" w="100%" fontSize={{ sm: "18px", md: "24px" }} fontWeight="600" m={{ base: "10px  0px", md: "42px 0px 48px" }} color="#000">
                         Add Customers
                     </Text>
                 </Box>
@@ -129,7 +126,12 @@ const Index = () => {
                             ))
                         }
                     </Grid>
-                    <Grid my="30px" rowGap="48px" w={{ base: "100%", md: "max-content" }}>
+                    <Flex
+                        justifyContent="flex-end"
+                        alignItems="flex-end"
+                        mt="48px"
+                        columnGap="48px"
+                        w={{ base: "100%", md: "100%" }}>
                         <CustomButton text='Save Customer' size='lg' />
                         <Button
                             leftIcon={<LinkIcon />}
@@ -142,7 +144,7 @@ const Index = () => {
                             border="1px solid #ABA7A7"
                             size="lg"
                         >Copy link</Button>
-                    </Grid>
+                    </Flex>
                 </Grid>
             </Grid>
         </DashboardLayout>
