@@ -6,9 +6,9 @@ import {
   Box,
   Button,
   Image,
-  Center,
+ 
   Text,
-  FormControl,
+  
   Input,
   useTheme
 } from '@chakra-ui/react'
@@ -28,6 +28,7 @@ function SignIn() {
       email,
       password
     })
+    console.log(resp);
     if (resp?.data?.success) {
       const accessToken = resp?.data?.data?.token
       const user = resp?.data?.data?.user;

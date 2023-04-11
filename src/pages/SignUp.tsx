@@ -140,7 +140,7 @@ function SignUp() {
             fontSize={{ base: '10px', md: '12px', lg: '16px' }}
             lineHeight={{ base: '10px', md: '15px', lg: '22px' }}
             color="#1F1F1F"
-            focusBorderColor={theme.colors.primary.main}
+            focusBorderColor="primary.main"
           />
 
           <Select
@@ -158,7 +158,7 @@ function SignUp() {
             lineHeight={{ base: '10px', md: '15px', lg: '22px' }}
             bg="#fff"
             color="#1F1F1F"
-            focusBorderColor={theme.colors.primary.main}>
+            focusBorderColor="primary.main">
             <option value="individual">Individual</option>
             <option value="option2">Option 2</option>
             <option value="option3">Option 3</option>
@@ -178,7 +178,7 @@ function SignUp() {
             fontSize={{ base: '10px', md: '12px', lg: '16px' }}
             lineHeight={{ base: '10px', md: '15px', lg: '22px' }}
             color="#1F1F1F"
-            focusBorderColor={theme.colors.primary.main}
+            focusBorderColor="primary.main"
           />
           <Flex
             flexDir={{ base: 'column', md: 'row', lg: 'row' }}
@@ -199,7 +199,7 @@ function SignUp() {
               fontSize={{ base: '10px', md: '12px', lg: '16px' }}
               lineHeight={{ base: '10px', md: '15px', lg: '22px' }}
               color="#1F1F1F"
-              focusBorderColor={theme.colors.primary.main}
+              focusBorderColor="primary.main"
             />
             <Input
               placeholder="Country"
@@ -216,7 +216,7 @@ function SignUp() {
               color="#1F1F1F"
               value={country}
               onChange={(e) => dispatch({ type: 'country', payload: e.target.value })}
-              focusBorderColor={theme.colors.primary.main}
+              focusBorderColor="primary.main"
             />
           </Flex>
           <Heading
@@ -246,7 +246,7 @@ function SignUp() {
               fontSize={{ base: '10px', md: '12px', lg: '16px' }}
               lineHeight={{ base: '10px', md: '15px', lg: '22px' }}
               color="#1F1F1F"
-              focusBorderColor={theme.colors.primary.main}
+              focusBorderColor="primary.main"
             />
             <Input
               placeholder="Last name"
@@ -263,7 +263,7 @@ function SignUp() {
               fontSize={{ base: '10px', md: '12px', lg: '16px' }}
               lineHeight={{ base: '10px', md: '15px', lg: '22px' }}
               color="#1F1F1F"
-              focusBorderColor={theme.colors.primary.main}
+              focusBorderColor="primary.main"
             />
             <Input
               placeholder="State"
@@ -280,7 +280,7 @@ function SignUp() {
               fontSize={{ base: '10px', md: '12px', lg: '16px' }}
               lineHeight={{ base: '10px', md: '15px', lg: '22px' }}
               color="#1F1F1F"
-              focusBorderColor={theme.colors.primary.main}
+              focusBorderColor="primary.main"
             />
             <Input
               placeholder="Country"
@@ -297,7 +297,7 @@ function SignUp() {
               fontSize={{ base: '10px', md: '12px', lg: '16px' }}
               lineHeight={{ base: '10px', md: '15px', lg: '22px' }}
               color="#1F1F1F"
-              focusBorderColor={theme.colors.primary.main}
+              focusBorderColor="primary.main"
             />
           </Flex>
           <Input
@@ -316,7 +316,7 @@ function SignUp() {
             fontSize={{ base: '10px', md: '12px', lg: '16px' }}
             lineHeight={{ base: '10px', md: '15px', lg: '22px' }}
             color="#1F1F1F"
-            focusBorderColor={theme.colors.primary.main}
+            focusBorderColor="primary.main"
           />
           <Input
             placeholder="Set password"
@@ -334,7 +334,7 @@ function SignUp() {
             fontSize={{ base: '10px', md: '12px', lg: '16px' }}
             lineHeight={{ base: '10px', md: '15px', lg: '22px' }}
             color="#1F1F1F"
-            focusBorderColor={theme.colors.primary.main}
+            focusBorderColor="primary.main"
           />
           <Box>
             <Heading
@@ -428,7 +428,7 @@ function SignUp() {
                 padding="16px 32px"
                 width={{ base: '120px', md: '300px', lg: '468px' }}
                 height="48px"
-                background={theme.colors.primary.main}
+                background="primary.main"
                 borderRadius="4px"
                 fontWeight="500"
                 fontSize={{ base: '13px', md: '15px', lg: '18px' }}
