@@ -4,11 +4,11 @@ import {
   Flex,
   Box,
   Image,
-  Center,
+ 
   Text,
-  FormControl,
+  
   Input,
-  useTheme,
+ 
   Button,
 } from "@chakra-ui/react";
 import { useNavigate } from 'react-router-dom'
@@ -16,7 +16,7 @@ import Logo from "../Asset/Onbarding/SENDRAILS.png";
 import {forgotPass} from "../api/forgot_password";
 function ForgotPassword() {
   const [email, setEmail] = useState("");
-  const theme = useTheme();
+  
 const navigate = useNavigate()
  const newPassword = useCallback(async () => {
    try {
@@ -94,7 +94,7 @@ const navigate = useNavigate()
                 fontSize="16px"
                 lineHeight="22px"
                 color="#1F1F1F"
-                focusBorderColor={theme.colors.primary.main}
+                focusBorderColor="primary.main"
               />
             </Flex>
             <Button
@@ -102,7 +102,7 @@ const navigate = useNavigate()
               padding="16px 32px"
               width="31rem"
               height="48px"
-              background={theme.colors.primary.main}
+              background="primary.main"
               borderRadius="4px"
               fontWeight="500"
               fontSize="18px"

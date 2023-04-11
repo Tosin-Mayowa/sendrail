@@ -3,13 +3,12 @@ import {
   Flex,
   Box,
   Image,
-  Center,
+ 
   Text,
-  FormControl,
+ 
   Input,
-  useTheme,
-  FormLabel,
-  Heading,
+ 
+ 
   Button,
 } from '@chakra-ui/react';
 import '../Style/signUp.css'
@@ -23,7 +22,7 @@ const initialState = {
   confirmPass: '',
 };
 function ResetPassword() {
-  const theme = useTheme();
+  
   const [state, dispatch] = useReducer(resetReducer, initialState);
 
   const lowerCase = /[a-z]/;

@@ -1,6 +1,6 @@
 import {
   Box,
-  Button, Flex, Grid, Modal, ModalContent, ModalOverlay, Text
+  Button, Flex, Modal, ModalContent, ModalOverlay, Text
 } from '@chakra-ui/react'
 import React from 'react'
 

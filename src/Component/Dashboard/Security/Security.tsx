@@ -21,7 +21,7 @@ const Security = () => {
   const [isSecurity,setSecurity]=useState(true);
   const [password, setPassword] = useState(true);
   const [showPass, setShowPass] = useState<boolean>(false)
-const theme = useTheme()
+
     
       return (
         <>

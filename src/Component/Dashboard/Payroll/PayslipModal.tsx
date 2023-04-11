@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, Grid, Image, Modal, ModalBody, ModalContent, ModalOverlay, Text, useMediaQuery } from '@chakra-ui/react';
+import {  Button, Flex, Grid, Image, Modal, ModalBody, ModalContent, ModalOverlay, Text, useMediaQuery } from '@chakra-ui/react';
 import React from 'react'
 import { RiCloseCircleLine } from 'react-icons/ri';
 import Logo from '../../../Asset/Logos/Onboarding/SENDRAILS.png'

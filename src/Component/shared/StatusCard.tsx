@@ -1,5 +1,5 @@
 import {
-    Box, Flex, Grid, GridItem, Image, Text
+    Box, Flex, Grid, Image, Text
 } from '@chakra-ui/react'
 import React from 'react'
 

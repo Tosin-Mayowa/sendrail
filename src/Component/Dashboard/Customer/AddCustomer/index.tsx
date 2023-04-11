@@ -1,5 +1,5 @@
 import { LinkIcon } from '@chakra-ui/icons'
-import { Box, Button, Flex, Grid, Image, Input, Text, useMediaQuery } from '@chakra-ui/react'
+import { Box, Button,  Grid, Image, Input, Text, useMediaQuery } from '@chakra-ui/react'
 import React, { useEffect, useRef, useState } from 'react'
 import camera from '../../../../Asset/camera_icon.png'
 import CustomButton from '../../../shared/CustomButton'

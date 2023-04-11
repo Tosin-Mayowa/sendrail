@@ -9,7 +9,7 @@ import {
   InputLeftElement,
   InputGroup
 } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React from 'react'
 import Back from '../../../Asset/Settings/back.png'
 import Naira from '../../../Asset/Settings/naira.png'
 

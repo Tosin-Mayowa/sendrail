@@ -41,7 +41,7 @@ function DashboardLayout({ children, section }: { children: JSX.Element, section
         if (section) {
             return setIndex(routes.findIndex(i => i === section))
         }
-    }, [section])
+    }, [section,routes])
     return (
         <Tabs index={tabIndex} onChange={handleTabChange}>
             <Grid

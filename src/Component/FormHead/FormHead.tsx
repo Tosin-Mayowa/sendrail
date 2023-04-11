@@ -2,15 +2,9 @@ import {
   Flex,
   Box,
   Image,
-  Button,
-  Center,
+  
   Text,
-  FormControl,
-  Heading,
-  Input,
-  Select,
-  useTheme,
-  Highlight
+  
 } from '@chakra-ui/react';
 import React from 'react';
 import Logo from '../../Asset/Onbarding/SENDRAILS.png'

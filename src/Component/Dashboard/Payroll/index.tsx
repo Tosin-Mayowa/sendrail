@@ -1,6 +1,6 @@
-import { Box, Grid, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react'
+import {  Grid, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import RoundedBackButton from '../../shared/RoundedBackButton'
+// import RoundedBackButton from '../../shared/RoundedBackButton'
 import './styles.css'
 import DashboardLayout from '../DashboardLayout'
 import RidersPayroll from './RidersPayroll'

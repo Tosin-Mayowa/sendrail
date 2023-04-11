@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import CustomButton from '../../../shared/CustomButton'
 
 const Index = (): JSX.Element => {
-    const [riders, setRiders] = useState(sampleRiders)
+    const [riders,] = useState(sampleRiders)
     const { isOpen, onOpen, onClose } = useDisclosure()
     const navigate = useNavigate()
 

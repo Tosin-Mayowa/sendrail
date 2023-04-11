@@ -24,8 +24,8 @@ const Index = (): JSX.Element => {
     }
 
     useEffect(() => {
-        renderTextInput()
-    }, [selectOne, selectTwo])
+      renderTextInput()
+    }, [selectOne, selectTwo, renderTextInput])
     return (
         <DashboardLayout section='/payroll'>
             <Grid

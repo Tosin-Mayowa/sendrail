@@ -1,28 +1,16 @@
 import React, { useCallback, useState } from 'react'
 import '../Style/signUp.css'
 import { useLocation, useNavigate } from 'react-router-dom'
-import {
-  PinInputField,PinInput,HStack,
-  
-  Flex,
-  Box,
-  Image,
-
-  Text,
-  
-  useTheme,
-  Button
-} from '@chakra-ui/react'
-import Logo from '../Asset/Onbarding/SENDRAILS.png';
+import { PinInputField, PinInput, HStack, Flex, Box, Image, Text, Button } from '@chakra-ui/react'
+import Logo from '../Asset/Onbarding/SENDRAILS.png'
 import { verify } from '../api/verify'
 
 function Verification() {
-  const theme = useTheme()
   const navigate = useNavigate()
   const location = useLocation()
-  const [code, setCode] = useState<string>('')
-  const [errState, setErrState] = useState<boolean>(true)
-console.log({code});
+  const [code] = useState<string>('')
+  const [, setErrState] = useState<boolean>(true)
+  console.log({ code })
 
   const sendVerification = useCallback(async () => {
     const email = location.state.email
@@ -55,7 +43,10 @@ console.log({code});
         <Flex alignSelf="center">
           <Image src={Logo} alt="Sendrail" width="30px" height="22px" objectFit="cover" />
         </Flex>
-        <Flex flexDir="column" width="35.5rem" padding="
+        <Flex
+          flexDir="column"
+          width="35.5rem"
+          padding="
 13px 32px 32px 32px">
           <Flex
             alignSelf="center"

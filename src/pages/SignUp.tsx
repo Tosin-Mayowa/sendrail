@@ -5,13 +5,13 @@ import {
   Box,
   Image,
   Button,
-  Center,
+
   Text,
   FormControl,
   Heading,
   Input,
   Select,
-  useTheme,
+  
   Highlight
 } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
@@ -35,7 +35,7 @@ const initialState = {
   password: ''
 }
 function SignUp() {
-  const theme = useTheme()
+  
   const navigate = useNavigate()
   const [state, dispatch] = useReducer(reducer, initialState)
   // const passReg=/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;

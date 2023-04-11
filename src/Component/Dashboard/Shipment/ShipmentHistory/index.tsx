@@ -9,7 +9,7 @@ import DashboardLayout from '../../DashboardLayout';
 import Table from '../ShipmentOverview/Table';
 
 function Index(): JSX.Element {
-    const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
+    // const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const navigate = useNavigate()
     return (
         <DashboardLayout section='/shipment'>
