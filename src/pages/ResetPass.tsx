@@ -35,7 +35,7 @@ function ResetPassword() {
       width="100%"
       alignItems="center"
       justifyContent="center"
-      height="100vh"
+      height="1024px"
       flexDir="column"
       className="BackG">
       <Box
@@ -58,7 +58,7 @@ function ResetPassword() {
             width="10.75rem"
             height="6.4375rem"
             alignSelf="center"
-            alignItems="center"
+            alignItems="flex-start"
             justifyContent="space-between">
             <Flex
               width="10.75rem"
@@ -77,7 +77,7 @@ function ResetPassword() {
               </Text>
             </Flex>
             <Flex width="10.75rem" flexDir="column" alignSelf="center" flexShrink="0">
-              <Text fontWeight="600" fontSize="16px" lineHeight="22px" color="primary.400">
+              <Text fontWeight="600" fontSize="16px" textAlign="center" lineHeight="22px" color="primary.400">
                 Create New Password
               </Text>
             </Flex>
