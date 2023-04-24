@@ -15,7 +15,7 @@ import React, { useState } from 'react'
 import Back from '../../../Asset/Settings/back.png'
 import eyeImg from '../../../Asset/Settings/eye.png'
 
-const ResetPinModal = ({ setPassword, setSecurity }) => {
+const ResetPinModal = ({ setPassword, setSecurity, setShowPass }) => {
   const [emailSuccessP, setEmailSuccessP] = useState<boolean>(false)
   const [pinSuccess, setPinSuccess] = useState<boolean>(false)
   const [showPin, setShowPin] = useState<boolean>(false)
@@ -36,7 +36,10 @@ const ResetPinModal = ({ setPassword, setSecurity }) => {
         height="6.3125rem">
         <Image
           cursor="pointer"
-          onClick={() => setSecurity(true)}
+          onClick={() => {
+            setSecurity(true);
+          setShowPass(false)
+          }}
           src={Back}
           alt=""
           width="40px"
@@ -227,7 +230,7 @@ const ResetPinModal = ({ setPassword, setSecurity }) => {
               </Text>
               <Flex flexDir="column" width="100%">
                 <Text color="#ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
-                  Enter new password
+                  Enter new pin
                 </Text>
                 <InputGroup>
                   <Input
@@ -257,7 +260,7 @@ const ResetPinModal = ({ setPassword, setSecurity }) => {
               </Flex>
               <Flex flexDir="column" width="100%">
                 <Text color="#ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
-                  Enter new password
+                  Enter new pin
                 </Text>
                 <InputGroup>
                   <Input

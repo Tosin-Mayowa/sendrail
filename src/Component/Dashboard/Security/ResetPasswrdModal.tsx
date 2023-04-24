@@ -14,11 +14,11 @@ import {
 import React, { useState } from 'react'
 import Back from '../../../Asset/Settings/back.png';
 import eyeImg from '../../../Asset/Settings/eye.png'
-const ResetPasswordModal = ({ setSecurity }) => {
+const ResetPasswordModal = ({ setSecurity, setShowPass }) => {
   const [emailSuccess, setEmailSuccess] = useState<boolean>(false)
-  const [otpSuccess, setOtpSuccess] = useState<boolean>(false);
-  const [show, setShow] = useState<boolean>(false);
-  const [showConfirm, setShowConfirm] = useState<boolean>(false);
+  const [otpSuccess, setOtpSuccess] = useState<boolean>(false)
+  const [show, setShow] = useState<boolean>(false)
+  const [showConfirm, setShowConfirm] = useState<boolean>(false)
   const [email, setEmail] = useState<string>('')
   return (
     <Flex
@@ -35,7 +35,10 @@ const ResetPasswordModal = ({ setSecurity }) => {
         height="6.3125rem">
         <Image
           cursor="pointer"
-          onClick={() => setSecurity(true)}
+          onClick={() => {
+            setSecurity(true);
+          setShowPass(false);
+          }}
           src={Back}
           alt=""
           width="40px"

@@ -38,7 +38,7 @@ const Security = () => {
                   alignItems="center"
                   padding="32px 48px"
                   width="57rem"
-                  height={!showPass?"40.0625rem":"52.8125rem"}
+                  height={!showPass ? '40.0625rem' : '52.8125rem'}
                   background="rgba(7, 5, 41, 0.07)"
                   borderRadius="20px">
                   <Flex width="51rem" flexDir="column">
@@ -343,9 +343,13 @@ const Security = () => {
               </Center>
             </>
           ) : password ? (
-            <ResetPasswordModal setSecurity={setSecurity} />
+            <ResetPasswordModal setSecurity={setSecurity} setShowPass={setShowPass} />
           ) : (
-            <ResetPinModal setPassword={setPassword} setSecurity={setSecurity} />
+            <ResetPinModal
+              setPassword={setPassword}
+              setSecurity={setSecurity}
+              setShowPass={setShowPass}
+            />
           )}
         </>
       )

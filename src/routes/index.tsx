@@ -30,7 +30,7 @@ import FoodMenu from '../Component/Dashboard/ManageLink/FoodMenu'
 import GroceryMenu from '../Component/Dashboard/ManageLink/GroceryMenu'
 
 import ProtectAuth from '../Component/ProtectAuth'
-
+import Courier from '../Component/Dashboard/Courier/Courier';
 function Empty(): JSX.Element {
     return <DashboardLayout><Text mt="80px">Not Yet Implemented</Text></DashboardLayout>;
 }
@@ -57,7 +57,7 @@ function Index() {
             { path: "/dashboard", component: <Overview /> },
             { path: "/shipment", component: <Shipment /> },
             { path: "/customer", component: <ManageCustomer /> },
-            { path: "/rider", component: <Empty /> },
+            { path: "/rider", component: <Courier /> },
             { path: "/payroll", component: <Payroll /> },
             { path: "/transactions", component: <Transactions /> },
             { path: "/manage-link", component: <ManageLink /> },

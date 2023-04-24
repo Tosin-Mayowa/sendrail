@@ -1,5 +1,5 @@
 import { Box, Grid, GridItem, Tabs, useDisclosure, useMediaQuery, useTheme } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../lib/hooks/useAuth';
 import DashHeader from './DashHeader';
@@ -14,10 +14,20 @@ function DashboardLayout({ children, section }: { children: JSX.Element, section
     const navigate = useNavigate()
     const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const [opened, setOpened] = useState<boolean>(false);
-    const routes: string[] =
-        [
-            "/dashboard", "/shipment", "/customer", "/rider", "/payroll", "/transactions", "/manage-link", "/settings"
-        ]
+    const routes: string[] = useMemo(
+      () => [
+        '/dashboard',
+        '/shipment',
+        '/customer',
+        '/rider',
+        '/payroll',
+        '/transactions',
+        '/manage-link',
+        '/settings'
+      ],
+      []
+    )
+       
     const [tabIndex, setIndex] = useState<number>(routes.findIndex(e => e === location.pathname));
     const { isOpen, onOpen, onClose }: { isOpen: boolean, onOpen: () => void, onClose: () => void } = useDisclosure()
 

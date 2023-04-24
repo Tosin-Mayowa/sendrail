@@ -49,7 +49,7 @@ const Profile=()=>{
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
 
@@ -65,7 +65,7 @@ const Profile=()=>{
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
             </Flex>
@@ -82,7 +82,7 @@ const Profile=()=>{
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
 
@@ -98,7 +98,7 @@ const Profile=()=>{
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
             </Flex>
@@ -115,7 +115,7 @@ const Profile=()=>{
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
 
@@ -131,7 +131,7 @@ const Profile=()=>{
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
             </Flex>
@@ -148,7 +148,7 @@ const Profile=()=>{
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
 
@@ -164,7 +164,7 @@ const Profile=()=>{
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
             </Flex>

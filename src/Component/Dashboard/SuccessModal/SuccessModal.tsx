@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react'
 import Success from '../../../Asset/Settings/success.png'
 
-const SuccessModal = (props) => {
+const SuccessModal = ({ setIsEdit,bvn,bankName,acctNum }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <>
@@ -26,10 +26,14 @@ const SuccessModal = (props) => {
         color="#595956"
         padding="8px 24px"
         flexShrink="0"
-        width="10.2rem"
+        width="5.125rem"
         height="2.375rem"
         background="rgba(6, 0, 137, 0.15)"
-        onClick={onOpen}
+        isDisabled={bvn&&bankName&&acctNum?false:true}
+        onClick={()=>{
+          onOpen();
+        
+        }}
         borderRadius="8px "
         _hover={{
           background: 'rgba(6, 0, 137, 0.15)'
@@ -119,7 +123,10 @@ const SuccessModal = (props) => {
                   width="11.25rem"
                   height="2.375rem"
                   background=" #070529"
-                  onClick={onOpen}
+                  onClick={() => {
+                    onOpen();
+                    setIsEdit(true)
+                  }}
                   borderRadius="8px "
                   _hover={{
                     background: ' #070529'

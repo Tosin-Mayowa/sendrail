@@ -1,10 +1,9 @@
 import { Flex, Box, Input, Button, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import AccountModal from './AccountModal'
-import Nodata from '../../../Asset/Settings/nodata.png';
 import SuccessModal from "../SuccessModal/SuccessModal"
 const BankInfo = () => {
-  const [isEdit, setIsEdit] = useState<boolean>(false);
+  const [isEdit,setIsEdit] = useState<boolean>(false);
+  const [isSuccess,setIsSuccess ] = useState<boolean>(false);
   const [bankName,setBankName]=useState<string>('');
   const [acctNum, setAcctNum] = useState<string>('')
   const [bvn, setBvn] = useState<string>('')
@@ -15,7 +14,7 @@ const BankInfo = () => {
           Bank Information
         </Text>
         <Box
-        mt="3rem"
+          mt="3rem"
           padding="64px 16px"
           display="flex"
           flexDir="column"
@@ -30,7 +29,7 @@ const BankInfo = () => {
             fontSize="18px"
             lineHeight="22px"
             color="#1F1F1F">
-            {isEdit?"Account Details":"Add Account"}
+            {isEdit ? 'Account Details' : 'Add Account'}
           </Text>
           <Flex flexDir="column" width="64.9rem" height="9.25rem" justifyContent="space-between">
             <Flex width="64.9rem" justifyContent="space-between">
@@ -41,6 +40,7 @@ const BankInfo = () => {
 
                 <Input
                   value={isEdit ? 'Wema Bank' : bankName}
+                  isReadOnly={isEdit ? true : false}
                   onChange={(e) => setBankName(e.target.value)}
                   padding="15px 12px 15px 10px"
                   height="3.25rem"
@@ -61,6 +61,7 @@ const BankInfo = () => {
                   height="3.25rem"
                   background="#FFFFFF"
                   borderRadius="4px"
+                  isReadOnly={isEdit ? true : false}
                 />
               </Flex>
 
@@ -76,6 +77,7 @@ const BankInfo = () => {
                   height="3.25rem"
                   background="#FFFFFF"
                   borderRadius="4px"
+                  isReadOnly={isEdit ? true : false}
                 />
               </Flex>
             </Flex>
@@ -88,7 +90,7 @@ const BankInfo = () => {
                   color="#595956"
                   padding="8px 24px"
                   flexShrink="0"
-                  width="10.2rem"
+                  width="5.125rem"
                   height="2.375rem"
                   background="rgba(6, 0, 137, 0.15)"
                   borderRadius="8px "
@@ -96,7 +98,12 @@ const BankInfo = () => {
                   Done
                 </Button>
               ) : (
-               <SuccessModal/>
+                <SuccessModal
+                  bankName={bankName}
+                  bvn={bvn}
+                  acctNum={acctNum}
+                  setIsEdit={setIsEdit}
+                />
               )}
             </Flex>
           </Flex>
