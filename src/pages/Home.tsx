@@ -14,6 +14,12 @@ function Home() {
       <Button ml="10px" onClick={() => navigate("/login")}>
         Goto Sign in
       </Button>
+       <Button ml="10px" onClick={() => navigate("/reset-password")}>
+        Goto reset passwrd
+      </Button>
+      <Button ml="10px" onClick={() => navigate("/verify")}>
+        verify
+      </Button>
     </>
   );
 }
