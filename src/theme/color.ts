@@ -52,9 +52,12 @@ export const theme = extendTheme({
       50: '#595956',
       100: '#ABA7A7',
       200: '#1F1F1F',
-      300: '#AAAAAA',
-    }
+      300: '#AAAAAA'
+    },
+    bg: {
+      100: '#D9D9D9'
+    },
   },
- 
+
   components: { Switch: switchTheme, Select: selectTheme }
 })
