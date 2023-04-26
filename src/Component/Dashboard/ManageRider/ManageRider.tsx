@@ -31,7 +31,8 @@ const items = [
     name: 'John tae',
     location: 'ikeja',
     status: 'assigned',
-    action: 'menu'
+    action: 'menu',
+    type: 'Bicycle'
   },
 
   {
@@ -39,14 +40,16 @@ const items = [
     name: 'Sunday James',
     location: 'Lekki',
     status: 'Unassigned',
-    action: 'menu'
+    action: 'menu',
+    type: 'Car'
   },
   {
     id: 3,
     name: 'ola Daniel',
     location: 'Magodo',
     status: 'assigned',
-    action: 'menu'
+    action: 'menu',
+    type: 'Bike'
   }
 ]
 const ManageRider = ({ setIndx }) => {

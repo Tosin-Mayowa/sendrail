@@ -18,7 +18,7 @@ Badge,
   Box,
   Button
 } from '@chakra-ui/react';
-import {AssignOrder} from "./AssignOrder"
+import Order from "./Order"
 const TableBody = ({ item, phn, msg, menu, setIndx }) => {
   return (
     <>
@@ -88,7 +88,7 @@ const TableBody = ({ item, phn, msg, menu, setIndx }) => {
                 View profile
               </MenuItem>
               <MenuItem>
-                <AssignOrder item={item} />
+                <Order item={item} phn={phn} msg={msg} />
               </MenuItem>
               <MenuItem
                 height="3.0625rem"
