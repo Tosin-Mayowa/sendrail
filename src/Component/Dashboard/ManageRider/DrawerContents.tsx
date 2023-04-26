@@ -128,7 +128,7 @@ export const DrawerContents=()=>{
               <Flex
                 ml="1rem"
                 mt="1rem"
-                width="5.4375rem"
+                width="3.75rem"
                 height="1.0625rem"
                 justifyContent="space-between">
                 <Text
