@@ -16,7 +16,7 @@ export const DrawerHead = ({ item, phn, msg, onClose }) => {
     <>
       {/* header wrapper*/}
       <Flex
-        padding="24px 0px 30px 0px"
+        padding="24px 24px 30px 24px"
         width="100%"
         height="13.625rem"
         justifyContent="space-between">

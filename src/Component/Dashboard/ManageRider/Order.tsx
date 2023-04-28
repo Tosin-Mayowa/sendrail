@@ -39,21 +39,15 @@ export default function Order({ item,phn,msg }) {
       <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef} size="lg">
         <DrawerOverlay />
         <DrawerContent>
+          <Flex flexDir="column" height="87.875rem" overflow="scroll">
+            <Flex flexDir="column">
+              <DrawerHead item={item} phn={phn} msg={msg} onClose={onClose} />
+            </Flex>
 
-          <DrawerHeader>
-            <DrawerHead item={item} phn={phn} msg={msg} onClose={onClose} />
-          </DrawerHeader>
-
-          <DrawerBody>
-          <DrawerContents/>
-          </DrawerBody>
-
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
-          </DrawerFooter>
+            <Flex flexDir="column" height="72.25rem">
+              <DrawerContents />
+            </Flex>
+          </Flex>
         </DrawerContent>
       </Drawer>
     </>
