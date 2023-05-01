@@ -1,4 +1,4 @@
-import { Avatar, background, Box, Checkbox, Drawer, DrawerContent, DrawerOverlay, Flex, Grid, Tab, TabList, TabPanel, TabPanels, Tabs, Text, useMediaQuery } from '@chakra-ui/react'
+import { Avatar, Box, Drawer, DrawerContent, DrawerOverlay, Flex, Grid, Text, useMediaQuery } from '@chakra-ui/react'
 import React from 'react'
 import { RiCloseCircleLine } from 'react-icons/ri'
 import DeliveryStatus from './DeliveryStatus'
@@ -17,9 +17,9 @@ interface Props {
     history?: boolean,
 }
 const TableDrawer = ({ onClose, isOpen, details, history }: Props): JSX.Element => {
-    const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
-    const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
-    const tabs: string[] = ["Delivery 1", "Delivery 2", "Delivery 3", "Delivery 4", "Delivery 5",]
+    // const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
+    // const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
+    // const tabs: string[] = ["Delivery 1", "Delivery 2", "Delivery 3", "Delivery 4", "Delivery 5",]
 
     return (
         <Drawer placement="right" onClose={onClose} isOpen={isOpen} size="md">

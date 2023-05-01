@@ -5,6 +5,7 @@ import Profile from '../Profile/Profile'
 import BusinessInfo from '../BusinessInfo/BusinessInfo'
 import BankInfo from '../BankInfo/BankInfo'
 import Security from '../Security/Security'
+import BusinessPref from '../BusinessPreferences/BusinessPreferences'
 const Settings=()=>{
 
     return (
@@ -69,7 +70,7 @@ const Settings=()=>{
             </TabPanel>
             <TabPanel><Security/>
             </TabPanel>
-            <TabPanel>3</TabPanel>
+            <TabPanel><BusinessPref/></TabPanel>
           </TabPanels>
         </Tabs>
       </>

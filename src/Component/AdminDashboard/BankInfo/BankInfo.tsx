@@ -1,191 +1,116 @@
-import {
-  Flex,
-  Box,
-  Text,
-  Input,
-Button,
-  InputGroup,
-  FormControl,
-  FormLabel,
-  Image,
-  Center
-} from '@chakra-ui/react'
-import React,{useState} from 'react'
-import AccountModal from './AccountModal'
-import Nodata from '../../../Asset/Settings/nodata.png'
+import { Flex, Box, Input, Button, Text } from '@chakra-ui/react'
+import React, { useState } from 'react'
+import SuccessModal from "../SuccessModal/SuccessModal"
 const BankInfo = () => {
-    const [bankData,setBankData]=useState('');
+  const [isEdit,setIsEdit] = useState<boolean>(false);
+  const [isSuccess,setIsSuccess ] = useState<boolean>(false);
+  const [bankName,setBankName]=useState<string>('');
+  const [acctNum, setAcctNum] = useState<string>('')
+  const [bvn, setBvn] = useState<string>('')
   return (
     <>
-      <Text mt="10px" color="#000000" fontWeight="500" fontSize="24px" lineHeight="29px">
-        Bank Information
-      </Text>
-      {bankData ? (
-        <Center>
-          <Box
-            mt="56px"
-            width="60%"
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            padding="32px 48px"
-            boxSizing="border-box"
-            background="rgba(7, 5, 41, 0.07)"
-            borderRadius="20px">
-            <Center>
-              <Text color="#656566" fontWeight="500" fontSize="24px" lineHeight="29px">
-                Account details
-              </Text>
-            </Center>
-            <Flex flexDir="column" width="100%">
-              <Flex justifyContent="space-between" mt="70px">
-                <FormControl>
-                  <FormLabel color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
-                    Name
-                  </FormLabel>
-                  <InputGroup>
-                    <Input
-                      alignItems="center"
-                      width="100%"
-                      height="54px"
-                      background="#FFFFFF"
-                      borderRadius="4px"
-                    />
-                  </InputGroup>
-                </FormControl>
+      <Flex flexDir="column">
+        <Text color="#656566" fontWeight="500" fontSize="24px" lineHeight="29px">
+          Bank Information
+        </Text>
+        <Box
+          mt="3rem"
+          padding="64px 16px"
+          display="flex"
+          flexDir="column"
+          justifyContent="space-between"
+          width="66.9rem"
+          height="20.625rem"
+          bg="rgba(7, 5, 41, 0.07)"
+          borderRadius="20px">
+          <Text
+            textAlign="center"
+            fontWeight="500"
+            fontSize="18px"
+            lineHeight="22px"
+            color="#1F1F1F">
+            {isEdit ? 'Account Details' : 'Add Account'}
+          </Text>
+          <Flex flexDir="column" width="64.9rem" height="9.25rem" justifyContent="space-between">
+            <Flex width="64.9rem" justifyContent="space-between">
+              <Flex width="20.3rem" flexDir="column">
+                <Text color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
+                  Bank Account
+                </Text>
 
-                <FormControl ml="60px">
-                  <FormLabel color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
-                    Current Balance
-                  </FormLabel>
-                  <InputGroup>
-                    <Input
-                      alignItems="center"
-                      width="100%"
-                      height="54px"
-                      background="#FFFFFF"
-                      borderRadius="4px"
-                    />
-                  </InputGroup>
-                </FormControl>
+                <Input
+                  value={isEdit ? 'Wema Bank' : bankName}
+                  isReadOnly={isEdit ? true : false}
+                  onChange={(e) => setBankName(e.target.value)}
+                  padding="15px 12px 15px 10px"
+                  height="3.25rem"
+                  background="#FFFFFF"
+                  borderRadius="4px"
+                />
               </Flex>
-              <Flex justifyContent="space-between" mt="70px">
-                <FormControl>
-                  <FormLabel color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
-                    Bank Account
-                  </FormLabel>
-                  <InputGroup>
-                    <Input
-                      alignItems="center"
-                      width="100%"
-                      height="54px"
-                      background="#FFFFFF"
-                      borderRadius="4px"
-                    />
-                  </InputGroup>
-                </FormControl>
 
-                <FormControl ml="60px">
-                  <FormLabel color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
-                    Account Number
-                  </FormLabel>
-                  <InputGroup>
-                    <Input
-                      alignItems="center"
-                      width="100%"
-                      height="54px"
-                      background="#FFFFFF"
-                      borderRadius="4px"
-                    />
-                  </InputGroup>
-                </FormControl>
+              <Flex width="20.3rem" flexDir="column">
+                <Text color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
+                  Account Number
+                </Text>
+
+                <Input
+                  value={isEdit ? '0009234567' : acctNum}
+                  onChange={(e) => setAcctNum(e.target.value)}
+                  padding="15px 12px 15px 10px"
+                  height="3.25rem"
+                  background="#FFFFFF"
+                  borderRadius="4px"
+                  isReadOnly={isEdit ? true : false}
+                />
               </Flex>
-              <Flex justifyContent="space-between" mt="70px">
-                <FormControl>
-                  <FormLabel color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
-                    BVN
-                  </FormLabel>
-                  <InputGroup>
-                    <Input
-                      alignItems="center"
-                      width="100%"
-                      height="54px"
-                      background="#FFFFFF"
-                      borderRadius="4px"
-                    />
-                  </InputGroup>
-                </FormControl>
 
-                <FormControl ml="60px">
-                  <FormLabel color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
-                    Expiry date
-                  </FormLabel>
-                  <InputGroup>
-                    <Input
-                      alignItems="center"
-                      width="100%"
-                      height="54px"
-                      background="#FFFFFF"
-                      borderRadius="4px"
-                    />
-                  </InputGroup>
-                </FormControl>
-              </Flex>
-              <Flex justifyContent="space-between" mt="70px">
-                <FormControl>
-                  <FormLabel color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
-                    CCV
-                  </FormLabel>
-                  <InputGroup>
-                    <Input
-                      alignItems="center"
-                      width="100%"
-                      height="54px"
-                      background="#FFFFFF"
-                      borderRadius="4px"
-                    />
-                  </InputGroup>
-                </FormControl>
+              <Flex width="20.3rem" flexDir="column">
+                <Text color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
+                  Bvn
+                </Text>
 
-                <FormControl ml="60px">
-                  <FormLabel color=" #ABA7A7" fontWeight="500" fontSize="18px" lineHeight="22px">
-                    Transaction Pin
-                  </FormLabel>
-                  <InputGroup>
-                    <Input
-                      alignItems="center"
-                      width="100%"
-                      height="54px"
-                      background="#FFFFFF"
-                      borderRadius="4px"
-                    />
-                  </InputGroup>
-                </FormControl>
+                <Input
+                  value={isEdit ? '203****453' : bvn}
+                  onChange={(e) => setBvn(e.target.value)}
+                  padding="15px 12px 15px 10px"
+                  height="3.25rem"
+                  background="#FFFFFF"
+                  borderRadius="4px"
+                  isReadOnly={isEdit ? true : false}
+                />
               </Flex>
             </Flex>
-          </Box>
-        </Center>
-      ) : (
-        <Flex flexDir="column" justifyContent="center" alignItems="center" width="100%">
-          <Box mt="60px">
-            <Image src={Nodata} alt="" width="80%" height="80%" />
-            <Text
-              color="#656566"
-              fontWeight="500"
-              fontSize="20px"
-              mt="20px"
-              lineHeight="55px"
-              textAlign="center">
-              No data to show
-            </Text>
-          </Box>
-      
-         <AccountModal/>
-    
-        </Flex>
-      )}
+            <Flex alignSelf="flex-end">
+              {isEdit ? (
+                <Button
+                  lineHeight="22px"
+                  fontWeight="500"
+                  fontSize="14px"
+                  color="#595956"
+                  padding="8px 24px"
+                  flexShrink="0"
+                  width="5.125rem"
+                  height="2.375rem"
+                  background="rgba(6, 0, 137, 0.15)"
+                  borderRadius="8px "
+                  isDisabled={true}>
+                  Done
+                </Button>
+              ) : (
+                <SuccessModal
+                  bankName={bankName}
+                  bvn={bvn}
+                  acctNum={acctNum}
+                  setIsEdit={setIsEdit}
+                />
+              )}
+            </Flex>
+          </Flex>
+        </Box>
+      </Flex>
     </>
   )
 }
 
-export default BankInfo;
+export default BankInfo

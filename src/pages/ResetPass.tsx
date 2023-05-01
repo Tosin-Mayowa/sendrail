@@ -3,16 +3,16 @@ import {
   Flex,
   Box,
   Image,
-  Center,
+ 
   Text,
-  FormControl,
+ 
   Input,
-  useTheme,
-  FormLabel,
-  Heading,
+ 
+ 
   Button,
 } from '@chakra-ui/react';
-import Logo from '../Asset/Logos/Onboarding/SENDRAILS.png';
+import '../Style/signUp.css'
+import Logo from '../Asset/Onbarding/SENDRAILS.png';
 import Mark from '../Asset/Logos/Onboarding/Vector.png';
 import Ellipse from '../Asset/Logos/Onboarding/Ellipse.png';
 import { resetReducer } from '../reducers/resetReducer';
@@ -22,7 +22,7 @@ const initialState = {
   confirmPass: '',
 };
 function ResetPassword() {
-  const theme = useTheme();
+  
   const [state, dispatch] = useReducer(resetReducer, initialState);
 
   const lowerCase = /[a-z]/;
@@ -30,8 +30,208 @@ function ResetPassword() {
   const numb = /[0-9]/;
   const { confirmPass, newPassword } = state;
   return (
-    <Flex flexDir="column" width="100%" height="1393px" background={theme.colors.primary['100']}>
-      <Flex mt="60px" ml="60px">
+    <Flex
+      width="100%"
+      alignItems="center"
+      justifyContent="center"
+      height="1024px"
+      flexDir="column"
+      className="BackG">
+      <Box
+        display="flex"
+        flexDir="column"
+        justifyContent="space-between"
+        alignItems="flex-start"
+        width="39.5rem"
+        height="45.3125rem"
+        padding="64px"
+        bg="#fff">
+        <Flex
+          flexDir="column"
+          alignSelf="center"
+          width="30rem"
+          height="18.9375rem"
+          justifyContent="space-between">
+          <Flex
+            flexDir="column"
+            width="10.75rem"
+            height="6.4375rem"
+            alignSelf="center"
+            alignItems="flex-start"
+            justifyContent="space-between">
+            <Flex
+              width="10.75rem"
+              height="3.5625rem"
+              flexDir="column"
+              justifyContent="space-between"
+              alignItems="center">
+              <Image src={Logo} alt="Sendrail" width="30px" height="22px" objectFit="cover" />
+              <Text
+                fontWeight="600"
+                fontSize="24px"
+                lineHeight="22px"
+                color="#000000"
+                flexShrink="0">
+                Reset Password
+              </Text>
+            </Flex>
+            <Flex width="10.75rem" flexDir="column" alignSelf="center" flexShrink="0">
+              <Text fontWeight="600" fontSize="16px" textAlign="center" lineHeight="22px" color="primary.400">
+                Create New Password
+              </Text>
+            </Flex>
+          </Flex>
+
+          {/* input flex */}
+
+          <Flex flexDir="column" width="30rem">
+            <Text color="primary.400" fontWeight="500" fontSize="16px" lineHeight="22px">
+              Enter new password
+            </Text>
+
+            <Input
+              mt="4px"
+              value={newPassword}
+              placeholder="password"
+              type="password"
+              onChange={(e) => dispatch({ type: 'new password', payload: e.target.value })}
+              padding="10px 12px 10px 10px"
+              width="30rem"
+              height="2.75rem"
+              background="#fff"
+              border="1px solid #ABA7A7"
+              borderRadius="4px"
+              fontWeight="500"
+              fontSize="16px"
+              lineHeight="22px"
+              color="#1F1F1F"
+              focusBorderColor="primary.main"
+            />
+          </Flex>
+          <Flex flexDir="column" width="30rem">
+            <Text
+              color="primary.400"
+              fontWeight="500"
+              fontSize="16px"
+              lineHeight="22px"
+              flexShrink="0">
+              Confirm Password
+            </Text>
+
+            <Input
+              mt="4px"
+              value={newPassword}
+              placeholder="Confirm Password"
+              type="password"
+              onChange={(e) => dispatch({ type: 'new password', payload: e.target.value })}
+              padding="10px 12px 10px 10px"
+              width="30rem"
+              height="2.75rem"
+              background="#fff"
+              border="1px solid #ABA7A7"
+              borderRadius="4px"
+              fontWeight="500"
+              fontSize="16px"
+              lineHeight="22px"
+              color="#1F1F1F"
+              focusBorderColor="primary.main"
+            />
+          </Flex>
+          {/* end input flex */}
+        </Flex>
+
+        {/* password */}
+        <Flex
+          flexDir="column"
+          width="31.5rem"
+          height="16.375rem"
+          alignItems="flex-start"
+          justifyContent="space-between">
+          <Flex
+            flexDir="column"
+            width="12.25rem"
+            height="8.875rem"
+            alignItems="flex-start"
+            justifyContent="space-between">
+            <Text fontWeight="500" fontSize="14px" lineHeight="22px" color="#1F1F1F">
+              Password must
+            </Text>
+
+            <Flex mt="12px">
+              <Image
+                src={newPassword.length === 8 ? Mark : Ellipse}
+                width="10px"
+                height="10px"
+                mt="8px"
+                objectFit="cover"
+                alt="Ellipse"
+              />
+              <Text fontWeight="400" fontSize="12px" lineHeight="22px" color="#1F1F1F" ml="9px">
+                be at least 8 character long
+              </Text>
+            </Flex>
+            <Flex mt="12px">
+              <Image
+                src={lowerCase.test(newPassword) ? Mark : Ellipse}
+                width="10px"
+                height="10px"
+                mt="8px"
+                objectFit="cover"
+                alt="Ellipse"
+              />
+              <Text fontWeight="400" fontSize="12px" lineHeight="22px" color="#1F1F1F" ml="9px">
+                contain a lowercase letter (a-z)
+              </Text>
+            </Flex>
+            <Flex mt="12px">
+              <Image
+                src={upper.test(newPassword) ? Mark : Ellipse}
+                width="10px"
+                height="10px"
+                mt="8px"
+                objectFit="cover"
+                alt="Ellipse"
+              />
+              <Text fontWeight="400" fontSize="12px" lineHeight="22px" color="#1F1F1F" ml="9px">
+                contain a uppercase letter (A-Z)
+              </Text>
+            </Flex>
+            <Flex mt="12px">
+              <Image
+                src={numb.test(newPassword) ? Mark : Ellipse}
+                width="10px"
+                height="10px"
+                mt="8px"
+                objectFit="cover"
+                alt="Ellipse"
+              />
+              <Text fontWeight="400" fontSize="12px" lineHeight="22px" color="#1F1F1F" ml="9px">
+                contain a Number (0-9)
+              </Text>
+            </Flex>
+          </Flex>
+          <Button
+            padding="16px 32px"
+            width="31.5rem"
+            height="3rem"
+            background="primary.main"
+            borderRadius="4px"
+            fontWeight="500"
+            fontSize="18px"
+            lineHeight="22px"
+            color="#fff"
+            textAlign="center"
+            isDisabled={!(confirmPass && newPassword)}
+            _hover={{
+              background: 'primary.200'
+            }}>
+            Next
+          </Button>
+        </Flex>
+        {/* end pass */}
+      </Box>
+
+      {/* <Flex mt="60px" ml="60px">
         <Image src={Logo} alt="Logo" />
         <Text
           ml="4px"
@@ -60,7 +260,14 @@ function ResetPassword() {
               <Center>
                 <Box width="100%" mb="30px">
                   <Center>
-                    <Image src={Logo} alt="Onboarding Logo" pr="10px" />
+                    <Image
+                      src={Logo}
+                      alt="Onboarding Logo"
+                      pr="10px"
+                      width="30px"
+                      height="22px"
+                      objectFit="cover"
+                    />
                   </Center>
                   <Box mt="13px" width="100%" textAlign="center">
                     <Text fontWeight="600" fontSize="24px" lineHeight="22px">
@@ -81,14 +288,14 @@ function ResetPassword() {
               </Box>
             </Box>
             <FormControl>
-              <FormLabel mt="20px" fontWeight="500" fontSize="16px" lineHeight="22px" ml="15px">
+              <FormLabel mt="20px" fontWeight="500" fontSize="16px" lineHeight="22px" >
                 Enter New Password
               </FormLabel>
               <Input
                 value={newPassword}
                 placeholder="password"
                 type="password"
-                ml="15px"
+                
                 onChange={(e) => dispatch({ type: 'new password', payload: e.target.value })}
                 padding="10px 12px 10px 10px"
                 width="400px"
@@ -104,14 +311,14 @@ function ResetPassword() {
               />
             </FormControl>
             <FormControl>
-              <FormLabel mt="20px" fontWeight="500" fontSize="16px" lineHeight="22px" ml="15px">
+              <FormLabel mt="20px" fontWeight="500" fontSize="16px" lineHeight="22px" >
                 Confirm Password
               </FormLabel>
               <Input
                 placeholder="Confirm password"
                 type="password"
                 value={confirmPass}
-                ml="15px"
+                
                 onChange={(e) =>
                   dispatch({
                     type: 'confirm password',
@@ -135,7 +342,7 @@ function ResetPassword() {
             <Box>
               <Heading
                 mt="40px"
-                ml="15px"
+                
                 fontWeight="500"
                 fontSize="14px"
                 lineHeight="22px"
@@ -143,7 +350,7 @@ function ResetPassword() {
                 Password must
               </Heading>
               <Flex flexDir="column">
-                <Flex ml="15px" mt="12px">
+                <Flex  mt="12px">
                   <Image
                     src={newPassword.length === 8 ? Mark : Ellipse}
                     width="10px"
@@ -156,7 +363,7 @@ function ResetPassword() {
                     be at least 8 character long
                   </Text>
                 </Flex>
-                <Flex ml="15px" mt="12px">
+                <Flex  mt="12px">
                   <Image
                     src={lowerCase.test(newPassword) ? Mark : Ellipse}
                     width="10px"
@@ -169,7 +376,7 @@ function ResetPassword() {
                     contain a lowercase letter (a-z)
                   </Text>
                 </Flex>
-                <Flex ml="15px" mt="12px">
+                <Flex  mt="12px">
                   <Image
                     src={upper.test(newPassword) ? Mark : Ellipse}
                     width="10px"
@@ -182,7 +389,7 @@ function ResetPassword() {
                     contain a uppercase letter (A-Z)
                   </Text>
                 </Flex>
-                <Flex ml="15px" mt="12px">
+                <Flex  mt="12px">
                   <Image
                     src={numb.test(newPassword) ? Mark : Ellipse}
                     width="10px"
@@ -195,30 +402,12 @@ function ResetPassword() {
                     contain a Number (0-9)
                   </Text>
                 </Flex>
-                <Button
-                  mt="70px"
-                  ml="15px"
-                  padding="16px 32px"
-                  width="400px"
-                  height="48px"
-                  background={theme.colors.primary.main}
-                  borderRadius="4px"
-                  fontWeight="500"
-                  fontSize="18px"
-                  lineHeight="22px"
-                  color="#fff"
-                  textAlign="center"
-                  isDisabled={!(confirmPass && newPassword)}
-                  _hover={{
-                    background: '#16134f'
-                  }}>
-                  Next
-                </Button>
+                
               </Flex>
             </Box>
           </Box>
         </Box>
-      </Center>
+      </Center> */}
     </Flex>
   )
 }

@@ -16,6 +16,7 @@ import ManageLink from '../Component/AdminDashboard/ManageLink'
 import Settings from '../Component/AdminDashboard/Settings/Settings'
 import Deposit from '../Component/AdminDashboard/Dashboard/Deposit'
 import Withdraw from '../Component/AdminDashboard/Dashboard/Withdraw'
+import Courier from '../Component/AdminDashboard/Courier/Courier';
 import Transactions from '../Component/AdminDashboard/Transactions/Transactions'
 import ClientDashboard from '../Component/ClientDashboard/Dashboard'
 
@@ -40,7 +41,6 @@ import ClientEstimate from '../Component/ClientDashboard/Estimate'
 import ClientRequest from '../Component/ClientDashboard/Request'
 
 import ProtectAuth from '../Component/ProtectAuth'
-
 function Empty(): JSX.Element {
     return <DashboardLayout><Text mt="80px">Not Yet Implemented</Text></DashboardLayout>;
 }
@@ -67,7 +67,7 @@ function Index() {
             { path: "/dashboard", component: <AdminDashboard /> },
             { path: "/shipment", component: <Shipment /> },
             { path: "/customer", component: <ManageCustomer /> },
-            { path: "/rider", component: <Empty /> },
+            { path: "/rider", component: <Courier /> },
             { path: "/payroll", component: <Payroll /> },
             { path: "/transactions", component: <Transactions /> },
             { path: "/manage-link", component: <ManageLink /> },

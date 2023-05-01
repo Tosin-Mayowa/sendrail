@@ -29,7 +29,7 @@ function DashboardLayout({ children, section }: { children: JSX.Element, section
         },
         {
             icon: <RiEBike2Fill size="18px" />,
-            text: "Rider"
+            text: "Courier"
         },
         {
             icon: <TbLayoutNavbar size="18px" />,

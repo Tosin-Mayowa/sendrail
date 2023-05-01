@@ -10,7 +10,7 @@ import CustomCheckbox from '../../../shared/CustomCheckbox'
 import { MdArrowDropDown } from 'react-icons/md'
 
 const Index = (): JSX.Element => {
-    const [riders, setRiders] = useState(sampleRiders)
+    const [riders,] = useState(sampleRiders)
     const { isOpen, onOpen, onClose } = useDisclosure()
     const navigate = useNavigate()
 

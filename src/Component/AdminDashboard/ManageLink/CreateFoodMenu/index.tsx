@@ -1,5 +1,5 @@
 import { SmallAddIcon } from '@chakra-ui/icons'
-import { Box, Flex, Grid, Image, Input, Link, Text } from '@chakra-ui/react'
+import { Box, Flex, Grid, Image, Input, Text } from '@chakra-ui/react'
 import React, { useEffect, useRef, useState } from 'react'
 import CustomButton from '../../../shared/CustomButton'
 import RoundedBackButton from '../../../shared/RoundedBackButton'

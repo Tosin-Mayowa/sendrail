@@ -53,7 +53,7 @@ const BusinessInfo = () => {
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
 
@@ -69,7 +69,7 @@ const BusinessInfo = () => {
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
             </Flex>
@@ -86,7 +86,7 @@ const BusinessInfo = () => {
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
 
@@ -118,7 +118,7 @@ const BusinessInfo = () => {
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
 
@@ -134,7 +134,7 @@ const BusinessInfo = () => {
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
             </Flex>
@@ -151,7 +151,7 @@ const BusinessInfo = () => {
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
 
@@ -167,7 +167,7 @@ const BusinessInfo = () => {
                     background="#FFFFFF"
                     borderRadius="4px"
                   />
-                  <InputRightElement children={<FiEdit2 width="16px" height="16px" />} />
+                  <InputRightElement mt="4px" children={<FiEdit2 width="16px" height="16px" />} />
                 </InputGroup>
               </FormControl>
             </Flex>
@@ -184,8 +184,7 @@ const BusinessInfo = () => {
               mt="48px"
               _hover={{
                 background: 'rgba(7, 5, 41, 0.9)'
-              }}
-              >
+              }}>
               Save Changes
             </Button>
           </Flex>

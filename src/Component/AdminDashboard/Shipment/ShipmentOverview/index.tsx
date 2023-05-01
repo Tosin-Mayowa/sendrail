@@ -18,7 +18,7 @@ import CreateOrderModal from '../../../shared/CreateOrderModal';
 function Index(): JSX.Element {
     const { state } = useLocation()
     const navigate = useNavigate()
-    const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
+    // const [isSmallerScreen] = useMediaQuery("(max-width: 860px)");
     const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
     const [shipmentStatus, setShipmentStatus] = useState<string>(state?.status || "Order")
     const [sortedData, setData] = useState<TData | null | undefined>(tableData)

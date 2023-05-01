@@ -1,0 +1,17 @@
+.Box{
+    position:relative;
+
+   
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Inner{
+    position: absolute;
+    top:0;
+    left:50%;
+    width:1px;
+    height:600px;
+    background-color:#ABA7A7;
+}

@@ -1,3 +1,7 @@
 .BackG{
-    background-image: url('../Asset/Logos/Onboarding/signup.png');
+    background-image: url('../Asset/Onbarding/backg.png');
+    background-repeat:no-repeat;
+background-attachment:fixed;
+background-size:cover;
+
 }

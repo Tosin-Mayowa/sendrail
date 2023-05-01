@@ -19,7 +19,7 @@ function NotificationsModal({ isOpen, onClose }: Props): JSX.Element {
         message: string,
         time: string
     }
-    const [notifications, setNotifications] = useState<Notification[] | null>(sampleData)
+    const [notifications, ] = useState<Notification[] | null>(sampleData)
     return (
         <Modal
             blockScrollOnMount

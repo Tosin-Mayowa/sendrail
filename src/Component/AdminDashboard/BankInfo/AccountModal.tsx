@@ -22,7 +22,7 @@ import {
 import eyeImg from "../../../Asset/Settings/eye.png"
 export default function AccountModal() {
   const { isOpen, onOpen, onClose } = useDisclosure()
-const [noResponse,setResponse] =useState<boolean>(true)
+const [noResponse,] =useState<boolean>(true)
   return (
     <>
       <Button
