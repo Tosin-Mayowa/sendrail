@@ -1,18 +1,18 @@
 
-import React,{Component} from 'react';
-import DashboardLayout  from '../Component/Dashboard/DashboardLayout'
-const withLayout=Innercomponent=>{
-  return  class withLayout extends Component{
+import React, { Component } from 'react';
+import DashboardLayout from '../Component/AdminDashboard/DashboardLayout'
+const withLayout = Innercomponent => {
+  return class withLayout extends Component {
     //   constructor(props){
     //       super(props);
     //   }
-      render(){
-          return (
-            <DashboardLayout>
-              <Innercomponent {...this.props} />
-            </DashboardLayout>
-          ) 
-      }
+    render() {
+      return (
+        <DashboardLayout>
+          <Innercomponent {...this.props} />
+        </DashboardLayout>
+      )
+    }
   }
 }
 

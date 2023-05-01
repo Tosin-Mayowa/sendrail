@@ -13,7 +13,7 @@ export const cardDetails: {
         { title: "Pending", count: 1, url: Pend },
         { title: "In transit", count: 1, url: Bus },
         { title: "Delivered", count: 1, url: Group },
-        { title: "Delayed", count: 1, url: Bus },
+        { title: "Scheduled", count: 1, url: Bus },
         { title: "Canceled", count: 1, url: Cancel },
     ];
 
