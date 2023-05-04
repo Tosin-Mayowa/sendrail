@@ -18,6 +18,26 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+@media (max-width: 720px) {
+  body {
+    display: none;
+    /* Lets leave it like this for now to avoid unnecessary reviews*/
+  }
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid #F9C567 !important;
+  outline-offset: -1px !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

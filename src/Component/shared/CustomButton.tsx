@@ -34,8 +34,10 @@ function CustomButton({
             size={size}
             isDisabled={disabled}
 
-            _hover={{
+            _hover={variant === "filled" ? {
                 boxShadow: "0px 2px 5px 0px #070529a0"
+            } : {
+                background: "#0600890A"
             }}
 
             onClick={onclick}

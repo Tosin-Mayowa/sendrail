@@ -1,36 +1,46 @@
 import { Text } from '@chakra-ui/react'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import DashboardLayout from '../Component/Dashboard/DashboardLayout'
+import DashboardLayout from '../Component/AdminDashboard/DashboardLayout'
 import Home from '../pages/Home'
 import ForgotPassword from '../pages/ForgotPassword'
 import ResetPassword from '../pages/ResetPass'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import Verification from '../pages/Verification'
-import Overview from '../Component/Dashboard/Overview'
-import ManageCustomer from '../Component/Dashboard/Customer/ManageCustomer'
-import Payroll from '../Component/Dashboard/Payroll'
-import Shipment from '../Component/Dashboard/Shipment'
-import ManageLink from '../Component/Dashboard/ManageLink'
-import Settings from '../Component/Dashboard/Settings/Settings'
-import Deposit from '../Component/Dashboard/Overview/Deposit'
-import Withdraw from '../Component/Dashboard/Overview/Withdraw'
-import Transactions from '../Component/Dashboard/Transactions/Transactions'
-import ShipmentHistory from '../Component/Dashboard/Shipment/ShipmentHistory'
-import CreateOrder from '../Component/Dashboard/Shipment/CreateOrder'
+import AdminDashboard from '../Component/AdminDashboard/Dashboard'
+import ManageCustomer from '../Component/AdminDashboard/Customer/ManageCustomer'
+import Payroll from '../Component/AdminDashboard/Payroll'
+import Shipment from '../Component/AdminDashboard/Shipment'
+import ManageLink from '../Component/AdminDashboard/ManageLink'
+import Settings from '../Component/AdminDashboard/Settings/Settings'
+import Deposit from '../Component/AdminDashboard/Dashboard/Deposit'
+import Withdraw from '../Component/AdminDashboard/Dashboard/Withdraw'
+import Courier from '../Component/AdminDashboard/Courier/Courier';
+import Transactions from '../Component/AdminDashboard/Transactions/Transactions'
+import ClientDashboard from '../Component/ClientDashboard/Dashboard'
 
-import CreatePayroll from '../Component/Dashboard/Payroll/CreatePayroll'
 
-import AddCustomer from '../Component/Dashboard/Customer/AddCustomer'
+import ShipmentHistory from '../Component/AdminDashboard/Shipment/ShipmentHistory'
+import CreateOrder from '../Component/AdminDashboard/Shipment/CreateOrder'
+import CreateBulkOrder from '../Component/AdminDashboard/Shipment/CreateBulkOrder'
 
-import CreateFoodMenu from '../Component/Dashboard/ManageLink/CreateFoodMenu'
-import CreateGroceryMenu from '../Component/Dashboard/ManageLink/CreateGroceryMenu'
-import FoodMenu from '../Component/Dashboard/ManageLink/FoodMenu'
-import GroceryMenu from '../Component/Dashboard/ManageLink/GroceryMenu'
+import CreatePayroll from '../Component/AdminDashboard/Payroll/CreatePayroll'
+
+import AddCustomer from '../Component/AdminDashboard/Customer/AddCustomer'
+
+import CreateFoodMenu from '../Component/AdminDashboard/ManageLink/CreateFoodMenu'
+import CreateGroceryMenu from '../Component/AdminDashboard/ManageLink/CreateGroceryMenu'
+import FoodMenu from '../Component/AdminDashboard/ManageLink/FoodMenu'
+import GroceryMenu from '../Component/AdminDashboard/ManageLink/GroceryMenu'
+
+
+import ClientTrack from '../Component/ClientDashboard/Track'
+import ClientProfile from '../Component/ClientDashboard/Profile'
+import ClientEstimate from '../Component/ClientDashboard/Estimate'
+import ClientRequest from '../Component/ClientDashboard/Request'
 
 import ProtectAuth from '../Component/ProtectAuth'
-import Courier from '../Component/Dashboard/Courier/Courier';
 function Empty(): JSX.Element {
     return <DashboardLayout><Text mt="80px">Not Yet Implemented</Text></DashboardLayout>;
 }
@@ -54,7 +64,7 @@ function Index() {
         [
             // main path routes
             { path: "/", component: <Home /> },
-            { path: "/dashboard", component: <Overview /> },
+            { path: "/dashboard", component: <AdminDashboard /> },
             { path: "/shipment", component: <Shipment /> },
             { path: "/customer", component: <ManageCustomer /> },
             { path: "/rider", component: <Courier /> },
@@ -63,6 +73,7 @@ function Index() {
             { path: "/manage-link", component: <ManageLink /> },
             { path: "/settings", component: <Settings /> },
             { path: "*", component: <Home /> },// Usually a 404 error page but since we have none....
+            { path: "/client", component: <ClientDashboard /> },
 
             // Sub paths******************************************************
 
@@ -72,6 +83,7 @@ function Index() {
             // Shipment sub paths----------------------------------------
             { path: "/shipment-history", component: <ShipmentHistory /> },
             { path: "/create-order", component: <CreateOrder /> },
+            { path: "/create-bulk-order", component: <CreateBulkOrder /> },
             // customer sub paths------------------------------------------
             { path: "/add-customer", component: <AddCustomer /> },
             // payroll sub paths------------------------------------------
@@ -81,6 +93,12 @@ function Index() {
             { path: "/create-grocery-link", component: <CreateGroceryMenu /> },
             { path: "/food-menu", component: <FoodMenu /> },
             { path: "/grocery-menu", component: <GroceryMenu /> },
+            // Client sub paths------------------------------------------
+            { path: "/client-profile", component: <ClientProfile /> },
+            { path: "/client-request", component: <ClientRequest /> },
+            { path: "/client-track", component: <ClientTrack /> },
+            { path: "/client-estimate", component: <ClientEstimate /> },
+
 
         ]
     return (
@@ -90,14 +108,14 @@ function Index() {
                     <Route key={e.path} path={e.path} element={e.component} />
                 ))
             }
-            <Route element={<ProtectAuth />}>
-                {
-                    // Just remove the comments to add your auth if i forget to remove it before i push
-                    AuthRoutes.map((e) => (
-                        <Route key={e.path} path={e.path} element={e.component} />
-                    ))
-                }
-            </Route>
+            {/* <Route element={<ProtectAuth />}> */}
+            {
+                // Just remove the comments to add your auth if i forget to remove it before i push
+                AuthRoutes.map((e) => (
+                    <Route key={e.path} path={e.path} element={e.component} />
+                ))
+            }
+            {/* </Route> */}
         </Routes>
     )
 }
