@@ -34,7 +34,7 @@ function ResetPassword() {
       width="100%"
       alignItems="center"
       justifyContent="center"
-      height="1024px"
+      height="100vh"
       flexDir="column"
       className="BackG">
       <Box

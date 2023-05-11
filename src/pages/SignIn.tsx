@@ -18,7 +18,7 @@ import Logo from '../Asset/Onbarding/SENDRAILS.png'
 
 function SignIn() {
   const { setAuth } = useAuth()
-  const theme = useTheme()
+ 
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -86,7 +86,7 @@ function SignIn() {
               fontSize="16px"
               lineHeight="22px"
               color="#1F1F1F"
-              focusBorderColor={theme.colors.primary.main}
+              focusBorderColor="primary.main"
             />
             <Input
               placeholder="Password"
@@ -104,14 +104,14 @@ function SignIn() {
               fontSize="16px"
               lineHeight="22px"
               color="#1F1F1F"
-              focusBorderColor={theme.colors.primary.main}
+              focusBorderColor="primary.main"
             />
             <Button
               mt="60px"
               padding="16px 32px"
               width="30rem"
               height="2.6rem"
-              background={theme.colors.primary.main}
+              background="primary.main"
               borderRadius="4px"
               fontWeight="500"
               onClick={login}
@@ -127,13 +127,13 @@ function SignIn() {
             </Button>
           </Box>
           <Flex width="30rem" justifyContent="space-between">
-            <Text cursor="pointer" fontSize="12px" color={theme.colors.primary['100']}>
+            <Text cursor="pointer" fontSize="12px" color="primary.100">
               <Link to="/forgot-password">Forgot Password ?</Link>
             </Text>
             <Flex>
               <Text fontSize="12px">Don’t have an account?</Text>
 
-              <Text cursor="pointer" fontSize="12px" ml="3px" color={theme.colors.primary['100']}>
+              <Text cursor="pointer" fontSize="12px" ml="3px" color="primary.100">
                 {' '}
                 <Link to="/sign-up">Sign up</Link>
               </Text>
